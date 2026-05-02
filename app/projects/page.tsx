@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Suspense, ViewTransition } from "react";
+import { Suspense } from "react";
 import { getAllProjects } from "@/lib/data";
 import SectionHeading from "@/components/ui/SectionHeading";
 import ProjectCard from "@/components/ui/ProjectCard";
@@ -48,19 +48,7 @@ export default async function ProjectsPage({
   });
 
   return (
-    <ViewTransition
-      enter={{
-        "nav-forward": "nav-forward",
-        "nav-back": "nav-back",
-        default: "none",
-      }}
-      exit={{
-        "nav-forward": "nav-forward",
-        "nav-back": "nav-back",
-        default: "none",
-      }}
-      default="none"
-    >
+    
       <section className="section" id="projects-page">
         <div className="container">
           <SectionHeading
@@ -99,6 +87,5 @@ export default async function ProjectsPage({
           </div>
         </div>
       </section>
-    </ViewTransition>
   );
 }

@@ -1,4 +1,3 @@
-import { ViewTransition } from "react";
 import Link from "next/link";
 import type { Project } from "@/types";
 
@@ -32,15 +31,22 @@ export default function ProjectCard({ project, index = 0 }: ProjectCardProps) {
     >
       <article className="neo-card h-full flex flex-col overflow-hidden p-0">
         {/* Thumbnail */}
-        <ViewTransition name={`project-${project.id}`} share="morph">
           <div
             className="relative w-full aspect-[16/10] overflow-hidden border-b-[3px] border-[var(--color-border)]"
             style={{
               backgroundColor: `${categoryColors[project.category]}20`,
             }}
           >
-            {/* Decorative pattern for placeholder */}
-            <div className="absolute inset-0 flex items-center justify-center">
+            {/* Thumbnail Image */}
+            <img
+              src={project.thumbnail}
+              alt={project.title}
+              className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              loading="lazy"
+            />
+
+            {/* Decorative pattern for placeholder (as fallback/overlay) */}
+            <div className="absolute inset-0 flex items-center justify-center bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity">
               <div className="text-center">
                 <div
                   className="text-5xl md:text-6xl font-extrabold opacity-10"
@@ -72,7 +78,6 @@ export default function ProjectCard({ project, index = 0 }: ProjectCardProps) {
               {categoryLabels[project.category]}
             </div>
           </div>
-        </ViewTransition>
 
         {/* Content */}
         <div className="flex flex-col flex-1 p-5">

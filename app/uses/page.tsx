@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { ViewTransition } from "react";
 import SectionHeading from "@/components/ui/SectionHeading";
 
 export const metadata: Metadata = {
@@ -167,19 +166,7 @@ export default function UsesPage() {
   const sections = Object.values(usesData);
 
   return (
-    <ViewTransition
-      enter={{
-        "nav-forward": "nav-forward",
-        "nav-back": "nav-back",
-        default: "none",
-      }}
-      exit={{
-        "nav-forward": "nav-forward",
-        "nav-back": "nav-back",
-        default: "none",
-      }}
-      default="none"
-    >
+  
       <section className="section" id="uses-page">
         <div className="container">
           <SectionHeading
@@ -230,6 +217,5 @@ export default function UsesPage() {
           </div>
         </div>
       </section>
-    </ViewTransition>
   );
 }

@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { ViewTransition } from "react";
 import Link from "next/link";
 import {
   getProjectBySlug,
@@ -61,26 +60,13 @@ export default async function ProjectDetailPage(
   const { prev, next } = getAdjacentProjects(slug);
 
   return (
-    <ViewTransition
-      enter={{
-        "nav-forward": "nav-forward",
-        "nav-back": "nav-back",
-        default: "none",
-      }}
-      exit={{
-        "nav-forward": "nav-forward",
-        "nav-back": "nav-back",
-        default: "none",
-      }}
-      default="none"
-    >
+    
       <article className="section" id="project-detail">
         <div className="container">
           {/* Back link */}
           <BackButton />
 
           {/* Hero Image */}
-          <ViewTransition name={`project-${project.id}`} share="morph">
             <div
               className="relative w-full aspect-[16/9] mb-8 border-[3px] border-[var(--color-border)] overflow-hidden"
               style={{
@@ -88,8 +74,16 @@ export default async function ProjectDetailPage(
                 boxShadow: "var(--shadow-lg)",
               }}
             >
-              {/* Decorative placeholder */}
-              <div className="absolute inset-0 flex items-center justify-center">
+              {/* Hero Image */}
+              <img
+                src={project.thumbnail}
+                alt={project.title}
+                className="absolute inset-0 w-full h-full object-cover"
+                priority="true"
+              />
+
+              {/* Decorative placeholder (overlay/fallback) */}
+              <div className="absolute inset-0 flex items-center justify-center bg-black/10">
                 <div className="text-center">
                   <div
                     className="text-7xl md:text-9xl font-extrabold opacity-10"
@@ -97,16 +91,9 @@ export default async function ProjectDetailPage(
                   >
                     {String(project.id).padStart(2, "0")}
                   </div>
-                  <div
-                    className="mt-4 text-xl md:text-2xl font-extrabold uppercase tracking-wider opacity-30"
-                    style={{ color: categoryColors[project.category] }}
-                  >
-                    {project.title}
-                  </div>
                 </div>
               </div>
             </div>
-          </ViewTransition>
 
           {/* Project Header */}
           <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-8">
@@ -299,14 +286,20 @@ export default async function ProjectDetailPage(
               {project.images.map((image, i) => (
                 <div
                   key={i}
-                  className="aspect-video border-[3px] border-[var(--color-border)] overflow-hidden"
+                  className="aspect-video border-[3px] border-[var(--color-border)] overflow-hidden group relative"
                   style={{
                     backgroundColor: `${categoryColors[project.category]}10`,
                     boxShadow: "var(--shadow-sm)",
                   }}
                 >
-                  <div className="w-full h-full flex items-center justify-center">
-                    <span className="text-sm font-bold text-[var(--color-text-muted)] uppercase tracking-wider">
+                  <img
+                    src={image}
+                    alt={`${project.title} screenshot ${i + 1}`}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+                    <span className="text-xs font-bold text-white uppercase tracking-wider">
                       Screenshot {i + 1}
                     </span>
                   </div>
@@ -358,6 +351,5 @@ export default async function ProjectDetailPage(
           </div>
         </div>
       </article>
-    </ViewTransition>
   );
 }

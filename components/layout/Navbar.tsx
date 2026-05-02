@@ -27,7 +27,6 @@ export default function Navbar({
   return (
     <header
       className="sticky top-0 z-50 w-full"
-      style={{ viewTransitionName: "site-header" }}
     >
       {/* Top accent bar */}
       <div className="h-1.5 w-full bg-[var(--color-primary)]" />
@@ -57,11 +56,10 @@ export default function Navbar({
                   key={item.href}
                   href={item.href}
                   id={`nav-${item.label.toLowerCase()}`}
-                  className={`px-4 py-2 font-bold text-sm uppercase tracking-wider border-[3px] transition-all ${
-                    isActive
-                      ? "border-[var(--color-border)] bg-[var(--color-primary)] shadow-[3px_3px_0px_var(--color-shadow)]"
-                      : "border-transparent hover:border-[var(--color-border)] hover:bg-[var(--color-bg-secondary)]"
-                  }`}
+                  className={`px-4 py-2 font-bold text-sm uppercase tracking-wider border-[3px] transition-all ${isActive
+                    ? "border-[var(--color-border)] bg-[var(--color-primary)] shadow-[3px_3px_0px_var(--color-shadow)]"
+                    : "border-transparent hover:border-[var(--color-border)] hover:bg-[var(--color-bg-secondary)]"
+                    }`}
                 >
                   {item.label}
                 </Link>
@@ -101,19 +99,16 @@ export default function Navbar({
             id="nav-mobile-toggle"
           >
             <span
-              className={`block w-5 h-0.5 bg-[var(--color-text)] transition-transform ${
-                mobileOpen ? "rotate-45 translate-y-1" : ""
-              }`}
+              className={`block w-5 h-0.5 bg-[var(--color-text)] transition-transform ${mobileOpen ? "rotate-45 translate-y-1" : ""
+                }`}
             />
             <span
-              className={`block w-5 h-0.5 bg-[var(--color-text)] my-1 transition-opacity ${
-                mobileOpen ? "opacity-0" : ""
-              }`}
+              className={`block w-5 h-0.5 bg-[var(--color-text)] my-1 transition-opacity ${mobileOpen ? "opacity-0" : ""
+                }`}
             />
             <span
-              className={`block w-5 h-0.5 bg-[var(--color-text)] transition-transform ${
-                mobileOpen ? "-rotate-45 -translate-y-1" : ""
-              }`}
+              className={`block w-5 h-0.5 bg-[var(--color-text)] transition-transform ${mobileOpen ? "-rotate-45 -translate-y-1" : ""
+                }`}
             />
           </button>
         </div>
@@ -129,11 +124,10 @@ export default function Navbar({
                     key={item.href}
                     href={item.href}
                     onClick={() => setMobileOpen(false)}
-                    className={`px-4 py-3 font-bold text-base uppercase tracking-wider border-[3px] transition-all ${
-                      isActive
-                        ? "border-[var(--color-border)] bg-[var(--color-primary)] shadow-[3px_3px_0px_var(--color-shadow)]"
-                        : "border-[var(--color-border)] bg-[var(--color-surface)] hover:bg-[var(--color-bg-secondary)]"
-                    }`}
+                    className={`px-4 py-3 font-bold text-base uppercase tracking-wider border-[3px] transition-all ${isActive
+                      ? "border-[var(--color-border)] bg-[var(--color-primary)] shadow-[3px_3px_0px_var(--color-shadow)]"
+                      : "border-[var(--color-border)] bg-[var(--color-surface)] hover:bg-[var(--color-bg-secondary)]"
+                      }`}
                   >
                     {item.label}
                   </Link>
