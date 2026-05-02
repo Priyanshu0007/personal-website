@@ -4,6 +4,7 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import ProjectCard from "@/components/ui/ProjectCard";
 import HobbyCard from "@/components/ui/HobbyCard";
 import Marquee from "@/components/ui/Marquee";
+import HeroShapes from "@/components/ui/HeroShapes";
 
 export default function Home() {
   const landing = getLandingData();
@@ -18,10 +19,7 @@ export default function Home() {
         id="hero"
       >
         {/* Decorative shapes */}
-        <div className="absolute top-20 right-[10%] w-16 h-16 md:w-24 md:h-24 bg-[var(--color-primary)] border-[3px] border-[var(--color-border)] rotate-12 animate-float opacity-60" />
-        <div className="absolute top-40 left-[5%] w-10 h-10 md:w-16 md:h-16 bg-[var(--color-secondary)] border-[3px] border-[var(--color-border)] rounded-full animate-float-delayed opacity-50" />
-        <div className="absolute bottom-20 right-[20%] w-12 h-12 md:w-20 md:h-20 bg-[var(--color-tertiary)] border-[3px] border-[var(--color-border)] animate-wiggle opacity-40" />
-        <div className="absolute bottom-40 left-[15%] w-8 h-8 bg-[var(--color-accent-green)] border-[3px] border-[var(--color-border)] rotate-45 animate-float opacity-50" />
+        <HeroShapes />
 
         <div className="container relative z-10">
           <div className="max-w-4xl">

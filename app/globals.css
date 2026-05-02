@@ -52,6 +52,31 @@
   --duration-enter: 210ms;
 }
 
+/* --- Dark Theme Tokens --- */
+.dark {
+  /* Colors */
+  --color-bg: #0A0A0A;
+  --color-bg-secondary: #171717;
+  --color-surface: #111111;
+  --color-text: #F8FAFC;
+  --color-text-secondary: #CBD5E1;
+  --color-text-muted: #94A3B8;
+  --color-border: #F8FAFC;
+  --color-shadow: #F8FAFC;
+
+  /* Accent Colors */
+  --color-primary: #06B6D4; /* Neon Cyan */
+  --color-primary-hover: #0891B2;
+  --color-secondary: #EC4899; /* Hot Pink */
+  --color-secondary-hover: #DB2777;
+  --color-tertiary: #EAB308; /* Neon Yellow */
+  --color-tertiary-hover: #CA8A04;
+  --color-accent-green: #22C55E; /* Lime */
+  --color-accent-purple: #A855F7;
+  --color-accent-orange: #F97316;
+}
+
+
 /* ========================================
    GLOBAL RESET & BASE STYLES
    ======================================== */

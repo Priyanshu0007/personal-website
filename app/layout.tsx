@@ -4,6 +4,9 @@ import { getPersonalData } from "@/lib/data";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import ScrollPreserver from "@/components/ui/ScrollPreserver";
+import { ThemeProvider } from "@/components/ui/ThemeProvider";
+import NoiseOverlay from "@/components/ui/NoiseOverlay";
+import ScrollProgress from "@/components/ui/ScrollProgress";
 import "./globals.css";
 
 const bricolage = Bricolage_Grotesque({
@@ -66,20 +69,25 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${bricolage.variable} ${dmSans.variable} h-full`}
+      suppressHydrationWarning
     >
       <body
         className="min-h-full flex flex-col antialiased"
         style={{ fontFamily: "var(--font-body), system-ui, sans-serif" }}
       >
-        <ScrollPreserver />
-        <Navbar
-          name={personal.name}
-          shortName={personal.shortName}
-          navigation={personal.navigation}
-          socials={personal.socials}
-        />
-        <main className="flex-1">{children}</main>
-        <Footer name={personal.name} socials={personal.socials} />
+        <ThemeProvider attribute="class" defaultTheme="light">
+          <NoiseOverlay />
+          <ScrollProgress />
+          <ScrollPreserver />
+          <Navbar
+            name={personal.name}
+            shortName={personal.shortName}
+            navigation={personal.navigation}
+            socials={personal.socials}
+          />
+          <main className="flex-1">{children}</main>
+          <Footer name={personal.name} socials={personal.socials} />
+        </ThemeProvider>
       </body>
     </html>
   );

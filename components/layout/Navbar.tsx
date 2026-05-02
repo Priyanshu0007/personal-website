@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import ThemeToggle from "@/components/ui/ThemeToggle";
 import { usePathname } from "next/navigation";
 import type { NavItem } from "@/types";
 
@@ -88,6 +89,7 @@ export default function Navbar({
               >
                 <LinkedInIcon />
               </a>
+              <ThemeToggle />
             </div>
           </div>
 
@@ -152,6 +154,9 @@ export default function Navbar({
                 >
                   <LinkedInIcon /> LinkedIn
                 </a>
+              </div>
+              <div className="mt-2 flex justify-end">
+                <ThemeToggle />
               </div>
             </div>
           </div>
