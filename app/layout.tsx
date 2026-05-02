@@ -3,6 +3,7 @@ import { Syne, Space_Grotesk } from "next/font/google";
 import { getPersonalData } from "@/lib/data";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import ScrollPreserver from "@/components/ui/ScrollPreserver";
 import "./globals.css";
 
 const syne = Syne({
@@ -70,6 +71,7 @@ export default function RootLayout({
         className="min-h-full flex flex-col antialiased"
         style={{ fontFamily: "var(--font-body), system-ui, sans-serif" }}
       >
+        <ScrollPreserver />
         <Navbar
           name={personal.name}
           shortName={personal.shortName}

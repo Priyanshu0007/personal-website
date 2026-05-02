@@ -7,6 +7,7 @@ import {
   getProjectSlugs,
   getAdjacentProjects,
 } from "@/lib/data";
+import BackButton from "@/components/ui/BackButton";
 
 // Pre-generate all project pages at build time
 export function generateStaticParams() {
@@ -76,14 +77,7 @@ export default async function ProjectDetailPage(
       <article className="section" id="project-detail">
         <div className="container">
           {/* Back link */}
-          <Link
-            href="/projects"
-            transitionTypes={["nav-back"]}
-            className="inline-flex items-center gap-2 mb-8 text-sm font-bold uppercase tracking-wider text-[var(--color-text-muted)] hover:text-[var(--color-secondary)] transition-colors"
-            id="project-back"
-          >
-            ← Back to Projects
-          </Link>
+          <BackButton />
 
           {/* Hero Image */}
           <ViewTransition name={`project-${project.id}`} share="morph">
@@ -329,6 +323,7 @@ export default async function ProjectDetailPage(
               <Link
                 href={`/projects/${prev.slug}`}
                 transitionTypes={["nav-back"]}
+                scroll={false}
                 className="neo-card group flex flex-col"
                 id="project-prev"
               >
@@ -346,6 +341,7 @@ export default async function ProjectDetailPage(
               <Link
                 href={`/projects/${next.slug}`}
                 transitionTypes={["nav-forward"]}
+                scroll={false}
                 className="neo-card group flex flex-col text-right"
                 id="project-next"
               >

@@ -83,6 +83,7 @@ export default function Home() {
                 href={landing.hero.ctaPrimary.href}
                 className="neo-btn neo-btn-primary neo-btn-lg"
                 transitionTypes={["nav-forward"]}
+                scroll={false}
                 id="hero-cta-primary"
               >
                 {landing.hero.ctaPrimary.label} →
@@ -222,6 +223,7 @@ export default function Home() {
               href="/projects"
               className="neo-btn neo-btn-primary neo-btn-lg"
               transitionTypes={["nav-forward"]}
+              scroll={false}
               id="view-all-projects"
             >
               View All Projects →

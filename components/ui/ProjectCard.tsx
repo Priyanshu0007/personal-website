@@ -26,6 +26,7 @@ export default function ProjectCard({ project, index = 0 }: ProjectCardProps) {
     <Link
       href={`/projects/${project.slug}`}
       transitionTypes={["nav-forward"]}
+      scroll={false}
       className="group block"
       id={`project-card-${project.slug}`}
     >
@@ -45,7 +46,7 @@ export default function ProjectCard({ project, index = 0 }: ProjectCardProps) {
                   className="text-5xl md:text-6xl font-extrabold opacity-10"
                   style={{ color: categoryColors[project.category] }}
                 >
-                  {String(index + 1).padStart(2, "0")}
+                  {String(project.id).padStart(2, "0")}
                 </div>
                 <div
                   className="mt-2 text-sm font-bold uppercase tracking-wider opacity-40"
