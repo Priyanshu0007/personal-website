@@ -7,22 +7,22 @@
 /* --- Design Tokens --- */
 :root {
   /* Colors */
-  --color-bg: #FFF8E7;
-  --color-bg-secondary: #FFF1CC;
+  --color-bg: #E0E7FF;
+  --color-bg-secondary: #C7D2FE;
   --color-surface: #FFFFFF;
-  --color-text: #1A1A1A;
-  --color-text-secondary: #4A4A4A;
-  --color-text-muted: #7A7A7A;
-  --color-border: #000000;
-  --color-shadow: #000000;
+  --color-text: #0F172A;
+  --color-text-secondary: #334155;
+  --color-text-muted: #64748B;
+  --color-border: #0F172A;
+  --color-shadow: #0F172A;
 
   /* Accent Colors */
-  --color-primary: #FFE500;
-  --color-primary-hover: #FFD600;
-  --color-secondary: #FF5C8A;
-  --color-secondary-hover: #FF3D73;
-  --color-tertiary: #3B82F6;
-  --color-tertiary-hover: #2563EB;
+  --color-primary: #3B82F6;
+  --color-primary-hover: #2563EB;
+  --color-secondary: #F43F5E;
+  --color-secondary-hover: #E11D48;
+  --color-tertiary: #F59E0B;
+  --color-tertiary-hover: #D97706;
   --color-accent-green: #10B981;
   --color-accent-purple: #8B5CF6;
   --color-accent-orange: #F97316;
@@ -157,7 +157,7 @@ a {
 
 .neo-btn-primary {
   background-color: var(--color-primary);
-  color: var(--color-text);
+  color: #FFFFFF;
   box-shadow: var(--shadow-md);
 }
 
@@ -263,7 +263,7 @@ a {
   letter-spacing: 0.05em;
   border: 2px solid var(--color-border);
   background-color: var(--color-primary);
-  color: var(--color-text);
+  color: #FFFFFF;
 }
 
 .neo-badge-secondary {
@@ -277,8 +277,16 @@ a {
 }
 
 .neo-badge-outline {
-  background-color: transparent;
+  background-color: var(--color-surface);
   color: var(--color-text);
+  box-shadow: 2px 2px 0px var(--color-shadow);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), background-color var(--transition-fast);
+}
+
+.neo-badge-outline:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0px var(--color-shadow);
+  background-color: var(--color-bg-secondary);
 }
 
 .neo-badge-green {
