@@ -11,6 +11,10 @@ export default function ScrollPreserver() {
 
   // Save scroll position on scroll
   useEffect(() => {
+    if (typeof window !== "undefined" && "scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "manual";
+    }
+
     if (!isScrollPreservedPage) return;
 
     const handleScroll = () => {
@@ -25,8 +29,12 @@ export default function ScrollPreserver() {
   }, [pathname, isScrollPreservedPage]);
 
   // Restore scroll position on mount/navigation synchronously
-  // This MUST use useLayoutEffect so it runs before the browser takes the new View Transition snapshot.
   useLayoutEffect(() => {
+    // Temporarily disable smooth scrolling on html element to ensure 'instant' works
+    const htmlElement = document.documentElement;
+    const originalScrollBehavior = htmlElement.style.scrollBehavior;
+    htmlElement.style.scrollBehavior = "auto";
+
     if (isScrollPreservedPage) {
       const savedScroll = sessionStorage.getItem(`scroll-${pathname}`);
       if (savedScroll) {
@@ -34,14 +42,25 @@ export default function ScrollPreserver() {
           top: parseInt(savedScroll, 10),
           behavior: "instant",
         });
-        return;
+      } else {
+        window.scrollTo({
+          top: 0,
+          behavior: "instant",
+        });
       }
+    } else {
+      // For detail pages or unvisited preserved pages, start at the top
+      window.scrollTo({
+        top: 0,
+        behavior: "instant",
+      });
     }
-    
-    // For detail pages or unvisited preserved pages, start at the top
-    window.scrollTo({
-      top: 0,
-      behavior: "instant",
+
+    // Restore smooth scrolling after the layout effect and paint
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        htmlElement.style.scrollBehavior = originalScrollBehavior;
+      });
     });
   }, [pathname, isScrollPreservedPage]);
 
