@@ -1,26 +1,641 @@
 @import "tailwindcss";
 
+/* ========================================
+   NEOBRUTALISM DESIGN SYSTEM
+   ======================================== */
+
+/* --- Design Tokens --- */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Colors */
+  --color-bg: #FFF8E7;
+  --color-bg-secondary: #FFF1CC;
+  --color-surface: #FFFFFF;
+  --color-text: #1A1A1A;
+  --color-text-secondary: #4A4A4A;
+  --color-text-muted: #7A7A7A;
+  --color-border: #000000;
+  --color-shadow: #000000;
+
+  /* Accent Colors */
+  --color-primary: #FFE500;
+  --color-primary-hover: #FFD600;
+  --color-secondary: #FF5C8A;
+  --color-secondary-hover: #FF3D73;
+  --color-tertiary: #3B82F6;
+  --color-tertiary-hover: #2563EB;
+  --color-accent-green: #10B981;
+  --color-accent-purple: #8B5CF6;
+  --color-accent-orange: #F97316;
+
+  /* Borders */
+  --border-width: 3px;
+  --border: var(--border-width) solid var(--color-border);
+
+  /* Shadows */
+  --shadow-sm: 3px 3px 0px var(--color-shadow);
+  --shadow-md: 6px 6px 0px var(--color-shadow);
+  --shadow-lg: 8px 8px 0px var(--color-shadow);
+  --shadow-xl: 12px 12px 0px var(--color-shadow);
+
+  /* Spacing */
+  --section-padding: clamp(3rem, 8vw, 6rem);
+  --container-max: 1200px;
+  --container-padding: clamp(1rem, 4vw, 2rem);
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+  --transition-slow: 400ms ease;
+
+  /* View Transition Durations */
+  --duration-exit: 150ms;
+  --duration-enter: 210ms;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* ========================================
+   GLOBAL RESET & BASE STYLES
+   ======================================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+::selection {
+  background-color: var(--color-primary);
+  color: var(--color-text);
+}
+
+/* ========================================
+   TYPOGRAPHY
+   ======================================== */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading), system-ui, sans-serif;
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+h1 {
+  font-size: clamp(2.5rem, 7vw, 5rem);
+}
+
+h2 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+}
+
+h3 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+}
+
+h4 {
+  font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+}
+
+p {
+  font-size: clamp(1rem, 1.2vw, 1.125rem);
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ========================================
+   CONTAINER
+   ======================================== */
+
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding-inline: var(--container-padding);
+}
+
+.section {
+  padding-block: var(--section-padding);
+}
+
+/* ========================================
+   NEOBRUTALIST COMPONENT CLASSES
+   ======================================== */
+
+/* --- Buttons --- */
+.neo-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.75rem;
+  font-weight: 700;
+  font-size: 1rem;
+  border: var(--border);
+  cursor: pointer;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  text-decoration: none;
+  white-space: nowrap;
+  position: relative;
+  font-family: inherit;
+}
+
+.neo-btn-primary {
+  background-color: var(--color-primary);
+  color: var(--color-text);
+  box-shadow: var(--shadow-md);
+}
+
+.neo-btn-primary:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.neo-btn-primary:active {
+  transform: translate(4px, 4px);
+  box-shadow: 2px 2px 0px var(--color-shadow);
+}
+
+.neo-btn-secondary {
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  box-shadow: var(--shadow-md);
+}
+
+.neo-btn-secondary:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow-lg);
+  background-color: var(--color-bg-secondary);
+}
+
+.neo-btn-secondary:active {
+  transform: translate(4px, 4px);
+  box-shadow: 2px 2px 0px var(--color-shadow);
+}
+
+.neo-btn-accent {
+  background-color: var(--color-secondary);
+  color: #FFFFFF;
+  box-shadow: var(--shadow-md);
+}
+
+.neo-btn-accent:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow-lg);
+  background-color: var(--color-secondary-hover);
+}
+
+.neo-btn-accent:active {
+  transform: translate(4px, 4px);
+  box-shadow: 2px 2px 0px var(--color-shadow);
+}
+
+.neo-btn-outline {
+  background-color: transparent;
+  color: var(--color-text);
+  box-shadow: none;
+}
+
+.neo-btn-outline:hover {
+  background-color: var(--color-bg-secondary);
+  box-shadow: var(--shadow-sm);
+  transform: translate(-2px, -2px);
+}
+
+.neo-btn-sm {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+}
+
+.neo-btn-lg {
+  padding: 1.125rem 2.25rem;
+  font-size: 1.125rem;
+}
+
+/* --- Cards --- */
+.neo-card {
+  background-color: var(--color-surface);
+  border: var(--border);
+  box-shadow: var(--shadow-md);
+  padding: 1.5rem;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.neo-card:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: var(--shadow-lg);
+}
+
+.neo-card:active {
+  transform: translate(2px, 2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.neo-card-flat {
+  background-color: var(--color-surface);
+  border: var(--border);
+  padding: 1.5rem;
+}
+
+/* --- Badge / Chip --- */
+.neo-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: 2px solid var(--color-border);
+  background-color: var(--color-primary);
+  color: var(--color-text);
+}
+
+.neo-badge-secondary {
+  background-color: var(--color-secondary);
+  color: #FFFFFF;
+}
+
+.neo-badge-tertiary {
+  background-color: var(--color-tertiary);
+  color: #FFFFFF;
+}
+
+.neo-badge-outline {
+  background-color: transparent;
+  color: var(--color-text);
+}
+
+.neo-badge-green {
+  background-color: var(--color-accent-green);
+  color: #FFFFFF;
+}
+
+.neo-badge-purple {
+  background-color: var(--color-accent-purple);
+  color: #FFFFFF;
+}
+
+.neo-badge-orange {
+  background-color: var(--color-accent-orange);
+  color: #FFFFFF;
+}
+
+/* --- Input --- */
+.neo-input {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  font-size: 1rem;
+  font-family: inherit;
+  border: var(--border);
+  background-color: var(--color-surface);
+  box-shadow: var(--shadow-sm);
+  outline: none;
+  transition: box-shadow var(--transition-fast);
+}
+
+.neo-input:focus {
+  box-shadow: var(--shadow-md);
+}
+
+.neo-textarea {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  font-size: 1rem;
+  font-family: inherit;
+  border: var(--border);
+  background-color: var(--color-surface);
+  box-shadow: var(--shadow-sm);
+  outline: none;
+  resize: vertical;
+  min-height: 120px;
+  transition: box-shadow var(--transition-fast);
+}
+
+.neo-textarea:focus {
+  box-shadow: var(--shadow-md);
+}
+
+/* ========================================
+   DECORATIVE ELEMENTS
+   ======================================== */
+
+.neo-divider {
+  width: 100%;
+  height: var(--border-width);
+  background-color: var(--color-border);
+  margin-block: 2rem;
+}
+
+.neo-highlight {
+  background-color: var(--color-primary);
+  padding: 0.1em 0.25em;
+  display: inline;
+}
+
+/* ========================================
+   MARQUEE ANIMATION
+   ======================================== */
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 30s linear infinite;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+/* ========================================
+   VIEW TRANSITIONS
+   ======================================== */
+
+/* Anchor the navbar during transitions */
+::view-transition-group(site-header) {
+  animation: none;
+  z-index: 100;
+}
+::view-transition-old(site-header) {
+  display: none;
+}
+::view-transition-new(site-header) {
+  animation: none;
+}
+
+/* Shared element morph */
+::view-transition-group(.morph) {
+  animation-duration: 400ms;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+::view-transition-image-pair(.morph) {
+  animation-name: via-blur;
+}
+@keyframes via-blur {
+  30% {
+    filter: blur(2px);
+  }
+}
+
+/* Suspense reveal: slide up / down */
+::view-transition-old(.slide-down) {
+  animation:
+    var(--duration-exit) ease-out both vt-fade reverse,
+    var(--duration-exit) ease-out both vt-slide-y reverse;
+}
+::view-transition-new(.slide-up) {
+  animation:
+    var(--duration-enter) ease-in var(--duration-exit) both vt-fade,
+    400ms ease-in both vt-slide-y;
+}
+
+/* Directional navigation: forward */
+::view-transition-old(.nav-forward) {
+  --slide-offset: -60px;
+  animation:
+    150ms ease-in both vt-fade reverse,
+    400ms ease-in-out both vt-slide reverse;
+}
+::view-transition-new(.nav-forward) {
+  --slide-offset: 60px;
+  animation:
+    210ms ease-out 150ms both vt-fade,
+    400ms ease-in-out both vt-slide;
+}
+
+/* Directional navigation: backward */
+::view-transition-old(.nav-back) {
+  --slide-offset: 60px;
+  animation:
+    150ms ease-in both vt-fade reverse,
+    400ms ease-in-out both vt-slide reverse;
+}
+::view-transition-new(.nav-back) {
+  --slide-offset: -60px;
+  animation:
+    210ms ease-out 150ms both vt-fade,
+    400ms ease-in-out both vt-slide;
+}
+
+/* Crossfade for filter changes */
+::view-transition-old(.crossfade) {
+  animation: var(--duration-exit) ease-out both vt-fade reverse;
+}
+::view-transition-new(.crossfade) {
+  animation: var(--duration-enter) ease-in var(--duration-exit) both vt-fade;
+}
+
+/* --- Keyframes --- */
+@keyframes vt-fade {
+  from {
+    filter: blur(2px);
+    opacity: 0;
+  }
+  to {
+    filter: blur(0);
+    opacity: 1;
+  }
+}
+
+@keyframes vt-slide-y {
+  from {
+    transform: translateY(10px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes vt-slide {
+  from {
+    translate: var(--slide-offset);
+  }
+  to {
+    translate: 0;
+  }
+}
+
+/* ========================================
+   CUSTOM ANIMATIONS
+   ======================================== */
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-12px) rotate(2deg);
+  }
+}
+
+@keyframes float-delayed {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(-3deg);
+  }
+}
+
+@keyframes wiggle {
+  0%, 100% {
+    transform: rotate(-3deg);
+  }
+  50% {
+    transform: rotate(3deg);
+  }
+}
+
+@keyframes pulse-shadow {
+  0%, 100% {
+    box-shadow: var(--shadow-md);
+  }
+  50% {
+    box-shadow: var(--shadow-lg);
+  }
+}
+
+@keyframes bounce-in {
+  0% {
+    transform: scale(0.3);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-left {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-right {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-up {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float-delayed 5s ease-in-out infinite;
+  animation-delay: 1s;
+}
+
+.animate-wiggle {
+  animation: wiggle 2s ease-in-out infinite;
+}
+
+.animate-bounce-in {
+  animation: bounce-in 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.animate-slide-in-up {
+  animation: slide-in-up 0.5s ease-out;
+}
+
+/* ========================================
+   REDUCED MOTION
+   ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  ::view-transition-old(*),
+  ::view-transition-new(*),
+  ::view-transition-group(*) {
+    animation-duration: 0s !important;
+    animation-delay: 0s !important;
+  }
+
+  .marquee-track {
+    animation: none;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* ========================================
+   SCROLLBAR STYLING
+   ======================================== */
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-text);
+  border: 2px solid var(--color-bg);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-secondary);
 }

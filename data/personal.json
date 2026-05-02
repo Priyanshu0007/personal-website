@@ -1,0 +1,26 @@
+{
+  "name": "Priyanshu Gupta",
+  "shortName": "PG",
+  "title": "Full-Stack Developer & Mobile App Engineer",
+  "email": "priyanshu@example.com",
+  "location": "India",
+  "resumeUrl": "#",
+  "socials": {
+    "github": "https://github.com/Priyanshu0007",
+    "linkedin": "https://www.linkedin.com/in/priyanshu0099/",
+    "portfolio": "https://priyanshu0007.netlify.app/"
+  },
+  "navigation": [
+    { "label": "Home", "href": "/" },
+    { "label": "Projects", "href": "/projects" },
+    { "label": "Uses", "href": "/uses" }
+  ],
+  "seo": {
+    "title": "Priyanshu Gupta — Full-Stack Developer",
+    "titleTemplate": "%s | Priyanshu Gupta",
+    "description": "Full-stack developer specializing in React, Next.js, and React Native. Building beautiful, performant web and mobile experiences.",
+    "siteUrl": "https://priyanshu.dev",
+    "ogImage": "/images/og-default.png",
+    "twitterHandle": "@priyanshu0007"
+  }
+}

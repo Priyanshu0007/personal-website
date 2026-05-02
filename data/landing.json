@@ -1,0 +1,107 @@
+{
+  "hero": {
+    "greeting": "Hey, I'm",
+    "name": "Priyanshu Gupta",
+    "tagline": "I build things for the web & mobile.",
+    "description": "A passionate full-stack developer crafting bold digital experiences with React, Next.js, and React Native. I love turning complex problems into simple, beautiful solutions.",
+    "roles": [
+      "React Developer",
+      "Mobile App Engineer",
+      "AI Enthusiast",
+      "Open Source Lover"
+    ],
+    "ctaPrimary": {
+      "label": "View My Work",
+      "href": "/projects"
+    },
+    "ctaSecondary": {
+      "label": "Get In Touch",
+      "href": "#contact"
+    }
+  },
+  "about": {
+    "heading": "About Me",
+    "bio": "I'm a full-stack developer who loves building products that make a difference. From sleek web apps to performant mobile experiences, I enjoy working across the entire stack. I'm passionate about clean code, modern design patterns, and the developer experience.",
+    "bioExtended": "When I'm not coding, you'll find me swimming laps, cycling through the city, or grinding ranks in BGMI. I'm a huge advocate for AI-powered development tools and believe the future of coding is collaborative — humans and AI building together.",
+    "skills": [
+      "React.js",
+      "Next.js",
+      "React Native",
+      "Expo",
+      "TypeScript",
+      "JavaScript",
+      "Node.js",
+      "Tailwind CSS",
+      "Supabase",
+      "Git",
+      "Figma",
+      "REST APIs"
+    ],
+    "experience": {
+      "years": "2+",
+      "projects": "15+",
+      "technologies": "20+"
+    }
+  },
+  "beyondCode": {
+    "heading": "Beyond The Code",
+    "subheading": "Life isn't just about semicolons and merge conflicts.",
+    "hobbies": [
+      {
+        "emoji": "🏊",
+        "title": "Swimming",
+        "description": "Nothing beats the calm of slicing through water. My go-to reset button.",
+        "color": "#3B82F6"
+      },
+      {
+        "emoji": "🚴",
+        "title": "Cycling",
+        "description": "Exploring the city on two wheels — best way to clear my head and find new coffee spots.",
+        "color": "#10B981"
+      },
+      {
+        "emoji": "🎮",
+        "title": "Gaming",
+        "description": "BGMI, Genshin Impact, Brawl Stars, Clash of Clans — I take my virtual battles seriously.",
+        "color": "#8B5CF6",
+        "tags": ["BGMI", "Genshin Impact", "Brawl Stars", "Clash of Clans"]
+      },
+      {
+        "emoji": "💪",
+        "title": "HIIT Training",
+        "description": "Cult.fit addict. HRX Workout, Adidas Strength Plus, and anything that gets the heart pumping.",
+        "color": "#EF4444",
+        "tags": ["CultFit", "HRX Workout", "Adidas Strength+"]
+      },
+      {
+        "emoji": "🤖",
+        "title": "AI Tools",
+        "description": "Claude, Cursor, Antigravity — I'm all in on AI-assisted development. The future is now.",
+        "color": "#F59E0B",
+        "tags": ["Claude", "Cursor", "Antigravity"]
+      }
+    ]
+  },
+  "techStack": [
+    "React",
+    "Next.js",
+    "React Native",
+    "Expo",
+    "TypeScript",
+    "JavaScript",
+    "Node.js",
+    "Tailwind CSS",
+    "Supabase",
+    "PostgreSQL",
+    "Git",
+    "Vercel",
+    "Figma",
+    "VS Code",
+    "Cursor"
+  ],
+  "contact": {
+    "heading": "Let's Build Something Bold",
+    "subheading": "Got a project in mind? Or just want to say hi? I'm always open to new conversations and collaborations.",
+    "email": "priyanshu@example.com"
+  }
+}
