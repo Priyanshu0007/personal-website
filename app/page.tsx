@@ -24,9 +24,11 @@ export default function Home() {
         <div className="container relative z-10">
           <div className="max-w-4xl">
             {/* Greeting */}
-            <p className="text-lg md:text-xl font-bold mb-3 text-[var(--color-text-secondary)]">
-              {landing.hero.greeting}
-            </p>
+            <div className="mb-6 md:mb-8 pt-4">
+              <span className="inline-block text-lg md:text-xl font-black px-4 py-1.5 text-[var(--color-surface)] bg-[var(--color-text)] border-[3px] border-[var(--color-text)] shadow-[4px_4px_0px_var(--color-primary)] transform -rotate-3">
+                {landing.hero.greeting}
+              </span>
+            </div>
 
             {/* Name */}
             <h1
