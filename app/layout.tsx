@@ -31,7 +31,14 @@ export const metadata: Metadata = {
     template: personal.seo.titleTemplate,
   },
   description: personal.seo.description,
+  keywords: personal.seo.keywords,
+  authors: [{ name: personal.name, url: personal.seo.siteUrl }],
+  creator: personal.name,
+  publisher: personal.name,
   metadataBase: new URL(personal.seo.siteUrl),
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -44,7 +51,7 @@ export const metadata: Metadata = {
         url: personal.seo.ogImage,
         width: 1200,
         height: 630,
-        alt: personal.name,
+        alt: `${personal.name} — ${personal.title}`,
       },
     ],
   },
@@ -52,11 +59,64 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: personal.seo.title,
     description: personal.seo.description,
+    creator: personal.seo.twitterHandle,
     images: [personal.seo.ogImage],
   },
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  verification: {
+    // Add your Google Search Console verification code here after registering
+    // google: "your-google-verification-code",
+  },
+};
+
+// JSON-LD Structured Data
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: personal.name,
+  url: personal.seo.siteUrl,
+  jobTitle: personal.title,
+  description: personal.seo.description,
+  sameAs: [
+    personal.socials.github,
+    personal.socials.linkedin,
+    personal.socials.portfolio,
+  ],
+  knowsAbout: [
+    "React",
+    "Next.js",
+    "React Native",
+    "TypeScript",
+    "JavaScript",
+    "Node.js",
+    "Full-Stack Development",
+    "Mobile App Development",
+  ],
+  address: {
+    "@type": "PostalAddress",
+    addressCountry: personal.location,
+  },
+};
+
+const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: personal.name,
+  url: personal.seo.siteUrl,
+  description: personal.seo.description,
+  author: {
+    "@type": "Person",
+    name: personal.name,
   },
 };
 
@@ -71,6 +131,20 @@ export default function RootLayout({
       className={`${bricolage.variable} ${dmSans.variable} h-full`}
       suppressHydrationWarning
     >
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(personJsonLd),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(websiteJsonLd),
+          }}
+        />
+      </head>
       <body
         className="min-h-full flex flex-col antialiased"
         style={{ fontFamily: "var(--font-body), system-ui, sans-serif" }}
@@ -92,3 +166,4 @@ export default function RootLayout({
     </html>
   );
 }
+

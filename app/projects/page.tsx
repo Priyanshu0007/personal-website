@@ -9,7 +9,16 @@ import type { ProjectCategory, SortOrder } from "@/types";
 export const metadata: Metadata = {
   title: "Projects",
   description:
-    "Explore my portfolio of web and mobile projects built with React, Next.js, React Native, and more.",
+    "Explore Priyanshu Gupta's portfolio of web and mobile projects built with React, Next.js, React Native, TypeScript, and more.",
+  openGraph: {
+    title: "Projects | Priyanshu Gupta",
+    description:
+      "Explore Priyanshu Gupta's portfolio of web and mobile projects built with React, Next.js, React Native, TypeScript, and more.",
+    type: "website",
+  },
+  alternates: {
+    canonical: "/projects",
+  },
 };
 
 interface ProjectsPageProps {

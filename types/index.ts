@@ -34,6 +34,7 @@ export interface SEOConfig {
   siteUrl: string;
   ogImage: string;
   twitterHandle: string;
+  keywords: string[];
 }
 
 export interface PersonalData {

@@ -23,12 +23,21 @@ export async function generateMetadata(
 
   return {
     title: project.title,
-    description: project.description,
+    description: `${project.description} Built by Priyanshu Gupta with ${project.techStack.slice(0, 3).join(", ")}.`,
+    keywords: [
+      project.title,
+      ...project.techStack,
+      "Priyanshu Gupta",
+      "portfolio project",
+    ],
     openGraph: {
-      title: project.title,
+      title: `${project.title} | Priyanshu Gupta`,
       description: project.description,
       type: "article",
       images: project.images.length > 0 ? [project.images[0]] : [],
+    },
+    alternates: {
+      canonical: `/projects/${slug}`,
     },
   };
 }

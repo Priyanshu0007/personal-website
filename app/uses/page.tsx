@@ -4,7 +4,16 @@ import SectionHeading from "@/components/ui/SectionHeading";
 export const metadata: Metadata = {
   title: "Uses",
   description:
-    "The tools, software, and hardware I use daily for development, design, and productivity.",
+    "The tools, software, and hardware Priyanshu Gupta uses daily for development, design, and productivity — from VS Code to React Native.",
+  openGraph: {
+    title: "Uses | Priyanshu Gupta",
+    description:
+      "The tools, software, and hardware Priyanshu Gupta uses daily for development, design, and productivity.",
+    type: "website",
+  },
+  alternates: {
+    canonical: "/uses",
+  },
 };
 
 const usesData = {
