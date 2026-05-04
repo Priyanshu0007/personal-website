@@ -55,9 +55,9 @@
 /* --- Dark Theme Tokens --- */
 .dark {
   /* Colors */
-  --color-bg: #0A0A0A;
-  --color-bg-secondary: #171717;
-  --color-surface: #111111;
+  --color-bg: #020617; /* Very dark slate/blue */
+  --color-bg-secondary: #0F172A;
+  --color-surface: #1E293B;
   --color-text: #F8FAFC;
   --color-text-secondary: #CBD5E1;
   --color-text-muted: #94A3B8;
