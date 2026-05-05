@@ -81,317 +81,318 @@
    GLOBAL RESET & BASE STYLES
    ======================================== */
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  cursor: url('/cursor-light.svg') 2 2, auto;
+@layer base {
+  * {
+    cursor: url('/cursor-light.svg') 2 2, auto;
+  }
+
+  a, button, [role="button"], input, select, textarea, .neo-btn {
+    cursor: url('/cursor-light-pointer.svg') 2 2, pointer !important;
+  }
+
+  .dark * {
+    cursor: url('/cursor-dark.svg') 2 2, auto;
+  }
+
+  .dark a, .dark button, .dark [role="button"], .dark input, .dark select, .dark textarea, .dark .neo-btn {
+    cursor: url('/cursor-dark-pointer.svg') 2 2, pointer !important;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background-color: var(--color-primary);
+    color: var(--color-text);
+  }
+
+  /* ========================================
+     TYPOGRAPHY
+     ======================================== */
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading), system-ui, sans-serif;
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+  }
+
+  h1 {
+    font-size: clamp(2.5rem, 7vw, 5rem);
+  }
+
+  h2 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+  }
+
+  h3 {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+  }
+
+  h4 {
+    font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+  }
+
+  p {
+    font-size: clamp(1rem, 1.2vw, 1.125rem);
+    line-height: 1.7;
+    color: var(--color-text-secondary);
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
 }
 
-a, button, [role="button"], input, select, textarea, .neo-btn {
-  cursor: url('/cursor-light-pointer.svg') 2 2, pointer !important;
-}
+@layer components {
+  /* ========================================
+     CONTAINER
+     ======================================== */
 
-.dark * {
-  cursor: url('/cursor-dark.svg') 2 2, auto;
-}
+  .container {
+    width: 100%;
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding-inline: var(--container-padding);
+  }
 
-.dark a, .dark button, .dark [role="button"], .dark input, .dark select, .dark textarea, .dark .neo-btn {
-  cursor: url('/cursor-dark-pointer.svg') 2 2, pointer !important;
-}
+  .section {
+    padding-block: var(--section-padding);
+  }
 
-html {
-  scroll-behavior: smooth;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+  /* ========================================
+     NEOBRUTALIST COMPONENT CLASSES
+     ======================================== */
 
-body {
-  background-color: var(--color-bg);
-  color: var(--color-text);
-  line-height: 1.6;
-  overflow-x: hidden;
-}
+  /* --- Buttons --- */
+  .neo-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.875rem 1.75rem;
+    font-weight: 700;
+    font-size: 1rem;
+    border: var(--border);
+    cursor: pointer;
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+    text-decoration: none;
+    white-space: nowrap;
+    position: relative;
+    font-family: inherit;
+  }
 
-::selection {
-  background-color: var(--color-primary);
-  color: var(--color-text);
-}
+  .neo-btn-primary {
+    background-color: var(--color-primary);
+    color: #FFFFFF;
+    box-shadow: var(--shadow-md);
+  }
 
-/* ========================================
-   TYPOGRAPHY
-   ======================================== */
+  .neo-btn-primary:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: var(--shadow-lg);
+  }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-heading), system-ui, sans-serif;
-  font-weight: 800;
-  line-height: 1.15;
-  letter-spacing: -0.02em;
-}
+  .neo-btn-primary:active {
+    transform: translate(4px, 4px);
+    box-shadow: 2px 2px 0px var(--color-shadow);
+  }
 
-h1 {
-  font-size: clamp(2.5rem, 7vw, 5rem);
-}
+  .neo-btn-secondary {
+    background-color: var(--color-surface);
+    color: var(--color-text);
+    box-shadow: var(--shadow-md);
+  }
 
-h2 {
-  font-size: clamp(2rem, 5vw, 3.5rem);
-}
+  .neo-btn-secondary:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: var(--shadow-lg);
+    background-color: var(--color-bg-secondary);
+  }
 
-h3 {
-  font-size: clamp(1.5rem, 3vw, 2rem);
-}
+  .neo-btn-secondary:active {
+    transform: translate(4px, 4px);
+    box-shadow: 2px 2px 0px var(--color-shadow);
+  }
 
-h4 {
-  font-size: clamp(1.25rem, 2.5vw, 1.5rem);
-}
+  .neo-btn-accent {
+    background-color: var(--color-secondary);
+    color: #FFFFFF;
+    box-shadow: var(--shadow-md);
+  }
 
-p {
-  font-size: clamp(1rem, 1.2vw, 1.125rem);
-  line-height: 1.7;
-  color: var(--color-text-secondary);
-}
+  .neo-btn-accent:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: var(--shadow-lg);
+    background-color: var(--color-secondary-hover);
+  }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
+  .neo-btn-accent:active {
+    transform: translate(4px, 4px);
+    box-shadow: 2px 2px 0px var(--color-shadow);
+  }
 
-/* ========================================
-   CONTAINER
-   ======================================== */
+  .neo-btn-outline {
+    background-color: transparent;
+    color: var(--color-text);
+    box-shadow: none;
+  }
 
-.container {
-  width: 100%;
-  max-width: var(--container-max);
-  margin: 0 auto;
-  padding-inline: var(--container-padding);
-}
+  .neo-btn-outline:hover {
+    background-color: var(--color-bg-secondary);
+    box-shadow: var(--shadow-sm);
+    transform: translate(-2px, -2px);
+  }
 
-.section {
-  padding-block: var(--section-padding);
-}
+  .neo-btn-sm {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+  }
 
-/* ========================================
-   NEOBRUTALIST COMPONENT CLASSES
-   ======================================== */
+  .neo-btn-lg {
+    padding: 1.125rem 2.25rem;
+    font-size: 1.125rem;
+  }
 
-/* --- Buttons --- */
-.neo-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  padding: 0.875rem 1.75rem;
-  font-weight: 700;
-  font-size: 1rem;
-  border: var(--border);
-  cursor: pointer;
-  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
-  text-decoration: none;
-  white-space: nowrap;
-  position: relative;
-  font-family: inherit;
-}
+  /* --- Cards --- */
+  .neo-card {
+    background-color: var(--color-surface);
+    border: var(--border);
+    box-shadow: var(--shadow-md);
+    padding: 1.5rem;
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  }
 
-.neo-btn-primary {
-  background-color: var(--color-primary);
-  color: #FFFFFF;
-  box-shadow: var(--shadow-md);
-}
+  .neo-card:hover {
+    transform: translate(-3px, -3px);
+    box-shadow: var(--shadow-lg);
+  }
 
-.neo-btn-primary:hover {
-  transform: translate(-2px, -2px);
-  box-shadow: var(--shadow-lg);
-}
+  .neo-card:active {
+    transform: translate(2px, 2px);
+    box-shadow: var(--shadow-sm);
+  }
 
-.neo-btn-primary:active {
-  transform: translate(4px, 4px);
-  box-shadow: 2px 2px 0px var(--color-shadow);
-}
+  .neo-card-flat {
+    background-color: var(--color-surface);
+    border: var(--border);
+    padding: 1.5rem;
+  }
 
-.neo-btn-secondary {
-  background-color: var(--color-surface);
-  color: var(--color-text);
-  box-shadow: var(--shadow-md);
-}
+  /* --- Badge / Chip --- */
+  .neo-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border: 2px solid var(--color-border);
+    background-color: var(--color-primary);
+    color: #FFFFFF;
+  }
 
-.neo-btn-secondary:hover {
-  transform: translate(-2px, -2px);
-  box-shadow: var(--shadow-lg);
-  background-color: var(--color-bg-secondary);
-}
+  .neo-badge-secondary {
+    background-color: var(--color-secondary);
+    color: #FFFFFF;
+  }
 
-.neo-btn-secondary:active {
-  transform: translate(4px, 4px);
-  box-shadow: 2px 2px 0px var(--color-shadow);
-}
+  .neo-badge-tertiary {
+    background-color: var(--color-tertiary);
+    color: #FFFFFF;
+  }
 
-.neo-btn-accent {
-  background-color: var(--color-secondary);
-  color: #FFFFFF;
-  box-shadow: var(--shadow-md);
-}
+  .neo-badge-outline {
+    background-color: var(--color-surface);
+    color: var(--color-text);
+    box-shadow: 2px 2px 0px var(--color-shadow);
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast), background-color var(--transition-fast);
+  }
 
-.neo-btn-accent:hover {
-  transform: translate(-2px, -2px);
-  box-shadow: var(--shadow-lg);
-  background-color: var(--color-secondary-hover);
-}
+  .neo-badge-outline:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 4px 4px 0px var(--color-shadow);
+    background-color: var(--color-bg-secondary);
+  }
 
-.neo-btn-accent:active {
-  transform: translate(4px, 4px);
-  box-shadow: 2px 2px 0px var(--color-shadow);
-}
+  .neo-badge-green {
+    background-color: var(--color-accent-green);
+    color: #FFFFFF;
+  }
 
-.neo-btn-outline {
-  background-color: transparent;
-  color: var(--color-text);
-  box-shadow: none;
-}
+  .neo-badge-purple {
+    background-color: var(--color-accent-purple);
+    color: #FFFFFF;
+  }
 
-.neo-btn-outline:hover {
-  background-color: var(--color-bg-secondary);
-  box-shadow: var(--shadow-sm);
-  transform: translate(-2px, -2px);
-}
+  .neo-badge-orange {
+    background-color: var(--color-accent-orange);
+    color: #FFFFFF;
+  }
 
-.neo-btn-sm {
-  padding: 0.5rem 1rem;
-  font-size: 0.875rem;
-}
+  /* --- Input --- */
+  .neo-input {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    font-size: 1rem;
+    font-family: inherit;
+    border: var(--border);
+    background-color: var(--color-surface);
+    box-shadow: var(--shadow-sm);
+    outline: none;
+    transition: box-shadow var(--transition-fast);
+  }
 
-.neo-btn-lg {
-  padding: 1.125rem 2.25rem;
-  font-size: 1.125rem;
-}
+  .neo-input:focus {
+    box-shadow: var(--shadow-md);
+  }
 
-/* --- Cards --- */
-.neo-card {
-  background-color: var(--color-surface);
-  border: var(--border);
-  box-shadow: var(--shadow-md);
-  padding: 1.5rem;
-  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
-}
+  .neo-textarea {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    font-size: 1rem;
+    font-family: inherit;
+    border: var(--border);
+    background-color: var(--color-surface);
+    box-shadow: var(--shadow-sm);
+    outline: none;
+    resize: vertical;
+    min-height: 120px;
+    transition: box-shadow var(--transition-fast);
+  }
 
-.neo-card:hover {
-  transform: translate(-3px, -3px);
-  box-shadow: var(--shadow-lg);
-}
+  .neo-textarea:focus {
+    box-shadow: var(--shadow-md);
+  }
 
-.neo-card:active {
-  transform: translate(2px, 2px);
-  box-shadow: var(--shadow-sm);
-}
+  /* ========================================
+     DECORATIVE ELEMENTS
+     ======================================== */
 
-.neo-card-flat {
-  background-color: var(--color-surface);
-  border: var(--border);
-  padding: 1.5rem;
-}
+  .neo-divider {
+    width: 100%;
+    height: var(--border-width);
+    background-color: var(--color-border);
+    margin-block: 2rem;
+  }
 
-/* --- Badge / Chip --- */
-.neo-badge {
-  display: inline-flex;
-  align-items: center;
-  padding: 0.25rem 0.75rem;
-  font-size: 0.75rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  border: 2px solid var(--color-border);
-  background-color: var(--color-primary);
-  color: #FFFFFF;
-}
-
-.neo-badge-secondary {
-  background-color: var(--color-secondary);
-  color: #FFFFFF;
-}
-
-.neo-badge-tertiary {
-  background-color: var(--color-tertiary);
-  color: #FFFFFF;
-}
-
-.neo-badge-outline {
-  background-color: var(--color-surface);
-  color: var(--color-text);
-  box-shadow: 2px 2px 0px var(--color-shadow);
-  transition: transform var(--transition-fast), box-shadow var(--transition-fast), background-color var(--transition-fast);
-}
-
-.neo-badge-outline:hover {
-  transform: translate(-2px, -2px);
-  box-shadow: 4px 4px 0px var(--color-shadow);
-  background-color: var(--color-bg-secondary);
-}
-
-.neo-badge-green {
-  background-color: var(--color-accent-green);
-  color: #FFFFFF;
-}
-
-.neo-badge-purple {
-  background-color: var(--color-accent-purple);
-  color: #FFFFFF;
-}
-
-.neo-badge-orange {
-  background-color: var(--color-accent-orange);
-  color: #FFFFFF;
-}
-
-/* --- Input --- */
-.neo-input {
-  width: 100%;
-  padding: 0.875rem 1rem;
-  font-size: 1rem;
-  font-family: inherit;
-  border: var(--border);
-  background-color: var(--color-surface);
-  box-shadow: var(--shadow-sm);
-  outline: none;
-  transition: box-shadow var(--transition-fast);
-}
-
-.neo-input:focus {
-  box-shadow: var(--shadow-md);
-}
-
-.neo-textarea {
-  width: 100%;
-  padding: 0.875rem 1rem;
-  font-size: 1rem;
-  font-family: inherit;
-  border: var(--border);
-  background-color: var(--color-surface);
-  box-shadow: var(--shadow-sm);
-  outline: none;
-  resize: vertical;
-  min-height: 120px;
-  transition: box-shadow var(--transition-fast);
-}
-
-.neo-textarea:focus {
-  box-shadow: var(--shadow-md);
-}
-
-/* ========================================
-   DECORATIVE ELEMENTS
-   ======================================== */
-
-.neo-divider {
-  width: 100%;
-  height: var(--border-width);
-  background-color: var(--color-border);
-  margin-block: 2rem;
-}
-
-.neo-highlight {
-  background-color: var(--color-primary);
-  padding: 0.1em 0.25em;
-  display: inline;
+  .neo-highlight {
+    background-color: var(--color-primary);
+    padding: 0.1em 0.25em;
+    display: inline;
+  }
 }
 
 /* ========================================
