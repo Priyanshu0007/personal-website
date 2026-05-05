@@ -86,7 +86,7 @@ export default function ProjectCard({ project, index = 0 }: ProjectCardProps) {
               {project.title}
             </h3>
             <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none flex items-center">
-              <div className="marquee-track" style={{ animationDuration: '6s' }}>
+              <div className="marquee-track [animation-play-state:paused] group-hover:[animation-play-state:running]" style={{ animationDuration: '6s' }}>
                 {[...Array(8)].map((_, i) => (
                   <span key={i} className="text-xl font-extrabold text-[var(--color-secondary)] mr-4 whitespace-nowrap">
                     {project.title}
