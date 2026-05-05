@@ -20,6 +20,17 @@ export interface Social {
   github: string;
   linkedin: string;
   portfolio: string;
+  medium: string;
+  devto: string;
+}
+
+export interface Blog {
+  id: string;
+  title: string;
+  url: string;
+  platform: string;
+  date: string;
+  description: string;
 }
 
 export interface NavItem {

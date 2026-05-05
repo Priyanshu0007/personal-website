@@ -91,6 +91,8 @@ const personJsonLd = {
     personal.socials.github,
     personal.socials.linkedin,
     personal.socials.portfolio,
+    personal.socials.medium,
+    personal.socials.devto,
   ],
   knowsAbout: [
     "React",

@@ -5,7 +5,7 @@ export default function manifest(): MetadataRoute.Manifest {
     name: "Priyanshu Gupta — Full-Stack Developer & Mobile App Engineer",
     short_name: "Priyanshu Gupta",
     description:
-      "Portfolio of Priyanshu Gupta — Full-stack developer specializing in React, Next.js, and React Native. Building beautiful, performant web and mobile experiences.",
+      "Portfolio of Priyanshu Gupta — Full-stack developer specializing in React, Next.js, and React Native. Building beautiful projects and sharing thoughts through articles and blogs.",
     start_url: "/",
     display: "standalone",
     background_color: "#E0E7FF",

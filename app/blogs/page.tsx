@@ -1,0 +1,86 @@
+import { Metadata } from "next";
+import { getPersonalData, getAllBlogs } from "@/lib/data";
+import SectionHeading from "@/components/ui/SectionHeading";
+import BlogCard from "@/components/ui/BlogCard";
+
+export const metadata: Metadata = {
+  title: "Blogs",
+  description: "Read my latest articles, tutorials, and thoughts on software engineering and design.",
+};
+
+export default function BlogsPage() {
+  const blogs = getAllBlogs();
+  const personal = getPersonalData();
+
+  return (
+    <div className="min-h-screen pt-24 pb-12">
+      <div className="container">
+        {/* Page Header */}
+        <div className="mb-12 md:mb-16">
+          <div className="inline-block mb-4">
+            <span className="neo-badge neo-badge-primary text-sm md:text-base px-4 py-1.5 transform -rotate-2 inline-block">
+              Writing & Thoughts
+            </span>
+          </div>
+
+          <h1
+            className="text-4xl md:text-6xl lg:text-7xl font-black mb-6"
+            style={{ fontFamily: "var(--font-heading), system-ui, sans-serif" }}
+          >
+            My <span className="text-[var(--color-secondary)]">Blogs</span>
+          </h1>
+
+          <p className="text-xl max-w-2xl text-[var(--color-text-secondary)] leading-relaxed border-l-[4px] border-[var(--color-primary)] pl-6 py-2">
+            A collection of articles, tutorials, and my thoughts on front-end development, animations, and software engineering.
+          </p>
+        </div>
+
+        {/* Blog Grid */}
+        {blogs.length > 0 ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            {blogs.map((blog, i) => (
+              <BlogCard key={blog.id} blog={blog} index={i} />
+            ))}
+          </div>
+        ) : (
+          <div className="neo-card p-12 text-center bg-[var(--color-surface)]">
+            <div className="text-4xl mb-4">✍️</div>
+            <h3 className="text-2xl font-black mb-2">No Articles Yet</h3>
+            <p className="text-[var(--color-text-secondary)]">
+              I'm working on some exciting new content. Check back soon!
+            </p>
+          </div>
+        )}
+
+        {/* Links to platforms */}
+        <div className="mt-16 text-center">
+          <p className="text-lg font-bold mb-6">Find more of my writing on:</p>
+          <div className="flex flex-wrap justify-center gap-4">
+            <a
+              href={personal.socials.medium}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="neo-btn neo-btn-secondary"
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" className="mr-2 inline-block">
+                <path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z" />
+              </svg>
+              Medium
+            </a>
+            <a
+              href={personal.socials.devto}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="neo-btn neo-btn-secondary"
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" className="mr-2 inline-block">
+                <path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z" />
+              </svg>
+              Dev.to
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}

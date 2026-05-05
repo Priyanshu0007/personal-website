@@ -1,0 +1,18 @@
+[
+  {
+    "id": "new-twitter-like-animation",
+    "title": "New Twitter Like Animation",
+    "url": "https://priyanshu0007.medium.com/new-twitter-like-animation-de38bb72e9a0",
+    "platform": "Medium",
+    "date": "Sep 2023",
+    "description": "Learn how to create a sleek, interactive Twitter-style like animation using CSS and simple JavaScript mechanics."
+  },
+  {
+    "id": "mastering-color-variables-sass",
+    "title": "Mastering Color Variables in Sass / Scss: A Comprehensive Guide",
+    "url": "https://priyanshu0007.medium.com/mastering-color-variables-in-sass-scss-a-comprehensive-guide-dd13d0f20c3e",
+    "platform": "Medium",
+    "date": "Oct 2023",
+    "description": "Discover how to effectively manage color variables in Sass/SCSS to build dynamic, themeable, and scalable stylesheets."
+  }
+]

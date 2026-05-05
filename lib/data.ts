@@ -1,8 +1,9 @@
-import type { LandingData, PersonalData, Project } from "@/types";
+import type { LandingData, PersonalData, Project, Blog } from "@/types";
 
 import landingData from "@/data/landing.json";
 import personalData from "@/data/personal.json";
 import projectsData from "@/data/projects.json";
+import blogsData from "@/data/blogs.json";
 
 export function getPersonalData(): PersonalData {
   return personalData as PersonalData;
@@ -37,4 +38,8 @@ export function getAdjacentProjects(
     prev: index > 0 ? projects[index - 1] : null,
     next: index < projects.length - 1 ? projects[index + 1] : null,
   };
+}
+
+export function getAllBlogs(): Blog[] {
+  return blogsData as Blog[];
 }

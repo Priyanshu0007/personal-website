@@ -34,7 +34,7 @@ export default function ProjectCard({ project, index = 0 }: ProjectCardProps) {
           <div
             className="relative w-full aspect-[16/10] overflow-hidden border-b-[3px] border-[var(--color-border)]"
             style={{
-              backgroundColor: `${categoryColors[project.category]}20`,
+              backgroundColor: `color-mix(in srgb, ${categoryColors[project.category]} 15%, transparent)`,
             }}
           >
             {/* Thumbnail Image */}

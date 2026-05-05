@@ -8,17 +8,20 @@
   "socials": {
     "github": "https://github.com/Priyanshu0007",
     "linkedin": "https://www.linkedin.com/in/priyanshu0099/",
-    "portfolio": "https://priyanshu0007.vercel.app/"
+    "portfolio": "https://priyanshu0007.vercel.app/",
+    "medium": "https://medium.com/@priyanshu0007",
+    "devto": "https://dev.to/priyanshu0007"
   },
   "navigation": [
     { "label": "Home", "href": "/" },
     { "label": "Projects", "href": "/projects" },
+    { "label": "Blogs", "href": "/blogs" },
     { "label": "Uses", "href": "/uses" }
   ],
   "seo": {
     "title": "Priyanshu Gupta — Full-Stack Developer & Mobile App Engineer",
     "titleTemplate": "%s | Priyanshu Gupta",
-    "description": "Priyanshu Gupta is a full-stack developer and mobile app engineer from India, specializing in React, Next.js, React Native, and TypeScript. Explore his portfolio of beautiful, performant web and mobile projects, tools he uses, and more.",
+    "description": "Priyanshu Gupta is a full-stack developer and mobile app engineer from India. Explore his portfolio of web and mobile projects, read his latest blogs and articles, and discover the tools he uses.",
     "siteUrl": "https://priyanshu0007.vercel.app",
     "ogImage": "/images/og-default.png",
     "twitterHandle": "@priyanshu0007",

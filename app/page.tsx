@@ -1,8 +1,9 @@
 import Link from "next/link";
-import { getLandingData, getFeaturedProjects, getPersonalData } from "@/lib/data";
+import { getLandingData, getFeaturedProjects, getPersonalData, getAllBlogs } from "@/lib/data";
 import SectionHeading from "@/components/ui/SectionHeading";
 import ProjectCard from "@/components/ui/ProjectCard";
 import HobbyCard from "@/components/ui/HobbyCard";
+import BlogCard from "@/components/ui/BlogCard";
 import Marquee from "@/components/ui/Marquee";
 import HeroShapes from "@/components/ui/HeroShapes";
 
@@ -10,6 +11,7 @@ export default function Home() {
   const landing = getLandingData();
   const personal = getPersonalData();
   const featuredProjects = getFeaturedProjects();
+  const blogs = getAllBlogs().slice(0, 3);
 
   return (
     <>
@@ -231,6 +233,36 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ===================== LATEST BLOGS ===================== */}
+      <section className="section bg-[var(--color-surface)] border-y-[3px] border-[var(--color-border)]" id="latest-blogs">
+        <div className="container">
+          <SectionHeading
+            title="Writing & Thoughts"
+            subtitle="My latest articles on development, design, and software engineering."
+            accent="var(--color-tertiary)"
+          />
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            {blogs.map((blog, i) => (
+              <BlogCard key={blog.id} blog={blog} index={i} />
+            ))}
+          </div>
+
+          {/* View All CTA */}
+          <div className="mt-10 text-center">
+            <Link
+              href="/blogs"
+              className="neo-btn neo-btn-primary neo-btn-lg"
+              transitionTypes={["nav-forward"]}
+              scroll={false}
+              id="view-all-blogs"
+            >
+              View All Articles →
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* ===================== TECH STACK MARQUEE ===================== */}
       <Marquee items={landing.techStack} />
 
@@ -269,7 +301,7 @@ export default function Home() {
                 className="neo-btn neo-btn-accent neo-btn-lg w-full sm:w-auto"
                 id="contact-email"
               >
-                ✉ Send Email
+                ✉️ Send Email
               </a>
               <a
                 href={personal.socials.linkedin}
