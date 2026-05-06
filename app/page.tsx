@@ -6,6 +6,7 @@ import HobbyCard from "@/components/ui/HobbyCard";
 import BlogCard from "@/components/ui/BlogCard";
 import Marquee from "@/components/ui/Marquee";
 import HeroShapes from "@/components/ui/HeroShapes";
+import ContactForm from "@/components/ui/ContactForm";
 
 export default function Home() {
   const landing = getLandingData();
@@ -333,62 +334,7 @@ export default function Home() {
             </div>
 
             {/* Simple contact form */}
-            <form className="max-w-xl mx-auto space-y-4 text-left">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <label
-                    htmlFor="contact-name"
-                    className="block text-sm font-bold uppercase tracking-wider mb-2"
-                  >
-                    Name
-                  </label>
-                  <input
-                    type="text"
-                    id="contact-name"
-                    name="name"
-                    placeholder="Your name"
-                    className="neo-input"
-                  />
-                </div>
-                <div>
-                  <label
-                    htmlFor="contact-email-input"
-                    className="block text-sm font-bold uppercase tracking-wider mb-2"
-                  >
-                    Email
-                  </label>
-                  <input
-                    type="email"
-                    id="contact-email-input"
-                    name="email"
-                    placeholder="your@email.com"
-                    className="neo-input"
-                  />
-                </div>
-              </div>
-              <div>
-                <label
-                  htmlFor="contact-message"
-                  className="block text-sm font-bold uppercase tracking-wider mb-2"
-                >
-                  Message
-                </label>
-                <textarea
-                  id="contact-message"
-                  name="message"
-                  placeholder="Tell me about your project or just say hi..."
-                  className="neo-textarea"
-                  rows={5}
-                />
-              </div>
-              <button
-                type="submit"
-                className="neo-btn neo-btn-primary neo-btn-lg w-full"
-                id="contact-submit"
-              >
-                Send Message →
-              </button>
-            </form>
+            <ContactForm />
           </div>
         </div>
       </section>
