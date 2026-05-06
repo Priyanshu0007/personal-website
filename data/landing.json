@@ -3,12 +3,13 @@
     "greeting": "Hey, I'm",
     "name": "Priyanshu Gupta",
     "tagline": "I build things for the web & mobile.",
-    "description": "A passionate full-stack developer crafting bold digital experiences with React, Next.js, and React Native. I love turning complex problems into simple, beautiful solutions.",
+    "description": "A passionate frontend developer crafting bold digital experiences with React, Next.js, and React Native. I love turning complex problems into simple, beautiful solutions.",
     "roles": [
       "React Developer",
       "Mobile App Engineer",
       "AI Enthusiast",
-      "Open Source Lover"
+      "Open Source Lover",
+      "Tech Geek"
     ],
     "ctaPrimary": {
       "label": "View My Work",
@@ -21,10 +22,10 @@
   },
   "about": {
     "heading": "About Me",
-    "bio": "I'm a full-stack developer who loves building products that make a difference. From sleek web apps to performant mobile experiences, I enjoy working across the entire stack. I'm passionate about clean code, modern design patterns, and the developer experience.",
-    "bioExtended": "When I'm not coding, you'll find me swimming laps, cycling through the city, or grinding ranks in BGMI. I'm a huge advocate for AI-powered development tools and believe the future of coding is collaborative — humans and AI building together.",
+    "bio": "I'm a frontend developer who loves building products that make a difference. From sleek web apps to performant mobile experiences, I enjoy working across the entire stack. I'm passionate about clean code, modern design patterns, and the developer experience.",
+    "bioExtended": "When I'm not coding, you'll find me swimming laps, cycling through the city, or playing video games. I'm a huge advocate for AI-powered development tools and believe the future of coding is collaborative humans and AI building together.",
     "skills": [
-      "React.js",
+      "React",
       "Next.js",
       "React Native",
       "Expo",
@@ -32,13 +33,14 @@
       "JavaScript",
       "Node.js",
       "Tailwind CSS",
-      "Supabase",
       "Git",
       "Figma",
-      "REST APIs"
+      "Cursor",
+      "Claude Code",
+      "Antigravity"
     ],
     "experience": {
-      "years": "2+",
+      "years": "1.5+",
       "projects": "15+",
       "technologies": "20+"
     }
@@ -62,23 +64,20 @@
       {
         "emoji": "🎮",
         "title": "Gaming",
-        "description": "BGMI, Genshin Impact, Brawl Stars, Clash of Clans — I take my virtual battles seriously.",
-        "color": "#8B5CF6",
-        "tags": ["BGMI", "Genshin Impact", "Brawl Stars", "Clash of Clans"]
+        "description": "Story mode first, always. I sink into rich narratives, unforgettable characters, and worlds that stay with me long after the credits roll.",
+        "color": "#8B5CF6"
       },
       {
         "emoji": "💪",
         "title": "HIIT Training",
-        "description": "Cult.fit addict. HRX Workout, Adidas Strength Plus, and anything that gets the heart pumping.",
-        "color": "#EF4444",
-        "tags": ["CultFit", "HRX Workout", "Adidas Strength+"]
+        "description": "Maximum intensity. Explosive power. A full-body storm that leaves me breathless, stronger, and completely alive. This isn't a workout — it's a war cry.",
+        "color": "#EF4444"
       },
       {
         "emoji": "🤖",
         "title": "AI Tools",
-        "description": "Claude, Cursor, Antigravity — I'm all in on AI-assisted development. The future is now.",
-        "color": "#F59E0B",
-        "tags": ["Claude", "Cursor", "Antigravity"]
+        "description": "Building faster and smarter with AI by my side. The future isn't waiting — and neither am I.",
+        "color": "#F59E0B"
       }
     ]
   },
@@ -91,13 +90,11 @@
     "JavaScript",
     "Node.js",
     "Tailwind CSS",
-    "Supabase",
-    "PostgreSQL",
     "Git",
-    "Vercel",
     "Figma",
-    "VS Code",
-    "Cursor"
+    "Cursor",
+    "Claude Code",
+    "Antigravity"
   ],
   "contact": {
     "heading": "Let's Build Something Bold",
