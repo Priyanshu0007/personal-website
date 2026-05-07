@@ -297,13 +297,13 @@ export default function Home() {
 
             {/* Contact buttons */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
-              <a
+              {/* <a
                 href={`mailto:${landing.contact.email}`}
                 className="neo-btn neo-btn-accent neo-btn-lg w-full sm:w-auto"
                 id="contact-email"
               >
                 ✉️ Send Email
-              </a>
+              </a> */}
               <a
                 href={personal.socials.linkedin}
                 target="_blank"
