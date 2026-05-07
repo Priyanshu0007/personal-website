@@ -33,9 +33,9 @@ const usesData = {
           "My go-to React framework. Server components, file-based routing, and incredible DX.",
       },
       {
-        name: "React Native + Expo",
+        name: "React Native",
         description:
-          "For cross-platform mobile apps. Expo makes the development workflow incredibly smooth.",
+          "Building robust cross-platform mobile applications with native performance and a single codebase.",
       },
       {
         name: "TypeScript",
@@ -48,9 +48,14 @@ const usesData = {
           "Utility-first CSS that makes styling fast and consistent across projects.",
       },
       {
-        name: "Supabase",
+        name: "Firebase",
         description:
-          "Open-source Firebase alternative. PostgreSQL, auth, storage — all in one.",
+          "Google's backend-as-a-service for real-time databases, authentication, and rapid cloud scaling.",
+      },
+      {
+        name: "expo",
+        description:
+          "The ultimate workflow for React Native, offering powerful APIs and a seamless development experience.",
       },
     ],
   },
@@ -87,39 +92,44 @@ const usesData = {
           "For UI/UX design, prototyping, and design system management.",
       },
       {
-        name: "Excalidraw",
+        name: "Claude Design",
         description:
-          "Quick sketches, system diagrams, and brainstorming sessions.",
+          "Leveraging Claude Artifacts for rapid UI prototyping, component brainstorming, and AI-driven design iterations.",
+      },
+      {
+        name: "Google Stitch",
+        description:
+          "AI-powered generative UI design tool for turning prompts and sketches into interactive high-fidelity prototypes.",
       },
     ],
   },
-  productivity: {
-    title: "Productivity",
-    emoji: "📋",
-    color: "var(--color-tertiary)",
-    items: [
-      {
-        name: "Notion",
-        description:
-          "Project planning, note-taking, and knowledge management.",
-      },
-      {
-        name: "GitHub",
-        description:
-          "Version control, CI/CD, project management — the developer's home.",
-      },
-      {
-        name: "Vercel",
-        description:
-          "Deployment platform for all my web projects. Preview deployments are a game-changer.",
-      },
-      {
-        name: "Arc Browser",
-        description:
-          "The best browser for developers. Spaces, profiles, and beautiful design.",
-      },
-    ],
-  },
+  // productivity: {
+  //   title: "Productivity",
+  //   emoji: "📋",
+  //   color: "var(--color-tertiary)",
+  //   items: [
+  //     {
+  //       name: "Notion",
+  //       description:
+  //         "Project planning, note-taking, and knowledge management.",
+  //     },
+  //     {
+  //       name: "GitHub",
+  //       description:
+  //         "Version control, CI/CD, project management — the developer's home.",
+  //     },
+  //     {
+  //       name: "Vercel",
+  //       description:
+  //         "Deployment platform for all my web projects. Preview deployments are a game-changer.",
+  //     },
+  //     {
+  //       name: "Arc Browser",
+  //       description:
+  //         "The best browser for developers. Spaces, profiles, and beautiful design.",
+  //     },
+  //   ],
+  // },
   gaming: {
     title: "Gaming",
     emoji: "🎮",
@@ -153,9 +163,9 @@ const usesData = {
     color: "var(--color-accent-green)",
     items: [
       {
-        name: "Cult.fit",
+        name: "HIIT",
         description:
-          "HIIT classes that push limits. HRX Workout and Adidas Strength Plus are my favorites.",
+          "HIIT classes that push limits. Workout and Strength are my favorites.",
       },
       {
         name: "Swimming",
@@ -175,56 +185,56 @@ export default function UsesPage() {
   const sections = Object.values(usesData);
 
   return (
-  
-      <section className="section" id="uses-page">
-        <div className="container">
-          <SectionHeading
-            title="What I Use"
-            subtitle="The tools, apps, and gear that power my daily workflow — from code to cardio."
-            accent="var(--color-accent-purple)"
-          />
 
-          <div className="space-y-12">
-            {sections.map((section) => (
-              <div key={section.title}>
-                {/* Section header */}
-                <div className="flex items-center gap-3 mb-6">
-                  <span
-                    className="flex items-center justify-center w-10 h-10 text-xl border-[3px] border-[var(--color-border)]"
-                    style={{ backgroundColor: section.color }}
-                  >
-                    {section.emoji}
-                  </span>
-                  <h2
-                    className="text-2xl font-extrabold"
-                    style={{
-                      fontFamily: "var(--font-heading), system-ui, sans-serif",
-                    }}
-                  >
-                    {section.title}
-                  </h2>
-                </div>
+    <section className="section" id="uses-page">
+      <div className="container">
+        <SectionHeading
+          title="What I Use"
+          subtitle="The tools, apps, and gear that power my daily workflow — from code to cardio."
+          accent="var(--color-accent-purple)"
+        />
 
-                {/* Items grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                  {section.items.map((item) => (
-                    <div
-                      key={item.name}
-                      className="neo-card-flat p-5 hover:bg-[var(--color-bg-secondary)] transition-colors"
-                    >
-                      <h3 className="font-extrabold text-base mb-1">
-                        {item.name}
-                      </h3>
-                      <p className="text-sm text-[var(--color-text-secondary)]">
-                        {item.description}
-                      </p>
-                    </div>
-                  ))}
-                </div>
+        <div className="space-y-12">
+          {sections.map((section) => (
+            <div key={section.title}>
+              {/* Section header */}
+              <div className="flex items-center gap-3 mb-6">
+                <span
+                  className="flex items-center justify-center w-10 h-10 text-xl border-[3px] border-[var(--color-border)]"
+                  style={{ backgroundColor: section.color }}
+                >
+                  {section.emoji}
+                </span>
+                <h2
+                  className="text-2xl font-extrabold"
+                  style={{
+                    fontFamily: "var(--font-heading), system-ui, sans-serif",
+                  }}
+                >
+                  {section.title}
+                </h2>
               </div>
-            ))}
-          </div>
+
+              {/* Items grid */}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {section.items.map((item) => (
+                  <div
+                    key={item.name}
+                    className="neo-card-flat p-5 hover:bg-[var(--color-bg-secondary)] transition-colors"
+                  >
+                    <h3 className="font-extrabold text-base mb-1">
+                      {item.name}
+                    </h3>
+                    <p className="text-sm text-[var(--color-text-secondary)]">
+                      {item.description}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
-      </section>
+      </div>
+    </section>
   );
 }
