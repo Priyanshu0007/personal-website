@@ -7,6 +7,7 @@ import {
   getAdjacentProjects,
 } from "@/lib/data";
 import BackButton from "@/components/ui/BackButton";
+import ScreenshotCarousel from "@/components/ui/ScreenshotCarousel";
 
 // Pre-generate all project pages at build time
 export function generateStaticParams() {
@@ -56,6 +57,21 @@ const categoryLabels: Record<string, string> = {
   other: "Other",
 };
 
+const categoryEmojis: Record<string, string> = {
+  "react-js": "⚛️",
+  "react-native": "📱",
+  "next-js": "▲",
+  other: "🔧",
+};
+
+// Raw accent color values for inline styles where CSS vars won't work
+const categoryRawColors: Record<string, string> = {
+  "react-js": "#F59E0B",
+  "react-native": "#8B5CF6",
+  "next-js": "#F43F5E",
+  other: "#F97316",
+};
+
 export default async function ProjectDetailPage(
   props: PageProps<"/projects/[slug]">
 ) {
@@ -67,15 +83,17 @@ export default async function ProjectDetailPage(
   }
 
   const { prev, next } = getAdjacentProjects(slug);
+  const rawColor = categoryRawColors[project.category];
 
   return (
-
     <article className="section pt-6" id="project-detail">
       <div className="container">
         {/* Back link */}
         <BackButton />
 
-        {/* Hero Image */}
+        {/* ============================================
+            HERO BANNER
+            ============================================ */}
         <div
           className="relative w-full aspect-[16/9] mb-8 border-[3px] border-[var(--color-border)] overflow-hidden"
           style={{
@@ -83,52 +101,63 @@ export default async function ProjectDetailPage(
             boxShadow: "var(--shadow-lg)",
           }}
         >
-          {/* Hero Image */}
           <img
             src={project.thumbnail}
             alt={project.title}
             className="absolute inset-0 w-full h-full object-cover"
           />
 
-          {/* Decorative placeholder (overlay/fallback) */}
-          <div className="absolute inset-0 flex items-center justify-center bg-black/10">
-            <div className="text-center">
-              <div
-                className="text-7xl md:text-9xl font-extrabold opacity-10"
-                style={{ color: categoryColors[project.category] }}
-              >
-                {String(project.id).padStart(2, "0")}
-              </div>
-            </div>
+          {/* Gradient overlay for readability */}
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(to top, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.1) 50%, transparent 100%)",
+            }}
+          />
+
+          {/* Floating project number */}
+          <div
+            className="absolute top-4 left-4 w-14 h-14 flex items-center justify-center border-[3px] border-[var(--color-border)] font-extrabold text-lg"
+            style={{
+              backgroundColor: rawColor,
+              color: "#fff",
+              boxShadow: "var(--shadow-sm)",
+            }}
+          >
+            {String(project.id).padStart(2, "0")}
+          </div>
+
+          {/* Category badge on hero */}
+          <div className="absolute bottom-4 left-4 flex items-center gap-2">
+            <span
+              className="neo-badge text-xs"
+              style={{
+                backgroundColor: rawColor,
+                color: "#FFFFFF",
+              }}
+            >
+              {categoryEmojis[project.category]} {categoryLabels[project.category]}
+            </span>
+            {project.isFavorite && (
+              <span className="neo-badge neo-badge-secondary text-xs">
+                ★ Favorite
+              </span>
+            )}
           </div>
         </div>
 
-        {/* Project Header */}
-        <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-8">
+        {/* ============================================
+            PROJECT HEADER
+            ============================================ */}
+        <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-6">
           <div>
-            {/* Category + Date */}
-            <div className="flex items-center gap-3 mb-3">
-              <span
-                className="neo-badge text-xs"
-                style={{
-                  backgroundColor: categoryColors[project.category],
-                  color: "#FFFFFF",
-                }}
-              >
-                {categoryLabels[project.category]}
-              </span>
-              {project.isFavorite && (
-                <span className="neo-badge text-xs">★ Favorite</span>
-              )}
-              <span className="text-sm text-[var(--color-text-muted)] font-bold">
-                {new Date(project.createdAt).toLocaleDateString("en-US", {
-                  month: "long",
-                  year: "numeric",
-                })}
-              </span>
-            </div>
-
-            {/* Title */}
+            <span className="text-sm text-[var(--color-text-muted)] font-bold block mb-2">
+              {new Date(project.createdAt).toLocaleDateString("en-US", {
+                month: "long",
+                year: "numeric",
+              })}
+            </span>
             <h1
               className="text-3xl md:text-5xl"
               style={{
@@ -140,13 +169,13 @@ export default async function ProjectDetailPage(
           </div>
 
           {/* Action buttons */}
-          <div className="flex gap-3 shrink-0">
+          <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto shrink-0 mt-2 md:mt-0">
             {project.liveUrl && (
               <a
                 href={project.liveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="neo-btn neo-btn-primary"
+                className="neo-btn neo-btn-primary w-full sm:w-auto"
                 id="project-live-link"
               >
                 🌐 Live Demo
@@ -157,7 +186,7 @@ export default async function ProjectDetailPage(
                 href={project.githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="neo-btn neo-btn-secondary"
+                className="neo-btn neo-btn-secondary w-full sm:w-auto"
                 id="project-github-link"
               >
                 💻 Source Code
@@ -166,61 +195,125 @@ export default async function ProjectDetailPage(
           </div>
         </div>
 
+        {/* Short description tagline */}
+        <p
+          className="text-lg md:text-xl leading-relaxed mb-6 max-w-3xl"
+          style={{ color: "var(--color-text-secondary)" }}
+        >
+          {project.description}
+        </p>
+
         <div className="neo-divider" />
 
-        {/* Description */}
+        {/* ============================================
+            MAIN CONTENT: TWO COLUMN LAYOUT
+            ============================================ */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
-          <div className="lg:col-span-2">
-            <h2
-              className="text-xl font-extrabold mb-4"
-              style={{
-                fontFamily: "var(--font-heading), system-ui, sans-serif",
-              }}
-            >
-              About This Project
-            </h2>
-            {project.longDescription.split("\n\n").map((paragraph, i) => (
-              <p
-                key={i}
-                className="text-lg leading-relaxed mb-4 text-[var(--color-text-secondary)]"
+          {/* Left column: Main content */}
+          <div className="lg:col-span-2 space-y-10">
+            {/* About section */}
+            <section>
+              <h2
+                className="text-xl font-extrabold mb-4 flex items-center gap-2"
+                style={{
+                  fontFamily: "var(--font-heading), system-ui, sans-serif",
+                }}
               >
-                {paragraph}
-              </p>
-            ))}
+                <span
+                  className="inline-block w-8 h-1"
+                  style={{ backgroundColor: rawColor }}
+                />
+                About This Project
+              </h2>
+              {project.longDescription.split("\n\n").map((paragraph, i) => (
+                <p
+                  key={i}
+                  className="text-lg leading-relaxed mb-4 text-[var(--color-text-secondary)]"
+                >
+                  {paragraph}
+                </p>
+              ))}
+            </section>
 
-            {/* Highlights */}
+            {/* Key Highlights - redesigned as feature cards */}
             {project.highlights.length > 0 && (
-              <div className="mt-8">
-                <h3
-                  className="text-lg font-extrabold mb-4"
+              <section>
+                <h2
+                  className="text-xl font-extrabold mb-5 flex items-center gap-2"
                   style={{
-                    fontFamily:
-                      "var(--font-heading), system-ui, sans-serif",
+                    fontFamily: "var(--font-heading), system-ui, sans-serif",
                   }}
                 >
-                  Key Highlights
-                </h3>
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                  {project.highlights.map((highlight) => (
+                  <span
+                    className="inline-block w-8 h-1"
+                    style={{ backgroundColor: rawColor }}
+                  />
+                  Key Features
+                </h2>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                  {project.highlights.map((highlight, i) => (
                     <div
                       key={highlight}
-                      className="neo-card-flat p-4 text-center"
+                      className="relative p-5 border-[3px] border-[var(--color-border)] bg-[var(--color-surface)] transition-all hover:translate-x-[-3px] hover:translate-y-[-3px]"
+                      style={{
+                        boxShadow: "var(--shadow-md)",
+                      }}
                     >
-                      <span className="text-sm font-bold">{highlight}</span>
+                      {/* Feature number */}
+                      <span
+                        className="block text-3xl font-extrabold mb-2 opacity-30"
+                        style={{ color: rawColor }}
+                      >
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                      <span className="text-sm font-bold leading-tight">
+                        {highlight}
+                      </span>
+                      {/* Corner accent */}
+                      <div
+                        className="absolute bottom-0 right-0 w-4 h-4"
+                        style={{ backgroundColor: rawColor }}
+                      />
                     </div>
                   ))}
                 </div>
-              </div>
+              </section>
+            )}
+
+            {/* ============================================
+                SCREENSHOT CAROUSEL
+                ============================================ */}
+            {project.images.length > 0 && (
+              <section>
+                <h2
+                  className="text-xl font-extrabold mb-5 flex items-center gap-2"
+                  style={{
+                    fontFamily: "var(--font-heading), system-ui, sans-serif",
+                  }}
+                >
+                  <span
+                    className="inline-block w-8 h-1"
+                    style={{ backgroundColor: rawColor }}
+                  />
+                  Screenshots
+                </h2>
+                <ScreenshotCarousel
+                  images={project.images}
+                  title={project.title}
+                  accentColor={rawColor}
+                />
+              </section>
             )}
           </div>
 
-          {/* Sidebar */}
+          {/* ============================================
+              RIGHT SIDEBAR
+              ============================================ */}
           <div className="space-y-6">
             {/* Tech Stack */}
             <div className="neo-card">
-              <h3
-                className="text-sm font-extrabold uppercase tracking-wider mb-4 text-[var(--color-text-muted)]"
-              >
+              <h3 className="text-sm font-extrabold uppercase tracking-wider mb-4 text-[var(--color-text-muted)] flex items-center gap-2">
+                <span className="text-base">🛠</span>
                 Tech Stack
               </h3>
               <div className="flex flex-wrap gap-2">
@@ -235,90 +328,155 @@ export default async function ProjectDetailPage(
               </div>
             </div>
 
-            {/* Project Links */}
-            <div className="neo-card">
-              <h3 className="text-sm font-extrabold uppercase tracking-wider mb-4 text-[var(--color-text-muted)]">
-                Links
+            {/* Project Info Card */}
+            <div
+              className="border-[3px] border-[var(--color-border)] p-5 space-y-4"
+              style={{
+                backgroundColor: "var(--color-surface)",
+                boxShadow: "var(--shadow-md)",
+              }}
+            >
+              <h3 className="text-sm font-extrabold uppercase tracking-wider text-[var(--color-text-muted)] flex items-center gap-2">
+                <span className="text-base">📋</span>
+                Project Info
               </h3>
-              <div className="space-y-2">
-                {project.liveUrl && (
-                  <a
-                    href={project.liveUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block text-sm font-bold text-[var(--color-tertiary)] hover:text-[var(--color-secondary)] transition-colors underline underline-offset-4"
-                  >
-                    🌐 {project.liveUrl.replace("https://", "")}
-                  </a>
-                )}
-                {project.githubUrl && (
-                  <a
-                    href={project.githubUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block text-sm font-bold text-[var(--color-tertiary)] hover:text-[var(--color-secondary)] transition-colors underline underline-offset-4"
-                  >
-                    💻 {project.githubUrl.replace("https://github.com/", "")}
-                  </a>
-                )}
-              </div>
-            </div>
 
-            {/* Date */}
-            <div className="neo-card-flat p-4">
-              <span className="text-xs font-bold uppercase tracking-wider text-[var(--color-text-muted)]">
-                Created
-              </span>
-              <p className="font-extrabold mt-1">
-                {new Date(project.createdAt).toLocaleDateString("en-US", {
-                  month: "long",
-                  day: "numeric",
-                  year: "numeric",
-                })}
-              </p>
-            </div>
-          </div>
-        </div>
+              <div className="space-y-3">
+                {/* Category */}
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-bold uppercase tracking-wider text-[var(--color-text-muted)]">
+                    Type
+                  </span>
+                  <span
+                    className="neo-badge text-xs"
+                    style={{
+                      backgroundColor: rawColor,
+                      color: "#fff",
+                    }}
+                  >
+                    {categoryLabels[project.category]}
+                  </span>
+                </div>
 
-        {/* Image Gallery */}
-        <div className="mt-12">
-          <h2
-            className="text-xl font-extrabold mb-6"
-            style={{
-              fontFamily: "var(--font-heading), system-ui, sans-serif",
-            }}
-          >
-            Screenshots
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {project.images.map((image, i) => (
-              <div
-                key={i}
-                className="aspect-video border-[3px] border-[var(--color-border)] overflow-hidden group relative"
-                style={{
-                  backgroundColor: `${categoryColors[project.category]}10`,
-                  boxShadow: "var(--shadow-sm)",
-                }}
-              >
-                <img
-                  src={image}
-                  alt={`${project.title} screenshot ${i + 1}`}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  loading="lazy"
+                <div
+                  className="w-full h-[2px]"
+                  style={{ backgroundColor: "var(--color-border)", opacity: 0.2 }}
                 />
-                <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
-                  <span className="text-xs font-bold text-white uppercase tracking-wider">
-                    Screenshot {i + 1}
+
+                {/* Date */}
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-bold uppercase tracking-wider text-[var(--color-text-muted)]">
+                    Date
+                  </span>
+                  <span className="text-sm font-extrabold">
+                    {new Date(project.createdAt).toLocaleDateString("en-US", {
+                      month: "short",
+                      year: "numeric",
+                    })}
+                  </span>
+                </div>
+
+                <div
+                  className="w-full h-[2px]"
+                  style={{ backgroundColor: "var(--color-border)", opacity: 0.2 }}
+                />
+
+                {/* Stack count */}
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-bold uppercase tracking-wider text-[var(--color-text-muted)]">
+                    Technologies
+                  </span>
+                  <span className="text-sm font-extrabold">
+                    {project.techStack.length}
+                  </span>
+                </div>
+
+                <div
+                  className="w-full h-[2px]"
+                  style={{ backgroundColor: "var(--color-border)", opacity: 0.2 }}
+                />
+
+                {/* Screenshots */}
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-bold uppercase tracking-wider text-[var(--color-text-muted)]">
+                    Screenshots
+                  </span>
+                  <span className="text-sm font-extrabold">
+                    {project.images.length}
                   </span>
                 </div>
               </div>
-            ))}
+            </div>
+
+            {/* Quick stats decorative card */}
+            <div
+              className="relative border-[3px] border-[var(--color-border)] p-5 overflow-hidden"
+              style={{
+                backgroundColor: rawColor,
+                boxShadow: "var(--shadow-md)",
+              }}
+            >
+              {/* Background pattern */}
+              <div
+                className="absolute inset-0 opacity-10"
+                style={{
+                  backgroundImage: `repeating-linear-gradient(
+                    45deg,
+                    transparent,
+                    transparent 10px,
+                    rgba(255,255,255,0.3) 10px,
+                    rgba(255,255,255,0.3) 20px
+                  )`,
+                }}
+              />
+              <div className="relative z-10">
+                <span className="text-5xl font-extrabold text-white block leading-none">
+                  {categoryEmojis[project.category]}
+                </span>
+                <span className="text-white text-sm font-bold mt-2 block opacity-90">
+                  {categoryLabels[project.category]} Project
+                </span>
+                <span className="text-white text-xs mt-1 block opacity-70">
+                  Built with {project.techStack[0]}
+                  {project.techStack.length > 1
+                    ? ` + ${project.techStack.length - 1} more`
+                    : ""}
+                </span>
+              </div>
+            </div>
+
+            {/* CTA actions - compact sidebar */}
+            <div className="space-y-2">
+              {project.liveUrl && (
+                <a
+                  href={project.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="neo-btn neo-btn-primary w-full text-sm"
+                >
+                  🌐 View Live Demo
+                </a>
+              )}
+              {project.githubUrl && (
+                <a
+                  href={project.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="neo-btn neo-btn-secondary w-full text-sm"
+                >
+                  💻 View Source Code
+                </a>
+              )}
+            </div>
           </div>
         </div>
 
         <div className="neo-divider" />
 
-        {/* Navigation: Previous / Next */}
+        {/* ============================================
+            PREV / NEXT NAVIGATION
+            ============================================ */}
+
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {prev ? (
             <Link
