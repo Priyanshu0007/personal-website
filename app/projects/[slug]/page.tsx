@@ -70,7 +70,7 @@ export default async function ProjectDetailPage(
 
   return (
 
-    <article className="section" id="project-detail">
+    <article className="section pt-6" id="project-detail">
       <div className="container">
         {/* Back link */}
         <BackButton />
