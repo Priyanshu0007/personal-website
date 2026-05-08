@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { getLandingData, getFeaturedProjects, getPersonalData, getAllBlogs } from "@/lib/data";
 import SectionHeading from "@/components/ui/SectionHeading";
 import ProjectCard from "@/components/ui/ProjectCard";
@@ -25,102 +26,147 @@ export default function Home() {
         <HeroShapes />
 
         <div className="container relative z-10">
-          <div className="max-w-4xl">
-            {/* Greeting */}
-            <div className="mb-6 md:mb-8 pt-4">
-              <span className="inline-block text-lg md:text-xl font-black px-4 py-1.5 text-[var(--color-surface)] bg-[var(--color-text)] border-[3px] border-[var(--color-text)] shadow-[4px_4px_0px_var(--color-primary)] transform -rotate-3">
+          {/* Mobile-only Header (above image) */}
+          <div className="lg:hidden text-center mb-10 pt-4">
+            <div className="mb-4">
+              <span className="inline-block text-lg font-black px-4 py-1.5 text-[var(--color-surface)] bg-[var(--color-text)] border-[3px] border-[var(--color-text)] shadow-[4px_4px_0px_var(--color-primary)] transform -rotate-2">
                 {landing.hero.greeting}
               </span>
             </div>
-
-            {/* Name */}
             <h1
-              className="mb-4"
+              className="text-5xl font-extrabold"
               style={{ fontFamily: "var(--font-heading), system-ui, sans-serif" }}
             >
               <span className="neo-highlight">{landing.hero.name}</span>
             </h1>
+          </div>
 
-            {/* Tagline */}
-            <p
-              className="text-2xl md:text-4xl font-extrabold mb-6 text-[var(--color-text)]"
-              style={{ fontFamily: "var(--font-heading), system-ui, sans-serif" }}
-            >
-              {landing.hero.tagline}
-            </p>
-
-            {/* Description */}
-            <p className="text-lg md:text-xl mb-8 max-w-2xl leading-relaxed text-[var(--color-text-secondary)]">
-              {landing.hero.description}
-            </p>
-
-            {/* Role badges */}
-            <div className="flex flex-wrap gap-2 mb-10">
-              {landing.hero.roles.map((role, i) => {
-                const colors = [
-                  "var(--color-primary)",
-                  "var(--color-secondary)",
-                  "var(--color-tertiary)",
-                  "var(--color-accent-purple)",
-                ];
-                return (
-                  <span
-                    key={role}
-                    className="neo-badge text-sm"
-                    style={{
-                      backgroundColor: colors[i % colors.length],
-                      color:
-                        i === 0 ? "var(--color-text)" : "#FFFFFF",
-                    }}
-                  >
-                    {role}
+          <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16 py-4 md:py-8">
+            {/* Hero Text Content */}
+            <div className="flex-1 order-2 lg:order-1">
+              <div className="max-w-3xl">
+                {/* Greeting (Hidden on mobile as it's now at the top) */}
+                <div className="hidden lg:block mb-6 md:mb-8">
+                  <span className="inline-block text-lg md:text-xl font-black px-4 py-1.5 text-[var(--color-surface)] bg-[var(--color-text)] border-[3px] border-[var(--color-text)] shadow-[4px_4px_0px_var(--color-primary)] transform -rotate-2">
+                    {landing.hero.greeting}
                   </span>
-                );
-              })}
+                </div>
+
+                {/* Name (Hidden on mobile as it's now at the top) */}
+                <h1
+                  className="hidden lg:block mb-4 text-5xl md:text-7xl"
+                  style={{ fontFamily: "var(--font-heading), system-ui, sans-serif" }}
+                >
+                  <span className="neo-highlight">{landing.hero.name}</span>
+                </h1>
+
+                {/* Tagline */}
+                <p
+                  className="text-2xl md:text-4xl font-extrabold mb-6 text-[var(--color-text)]"
+                  style={{ fontFamily: "var(--font-heading), system-ui, sans-serif" }}
+                >
+                  {landing.hero.tagline}
+                </p>
+
+                {/* Description */}
+                <p className="text-lg md:text-xl mb-8 max-w-2xl leading-relaxed text-[var(--color-text-secondary)]">
+                  {landing.hero.description}
+                </p>
+
+                {/* Role badges */}
+                <div className="flex flex-wrap gap-2 mb-10 max-w-2xl">
+                  {landing.hero.roles.map((role, i) => {
+                    const colors = [
+                      "var(--color-primary)",
+                      "var(--color-secondary)",
+                      "var(--color-tertiary)",
+                      "var(--color-accent-purple)",
+                    ];
+                    return (
+                      <span
+                        key={role}
+                        className="neo-badge text-sm"
+                        style={{
+                          backgroundColor: colors[i % colors.length],
+                          color:
+                            i === 0 ? "var(--color-text)" : "#FFFFFF",
+                        }}
+                      >
+                        {role}
+                      </span>
+                    );
+                  })}
+                </div>
+
+                {/* CTA Buttons */}
+                <div className="flex flex-wrap gap-4">
+                  <Link
+                    href={landing.hero.ctaPrimary.href}
+                    className="neo-btn neo-btn-primary neo-btn-lg"
+                    transitionTypes={["nav-forward"]}
+                    scroll={false}
+                    id="hero-cta-primary"
+                  >
+                    {landing.hero.ctaPrimary.label} →
+                  </Link>
+                  <a
+                    href={landing.hero.ctaSecondary.href}
+                    className="neo-btn neo-btn-secondary neo-btn-lg"
+                    id="hero-cta-secondary"
+                  >
+                    {landing.hero.ctaSecondary.label}
+                  </a>
+                </div>
+
+                {/* Social strip */}
+                <div className="mt-10 flex items-center gap-4">
+                  <span className="text-sm font-bold text-[var(--color-text-muted)] uppercase tracking-wider">
+                    Find me on
+                  </span>
+                  <div className="h-[2px] w-8 bg-[var(--color-border)]" />
+                  <a
+                    href={personal.socials.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm font-bold hover:text-[var(--color-secondary)] transition-colors underline underline-offset-4 decoration-2 decoration-[var(--color-primary)]"
+                  >
+                    GitHub
+                  </a>
+                  <a
+                    href={personal.socials.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm font-bold hover:text-[var(--color-secondary)] transition-colors underline underline-offset-4 decoration-2 decoration-[var(--color-tertiary)]"
+                  >
+                    LinkedIn
+                  </a>
+                </div>
+              </div>
             </div>
 
-            {/* CTA Buttons */}
-            <div className="flex flex-wrap gap-4">
-              <Link
-                href={landing.hero.ctaPrimary.href}
-                className="neo-btn neo-btn-primary neo-btn-lg"
-                transitionTypes={["nav-forward"]}
-                scroll={false}
-                id="hero-cta-primary"
-              >
-                {landing.hero.ctaPrimary.label} →
-              </Link>
-              <a
-                href={landing.hero.ctaSecondary.href}
-                className="neo-btn neo-btn-secondary neo-btn-lg"
-                id="hero-cta-secondary"
-              >
-                {landing.hero.ctaSecondary.label}
-              </a>
-            </div>
-
-            {/* Social strip */}
-            <div className="mt-10 flex items-center gap-4">
-              <span className="text-sm font-bold text-[var(--color-text-muted)] uppercase tracking-wider">
-                Find me on
-              </span>
-              <div className="h-[2px] w-8 bg-[var(--color-border)]" />
-              <a
-                href={personal.socials.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-sm font-bold hover:text-[var(--color-secondary)] transition-colors underline underline-offset-4 decoration-2 decoration-[var(--color-primary)]"
-              >
-                GitHub
-              </a>
-              <a
-                href={personal.socials.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-sm font-bold hover:text-[var(--color-secondary)] transition-colors underline underline-offset-4 decoration-2 decoration-[var(--color-tertiary)]"
-              >
-                LinkedIn
-              </a>
+            {/* Hero Image */}
+            <div className="w-full max-w-[320px] lg:max-w-[380px] order-1 lg:order-2 flex-shrink-0">
+              <div className="relative group">
+                {/* Background shadow box */}
+                <div className="absolute inset-0 bg-[var(--color-secondary)] translate-x-4 translate-y-4 border-[3px] border-[var(--color-text)] transition-transform group-hover:translate-x-2 group-hover:translate-y-2" />
+                
+                {/* Image container */}
+                <div className="relative border-[3px] border-[var(--color-text)] bg-[var(--color-surface)] overflow-hidden">
+                  <Image
+                    src="https://cdn.statically.io/gh/Priyanshu0007/CDN@main/profile.png"
+                    alt={landing.hero.name}
+                    width={400}
+                    height={400}
+                    className="w-full h-auto object-cover grayscale hover:grayscale-0 transition-all duration-500"
+                    priority
+                  />
+                </div>
+                
+                {/* Floating badge over image */}
+                <div className="absolute -bottom-4 -right-4 bg-[var(--color-primary)] border-[3px] border-[var(--color-text)] px-4 py-2 font-black text-sm shadow-[4px_4px_0px_var(--color-text)] rotate-3">
+                  HI THERE! 👋
+                </div>
+              </div>
             </div>
           </div>
         </div>
