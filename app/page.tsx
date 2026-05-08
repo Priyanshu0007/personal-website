@@ -153,7 +153,7 @@ export default function Home() {
                 {/* Image container */}
                 <div className="relative border-[3px] border-[var(--color-text)] bg-[var(--color-surface)] overflow-hidden">
                   <Image
-                    src="https://cdn.statically.io/gh/Priyanshu0007/CDN@main/profile.png"
+                    src={process.env.NEXT_PUBLIC_PROFILE_PIC_URL || "https://cdn.statically.io/gh/Priyanshu0007/CDN@main/profile.png"}
                     alt={landing.hero.name}
                     width={400}
                     height={400}

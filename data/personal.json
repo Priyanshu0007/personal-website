@@ -16,7 +16,8 @@
     { "label": "Home", "href": "/" },
     { "label": "Projects", "href": "/projects" },
     { "label": "Blogs", "href": "/blogs" },
-    { "label": "Uses", "href": "/uses" }
+    { "label": "Uses", "href": "/uses" },
+    { "label": "Resume", "href": "/resume" }
   ],
   "seo": {
     "title": "Priyanshu Gupta — Frontend-focused Software Development Engineer",

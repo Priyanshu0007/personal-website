@@ -6,7 +6,11 @@ import projectsData from "@/data/projects.json";
 import blogsData from "@/data/blogs.json";
 
 export function getPersonalData(): PersonalData {
-  return personalData as PersonalData;
+  const data = { ...personalData } as PersonalData;
+  if (process.env.NEXT_PUBLIC_RESUME_URL) {
+    data.resumeUrl = process.env.NEXT_PUBLIC_RESUME_URL;
+  }
+  return data;
 }
 
 export function getLandingData(): LandingData {

@@ -5,7 +5,7 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "cdn.statically.io",
+        hostname: "cdn.jsdelivr.net",
       },
     ],
   },
