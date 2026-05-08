@@ -157,8 +157,9 @@ export default function Home() {
                     alt={landing.hero.name}
                     width={400}
                     height={400}
-                    className="w-full h-auto object-cover grayscale hover:grayscale-0 transition-all duration-500"
+                    className="w-full h-auto object-cover grayscale lg:hover:grayscale-0 transition-[filter] duration-500"
                     priority
+                    sizes="(max-width: 768px) 320px, 400px"
                   />
                 </div>
                 

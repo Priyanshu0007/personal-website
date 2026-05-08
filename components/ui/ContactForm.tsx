@@ -82,7 +82,7 @@ export default function ContactForm() {
         <textarea
           id="contact-message"
           name="message"
-          placeholder="Tell me about your project or just say hi..."
+          placeholder="Send me a <hello /> or a dad joke. I'm all ears! 💻✨"
           className="neo-textarea"
           rows={5}
           required

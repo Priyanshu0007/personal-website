@@ -134,6 +134,7 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
+        <link rel="preconnect" href="https://cdn.statically.io" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
