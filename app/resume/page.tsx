@@ -3,6 +3,7 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import ContactForm from "@/components/ui/ContactForm";
 import ResumeViewer from "./ResumeViewer";
 import ResumeActions from "./ResumeActions";
+import { envConfig } from "@/utils/envConfig";
 
 export const metadata: Metadata = {
   title: "Resume",
@@ -18,7 +19,7 @@ export const metadata: Metadata = {
 };
 
 export default function ResumePage() {
-  const resumeUrl = process.env.NEXT_PUBLIC_RESUME_URL || "";
+  const resumeUrl = envConfig.resumeUrl;
 
   return (
     <>

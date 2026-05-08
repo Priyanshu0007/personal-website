@@ -4,11 +4,12 @@ import landingData from "@/data/landing.json";
 import personalData from "@/data/personal.json";
 import projectsData from "@/data/projects.json";
 import blogsData from "@/data/blogs.json";
+import { envConfig } from "@/utils/envConfig";
 
 export function getPersonalData(): PersonalData {
   const data = { ...personalData } as PersonalData;
-  if (process.env.NEXT_PUBLIC_RESUME_URL) {
-    data.resumeUrl = process.env.NEXT_PUBLIC_RESUME_URL;
+  if (envConfig.resumeUrl) {
+    data.resumeUrl = envConfig.resumeUrl;
   }
   return data;
 }

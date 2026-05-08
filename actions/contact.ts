@@ -1,8 +1,9 @@
 "use server";
 
 import { Resend } from "resend";
+import { envConfig } from "@/utils/envConfig";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const resend = new Resend(envConfig.resendApiKey);
 
 export async function sendContactEmail(prevState: any, formData: FormData) {
   try {
@@ -19,7 +20,7 @@ export async function sendContactEmail(prevState: any, formData: FormData) {
 
     const { data, error } = await resend.emails.send({
       from: "Portfolio Contact <onboarding@resend.dev>", // onboarding@resend.dev is allowed on free tier
-      to: process.env.CONTACT_EMAIL_TO as string,
+      to: envConfig.contactEmailTo,
       subject: `New Contact Form Submission from ${name}`,
       text: `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
       replyTo: email,
