@@ -1,14 +1,14 @@
 {
   "name": "Priyanshu Gupta",
   "shortName": "PG",
-  "title": "Full-Stack Developer & Mobile App Engineer",
-  "email": "priyanshu@example.com",
-  "location": "India",
+  "title": "Software Development Engineer",
+  "email": "priyanshu2859@gmail.com",
+  "location": "Gurgaon, India",
   "resumeUrl": "#",
   "socials": {
-    "github": "https://github.com/Priyanshu0007",
-    "linkedin": "https://www.linkedin.com/in/priyanshu0099/",
-    "portfolio": "https://priyanshu0007.vercel.app/",
+    "github": "https://github.com/priyanshu0007",
+    "linkedin": "https://www.linkedin.com/in/priyanshu0099",
+    "portfolio": "https://priyanshu0007.vercel.app",
     "medium": "https://medium.com/@priyanshu0007",
     "devto": "https://dev.to/priyanshu0007"
   },
@@ -19,9 +19,9 @@
     { "label": "Uses", "href": "/uses" }
   ],
   "seo": {
-    "title": "Priyanshu Gupta — Full-Stack Developer & Mobile App Engineer",
+    "title": "Priyanshu Gupta — Frontend-focused Software Development Engineer",
     "titleTemplate": "%s | Priyanshu Gupta",
-    "description": "Priyanshu Gupta is a full-stack developer and mobile app engineer from India. Explore his portfolio of web and mobile projects, read his latest blogs and articles, and discover the tools he uses.",
+    "description": "Priyanshu Gupta is a Frontend-focused SDE with 1.5+ years of experience building React Native and React applications at scale.",
     "siteUrl": "https://priyanshu0007.vercel.app",
     "ogImage": "/images/og-default.png",
     "twitterHandle": "@priyanshu0007",
@@ -29,13 +29,15 @@
       "Priyanshu Gupta",
       "Priyanshu Gupta developer",
       "Priyanshu Gupta portfolio",
-      "full-stack developer India",
+      "frontend developer India",
+      "Software Development Engineer",
       "React developer",
       "Next.js developer",
       "React Native developer",
       "mobile app engineer",
       "TypeScript developer",
       "Priyanshu0007",
+      "Spinny SDE",
       "web developer portfolio"
     ]
   }

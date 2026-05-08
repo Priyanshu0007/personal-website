@@ -3,13 +3,13 @@
     "greeting": "Hey, I'm",
     "name": "Priyanshu Gupta",
     "tagline": "I build things for the web & mobile.",
-    "description": "A passionate frontend developer crafting bold digital experiences with React, Next.js, and React Native. I love turning complex problems into simple, beautiful solutions.",
+    "description": "Frontend-focused SDE with 1.5+ years of experience owning and shipping production-grade React Native and React applications at scale. Effective user of AI-assisted development tools to accelerate delivery.",
     "roles": [
       "React Developer",
-      "Mobile App Engineer",
-      "AI Enthusiast",
-      "Open Source Lover",
-      "Tech Geek"
+      "Tech Geek",
+      "React Native Engineer",
+      "Frontend Architect",
+      "AI Enthusiast"
     ],
     "ctaPrimary": {
       "label": "View My Work",
@@ -22,27 +22,34 @@
   },
   "about": {
     "heading": "About Me",
-    "bio": "I'm a frontend developer who loves building products that make a difference. From sleek web apps to performant mobile experiences, I enjoy working across the entire stack. I'm passionate about clean code, modern design patterns, and the developer experience.",
-    "bioExtended": "When I'm not coding, you'll find me swimming laps, cycling through the city, or playing video games. I'm a huge advocate for AI-powered development tools and believe the future of coding is collaborative humans and AI building together.",
+    "bio": "I'm a Frontend-focused SDE with 1.5+ years of experience owning and shipping production-grade React Native and React applications at scale. At Spinny, I delivered 10+ features and took ownership across 3 internal products and 1 B2B app, reduced app crashes by 98%, and cut build times by 50%.",
+    "bioExtended": "I consistently drive measurable performance improvements and take full ownership of domains end-to-end. I'm also an effective user of AI-assisted development tools (Claude Code, Cursor, Antigravity) to significantly accelerate delivery and optimize workflows.",
     "skills": [
-      "React",
-      "Next.js",
-      "React Native",
-      "Expo",
-      "TypeScript",
       "JavaScript",
-      "Node.js",
+      "TypeScript",
+      "React",
+      "React Native",
+      "Next.js",
+      "Expo",
+      "Redux",
+      "Context API",
+      "CSS",
+      "Sass",
       "Tailwind CSS",
+      "React Navigation",
       "Git",
-      "Figma",
-      "Cursor",
+      "Firebase",
+      "Sentry",
+      "GrowthBook",
       "Claude Code",
-      "Antigravity"
+      "Cursor",
+      "Antigravity",
+      "Figma"
     ],
     "experience": {
       "years": "1.5+",
-      "projects": "15+",
-      "technologies": "20+"
+      "projects": "10+",
+      "technologies": "15+"
     }
   },
   "beyondCode": {
@@ -82,23 +89,22 @@
     ]
   },
   "techStack": [
-    "React",
-    "Next.js",
-    "React Native",
-    "Expo",
-    "TypeScript",
     "JavaScript",
-    "Node.js",
-    "Tailwind CSS",
-    "Git",
-    "Figma",
-    "Cursor",
-    "Claude Code",
-    "Antigravity"
+    "TypeScript",
+    "CSS",
+    "Sass",
+    "React",
+    "React Native",
+    "Next.js",
+    "Expo",
+    "Redux",
+    "Firebase",
+    "Sentry",
+    "Git"
   ],
   "contact": {
     "heading": "Let's Build Something Bold",
     "subheading": "Got a project in mind? Or just want to say hi? I'm always open to new conversations and collaborations.",
-    "email": "priyanshu@example.com"
+    "email": "abcd.pg0007@gmail.com"
   }
 }

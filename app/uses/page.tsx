@@ -23,39 +23,39 @@ const usesData = {
     color: "var(--color-primary)",
     items: [
       {
-        name: "VS Code / Cursor",
+        name: "React Native & Expo",
         description:
-          "My primary editors. Cursor for AI-powered development, VS Code for everything else.",
+          "My primary stack for building robust cross-platform mobile applications with native performance.",
       },
       {
-        name: "Next.js",
+        name: "React & Next.js",
         description:
-          "My go-to React framework. Server components, file-based routing, and incredible DX.",
+          "My go-to frameworks for web development. Server components, routing, and incredible DX.",
       },
       {
-        name: "React Native",
+        name: "TypeScript & JavaScript",
         description:
-          "Building robust cross-platform mobile applications with native performance and a single codebase.",
+          "The core languages I use daily. Type safety with TypeScript is non-negotiable for large projects.",
       },
       {
-        name: "TypeScript",
+        name: "Sentry",
         description:
-          "Can't imagine writing JavaScript without it. Type safety is non-negotiable.",
+          "Essential for error tracking and performance monitoring. Instrumental in reducing production app crashes.",
+      },
+      {
+        name: "GrowthBook",
+        description:
+          "For feature flagging and A/B testing, enabling safe and controlled feature rollouts.",
       },
       {
         name: "Tailwind CSS",
         description:
-          "Utility-first CSS that makes styling fast and consistent across projects.",
+          "Utility-first CSS that makes styling fast and consistent across web projects.",
       },
       {
-        name: "Firebase",
+        name: "Redux & Context API",
         description:
-          "Google's backend-as-a-service for real-time databases, authentication, and rapid cloud scaling.",
-      },
-      {
-        name: "expo",
-        description:
-          "The ultimate workflow for React Native, offering powerful APIs and a seamless development experience.",
+          "For managing complex global state across large-scale frontend applications.",
       },
     ],
   },
@@ -65,9 +65,9 @@ const usesData = {
     color: "var(--color-accent-purple)",
     items: [
       {
-        name: "Claude",
+        name: "Claude Code",
         description:
-          "My favorite AI assistant. Incredible for coding, writing, and reasoning tasks.",
+          "My favorite AI coding assistant. Incredible for reasoning through complex coding tasks directly in the terminal.",
       },
       {
         name: "Cursor",
@@ -77,7 +77,7 @@ const usesData = {
       {
         name: "Antigravity",
         description:
-          "Next-level agentic coding. The future of how we build software.",
+          "Next-level agentic coding assistant that helps automate and accelerate feature delivery.",
       },
     ],
   },
@@ -92,6 +92,11 @@ const usesData = {
           "For UI/UX design, prototyping, and design system management.",
       },
       {
+        name: "Adobe Suite",
+        description:
+          "For advanced graphic design, photo manipulation, and creating high-quality visual assets.",
+      },
+      {
         name: "Claude Design",
         description:
           "Leveraging Claude Artifacts for rapid UI prototyping, component brainstorming, and AI-driven design iterations.",
@@ -103,33 +108,6 @@ const usesData = {
       },
     ],
   },
-  // productivity: {
-  //   title: "Productivity",
-  //   emoji: "📋",
-  //   color: "var(--color-tertiary)",
-  //   items: [
-  //     {
-  //       name: "Notion",
-  //       description:
-  //         "Project planning, note-taking, and knowledge management.",
-  //     },
-  //     {
-  //       name: "GitHub",
-  //       description:
-  //         "Version control, CI/CD, project management — the developer's home.",
-  //     },
-  //     {
-  //       name: "Vercel",
-  //       description:
-  //         "Deployment platform for all my web projects. Preview deployments are a game-changer.",
-  //     },
-  //     {
-  //       name: "Arc Browser",
-  //       description:
-  //         "The best browser for developers. Spaces, profiles, and beautiful design.",
-  //     },
-  //   ],
-  // },
   gaming: {
     title: "Gaming",
     emoji: "🎮",
