@@ -135,6 +135,7 @@ export default function RootLayout({
     >
       <head>
         <link rel="preconnect" href="https://cdn.statically.io" />
+        <link rel="dns-prefetch" href="https://cdn.statically.io" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

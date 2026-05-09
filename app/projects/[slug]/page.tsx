@@ -117,7 +117,7 @@ export default async function ProjectDetailPage({
             fill
             className="object-cover"
             priority
-            sizes="100vw"
+            sizes="(max-width: 1200px) 100vw, 1200px"
           />
 
           {/* Gradient overlay for readability */}

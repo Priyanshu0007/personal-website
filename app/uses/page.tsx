@@ -168,6 +168,7 @@ export default function UsesPage() {
           title="What I Use"
           subtitle="The tools, apps, and gear that power my daily workflow — from code to cardio."
           accent="var(--color-accent-purple)"
+          as="h1"
         />
 
         <div className="space-y-12">

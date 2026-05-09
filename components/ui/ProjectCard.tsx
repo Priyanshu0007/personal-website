@@ -46,7 +46,7 @@ export default function ProjectCard({ project, index = 0 }: ProjectCardProps) {
             alt={project.title}
             fill
             className="object-cover transition-transform duration-500 group-hover:scale-105"
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px"
             loading="lazy"
           />
 

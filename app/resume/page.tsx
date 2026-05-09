@@ -31,6 +31,7 @@ export default function ResumePage() {
             title="My Resume"
             subtitle="My professional experience and technical skills."
             accent="var(--color-primary)"
+            as="h1"
           />
 
           <ResumeActions resumeUrl={resumeUrl} />

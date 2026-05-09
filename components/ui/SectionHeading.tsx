@@ -3,6 +3,7 @@ interface SectionHeadingProps {
   subtitle?: string;
   accent?: string;
   align?: "left" | "center";
+  as?: "h1" | "h2";
 }
 
 export default function SectionHeading({
@@ -10,6 +11,7 @@ export default function SectionHeading({
   subtitle,
   accent = "var(--color-primary)",
   align = "left",
+  as: Tag = "h2",
 }: SectionHeadingProps) {
   return (
     <div
@@ -31,7 +33,7 @@ export default function SectionHeading({
           style={{ backgroundColor: accent }}
         />
       </div>
-      <h2 className="font-extrabold">{title}</h2>
+      <Tag className="font-extrabold">{title}</Tag>
       {subtitle && (
         <p className="mt-3 max-w-2xl text-lg text-[var(--color-text-secondary)]">
           {subtitle}

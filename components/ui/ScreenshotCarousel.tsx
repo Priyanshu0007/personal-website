@@ -118,7 +118,7 @@ export default function ScreenshotCarousel({
                 className="object-cover"
                 loading="lazy"
                 draggable={false}
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 70vw"
+                sizes="(max-width: 1024px) 100vw, 896px"
               />
               {/* Subtle vignette overlay */}
               <div

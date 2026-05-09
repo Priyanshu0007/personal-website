@@ -63,6 +63,7 @@ export default async function ProjectsPage({
           title="All Projects"
           subtitle="Everything I've built — from side projects to production apps."
           accent="var(--color-secondary)"
+          as="h1"
         />
 
         {/* Filters */}

@@ -30,37 +30,20 @@ export default async function Home() {
         <HeroShapes />
 
         <div className="relative z-10 container">
-          {/* Mobile-only Header (above image) */}
-          <div className="mb-10 pt-4 text-center lg:hidden">
-            <div className="mb-4">
-              <span className="inline-block -rotate-2 transform border-[3px] border-[var(--color-text)] bg-[var(--color-text)] px-4 py-1.5 text-lg font-black text-[var(--color-surface)] shadow-[4px_4px_0px_var(--color-primary)]">
-                {landing.hero.greeting}
-              </span>
-            </div>
-            <h1
-              className="text-5xl font-extrabold"
-              style={{
-                fontFamily: "var(--font-heading), system-ui, sans-serif",
-              }}
-            >
-              <span className="neo-highlight">{landing.hero.name}</span>
-            </h1>
-          </div>
-
           <div className="flex flex-col items-center gap-12 py-4 md:py-8 lg:flex-row lg:gap-16">
             {/* Hero Text Content */}
             <div className="order-2 flex-1 lg:order-1">
               <div className="max-w-3xl">
-                {/* Greeting (Hidden on mobile as it's now at the top) */}
-                <div className="mb-6 hidden md:mb-8 lg:block">
+                {/* Greeting */}
+                <div className="mb-6 md:mb-8">
                   <span className="inline-block -rotate-2 transform border-[3px] border-[var(--color-text)] bg-[var(--color-text)] px-4 py-1.5 text-lg font-black text-[var(--color-surface)] shadow-[4px_4px_0px_var(--color-primary)] md:text-xl">
                     {landing.hero.greeting}
                   </span>
                 </div>
 
-                {/* Name (Hidden on mobile as it's now at the top) */}
+                {/* Name - Single H1 for SEO */}
                 <h1
-                  className="mb-4 hidden text-5xl md:text-7xl lg:block"
+                  className="mb-4 text-5xl md:text-7xl"
                   style={{
                     fontFamily: "var(--font-heading), system-ui, sans-serif",
                   }}
@@ -167,11 +150,11 @@ export default async function Home() {
                       "https://cdn.statically.io/gh/Priyanshu0007/CDN@main/profile.png"
                     }
                     alt={landing.hero.name}
-                    width={400}
-                    height={400}
+                    width={828}
+                    height={1079}
                     className="h-auto w-full object-cover grayscale transition-[filter] duration-500 lg:hover:grayscale-0"
                     priority
-                    sizes="(max-width: 768px) 320px, 400px"
+                    sizes="(max-width: 768px) 320px, (max-width: 1024px) 380px, 450px"
                   />
                 </div>
 
