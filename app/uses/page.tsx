@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import SectionHeading from "@/components/ui/SectionHeading";
+import { getPersonalData } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "Uses",
@@ -160,9 +161,33 @@ const usesData = {
 
 export default function UsesPage() {
   const sections = Object.values(usesData);
+  const personal = getPersonalData();
+
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: personal.seo.siteUrl,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Uses",
+        item: `${personal.seo.siteUrl}/uses`,
+      },
+    ],
+  };
 
   return (
     <section className="section" id="uses-page">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <div className="container">
         <SectionHeading
           title="What I Use"

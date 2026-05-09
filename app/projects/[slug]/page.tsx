@@ -6,6 +6,7 @@ import {
   getProjectBySlug,
   getProjectSlugs,
   getAdjacentProjects,
+  getPersonalData,
 } from "@/lib/data";
 import BackButton from "@/components/ui/BackButton";
 import ScreenshotCarousel from "@/components/ui/ScreenshotCarousel";
@@ -87,6 +88,7 @@ export default async function ProjectDetailPage({
 }) {
   const { slug } = await params;
   const project = await getProjectBySlug(slug);
+  const personal = getPersonalData();
 
   if (!project) {
     notFound();
@@ -95,8 +97,56 @@ export default async function ProjectDetailPage({
   const { prev, next } = await getAdjacentProjects(slug);
   const rawColor = categoryRawColors[project.category];
 
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: personal.seo.siteUrl,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Projects",
+        item: `${personal.seo.siteUrl}/projects`,
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: project.title,
+        item: `${personal.seo.siteUrl}/projects/${slug}`,
+      },
+    ],
+  };
+
+  const projectJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    name: project.title,
+    description: project.description,
+    author: {
+      "@type": "Person",
+      name: personal.name,
+    },
+    datePublished: project.createdAt,
+    image: project.thumbnail,
+    url: `${personal.seo.siteUrl}/projects/${slug}`,
+    keywords: project.techStack.join(", "),
+  };
+
   return (
     <article className="section pt-6" id="project-detail">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(projectJsonLd) }}
+      />
       <div className="container">
         {/* Back link */}
         <BackButton />

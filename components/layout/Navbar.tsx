@@ -101,7 +101,7 @@ export default function Navbar({
           {/* Mobile Hamburger */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="flex h-10 w-10 flex-col items-center justify-center border-[3px] border-[var(--color-border)] bg-[var(--color-surface)] transition-colors hover:bg-[var(--color-primary)] md:hidden"
+            className="flex h-12 w-12 flex-col items-center justify-center border-[3px] border-[var(--color-border)] bg-[var(--color-surface)] transition-colors hover:bg-[var(--color-primary)] md:hidden"
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
             aria-expanded={mobileOpen}
             aria-controls="mobile-menu"

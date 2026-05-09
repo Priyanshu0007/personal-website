@@ -58,6 +58,7 @@ export default function ContactForm() {
             type="text"
             id="contact-name"
             name="name"
+            autoComplete="name"
             placeholder="Your name"
             className="neo-input"
             required
@@ -74,6 +75,7 @@ export default function ContactForm() {
             type="email"
             id="contact-email-input"
             name="email"
+            autoComplete="email"
             placeholder="your@email.com"
             className="neo-input"
             required

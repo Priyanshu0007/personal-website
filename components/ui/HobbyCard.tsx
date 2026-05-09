@@ -19,15 +19,21 @@ export default function HobbyCard({ hobby, index }: HobbyCardProps) {
       }}
     >
       {/* Emoji */}
-      <div className="mb-3 text-4xl md:text-5xl">{hobby.emoji}</div>
+      <div
+        className="mb-3 text-4xl md:text-5xl"
+        role="img"
+        aria-label={`${hobby.title} icon`}
+      >
+        {hobby.emoji}
+      </div>
 
       {/* Title */}
-      <h4
+      <h3
         className="mb-2 text-lg font-extrabold"
         style={{ color: hobby.color }}
       >
         {hobby.title}
-      </h4>
+      </h3>
 
       {/* Description */}
       <p className="mb-3 text-sm text-[var(--color-text-secondary)]">

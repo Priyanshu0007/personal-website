@@ -282,8 +282,16 @@
   }
 
   .neo-btn-sm {
-    padding: 0.5rem 1rem;
+    padding: 0.75rem 1.25rem;
     font-size: 0.875rem;
+    min-height: 44px; /* Better touch target for mobile */
+  }
+
+  @media (min-width: 768px) {
+    .neo-btn-sm {
+      padding: 0.5rem 1rem;
+      min-height: auto;
+    }
   }
 
   .neo-btn-lg {

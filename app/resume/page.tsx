@@ -4,6 +4,7 @@ import ContactForm from "@/components/ui/ContactForm";
 import ResumeViewer from "./ResumeViewer";
 import ResumeActions from "./ResumeActions";
 import { envConfig } from "@/utils/envConfig";
+import { getPersonalData } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "Resume",
@@ -22,10 +23,34 @@ export const metadata: Metadata = {
 
 export default function ResumePage() {
   const resumeUrl = envConfig.resumeUrl;
+  const personal = getPersonalData();
+
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: personal.seo.siteUrl,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Resume",
+        item: `${personal.seo.siteUrl}/resume`,
+      },
+    ],
+  };
 
   return (
     <>
       <section className="section" id="resume">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+        />
         <div className="container">
           <SectionHeading
             title="My Resume"

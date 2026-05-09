@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
-import { getAllProjects } from "@/lib/data";
+import { getAllProjects, getPersonalData } from "@/lib/data";
 import SectionHeading from "@/components/ui/SectionHeading";
 import ProjectCard from "@/components/ui/ProjectCard";
 import ProjectFilters from "@/components/ui/ProjectFilters";
@@ -32,6 +32,7 @@ interface ProjectsPageProps {
 export default async function ProjectsPage({
   searchParams,
 }: ProjectsPageProps) {
+  const personal = getPersonalData();
   const params = await searchParams;
   const category = (params.category as ProjectCategory) || "all";
   const sort = (params.sort as SortOrder) || "newest";
@@ -56,8 +57,31 @@ export default async function ProjectsPage({
     return sort === "newest" ? dateB - dateA : dateA - dateB;
   });
 
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: personal.seo.siteUrl,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Projects",
+        item: `${personal.seo.siteUrl}/projects`,
+      },
+    ],
+  };
+
   return (
     <section className="section" id="projects-page">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <div className="container">
         <SectionHeading
           title="All Projects"

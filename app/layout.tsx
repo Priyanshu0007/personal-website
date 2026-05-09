@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Bricolage_Grotesque, DM_Sans } from "next/font/google";
 import { getPersonalData } from "@/lib/data";
 import { envConfig } from "@/utils/envConfig";
@@ -24,6 +24,16 @@ const dmSans = DM_Sans({
 
 const personal = getPersonalData();
 
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#3B82F6" },
+    { media: "(prefers-color-scheme: dark)", color: "#06B6D4" },
+  ],
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+};
+
 export const metadata: Metadata = {
   title: {
     default: personal.seo.title,
@@ -37,6 +47,13 @@ export const metadata: Metadata = {
   metadataBase: new URL(personal.seo.siteUrl),
   alternates: {
     canonical: "/",
+  },
+  icons: {
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico", sizes: "any" },
+    ],
+    apple: [{ url: "/apple-icon.svg", type: "image/svg+xml" }],
   },
   openGraph: {
     type: "website",
@@ -72,6 +89,7 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+  manifest: "/manifest.json",
   verification: {
     // Add your Google Search Console verification code here after registering
     // google: "your-google-verification-code",

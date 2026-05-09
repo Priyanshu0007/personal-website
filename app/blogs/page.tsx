@@ -6,14 +6,46 @@ export const metadata: Metadata = {
   title: "Blogs",
   description:
     "Read my latest articles, tutorials, and thoughts on software engineering and design.",
+  alternates: {
+    canonical: "/blogs",
+  },
+  openGraph: {
+    title: "Blogs | Priyanshu Gupta",
+    description:
+      "Read my latest articles, tutorials, and thoughts on software engineering and design.",
+    type: "website",
+  },
 };
 
 export default async function BlogsPage() {
   const blogs = await getAllBlogs();
   const personal = getPersonalData();
 
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: personal.seo.siteUrl,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Blogs",
+        item: `${personal.seo.siteUrl}/blogs`,
+      },
+    ],
+  };
+
   return (
     <div className="min-h-screen pt-24 pb-12">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <div className="container">
         {/* Page Header */}
         <div className="mb-12 md:mb-16">

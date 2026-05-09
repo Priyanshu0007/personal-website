@@ -20,7 +20,7 @@ export default function ThemeToggle() {
   return (
     <button
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-      className="neo-btn neo-btn-secondary flex h-[42px] w-[42px] items-center justify-center rounded-none p-2"
+      className="neo-btn neo-btn-secondary flex h-11 w-11 items-center justify-center rounded-none p-2 md:h-10 md:w-10"
       aria-label="Toggle Theme"
       id="theme-toggle"
     >
