@@ -7,7 +7,7 @@ export default function ScrollProgress() {
 
   return (
     <motion.div
-      className="hidden md:block fixed top-0 left-0 right-0 h-[6px] bg-[var(--color-primary)] origin-left z-[90] border-b-[2px] border-[var(--color-border)]"
+      className="fixed top-0 right-0 left-0 z-[90] hidden h-[6px] origin-left border-b-[2px] border-[var(--color-border)] bg-[var(--color-primary)] md:block"
       style={{ scaleX: scrollYProgress }}
     />
   );

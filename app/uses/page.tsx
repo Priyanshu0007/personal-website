@@ -130,8 +130,7 @@ const usesData = {
       },
       {
         name: "Clash of Clans",
-        description:
-          "Strategic base building. Been playing since forever.",
+        description: "Strategic base building. Been playing since forever.",
       },
     ],
   },
@@ -163,7 +162,6 @@ export default function UsesPage() {
   const sections = Object.values(usesData);
 
   return (
-
     <section className="section" id="uses-page">
       <div className="container">
         <SectionHeading
@@ -176,9 +174,9 @@ export default function UsesPage() {
           {sections.map((section) => (
             <div key={section.title}>
               {/* Section header */}
-              <div className="flex items-center gap-3 mb-6">
+              <div className="mb-6 flex items-center gap-3">
                 <span
-                  className="flex items-center justify-center w-10 h-10 text-xl border-[3px] border-[var(--color-border)]"
+                  className="flex h-10 w-10 items-center justify-center border-[3px] border-[var(--color-border)] text-xl"
                   style={{ backgroundColor: section.color }}
                 >
                   {section.emoji}
@@ -194,13 +192,13 @@ export default function UsesPage() {
               </div>
 
               {/* Items grid */}
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
                 {section.items.map((item) => (
                   <div
                     key={item.name}
-                    className="neo-card-flat p-5 hover:bg-[var(--color-bg-secondary)] transition-colors"
+                    className="neo-card-flat p-5 transition-colors hover:bg-[var(--color-bg-secondary)]"
                   >
-                    <h3 className="font-extrabold text-base mb-1">
+                    <h3 className="mb-1 text-base font-extrabold">
                       {item.name}
                     </h3>
                     <p className="text-sm text-[var(--color-text-secondary)]">

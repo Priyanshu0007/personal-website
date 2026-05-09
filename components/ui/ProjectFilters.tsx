@@ -35,7 +35,7 @@ export default function ProjectFilters() {
   return (
     <div className="mb-8 md:mb-12" id="project-filters">
       {/* Category filters */}
-      <div className="flex flex-wrap gap-2 mb-4">
+      <div className="mb-4 flex flex-wrap gap-2">
         {categories.map((cat) => (
           <button
             key={cat.value}
@@ -44,10 +44,10 @@ export default function ProjectFilters() {
                 category: cat.value === "all" ? null : cat.value,
               })
             }
-            className={`neo-btn neo-btn-sm font-bold uppercase tracking-wider text-xs ${
+            className={`neo-btn neo-btn-sm text-xs font-bold tracking-wider uppercase ${
               activeCategory === cat.value
-                ? "bg-[var(--color-primary)] border-[var(--color-border)] shadow-[3px_3px_0px_var(--color-shadow)]"
-                : "bg-[var(--color-surface)] border-[var(--color-border)] hover:bg-[var(--color-bg-secondary)]"
+                ? "border-[var(--color-border)] bg-[var(--color-primary)] shadow-[3px_3px_0px_var(--color-shadow)]"
+                : "border-[var(--color-border)] bg-[var(--color-surface)] hover:bg-[var(--color-bg-secondary)]"
             }`}
             id={`filter-${cat.value}`}
           >
@@ -63,10 +63,10 @@ export default function ProjectFilters() {
           onClick={() =>
             updateFilters({ favorites: showFavorites ? null : "true" })
           }
-          className={`neo-btn neo-btn-sm font-bold text-xs ${
+          className={`neo-btn neo-btn-sm text-xs font-bold ${
             showFavorites
-              ? "bg-[var(--color-primary)] border-[var(--color-border)] shadow-[3px_3px_0px_var(--color-shadow)]"
-              : "bg-[var(--color-surface)] border-[var(--color-border)] hover:bg-[var(--color-bg-secondary)]"
+              ? "border-[var(--color-border)] bg-[var(--color-primary)] shadow-[3px_3px_0px_var(--color-shadow)]"
+              : "border-[var(--color-border)] bg-[var(--color-surface)] hover:bg-[var(--color-bg-secondary)]"
           }`}
           id="filter-favorites"
         >
@@ -80,7 +80,7 @@ export default function ProjectFilters() {
               sort: activeSort === "newest" ? "oldest" : "newest",
             })
           }
-          className="neo-btn neo-btn-sm neo-btn-secondary font-bold text-xs"
+          className="neo-btn neo-btn-sm neo-btn-secondary text-xs font-bold"
           id="filter-sort"
         >
           {activeSort === "newest" ? "↓ Newest First" : "↑ Oldest First"}

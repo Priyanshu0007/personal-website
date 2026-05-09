@@ -149,7 +149,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className="min-h-full flex flex-col antialiased"
+        className="flex min-h-full flex-col antialiased"
         style={{ fontFamily: "var(--font-body), system-ui, sans-serif" }}
       >
         <ThemeProvider attribute="class" defaultTheme="light">
@@ -169,4 +169,3 @@ export default function RootLayout({
     </html>
   );
 }
-

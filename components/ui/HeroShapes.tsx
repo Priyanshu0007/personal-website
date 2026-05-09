@@ -8,7 +8,7 @@ export default function HeroShapes() {
       <motion.div
         drag
         dragConstraints={{ left: -100, right: 100, top: -100, bottom: 100 }}
-        className="absolute top-20 right-[10%] w-16 h-16 md:w-24 md:h-24 bg-[var(--color-primary)] border-[3px] border-[var(--color-border)] opacity-60 cursor-grab active:cursor-grabbing hover-target"
+        className="hover-target absolute top-20 right-[10%] h-16 w-16 cursor-grab border-[3px] border-[var(--color-border)] bg-[var(--color-primary)] opacity-60 active:cursor-grabbing md:h-24 md:w-24"
         animate={{
           y: ["0%", "-10%", "0%"],
           rotate: [12, 16, 12],
@@ -23,7 +23,7 @@ export default function HeroShapes() {
       <motion.div
         drag
         dragConstraints={{ left: -100, right: 100, top: -100, bottom: 100 }}
-        className="absolute top-40 left-[5%] w-10 h-10 md:w-16 md:h-16 bg-[var(--color-secondary)] border-[3px] border-[var(--color-border)] rounded-full opacity-50 cursor-grab active:cursor-grabbing hover-target"
+        className="hover-target absolute top-40 left-[5%] h-10 w-10 cursor-grab rounded-full border-[3px] border-[var(--color-border)] bg-[var(--color-secondary)] opacity-50 active:cursor-grabbing md:h-16 md:w-16"
         animate={{
           y: ["0%", "-15%", "0%"],
           rotate: [-3, -6, -3],
@@ -39,7 +39,7 @@ export default function HeroShapes() {
       <motion.div
         drag
         dragConstraints={{ left: -100, right: 100, top: -100, bottom: 100 }}
-        className="absolute bottom-20 right-[20%] w-12 h-12 md:w-20 md:h-20 bg-[var(--color-tertiary)] border-[3px] border-[var(--color-border)] opacity-40 cursor-grab active:cursor-grabbing hover-target"
+        className="hover-target absolute right-[20%] bottom-20 h-12 w-12 cursor-grab border-[3px] border-[var(--color-border)] bg-[var(--color-tertiary)] opacity-40 active:cursor-grabbing md:h-20 md:w-20"
         animate={{
           rotate: [-3, 3, -3],
         }}
@@ -53,7 +53,7 @@ export default function HeroShapes() {
       <motion.div
         drag
         dragConstraints={{ left: -100, right: 100, top: -100, bottom: 100 }}
-        className="absolute bottom-40 left-[15%] w-8 h-8 bg-[var(--color-accent-green)] border-[3px] border-[var(--color-border)] opacity-50 cursor-grab active:cursor-grabbing hover-target"
+        className="hover-target absolute bottom-40 left-[15%] h-8 w-8 cursor-grab border-[3px] border-[var(--color-border)] bg-[var(--color-accent-green)] opacity-50 active:cursor-grabbing"
         animate={{
           y: ["0%", "-20%", "0%"],
           rotate: [45, 55, 45],

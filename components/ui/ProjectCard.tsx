@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { Project } from "@/types";
 
 interface ProjectCardProps {
@@ -29,19 +30,23 @@ export default function ProjectCard({ project, index = 0 }: ProjectCardProps) {
       className="group block"
       id={`project-card-${project.slug}`}
     >
-      <article className="neo-card h-full flex flex-col overflow-hidden p-0">
+      <article className="neo-card flex h-full flex-col overflow-hidden p-0">
         {/* Thumbnail */}
         <div
-          className="relative w-full aspect-[16/10] overflow-hidden border-b-[3px] border-[var(--color-border)]"
+          className="relative aspect-[16/10] w-full overflow-hidden border-b-[3px] border-[var(--color-border)]"
           style={{
-            backgroundColor: `color-mix(in srgb, ${categoryColors[project.category]} 15%, transparent)`,
+            backgroundColor: `color-mix(in srgb, ${
+              categoryColors[project.category]
+            } 15%, transparent)`,
           }}
         >
           {/* Thumbnail Image */}
-          <img
+          <Image
             src={project.thumbnail}
             alt={project.title}
-            className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            fill
+            className="object-cover transition-transform duration-500 group-hover:scale-105"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             loading="lazy"
           />
 
@@ -65,14 +70,14 @@ export default function ProjectCard({ project, index = 0 }: ProjectCardProps) {
 
           {/* Favorite badge */}
           {project.isFavorite && (
-            <div className="absolute top-3 right-3 w-8 h-8 flex items-center justify-center bg-[var(--color-primary)] border-[2px] border-[var(--color-border)] text-sm">
+            <div className="absolute top-3 right-3 flex h-8 w-8 items-center justify-center border-[2px] border-[var(--color-border)] bg-[var(--color-primary)] text-sm">
               ★
             </div>
           )}
 
           {/* Category badge */}
           <div
-            className="absolute top-3 left-3 px-2 py-1 text-xs font-bold uppercase tracking-wider text-white border-[2px] border-[var(--color-border)]"
+            className="absolute top-3 left-3 border-[2px] border-[var(--color-border)] px-2 py-1 text-xs font-bold tracking-wider text-white uppercase"
             style={{ backgroundColor: categoryColors[project.category] }}
           >
             {categoryLabels[project.category]}
@@ -80,15 +85,21 @@ export default function ProjectCard({ project, index = 0 }: ProjectCardProps) {
         </div>
 
         {/* Content */}
-        <div className="flex flex-col flex-1 p-5">
-          <div className="h-7 mb-2 relative overflow-hidden">
-            <h3 className="text-xl font-extrabold group-hover:opacity-0 transition-opacity absolute inset-0 text-ellipsis overflow-hidden whitespace-nowrap">
+        <div className="flex flex-1 flex-col p-5">
+          <div className="relative mb-2 h-7 overflow-hidden">
+            <h3 className="absolute inset-0 overflow-hidden text-xl font-extrabold text-ellipsis whitespace-nowrap transition-opacity group-hover:opacity-0">
               {project.title}
             </h3>
-            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none flex items-center">
-              <div className="marquee-track [animation-play-state:paused] group-hover:[animation-play-state:running]" style={{ animationDuration: '6s' }}>
+            <div className="pointer-events-none absolute inset-0 flex items-center opacity-0 transition-opacity group-hover:opacity-100">
+              <div
+                className="marquee-track [animation-play-state:paused] group-hover:[animation-play-state:running]"
+                style={{ animationDuration: "6s" }}
+              >
                 {[...Array(8)].map((_, i) => (
-                  <span key={i} className="text-xl font-extrabold text-[var(--color-secondary)] mr-4 whitespace-nowrap">
+                  <span
+                    key={i}
+                    className="mr-4 text-xl font-extrabold whitespace-nowrap text-[var(--color-secondary)]"
+                  >
                     {project.title}
                   </span>
                 ))}
@@ -96,12 +107,12 @@ export default function ProjectCard({ project, index = 0 }: ProjectCardProps) {
             </div>
           </div>
 
-          <p className="text-sm text-[var(--color-text-secondary)] mb-4 line-clamp-2 flex-1">
+          <p className="mb-4 line-clamp-2 flex-1 text-sm text-[var(--color-text-secondary)]">
             {project.description}
           </p>
 
           {/* Tech Stack */}
-          <div className="flex flex-wrap gap-1.5 mb-4">
+          <div className="mb-4 flex flex-wrap gap-1.5">
             {project.techStack.slice(0, 4).map((tech) => (
               <span
                 key={tech}
@@ -118,14 +129,14 @@ export default function ProjectCard({ project, index = 0 }: ProjectCardProps) {
           </div>
 
           {/* Footer */}
-          <div className="flex items-center justify-between pt-3 border-t-[2px] border-[var(--color-border)]">
-            <span className="text-xs text-[var(--color-text-muted)] font-bold">
+          <div className="flex items-center justify-between border-t-[2px] border-[var(--color-border)] pt-3">
+            <span className="text-xs font-bold text-[var(--color-text-muted)]">
               {new Date(project.createdAt).toLocaleDateString("en-US", {
                 month: "short",
                 year: "numeric",
               })}
             </span>
-            <span className="text-sm font-bold text-[var(--color-secondary)] group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">
+            <span className="inline-flex items-center gap-1 text-sm font-bold text-[var(--color-secondary)] transition-transform group-hover:translate-x-1">
               View Details →
             </span>
           </div>

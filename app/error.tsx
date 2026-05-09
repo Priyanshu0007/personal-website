@@ -17,13 +17,13 @@ export default function Error({
   }, [error]);
 
   return (
-    <div className="section relative overflow-hidden min-h-[80vh] flex items-center justify-center">
+    <div className="section relative flex min-h-[80vh] items-center justify-center overflow-hidden">
       {/* Decorative shapes */}
-      <div className="hidden md:block absolute inset-0 pointer-events-none">
+      <div className="pointer-events-none absolute inset-0 hidden md:block">
         <motion.div
           drag
           dragConstraints={{ left: -100, right: 100, top: -100, bottom: 100 }}
-          className="absolute top-[30%] left-[15%] w-20 h-20 bg-[var(--color-tertiary)] border-[3px] border-[var(--color-border)] opacity-80 cursor-grab active:cursor-grabbing hover-target pointer-events-auto"
+          className="hover-target pointer-events-auto absolute top-[30%] left-[15%] h-20 w-20 cursor-grab border-[3px] border-[var(--color-border)] bg-[var(--color-tertiary)] opacity-80 active:cursor-grabbing"
           animate={{ rotate: [-10, 10, -10] }}
           transition={{ duration: 2, ease: "easeInOut", repeat: Infinity }}
           whileHover={{ scale: 1.1 }}
@@ -31,46 +31,47 @@ export default function Error({
         <motion.div
           drag
           dragConstraints={{ left: -100, right: 100, top: -100, bottom: 100 }}
-          className="absolute bottom-[25%] right-[15%] w-24 h-24 bg-[var(--color-accent-purple)] border-[3px] border-[var(--color-border)] rounded-full opacity-80 cursor-grab active:cursor-grabbing hover-target pointer-events-auto"
+          className="hover-target pointer-events-auto absolute right-[15%] bottom-[25%] h-24 w-24 cursor-grab rounded-full border-[3px] border-[var(--color-border)] bg-[var(--color-accent-purple)] opacity-80 active:cursor-grabbing"
           animate={{ scale: [1, 1.05, 1] }}
           transition={{ duration: 1.5, ease: "easeInOut", repeat: Infinity }}
           whileHover={{ scale: 1.1 }}
         />
       </div>
 
-      <div className="container relative z-10 text-center flex flex-col items-center">
-        <motion.div 
+      <div className="relative z-10 container flex flex-col items-center text-center">
+        <motion.div
           initial={{ rotate: 5, scale: 0.9 }}
-          animate={{ rotate: [ 5, -5, 5 ], scale: 1 }}
+          animate={{ rotate: [5, -5, 5], scale: 1 }}
           transition={{ duration: 0.5, ease: "easeInOut" }}
           className="mb-8"
         >
-          <span className="inline-block text-6xl md:text-8xl font-black px-8 py-4 text-[var(--color-surface)] bg-[var(--color-text)] border-[4px] border-[var(--color-text)] shadow-[8px_8px_0px_var(--color-secondary)]">
+          <span className="inline-block border-[4px] border-[var(--color-text)] bg-[var(--color-text)] px-8 py-4 text-6xl font-black text-[var(--color-surface)] shadow-[8px_8px_0px_var(--color-secondary)] md:text-8xl">
             OOPS!
           </span>
         </motion.div>
 
         <h1
-          className="mb-6 text-3xl md:text-5xl font-extrabold"
+          className="mb-6 text-3xl font-extrabold md:text-5xl"
           style={{ fontFamily: "var(--font-heading), system-ui, sans-serif" }}
         >
           <span className="neo-highlight">Something went wrong</span>
         </h1>
 
-        <p className="text-xl md:text-2xl mb-10 max-w-2xl leading-relaxed text-[var(--color-text-secondary)]">
-          An unexpected error occurred in the matrix. Don't panic, it's probably not your fault.
+        <p className="mb-10 max-w-2xl text-xl leading-relaxed text-[var(--color-text-secondary)] md:text-2xl">
+          An unexpected error occurred in the matrix. Don't panic, it's probably
+          not your fault.
         </p>
 
-        <div className="flex flex-wrap gap-4 justify-center">
+        <div className="flex flex-wrap justify-center gap-4">
           <button
             onClick={() => reset()}
-            className="neo-btn neo-btn-primary neo-btn-lg text-lg px-8 py-4"
+            className="neo-btn neo-btn-primary neo-btn-lg px-8 py-4 text-lg"
           >
             Try Again ↻
           </button>
           <Link
             href="/"
-            className="neo-btn neo-btn-secondary neo-btn-lg text-lg px-8 py-4"
+            className="neo-btn neo-btn-secondary neo-btn-lg px-8 py-4 text-lg"
           >
             Go Home
           </Link>

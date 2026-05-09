@@ -7,25 +7,25 @@
 /* --- Design Tokens --- */
 :root {
   /* Colors */
-  --color-bg: #E0E7FF;
-  --color-bg-secondary: #C7D2FE;
-  --color-surface: #FFFFFF;
-  --color-text: #0F172A;
+  --color-bg: #e0e7ff;
+  --color-bg-secondary: #c7d2fe;
+  --color-surface: #ffffff;
+  --color-text: #0f172a;
   --color-text-secondary: #334155;
-  --color-text-muted: #64748B;
-  --color-border: #0F172A;
-  --color-shadow: #0F172A;
+  --color-text-muted: #64748b;
+  --color-border: #0f172a;
+  --color-shadow: #0f172a;
 
   /* Accent Colors */
-  --color-primary: #3B82F6;
-  --color-primary-hover: #2563EB;
-  --color-secondary: #F43F5E;
-  --color-secondary-hover: #E11D48;
-  --color-tertiary: #F59E0B;
-  --color-tertiary-hover: #D97706;
-  --color-accent-green: #10B981;
-  --color-accent-purple: #8B5CF6;
-  --color-accent-orange: #F97316;
+  --color-primary: #3b82f6;
+  --color-primary-hover: #2563eb;
+  --color-secondary: #f43f5e;
+  --color-secondary-hover: #e11d48;
+  --color-tertiary: #f59e0b;
+  --color-tertiary-hover: #d97706;
+  --color-accent-green: #10b981;
+  --color-accent-purple: #8b5cf6;
+  --color-accent-orange: #f97316;
 
   /* Borders */
   --border-width: 3px;
@@ -56,26 +56,25 @@
 .dark {
   /* Colors */
   --color-bg: #020617; /* Very dark slate/blue */
-  --color-bg-secondary: #0F172A;
-  --color-surface: #1E293B;
-  --color-text: #F8FAFC;
-  --color-text-secondary: #CBD5E1;
-  --color-text-muted: #94A3B8;
-  --color-border: #F8FAFC;
-  --color-shadow: #F8FAFC;
+  --color-bg-secondary: #0f172a;
+  --color-surface: #1e293b;
+  --color-text: #f8fafc;
+  --color-text-secondary: #cbd5e1;
+  --color-text-muted: #94a3b8;
+  --color-border: #f8fafc;
+  --color-shadow: #f8fafc;
 
   /* Accent Colors */
-  --color-primary: #06B6D4; /* Neon Cyan */
-  --color-primary-hover: #0891B2;
-  --color-secondary: #EC4899; /* Hot Pink */
-  --color-secondary-hover: #DB2777;
-  --color-tertiary: #EAB308; /* Neon Yellow */
-  --color-tertiary-hover: #CA8A04;
-  --color-accent-green: #22C55E; /* Lime */
-  --color-accent-purple: #A855F7;
-  --color-accent-orange: #F97316;
+  --color-primary: #06b6d4; /* Neon Cyan */
+  --color-primary-hover: #0891b2;
+  --color-secondary: #ec4899; /* Hot Pink */
+  --color-secondary-hover: #db2777;
+  --color-tertiary: #eab308; /* Neon Yellow */
+  --color-tertiary-hover: #ca8a04;
+  --color-accent-green: #22c55e; /* Lime */
+  --color-accent-purple: #a855f7;
+  --color-accent-orange: #f97316;
 }
-
 
 /* ========================================
    GLOBAL RESET & BASE STYLES
@@ -83,19 +82,39 @@
 
 @layer base {
   * {
-    cursor: url('/cursor-light.svg') 2 2, auto;
+    cursor:
+      url("/cursor-light.svg") 2 2,
+      auto;
   }
 
-  a, button, [role="button"], input, select, textarea, .neo-btn {
-    cursor: url('/cursor-light-pointer.svg') 2 2, pointer !important;
+  a,
+  button,
+  [role="button"],
+  input,
+  select,
+  textarea,
+  .neo-btn {
+    cursor:
+      url("/cursor-light-pointer.svg") 2 2,
+      pointer !important;
   }
 
   .dark * {
-    cursor: url('/cursor-dark.svg') 2 2, auto;
+    cursor:
+      url("/cursor-dark.svg") 2 2,
+      auto;
   }
 
-  .dark a, .dark button, .dark [role="button"], .dark input, .dark select, .dark textarea, .dark .neo-btn {
-    cursor: url('/cursor-dark-pointer.svg') 2 2, pointer !important;
+  .dark a,
+  .dark button,
+  .dark [role="button"],
+  .dark input,
+  .dark select,
+  .dark textarea,
+  .dark .neo-btn {
+    cursor:
+      url("/cursor-dark-pointer.svg") 2 2,
+      pointer !important;
   }
 
   html {
@@ -120,7 +139,12 @@
      TYPOGRAPHY
      ======================================== */
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-family: var(--font-heading), system-ui, sans-serif;
     font-weight: 800;
     line-height: 1.15;
@@ -186,7 +210,9 @@
     font-size: 1rem;
     border: var(--border);
     cursor: pointer;
-    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+    transition:
+      transform var(--transition-fast),
+      box-shadow var(--transition-fast);
     text-decoration: none;
     white-space: nowrap;
     position: relative;
@@ -195,7 +221,7 @@
 
   .neo-btn-primary {
     background-color: var(--color-primary);
-    color: #FFFFFF;
+    color: #ffffff;
     box-shadow: var(--shadow-md);
   }
 
@@ -228,7 +254,7 @@
 
   .neo-btn-accent {
     background-color: var(--color-secondary);
-    color: #FFFFFF;
+    color: #ffffff;
     box-shadow: var(--shadow-md);
   }
 
@@ -271,7 +297,9 @@
     border: var(--border);
     box-shadow: var(--shadow-md);
     padding: 1.5rem;
-    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+    transition:
+      transform var(--transition-fast),
+      box-shadow var(--transition-fast);
   }
 
   .neo-card:hover {
@@ -301,24 +329,27 @@
     letter-spacing: 0.05em;
     border: 2px solid var(--color-border);
     background-color: var(--color-primary);
-    color: #FFFFFF;
+    color: #ffffff;
   }
 
   .neo-badge-secondary {
     background-color: var(--color-secondary);
-    color: #FFFFFF;
+    color: #ffffff;
   }
 
   .neo-badge-tertiary {
     background-color: var(--color-tertiary);
-    color: #FFFFFF;
+    color: #ffffff;
   }
 
   .neo-badge-outline {
     background-color: var(--color-surface);
     color: var(--color-text);
     box-shadow: 2px 2px 0px var(--color-shadow);
-    transition: transform var(--transition-fast), box-shadow var(--transition-fast), background-color var(--transition-fast);
+    transition:
+      transform var(--transition-fast),
+      box-shadow var(--transition-fast),
+      background-color var(--transition-fast);
   }
 
   .neo-badge-outline:hover {
@@ -329,17 +360,17 @@
 
   .neo-badge-green {
     background-color: var(--color-accent-green);
-    color: #FFFFFF;
+    color: #ffffff;
   }
 
   .neo-badge-purple {
     background-color: var(--color-accent-purple);
-    color: #FFFFFF;
+    color: #ffffff;
   }
 
   .neo-badge-orange {
     background-color: var(--color-accent-orange);
-    color: #FFFFFF;
+    color: #ffffff;
   }
 
   /* --- Input --- */
@@ -532,7 +563,8 @@
    ======================================== */
 
 @keyframes float {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0) rotate(0deg);
   }
   50% {
@@ -541,7 +573,8 @@
 }
 
 @keyframes float-delayed {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0) rotate(0deg);
   }
   50% {
@@ -550,7 +583,8 @@
 }
 
 @keyframes wiggle {
-  0%, 100% {
+  0%,
+  100% {
     transform: rotate(-3deg);
   }
   50% {
@@ -559,7 +593,8 @@
 }
 
 @keyframes pulse-shadow {
-  0%, 100% {
+  0%,
+  100% {
     box-shadow: var(--shadow-md);
   }
   50% {

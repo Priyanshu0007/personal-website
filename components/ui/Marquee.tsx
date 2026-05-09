@@ -14,10 +14,10 @@ export default function Marquee({ items }: MarqueeProps) {
         {duplicated.map((item, i) => (
           <span
             key={`${item}-${i}`}
-            className="flex items-center text-lg md:text-xl font-extrabold uppercase tracking-wider whitespace-nowrap text-[var(--color-text)]"
+            className="flex items-center text-lg font-extrabold tracking-wider whitespace-nowrap text-[var(--color-text)] uppercase md:text-xl"
           >
             {item}
-            <span className="mx-4 block w-3 h-3 bg-[var(--color-primary)] border-[2px] border-[var(--color-border)] rotate-45" />
+            <span className="mx-4 block h-3 w-3 rotate-45 border-[2px] border-[var(--color-border)] bg-[var(--color-primary)]" />
           </span>
         ))}
       </div>

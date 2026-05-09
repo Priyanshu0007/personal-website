@@ -3,19 +3,19 @@ import Link from "next/link";
 export default function ProjectNotFound() {
   return (
     <section className="section" id="project-not-found">
-      <div className="container text-center py-20">
-        <div className="inline-block mb-6">
-          <span className="text-8xl md:text-9xl font-extrabold text-[var(--color-primary)]">
+      <div className="container py-20 text-center">
+        <div className="mb-6 inline-block">
+          <span className="text-8xl font-extrabold text-[var(--color-primary)] md:text-9xl">
             404
           </span>
         </div>
         <h1
-          className="text-2xl md:text-4xl font-extrabold mb-4"
+          className="mb-4 text-2xl font-extrabold md:text-4xl"
           style={{ fontFamily: "var(--font-heading), system-ui, sans-serif" }}
         >
           Project Not Found
         </h1>
-        <p className="text-lg text-[var(--color-text-secondary)] mb-8 max-w-md mx-auto">
+        <p className="mx-auto mb-8 max-w-md text-lg text-[var(--color-text-secondary)]">
           The project you're looking for doesn't exist or has been removed.
         </p>
         <Link

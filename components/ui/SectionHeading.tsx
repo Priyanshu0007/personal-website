@@ -18,12 +18,12 @@ export default function SectionHeading({
       }`}
     >
       <div
-        className={`inline-flex items-center gap-3 mb-4 ${
+        className={`mb-4 inline-flex items-center gap-3 ${
           align === "center" ? "justify-center" : ""
         }`}
       >
         <span
-          className="block w-4 h-4 border-[3px] border-[var(--color-border)] rotate-45"
+          className="block h-4 w-4 rotate-45 border-[3px] border-[var(--color-border)]"
           style={{ backgroundColor: accent }}
         />
         <span
@@ -33,7 +33,7 @@ export default function SectionHeading({
       </div>
       <h2 className="font-extrabold">{title}</h2>
       {subtitle && (
-        <p className="mt-3 text-lg text-[var(--color-text-secondary)] max-w-2xl">
+        <p className="mt-3 max-w-2xl text-lg text-[var(--color-text-secondary)]">
           {subtitle}
         </p>
       )}

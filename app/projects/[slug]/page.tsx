@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import {
   getProjectBySlug,
   getProjectSlugs,
@@ -100,16 +101,19 @@ export default async function ProjectDetailPage(
             HERO BANNER
             ============================================ */}
         <div
-          className="relative w-full aspect-[16/9] mb-8 border-[3px] border-[var(--color-border)] overflow-hidden"
+          className="relative mb-8 aspect-[16/9] w-full overflow-hidden border-[3px] border-[var(--color-border)]"
           style={{
             backgroundColor: `${categoryColors[project.category]}15`,
             boxShadow: "var(--shadow-lg)",
           }}
         >
-          <img
+          <Image
             src={project.thumbnail}
             alt={project.title}
-            className="absolute inset-0 w-full h-full object-cover"
+            fill
+            className="object-cover"
+            priority
+            sizes="100vw"
           />
 
           {/* Gradient overlay for readability */}
@@ -123,7 +127,7 @@ export default async function ProjectDetailPage(
 
           {/* Floating project number */}
           <div
-            className="absolute top-4 left-4 w-14 h-14 flex items-center justify-center border-[3px] border-[var(--color-border)] font-extrabold text-lg"
+            className="absolute top-4 left-4 flex h-14 w-14 items-center justify-center border-[3px] border-[var(--color-border)] text-lg font-extrabold"
             style={{
               backgroundColor: rawColor,
               color: "#fff",
@@ -156,9 +160,9 @@ export default async function ProjectDetailPage(
         {/* ============================================
             PROJECT HEADER
             ============================================ */}
-        <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-6">
+        <div className="mb-6 flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
           <div>
-            <span className="text-sm text-[var(--color-text-muted)] font-bold block mb-2">
+            <span className="mb-2 block text-sm font-bold text-[var(--color-text-muted)]">
               {new Date(project.createdAt).toLocaleDateString("en-US", {
                 month: "long",
                 year: "numeric",
@@ -175,7 +179,7 @@ export default async function ProjectDetailPage(
           </div>
 
           {/* Action buttons */}
-          <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto shrink-0 mt-2 md:mt-0">
+          <div className="mt-2 flex w-full shrink-0 flex-col gap-3 sm:flex-row md:mt-0 md:w-auto">
             {project.liveUrl && (
               <a
                 href={project.liveUrl}
@@ -203,7 +207,7 @@ export default async function ProjectDetailPage(
 
         {/* Short description tagline */}
         <p
-          className="text-lg md:text-xl leading-relaxed mb-6 max-w-3xl"
+          className="mb-6 max-w-3xl text-lg leading-relaxed md:text-xl"
           style={{ color: "var(--color-text-secondary)" }}
         >
           {project.description}
@@ -214,19 +218,19 @@ export default async function ProjectDetailPage(
         {/* ============================================
             MAIN CONTENT: TWO COLUMN LAYOUT
             ============================================ */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-3 lg:gap-12">
           {/* Left column: Main content */}
-          <div className="lg:col-span-2 space-y-10">
+          <div className="space-y-10 lg:col-span-2">
             {/* About section */}
             <section>
               <h2
-                className="text-xl font-extrabold mb-4 flex items-center gap-2"
+                className="mb-4 flex items-center gap-2 text-xl font-extrabold"
                 style={{
                   fontFamily: "var(--font-heading), system-ui, sans-serif",
                 }}
               >
                 <span
-                  className="inline-block w-8 h-1"
+                  className="inline-block h-1 w-8"
                   style={{ backgroundColor: rawColor }}
                 />
                 About This Project
@@ -234,7 +238,7 @@ export default async function ProjectDetailPage(
               {project.longDescription.split("\n\n").map((paragraph, i) => (
                 <p
                   key={i}
-                  className="text-lg leading-relaxed mb-4 text-[var(--color-text-secondary)]"
+                  className="mb-4 text-lg leading-relaxed text-[var(--color-text-secondary)]"
                 >
                   {paragraph}
                 </p>
@@ -245,39 +249,39 @@ export default async function ProjectDetailPage(
             {project.highlights.length > 0 && (
               <section>
                 <h2
-                  className="text-xl font-extrabold mb-5 flex items-center gap-2"
+                  className="mb-5 flex items-center gap-2 text-xl font-extrabold"
                   style={{
                     fontFamily: "var(--font-heading), system-ui, sans-serif",
                   }}
                 >
                   <span
-                    className="inline-block w-8 h-1"
+                    className="inline-block h-1 w-8"
                     style={{ backgroundColor: rawColor }}
                   />
                   Key Features
                 </h2>
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
                   {project.highlights.map((highlight, i) => (
                     <div
                       key={highlight}
-                      className="relative p-5 border-[3px] border-[var(--color-border)] bg-[var(--color-surface)] transition-all hover:translate-x-[-3px] hover:translate-y-[-3px]"
+                      className="relative border-[3px] border-[var(--color-border)] bg-[var(--color-surface)] p-5 transition-all hover:translate-x-[-3px] hover:translate-y-[-3px]"
                       style={{
                         boxShadow: "var(--shadow-md)",
                       }}
                     >
                       {/* Feature number */}
                       <span
-                        className="block text-3xl font-extrabold mb-2 opacity-30"
+                        className="mb-2 block text-3xl font-extrabold opacity-30"
                         style={{ color: rawColor }}
                       >
                         {String(i + 1).padStart(2, "0")}
                       </span>
-                      <span className="text-sm font-bold leading-tight">
+                      <span className="text-sm leading-tight font-bold">
                         {highlight}
                       </span>
                       {/* Corner accent */}
                       <div
-                        className="absolute bottom-0 right-0 w-4 h-4"
+                        className="absolute right-0 bottom-0 h-4 w-4"
                         style={{ backgroundColor: rawColor }}
                       />
                     </div>
@@ -292,13 +296,13 @@ export default async function ProjectDetailPage(
             {project.images.length > 0 && (
               <section>
                 <h2
-                  className="text-xl font-extrabold mb-5 flex items-center gap-2"
+                  className="mb-5 flex items-center gap-2 text-xl font-extrabold"
                   style={{
                     fontFamily: "var(--font-heading), system-ui, sans-serif",
                   }}
                 >
                   <span
-                    className="inline-block w-8 h-1"
+                    className="inline-block h-1 w-8"
                     style={{ backgroundColor: rawColor }}
                   />
                   Screenshots
@@ -318,7 +322,7 @@ export default async function ProjectDetailPage(
           <div className="space-y-6">
             {/* Tech Stack */}
             <div className="neo-card">
-              <h3 className="text-sm font-extrabold uppercase tracking-wider mb-4 text-[var(--color-text-muted)] flex items-center gap-2">
+              <h3 className="mb-4 flex items-center gap-2 text-sm font-extrabold tracking-wider text-[var(--color-text-muted)] uppercase">
                 <span className="text-base">🛠</span>
                 Tech Stack
               </h3>
@@ -336,13 +340,13 @@ export default async function ProjectDetailPage(
 
             {/* Project Info Card */}
             <div
-              className="border-[3px] border-[var(--color-border)] p-5 space-y-4"
+              className="space-y-4 border-[3px] border-[var(--color-border)] p-5"
               style={{
                 backgroundColor: "var(--color-surface)",
                 boxShadow: "var(--shadow-md)",
               }}
             >
-              <h3 className="text-sm font-extrabold uppercase tracking-wider text-[var(--color-text-muted)] flex items-center gap-2">
+              <h3 className="flex items-center gap-2 text-sm font-extrabold tracking-wider text-[var(--color-text-muted)] uppercase">
                 <span className="text-base">📋</span>
                 Project Info
               </h3>
@@ -350,7 +354,7 @@ export default async function ProjectDetailPage(
               <div className="space-y-3">
                 {/* Category */}
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-bold uppercase tracking-wider text-[var(--color-text-muted)]">
+                  <span className="text-xs font-bold tracking-wider text-[var(--color-text-muted)] uppercase">
                     Type
                   </span>
                   <span
@@ -365,7 +369,7 @@ export default async function ProjectDetailPage(
                 </div>
 
                 <div
-                  className="w-full h-[2px]"
+                  className="h-[2px] w-full"
                   style={{
                     backgroundColor: "var(--color-border)",
                     opacity: 0.2,
@@ -374,7 +378,7 @@ export default async function ProjectDetailPage(
 
                 {/* Date */}
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-bold uppercase tracking-wider text-[var(--color-text-muted)]">
+                  <span className="text-xs font-bold tracking-wider text-[var(--color-text-muted)] uppercase">
                     Date
                   </span>
                   <span className="text-sm font-extrabold">
@@ -386,7 +390,7 @@ export default async function ProjectDetailPage(
                 </div>
 
                 <div
-                  className="w-full h-[2px]"
+                  className="h-[2px] w-full"
                   style={{
                     backgroundColor: "var(--color-border)",
                     opacity: 0.2,
@@ -395,7 +399,7 @@ export default async function ProjectDetailPage(
 
                 {/* Stack count */}
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-bold uppercase tracking-wider text-[var(--color-text-muted)]">
+                  <span className="text-xs font-bold tracking-wider text-[var(--color-text-muted)] uppercase">
                     Technologies
                   </span>
                   <span className="text-sm font-extrabold">
@@ -404,7 +408,7 @@ export default async function ProjectDetailPage(
                 </div>
 
                 <div
-                  className="w-full h-[2px]"
+                  className="h-[2px] w-full"
                   style={{
                     backgroundColor: "var(--color-border)",
                     opacity: 0.2,
@@ -413,7 +417,7 @@ export default async function ProjectDetailPage(
 
                 {/* Screenshots */}
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-bold uppercase tracking-wider text-[var(--color-text-muted)]">
+                  <span className="text-xs font-bold tracking-wider text-[var(--color-text-muted)] uppercase">
                     Screenshots
                   </span>
                   <span className="text-sm font-extrabold">
@@ -425,7 +429,7 @@ export default async function ProjectDetailPage(
 
             {/* Quick stats decorative card */}
             <div
-              className="relative border-[3px] border-[var(--color-border)] p-5 overflow-hidden"
+              className="relative overflow-hidden border-[3px] border-[var(--color-border)] p-5"
               style={{
                 backgroundColor: rawColor,
                 boxShadow: "var(--shadow-md)",
@@ -445,13 +449,13 @@ export default async function ProjectDetailPage(
                 }}
               />
               <div className="relative z-10">
-                <span className="text-5xl font-extrabold text-white block leading-none">
+                <span className="block text-5xl leading-none font-extrabold text-white">
                   {categoryEmojis[project.category]}
                 </span>
-                <span className="text-white text-sm font-bold mt-2 block opacity-90">
+                <span className="mt-2 block text-sm font-bold text-white opacity-90">
                   {categoryLabels[project.category]} Project
                 </span>
-                <span className="text-white text-xs mt-1 block opacity-70">
+                <span className="mt-1 block text-xs text-white opacity-70">
                   Built with {project.techStack[0]}
                   {project.techStack.length > 1
                     ? ` + ${project.techStack.length - 1} more`
@@ -492,7 +496,7 @@ export default async function ProjectDetailPage(
             PREV / NEXT NAVIGATION
             ============================================ */}
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           {prev ? (
             <Link
               href={`/projects/${prev.slug}`}
@@ -501,10 +505,10 @@ export default async function ProjectDetailPage(
               className="neo-card group flex flex-col"
               id="project-prev"
             >
-              <span className="text-xs font-bold uppercase tracking-wider text-[var(--color-text-muted)] mb-1">
+              <span className="mb-1 text-xs font-bold tracking-wider text-[var(--color-text-muted)] uppercase">
                 ← Previous Project
               </span>
-              <span className="font-extrabold group-hover:text-[var(--color-secondary)] transition-colors">
+              <span className="font-extrabold transition-colors group-hover:text-[var(--color-secondary)]">
                 {prev.title}
               </span>
             </Link>
@@ -519,10 +523,10 @@ export default async function ProjectDetailPage(
               className="neo-card group flex flex-col text-right"
               id="project-next"
             >
-              <span className="text-xs font-bold uppercase tracking-wider text-[var(--color-text-muted)] mb-1">
+              <span className="mb-1 text-xs font-bold tracking-wider text-[var(--color-text-muted)] uppercase">
                 Next Project →
               </span>
-              <span className="font-extrabold group-hover:text-[var(--color-secondary)] transition-colors">
+              <span className="font-extrabold transition-colors group-hover:text-[var(--color-secondary)]">
                 {next.title}
               </span>
             </Link>

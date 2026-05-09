@@ -2,23 +2,39 @@
 
 import { Resend } from "resend";
 import { envConfig } from "@/utils/envConfig";
+import { z } from "zod";
 
 const resend = new Resend(envConfig.resendApiKey);
 
-export async function sendContactEmail(prevState: any, formData: FormData) {
-  try {
-    const name = formData.get("name") as string;
-    const email = formData.get("email") as string;
-    const message = formData.get("message") as string;
+const contactSchema = z.object({
+  name: z.string().min(2, "Name must be at least 2 characters."),
+  email: z.string().email("Invalid email address."),
+  message: z.string().min(10, "Message must be at least 10 characters."),
+});
 
-    if (!name || !email || !message) {
+export async function sendContactEmail(
+  prevState: { success: boolean; error: string | null },
+  formData: FormData
+) {
+  try {
+    const rawData = {
+      name: formData.get("name") as string,
+      email: formData.get("email") as string,
+      message: formData.get("message") as string,
+    };
+
+    const validatedData = contactSchema.safeParse(rawData);
+
+    if (!validatedData.success) {
       return {
-        error: "Please fill out all fields.",
+        error: validatedData.error.issues[0].message,
         success: false,
       };
     }
 
-    const { data, error } = await resend.emails.send({
+    const { name, email, message } = validatedData.data;
+
+    const { error } = await resend.emails.send({
       from: "Portfolio Contact <onboarding@resend.dev>", // onboarding@resend.dev is allowed on free tier
       to: envConfig.contactEmailTo,
       subject: `New Contact Form Submission from ${name}`,
@@ -37,9 +53,10 @@ export async function sendContactEmail(prevState: any, formData: FormData) {
       success: true,
       error: null,
     };
-  } catch (error: any) {
+  } catch (error) {
     return {
-      error: error.message || "An unexpected error occurred",
+      error:
+        error instanceof Error ? error.message : "An unexpected error occurred",
       success: false,
     };
   }

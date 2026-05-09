@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useCallback, useEffect, useRef } from "react";
+import Image from "next/image";
 
 interface ScreenshotCarouselProps {
   images: string[];
@@ -84,10 +85,11 @@ export default function ScreenshotCarousel({
       >
         {/* Slide counter badge */}
         <div
-          className="absolute top-4 right-4 z-10 neo-badge text-xs"
+          className="neo-badge absolute top-4 right-4 z-10 text-xs"
           style={{ backgroundColor: accentColor, color: "#fff" }}
         >
-          {String(current + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
+          {String(current + 1).padStart(2, "0")} /{" "}
+          {String(total).padStart(2, "0")}
         </div>
 
         {/* Image track */}
@@ -95,8 +97,12 @@ export default function ScreenshotCarousel({
           ref={trackRef}
           className="flex touch-pan-y select-none"
           style={{
-            transform: `translateX(calc(-${current * 100}% + ${isDragging ? dragOffset : 0}px))`,
-            transition: isDragging ? "none" : "transform 400ms cubic-bezier(0.4, 0, 0.2, 1)",
+            transform: `translateX(calc(-${current * 100}% + ${
+              isDragging ? dragOffset : 0
+            }px))`,
+            transition: isDragging
+              ? "none"
+              : "transform 400ms cubic-bezier(0.4, 0, 0.2, 1)",
           }}
           onPointerDown={handlePointerDown}
           onPointerMove={handlePointerMove}
@@ -104,20 +110,19 @@ export default function ScreenshotCarousel({
           onPointerCancel={handlePointerUp}
         >
           {images.map((image, i) => (
-            <div
-              key={i}
-              className="w-full shrink-0 aspect-[16/9] relative"
-            >
-              <img
+            <div key={i} className="relative aspect-[16/9] w-full shrink-0">
+              <Image
                 src={image}
                 alt={`${title} screenshot ${i + 1}`}
-                className="w-full h-full object-cover"
+                fill
+                className="object-cover"
                 loading="lazy"
                 draggable={false}
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 70vw"
               />
               {/* Subtle vignette overlay */}
               <div
-                className="absolute inset-0 pointer-events-none"
+                className="pointer-events-none absolute inset-0"
                 style={{
                   background:
                     "linear-gradient(to top, rgba(0,0,0,0.15) 0%, transparent 40%)",
@@ -132,7 +137,7 @@ export default function ScreenshotCarousel({
           <>
             <button
               onClick={goPrev}
-              className="absolute left-3 top-1/2 -translate-y-1/2 z-10 w-12 h-12 flex items-center justify-center border-[3px] border-[var(--color-border)] bg-[var(--color-surface)] font-extrabold text-lg transition-all hover:translate-x-[-2px] hover:translate-y-[calc(-50%-2px)]"
+              className="absolute top-1/2 left-3 z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center border-[3px] border-[var(--color-border)] bg-[var(--color-surface)] text-lg font-extrabold transition-all hover:translate-x-[-2px] hover:translate-y-[calc(-50%-2px)]"
               style={{
                 boxShadow: "var(--shadow-sm)",
               }}
@@ -143,7 +148,7 @@ export default function ScreenshotCarousel({
             </button>
             <button
               onClick={goNext}
-              className="absolute right-3 top-1/2 -translate-y-1/2 z-10 w-12 h-12 flex items-center justify-center border-[3px] border-[var(--color-border)] bg-[var(--color-surface)] font-extrabold text-lg transition-all hover:translate-x-[2px] hover:translate-y-[calc(-50%-2px)]"
+              className="absolute top-1/2 right-3 z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center border-[3px] border-[var(--color-border)] bg-[var(--color-surface)] text-lg font-extrabold transition-all hover:translate-x-[2px] hover:translate-y-[calc(-50%-2px)]"
               style={{
                 boxShadow: "var(--shadow-sm)",
               }}
@@ -158,12 +163,12 @@ export default function ScreenshotCarousel({
 
       {/* Dot indicators */}
       {total > 1 && (
-        <div className="flex items-center justify-center gap-2 mt-4">
+        <div className="mt-4 flex items-center justify-center gap-2">
           {images.map((_, i) => (
             <button
               key={i}
               onClick={() => goTo(i)}
-              className="w-3 h-3 border-2 border-[var(--color-border)] transition-all"
+              className="h-3 w-3 border-2 border-[var(--color-border)] transition-all"
               style={{
                 backgroundColor:
                   i === current ? accentColor : "var(--color-surface)",
@@ -179,12 +184,12 @@ export default function ScreenshotCarousel({
 
       {/* Thumbnail strip */}
       {total > 1 && (
-        <div className="hidden md:flex gap-2 mt-4">
+        <div className="mt-4 hidden gap-2 md:flex">
           {images.map((image, i) => (
             <button
               key={i}
               onClick={() => goTo(i)}
-              className="flex-1 aspect-[16/9] overflow-hidden border-[3px] transition-all"
+              className="aspect-[16/9] flex-1 overflow-hidden border-[3px] transition-all"
               style={{
                 borderColor:
                   i === current ? accentColor : "var(--color-border)",
@@ -194,13 +199,15 @@ export default function ScreenshotCarousel({
                 transform: i === current ? "translate(-2px, -2px)" : "none",
               }}
             >
-              <img
-                src={image}
-                alt={`Thumbnail ${i + 1}`}
-                className="w-full h-full object-cover"
-                loading="lazy"
-                draggable={false}
-              />
+              <div className="relative h-full w-full">
+                <Image
+                  src={image}
+                  alt={`Thumbnail ${i + 1}`}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 20vw, 10vw"
+                />
+              </div>
             </button>
           ))}
         </div>

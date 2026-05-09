@@ -26,30 +26,28 @@ export default function Navbar({
   const pathname = usePathname();
 
   return (
-    <header
-      className="sticky top-0 z-50 w-full"
-    >
+    <header className="sticky top-0 z-50 w-full">
       {/* Top accent bar */}
       <div className="h-1.5 w-full bg-[var(--color-primary)]" />
 
       <nav className="border-b-[3px] border-[var(--color-border)] bg-[var(--color-surface)]">
-        <div className="container flex items-center justify-between h-16 md:h-20">
+        <div className="container flex h-16 items-center justify-between md:h-20">
           {/* Logo */}
           <Link
             href="/"
             className="group flex items-center gap-2"
             id="nav-logo"
           >
-            <span className="flex items-center justify-center w-10 h-10 md:w-12 md:h-12 bg-[var(--color-primary)] border-[3px] border-[var(--color-border)] font-extrabold text-lg md:text-xl transition-transform group-hover:rotate-[-4deg] group-hover:scale-110">
+            <span className="flex h-10 w-10 items-center justify-center border-[3px] border-[var(--color-border)] bg-[var(--color-primary)] text-lg font-extrabold transition-transform group-hover:scale-110 group-hover:rotate-[-4deg] md:h-12 md:w-12 md:text-xl">
               {shortName}
             </span>
-            <span className="hidden sm:block font-extrabold text-lg md:text-xl tracking-tight">
+            <span className="hidden text-lg font-extrabold tracking-tight sm:block md:text-xl">
               {name}
             </span>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-1">
+          <div className="hidden items-center gap-1 md:flex">
             {navigation.map((item) => {
               const isActive = pathname === item.href;
               return (
@@ -57,10 +55,11 @@ export default function Navbar({
                   key={item.href}
                   href={item.href}
                   id={`nav-${item.label.toLowerCase()}`}
-                  className={`px-4 py-2 font-bold text-sm uppercase tracking-wider border-[3px] transition-all ${isActive
-                    ? "border-[var(--color-border)] bg-[var(--color-primary)] shadow-[3px_3px_0px_var(--color-shadow)]"
-                    : "border-transparent hover:border-[var(--color-border)] hover:bg-[var(--color-bg-secondary)]"
-                    }`}
+                  className={`border-[3px] px-4 py-2 text-sm font-bold tracking-wider uppercase transition-all ${
+                    isActive
+                      ? "border-[var(--color-border)] bg-[var(--color-primary)] shadow-[3px_3px_0px_var(--color-shadow)]"
+                      : "border-transparent hover:border-[var(--color-border)] hover:bg-[var(--color-bg-secondary)]"
+                  }`}
                 >
                   {item.label}
                 </Link>
@@ -73,7 +72,7 @@ export default function Navbar({
                 href={socials.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center w-10 h-10 border-[3px] border-[var(--color-border)] bg-[var(--color-surface)] hover:bg-[var(--color-text)] hover:text-[var(--color-surface)] transition-colors"
+                className="flex h-10 w-10 items-center justify-center border-[3px] border-[var(--color-border)] bg-[var(--color-surface)] transition-colors hover:bg-[var(--color-text)] hover:text-[var(--color-surface)]"
                 aria-label="GitHub"
                 id="nav-github"
               >
@@ -83,7 +82,7 @@ export default function Navbar({
                 href={socials.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center w-10 h-10 border-[3px] border-[var(--color-border)] bg-[var(--color-surface)] hover:bg-[#0077B5] hover:text-white transition-colors"
+                className="flex h-10 w-10 items-center justify-center border-[3px] border-[var(--color-border)] bg-[var(--color-surface)] transition-colors hover:bg-[#0077B5] hover:text-white"
                 aria-label="LinkedIn"
                 id="nav-linkedin"
               >
@@ -96,29 +95,32 @@ export default function Navbar({
           {/* Mobile Hamburger */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden flex flex-col justify-center items-center w-10 h-10 border-[3px] border-[var(--color-border)] bg-[var(--color-surface)] hover:bg-[var(--color-primary)] transition-colors"
+            className="flex h-10 w-10 flex-col items-center justify-center border-[3px] border-[var(--color-border)] bg-[var(--color-surface)] transition-colors hover:bg-[var(--color-primary)] md:hidden"
             aria-label="Toggle menu"
             id="nav-mobile-toggle"
           >
             <span
-              className={`block w-5 h-0.5 bg-[var(--color-text)] transition-transform ${mobileOpen ? "rotate-45 translate-y-1" : ""
-                }`}
+              className={`block h-0.5 w-5 bg-[var(--color-text)] transition-transform ${
+                mobileOpen ? "translate-y-1 rotate-45" : ""
+              }`}
             />
             <span
-              className={`block w-5 h-0.5 bg-[var(--color-text)] my-1 transition-opacity ${mobileOpen ? "opacity-0" : ""
-                }`}
+              className={`my-1 block h-0.5 w-5 bg-[var(--color-text)] transition-opacity ${
+                mobileOpen ? "opacity-0" : ""
+              }`}
             />
             <span
-              className={`block w-5 h-0.5 bg-[var(--color-text)] transition-transform ${mobileOpen ? "-rotate-45 -translate-y-1" : ""
-                }`}
+              className={`block h-0.5 w-5 bg-[var(--color-text)] transition-transform ${
+                mobileOpen ? "-translate-y-1 -rotate-45" : ""
+              }`}
             />
           </button>
         </div>
 
         {/* Mobile Menu */}
         {mobileOpen && (
-          <div className="md:hidden border-t-[3px] border-[var(--color-border)] bg-[var(--color-surface)] animate-slide-in-up">
-            <div className="container py-4 flex flex-col gap-2">
+          <div className="animate-slide-in-up border-t-[3px] border-[var(--color-border)] bg-[var(--color-surface)] md:hidden">
+            <div className="container flex flex-col gap-2 py-4">
               {navigation.map((item) => {
                 const isActive = pathname === item.href;
                 return (
@@ -126,10 +128,11 @@ export default function Navbar({
                     key={item.href}
                     href={item.href}
                     onClick={() => setMobileOpen(false)}
-                    className={`px-4 py-3 font-bold text-base uppercase tracking-wider border-[3px] transition-all ${isActive
-                      ? "border-[var(--color-border)] bg-[var(--color-primary)] shadow-[3px_3px_0px_var(--color-shadow)]"
-                      : "border-[var(--color-border)] bg-[var(--color-surface)] hover:bg-[var(--color-bg-secondary)]"
-                      }`}
+                    className={`border-[3px] px-4 py-3 text-base font-bold tracking-wider uppercase transition-all ${
+                      isActive
+                        ? "border-[var(--color-border)] bg-[var(--color-primary)] shadow-[3px_3px_0px_var(--color-shadow)]"
+                        : "border-[var(--color-border)] bg-[var(--color-surface)] hover:bg-[var(--color-bg-secondary)]"
+                    }`}
                   >
                     {item.label}
                   </Link>
@@ -137,7 +140,7 @@ export default function Navbar({
               })}
 
               {/* Mobile social links */}
-              <div className="flex gap-2 mt-2">
+              <div className="mt-2 flex gap-2">
                 <a
                   href={socials.github}
                   target="_blank"

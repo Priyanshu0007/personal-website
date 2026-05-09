@@ -1,10 +1,11 @@
 import type { MetadataRoute } from "next";
-import { getProjectSlugs, getPersonalData } from "@/lib/data";
+import { getProjectSlugs, getPersonalData, getAllBlogs } from "@/lib/data";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const personal = getPersonalData();
   const baseUrl = personal.seo.siteUrl;
-  const projectSlugs = getProjectSlugs();
+  const projectSlugs = await getProjectSlugs();
+  const allBlogs = await getAllBlogs();
 
   const staticPages: MetadataRoute.Sitemap = [
     {
@@ -45,6 +46,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     changeFrequency: "monthly" as const,
     priority: 0.8,
   }));
+
+  // Note: Blogs currently link to external URLs, but we include them if they have a local page
+  // If blogs had local pages like /blogs/[id], we would add them here.
+  // For now, we only have the /blogs list page.
 
   return [...staticPages, ...projectPages];
 }

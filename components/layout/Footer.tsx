@@ -16,12 +16,12 @@ export default function Footer({ name, socials }: FooterProps) {
   return (
     <footer className="border-t-[3px] border-[var(--color-border)] bg-[var(--color-surface)]">
       <div className="container py-8 md:py-12">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
           {/* Left: Branding */}
-          <div className="flex flex-col items-center md:items-start gap-2">
+          <div className="flex flex-col items-center gap-2 md:items-start">
             <Link
               href="/"
-              className="font-extrabold text-xl tracking-tight"
+              className="text-xl font-extrabold tracking-tight"
               id="footer-logo"
             >
               {name}
@@ -35,21 +35,21 @@ export default function Footer({ name, socials }: FooterProps) {
           <div className="flex items-center gap-4">
             <Link
               href="/"
-              className="text-sm font-bold uppercase tracking-wider hover:text-[var(--color-secondary)] transition-colors"
+              className="text-sm font-bold tracking-wider uppercase transition-colors hover:text-[var(--color-secondary)]"
             >
               Home
             </Link>
             <span className="text-[var(--color-text-muted)]">•</span>
             <Link
               href="/projects"
-              className="text-sm font-bold uppercase tracking-wider hover:text-[var(--color-secondary)] transition-colors"
+              className="text-sm font-bold tracking-wider uppercase transition-colors hover:text-[var(--color-secondary)]"
             >
               Projects
             </Link>
             <span className="text-[var(--color-text-muted)]">•</span>
             <Link
               href="/uses"
-              className="text-sm font-bold uppercase tracking-wider hover:text-[var(--color-secondary)] transition-colors"
+              className="text-sm font-bold tracking-wider uppercase transition-colors hover:text-[var(--color-secondary)]"
             >
               Uses
             </Link>
@@ -61,7 +61,7 @@ export default function Footer({ name, socials }: FooterProps) {
               href={socials.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center w-10 h-10 border-[3px] border-[var(--color-border)] bg-[var(--color-surface)] hover:bg-[var(--color-text)] hover:text-[var(--color-surface)] transition-colors"
+              className="flex h-10 w-10 items-center justify-center border-[3px] border-[var(--color-border)] bg-[var(--color-surface)] transition-colors hover:bg-[var(--color-text)] hover:text-[var(--color-surface)]"
               aria-label="GitHub"
               id="footer-github"
             >
@@ -78,7 +78,7 @@ export default function Footer({ name, socials }: FooterProps) {
               href={socials.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center w-10 h-10 border-[3px] border-[var(--color-border)] bg-[var(--color-surface)] hover:bg-[#0077B5] hover:text-white transition-colors"
+              className="flex h-10 w-10 items-center justify-center border-[3px] border-[var(--color-border)] bg-[var(--color-surface)] transition-colors hover:bg-[#0077B5] hover:text-white"
               aria-label="LinkedIn"
               id="footer-linkedin"
             >
@@ -95,31 +95,41 @@ export default function Footer({ name, socials }: FooterProps) {
               href={socials.medium}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center w-10 h-10 border-[3px] border-[var(--color-border)] bg-[var(--color-surface)] hover:bg-[#00ab6c] hover:text-white transition-colors"
+              className="flex h-10 w-10 items-center justify-center border-[3px] border-[var(--color-border)] bg-[var(--color-surface)] transition-colors hover:bg-[#00ab6c] hover:text-white"
               aria-label="Medium"
               id="footer-medium"
             >
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/>
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z" />
               </svg>
             </a>
             <a
               href={socials.devto}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center w-10 h-10 border-[3px] border-[var(--color-border)] bg-[var(--color-surface)] hover:bg-[#000000] hover:text-white transition-colors"
+              className="flex h-10 w-10 items-center justify-center border-[3px] border-[var(--color-border)] bg-[var(--color-surface)] transition-colors hover:bg-[#000000] hover:text-white"
               aria-label="Dev.to"
               id="footer-devto"
             >
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M7.42 10.05c-.18-.16-.46-.23-.84-.23H6l.02 2.44.04 2.45.56-.02c.41 0 .63-.07.83-.26.24-.24.26-.36.26-2.2 0-1.91-.02-1.96-.29-2.18zM0 4.94v14.12h24V4.94H0zM8.56 15.3c-.44.58-1.06.77-2.53.77H4.71V8.53h1.4c1.67 0 2.16.18 2.6.9.27.43.29.6.32 2.57.05 2.23-.02 2.73-.47 3.3zm5.09-5.47h-2.47v1.77h1.52v1.28l-1.52.02v1.81h2.55v1.36h-4.08V8.5h4V9.83zm4.7 4.95c-.65.46-1.58.65-2.26.46-.83-.23-1.05-.62-1.93-3.41l-.4-1.25H15.4l.65 1.63c.4 1 1 2.52 1.09 2.52.08 0 .28-.53.58-1.5.3-1 .85-2.67.85-2.65h1.54l-1.5 4.2z"/>
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path d="M7.42 10.05c-.18-.16-.46-.23-.84-.23H6l.02 2.44.04 2.45.56-.02c.41 0 .63-.07.83-.26.24-.24.26-.36.26-2.2 0-1.91-.02-1.96-.29-2.18zM0 4.94v14.12h24V4.94H0zM8.56 15.3c-.44.58-1.06.77-2.53.77H4.71V8.53h1.4c1.67 0 2.16.18 2.6.9.27.43.29.6.32 2.57.05 2.23-.02 2.73-.47 3.3zm5.09-5.47h-2.47v1.77h1.52v1.28l-1.52.02v1.81h2.55v1.36h-4.08V8.5h4V9.83zm4.7 4.95c-.65.46-1.58.65-2.26.46-.83-.23-1.05-.62-1.93-3.41l-.4-1.25H15.4l.65 1.63c.4 1 1 2.52 1.09 2.52.08 0 .28-.53.58-1.5.3-1 .85-2.67.85-2.65h1.54l-1.5 4.2z" />
               </svg>
             </a>
           </div>
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-8 pt-6 border-t-[2px] border-[var(--color-border)] flex flex-col sm:flex-row items-center justify-between gap-2">
+        <div className="mt-8 flex flex-col items-center justify-between gap-2 border-t-[2px] border-[var(--color-border)] pt-6 sm:flex-row">
           <p className="text-sm text-[var(--color-text-muted)]">
             © {currentYear} {name}. All rights reserved.
           </p>

@@ -1,11 +1,23 @@
 import { db } from "@/db";
 import { projects, blogs } from "@/db/schema";
-import { eq, desc } from "drizzle-orm";
+import { eq } from "drizzle-orm";
 import type { LandingData, PersonalData, Project, Blog } from "@/types";
 
 import landingData from "@/data/landing.json";
 import personalData from "@/data/personal.json";
 import { envConfig } from "@/utils/envConfig";
+import { cleanUrl, cleanUrls } from "@/utils/formatters";
+
+/**
+ * Helper to clean project data from the database
+ */
+function mapProject(p: Project): Project {
+  return {
+    ...p,
+    thumbnail: cleanUrl(p.thumbnail),
+    images: cleanUrls(p.images),
+  };
+}
 
 export function getPersonalData(): PersonalData {
   const data = { ...personalData } as PersonalData;
@@ -21,8 +33,7 @@ export function getLandingData(): LandingData {
 
 export async function getAllProjects(): Promise<Project[]> {
   const result = await db.select().from(projects);
-  // @ts-ignore - mapping schema to type
-  return result as Project[];
+  return result.map(mapProject);
 }
 
 export async function getFeaturedProjects(): Promise<Project[]> {
@@ -30,18 +41,18 @@ export async function getFeaturedProjects(): Promise<Project[]> {
     .select()
     .from(projects)
     .where(eq(projects.featured, true));
-  // @ts-ignore - mapping schema to type
-  return result as Project[];
+  return result.map(mapProject);
 }
 
-export async function getProjectBySlug(slug: string): Promise<Project | undefined> {
+export async function getProjectBySlug(
+  slug: string
+): Promise<Project | undefined> {
   const result = await db
     .select()
     .from(projects)
     .where(eq(projects.slug, slug))
     .limit(1);
-  // @ts-ignore - mapping schema to type
-  return result[0] as Project | undefined;
+  return result[0] ? mapProject(result[0]) : undefined;
 }
 
 export async function getProjectSlugs(): Promise<string[]> {
@@ -62,5 +73,8 @@ export async function getAdjacentProjects(
 
 export async function getAllBlogs(): Promise<Blog[]> {
   const result = await db.select().from(blogs);
-  return result as Blog[];
+  return result.map((b) => ({
+    ...b,
+    url: cleanUrl(b.url),
+  })) as Blog[];
 }

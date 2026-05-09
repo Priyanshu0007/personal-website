@@ -1,6 +1,11 @@
 import Link from "next/link";
 import Image from "next/image";
-import { getLandingData, getFeaturedProjects, getPersonalData, getAllBlogs } from "@/lib/data";
+import {
+  getLandingData,
+  getFeaturedProjects,
+  getPersonalData,
+  getAllBlogs,
+} from "@/lib/data";
 import SectionHeading from "@/components/ui/SectionHeading";
 import ProjectCard from "@/components/ui/ProjectCard";
 import HobbyCard from "@/components/ui/HobbyCard";
@@ -20,63 +25,66 @@ export default async function Home() {
   return (
     <>
       {/* ===================== HERO SECTION ===================== */}
-      <section
-        className="section relative overflow-hidden"
-        id="hero"
-      >
+      <section className="section relative overflow-hidden" id="hero">
         {/* Decorative shapes */}
         <HeroShapes />
 
-        <div className="container relative z-10">
+        <div className="relative z-10 container">
           {/* Mobile-only Header (above image) */}
-          <div className="lg:hidden text-center mb-10 pt-4">
+          <div className="mb-10 pt-4 text-center lg:hidden">
             <div className="mb-4">
-              <span className="inline-block text-lg font-black px-4 py-1.5 text-[var(--color-surface)] bg-[var(--color-text)] border-[3px] border-[var(--color-text)] shadow-[4px_4px_0px_var(--color-primary)] transform -rotate-2">
+              <span className="inline-block -rotate-2 transform border-[3px] border-[var(--color-text)] bg-[var(--color-text)] px-4 py-1.5 text-lg font-black text-[var(--color-surface)] shadow-[4px_4px_0px_var(--color-primary)]">
                 {landing.hero.greeting}
               </span>
             </div>
             <h1
               className="text-5xl font-extrabold"
-              style={{ fontFamily: "var(--font-heading), system-ui, sans-serif" }}
+              style={{
+                fontFamily: "var(--font-heading), system-ui, sans-serif",
+              }}
             >
               <span className="neo-highlight">{landing.hero.name}</span>
             </h1>
           </div>
 
-          <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16 py-4 md:py-8">
+          <div className="flex flex-col items-center gap-12 py-4 md:py-8 lg:flex-row lg:gap-16">
             {/* Hero Text Content */}
-            <div className="flex-1 order-2 lg:order-1">
+            <div className="order-2 flex-1 lg:order-1">
               <div className="max-w-3xl">
                 {/* Greeting (Hidden on mobile as it's now at the top) */}
-                <div className="hidden lg:block mb-6 md:mb-8">
-                  <span className="inline-block text-lg md:text-xl font-black px-4 py-1.5 text-[var(--color-surface)] bg-[var(--color-text)] border-[3px] border-[var(--color-text)] shadow-[4px_4px_0px_var(--color-primary)] transform -rotate-2">
+                <div className="mb-6 hidden md:mb-8 lg:block">
+                  <span className="inline-block -rotate-2 transform border-[3px] border-[var(--color-text)] bg-[var(--color-text)] px-4 py-1.5 text-lg font-black text-[var(--color-surface)] shadow-[4px_4px_0px_var(--color-primary)] md:text-xl">
                     {landing.hero.greeting}
                   </span>
                 </div>
 
                 {/* Name (Hidden on mobile as it's now at the top) */}
                 <h1
-                  className="hidden lg:block mb-4 text-5xl md:text-7xl"
-                  style={{ fontFamily: "var(--font-heading), system-ui, sans-serif" }}
+                  className="mb-4 hidden text-5xl md:text-7xl lg:block"
+                  style={{
+                    fontFamily: "var(--font-heading), system-ui, sans-serif",
+                  }}
                 >
                   <span className="neo-highlight">{landing.hero.name}</span>
                 </h1>
 
                 {/* Tagline */}
                 <p
-                  className="text-2xl md:text-4xl font-extrabold mb-6 text-[var(--color-text)]"
-                  style={{ fontFamily: "var(--font-heading), system-ui, sans-serif" }}
+                  className="mb-6 text-2xl font-extrabold text-[var(--color-text)] md:text-4xl"
+                  style={{
+                    fontFamily: "var(--font-heading), system-ui, sans-serif",
+                  }}
                 >
                   {landing.hero.tagline}
                 </p>
 
                 {/* Description */}
-                <p className="text-lg md:text-xl mb-8 max-w-2xl leading-relaxed text-[var(--color-text-secondary)]">
+                <p className="mb-8 max-w-2xl text-lg leading-relaxed text-[var(--color-text-secondary)] md:text-xl">
                   {landing.hero.description}
                 </p>
 
                 {/* Role badges */}
-                <div className="flex flex-wrap gap-2 mb-10 max-w-2xl">
+                <div className="mb-10 flex max-w-2xl flex-wrap gap-2">
                   {landing.hero.roles.map((role, i) => {
                     const colors = [
                       "var(--color-primary)",
@@ -90,8 +98,7 @@ export default async function Home() {
                         className="neo-badge text-sm"
                         style={{
                           backgroundColor: colors[i % colors.length],
-                          color:
-                            i === 0 ? "var(--color-text)" : "#FFFFFF",
+                          color: i === 0 ? "var(--color-text)" : "#FFFFFF",
                         }}
                       >
                         {role}
@@ -122,7 +129,7 @@ export default async function Home() {
 
                 {/* Social strip */}
                 <div className="mt-10 flex items-center gap-4">
-                  <span className="text-sm font-bold text-[var(--color-text-muted)] uppercase tracking-wider">
+                  <span className="text-sm font-bold tracking-wider text-[var(--color-text-muted)] uppercase">
                     Find me on
                   </span>
                   <div className="h-[2px] w-8 bg-[var(--color-border)]" />
@@ -130,7 +137,7 @@ export default async function Home() {
                     href={personal.socials.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-sm font-bold hover:text-[var(--color-secondary)] transition-colors underline underline-offset-4 decoration-2 decoration-[var(--color-primary)]"
+                    className="text-sm font-bold underline decoration-[var(--color-primary)] decoration-2 underline-offset-4 transition-colors hover:text-[var(--color-secondary)]"
                   >
                     GitHub
                   </a>
@@ -138,7 +145,7 @@ export default async function Home() {
                     href={personal.socials.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-sm font-bold hover:text-[var(--color-secondary)] transition-colors underline underline-offset-4 decoration-2 decoration-[var(--color-tertiary)]"
+                    className="text-sm font-bold underline decoration-[var(--color-tertiary)] decoration-2 underline-offset-4 transition-colors hover:text-[var(--color-secondary)]"
                   >
                     LinkedIn
                   </a>
@@ -147,26 +154,29 @@ export default async function Home() {
             </div>
 
             {/* Hero Image */}
-            <div className="w-full max-w-[320px] lg:max-w-[380px] order-1 lg:order-2 flex-shrink-0">
-              <div className="relative group">
+            <div className="order-1 w-full max-w-[320px] flex-shrink-0 lg:order-2 lg:max-w-[380px]">
+              <div className="group relative">
                 {/* Background shadow box */}
-                <div className="absolute inset-0 bg-[var(--color-secondary)] translate-x-4 translate-y-4 border-[3px] border-[var(--color-text)] transition-transform group-hover:translate-x-2 group-hover:translate-y-2" />
-                
+                <div className="absolute inset-0 translate-x-4 translate-y-4 border-[3px] border-[var(--color-text)] bg-[var(--color-secondary)] transition-transform group-hover:translate-x-2 group-hover:translate-y-2" />
+
                 {/* Image container */}
-                <div className="relative border-[3px] border-[var(--color-text)] bg-[var(--color-surface)] overflow-hidden">
+                <div className="relative overflow-hidden border-[3px] border-[var(--color-text)] bg-[var(--color-surface)]">
                   <Image
-                    src={envConfig.profilePicUrl || "https://cdn.statically.io/gh/Priyanshu0007/CDN@main/profile.png"}
+                    src={
+                      envConfig.profilePicUrl ||
+                      "https://cdn.statically.io/gh/Priyanshu0007/CDN@main/profile.png"
+                    }
                     alt={landing.hero.name}
                     width={400}
                     height={400}
-                    className="w-full h-auto object-cover grayscale lg:hover:grayscale-0 transition-[filter] duration-500"
+                    className="h-auto w-full object-cover grayscale transition-[filter] duration-500 lg:hover:grayscale-0"
                     priority
                     sizes="(max-width: 768px) 320px, 400px"
                   />
                 </div>
-                
+
                 {/* Floating badge over image */}
-                <div className="absolute -bottom-4 -right-4 bg-[var(--color-primary)] border-[3px] border-[var(--color-text)] px-4 py-2 font-black text-sm shadow-[4px_4px_0px_var(--color-text)] rotate-3">
+                <div className="absolute -right-4 -bottom-4 rotate-3 border-[3px] border-[var(--color-text)] bg-[var(--color-primary)] px-4 py-2 text-sm font-black shadow-[4px_4px_0px_var(--color-text)]">
                   HI THERE! 👋
                 </div>
               </div>
@@ -176,17 +186,20 @@ export default async function Home() {
       </section>
 
       {/* ===================== ABOUT SECTION ===================== */}
-      <section className="section bg-[var(--color-surface)] border-y-[3px] border-[var(--color-border)]" id="about">
+      <section
+        className="section border-y-[3px] border-[var(--color-border)] bg-[var(--color-surface)]"
+        id="about"
+      >
         <div className="container">
           <SectionHeading
             title={landing.about.heading}
             subtitle="A quick intro to who I am and what I do."
           />
 
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12">
+          <div className="grid grid-cols-1 gap-8 lg:grid-cols-5 lg:gap-12">
             {/* Bio */}
             <div className="lg:col-span-3">
-              <p className="text-lg leading-relaxed mb-4">
+              <p className="mb-4 text-lg leading-relaxed">
                 {landing.about.bio}
               </p>
               <p className="text-lg leading-relaxed text-[var(--color-text-secondary)]">
@@ -195,7 +208,7 @@ export default async function Home() {
             </div>
 
             {/* Stats & Skills */}
-            <div className="lg:col-span-2 space-y-6">
+            <div className="space-y-6 lg:col-span-2">
               {/* Stats */}
               <div className="grid grid-cols-3 gap-3">
                 {[
@@ -217,18 +230,19 @@ export default async function Home() {
                 ].map((stat) => (
                   <div
                     key={stat.label}
-                    className="neo-card-flat text-center p-4"
+                    className="neo-card-flat p-4 text-center"
                   >
                     <div
-                      className="text-2xl md:text-3xl font-extrabold mb-1"
+                      className="mb-1 text-2xl font-extrabold md:text-3xl"
                       style={{
                         color: stat.color,
-                        fontFamily: "var(--font-heading), system-ui, sans-serif",
+                        fontFamily:
+                          "var(--font-heading), system-ui, sans-serif",
                       }}
                     >
                       {stat.value}
                     </div>
-                    <div className="text-xs font-bold uppercase tracking-wider text-[var(--color-text-muted)]">
+                    <div className="text-xs font-bold tracking-wider text-[var(--color-text-muted)] uppercase">
                       {stat.label}
                     </div>
                   </div>
@@ -237,12 +251,15 @@ export default async function Home() {
 
               {/* Skills */}
               <div>
-                <h4 className="font-extrabold mb-3 text-sm uppercase tracking-wider text-[var(--color-text-muted)]">
+                <h4 className="mb-3 text-sm font-extrabold tracking-wider text-[var(--color-text-muted)] uppercase">
                   Skills & Technologies
                 </h4>
                 <div className="flex flex-wrap gap-2">
                   {landing.about.skills.map((skill) => (
-                    <span key={skill} className="neo-badge neo-badge-outline text-xs">
+                    <span
+                      key={skill}
+                      className="neo-badge neo-badge-outline text-xs"
+                    >
                       {skill}
                     </span>
                   ))}
@@ -262,7 +279,7 @@ export default async function Home() {
             accent="var(--color-secondary)"
           />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8">
             {featuredProjects.map((project, i) => (
               <ProjectCard key={project.id} project={project} index={i} />
             ))}
@@ -284,7 +301,10 @@ export default async function Home() {
       </section>
 
       {/* ===================== LATEST BLOGS ===================== */}
-      <section className="section bg-[var(--color-surface)] border-y-[3px] border-[var(--color-border)]" id="latest-blogs">
+      <section
+        className="section border-y-[3px] border-[var(--color-border)] bg-[var(--color-surface)]"
+        id="latest-blogs"
+      >
         <div className="container">
           <SectionHeading
             title="Writing & Thoughts"
@@ -292,7 +312,7 @@ export default async function Home() {
             accent="var(--color-tertiary)"
           />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8 lg:grid-cols-3">
             {blogs.map((blog, i) => (
               <BlogCard key={blog.id} blog={blog} index={i} />
             ))}
@@ -317,7 +337,10 @@ export default async function Home() {
       <Marquee items={landing.techStack} />
 
       {/* ===================== BEYOND CODE ===================== */}
-      <section className="section bg-[var(--color-surface)] border-y-[3px] border-[var(--color-border)]" id="beyond-code">
+      <section
+        className="section border-y-[3px] border-[var(--color-border)] bg-[var(--color-surface)]"
+        id="beyond-code"
+      >
         <div className="container">
           <SectionHeading
             title={landing.beyondCode.heading}
@@ -325,7 +348,7 @@ export default async function Home() {
             accent="var(--color-accent-purple)"
           />
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:gap-8 lg:grid-cols-3">
             {landing.beyondCode.hobbies.map((hobby, i) => (
               <HobbyCard key={hobby.title} hobby={hobby} index={i} />
             ))}
@@ -336,7 +359,7 @@ export default async function Home() {
       {/* ===================== CONTACT SECTION ===================== */}
       <section className="section" id="contact">
         <div className="container">
-          <div className="max-w-3xl mx-auto text-center">
+          <div className="mx-auto max-w-3xl text-center">
             <SectionHeading
               title={landing.contact.heading}
               subtitle={landing.contact.subheading}
@@ -345,7 +368,7 @@ export default async function Home() {
             />
 
             {/* Contact buttons */}
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
+            <div className="mb-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
               {/* <a
                 href={`mailto:${landing.contact.email}`}
                 className="neo-btn neo-btn-accent neo-btn-lg w-full sm:w-auto"
@@ -374,12 +397,12 @@ export default async function Home() {
             </div>
 
             {/* Or divider */}
-            <div className="flex items-center gap-4 my-8">
-              <div className="flex-1 h-[3px] bg-[var(--color-border)]" />
-              <span className="font-extrabold text-sm uppercase tracking-wider text-[var(--color-text-muted)]">
+            <div className="my-8 flex items-center gap-4">
+              <div className="h-[3px] flex-1 bg-[var(--color-border)]" />
+              <span className="text-sm font-extrabold tracking-wider text-[var(--color-text-muted)] uppercase">
                 Or drop a message
               </span>
-              <div className="flex-1 h-[3px] bg-[var(--color-border)]" />
+              <div className="h-[3px] flex-1 bg-[var(--color-border)]" />
             </div>
 
             {/* Simple contact form */}

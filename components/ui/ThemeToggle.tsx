@@ -13,13 +13,13 @@ export default function ThemeToggle() {
   }, []);
 
   if (!mounted) {
-    return <div className="w-[42px] h-[42px]" />; // Placeholder to avoid layout shift
+    return <div className="h-[42px] w-[42px]" />; // Placeholder to avoid layout shift
   }
 
   return (
     <button
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-      className="neo-btn neo-btn-secondary p-2 w-[42px] h-[42px] flex items-center justify-center rounded-none"
+      className="neo-btn neo-btn-secondary flex h-[42px] w-[42px] items-center justify-center rounded-none p-2"
       aria-label="Toggle Theme"
       id="theme-toggle"
     >

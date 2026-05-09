@@ -7,10 +7,12 @@ import { envConfig } from "@/utils/envConfig";
 
 export const metadata: Metadata = {
   title: "Resume",
-  description: "View Priyanshu Gupta's professional experience, skills, and resume.",
+  description:
+    "View Priyanshu Gupta's professional experience, skills, and resume.",
   openGraph: {
     title: "Resume | Priyanshu Gupta",
-    description: "View Priyanshu Gupta's professional experience, skills, and resume.",
+    description:
+      "View Priyanshu Gupta's professional experience, skills, and resume.",
     type: "website",
   },
   alternates: {
@@ -33,11 +35,11 @@ export default function ResumePage() {
 
           <ResumeActions resumeUrl={resumeUrl} />
 
-          <div className="neo-card-flat p-2 sm:p-4 mb-16 bg-[var(--color-surface)] aspect-[1/1.414] w-full max-w-4xl mx-auto overflow-hidden relative">
+          <div className="neo-card-flat relative mx-auto mb-16 aspect-[1/1.414] w-full max-w-4xl overflow-hidden bg-[var(--color-surface)] p-2 sm:p-4">
             <ResumeViewer resumeUrl={resumeUrl} />
           </div>
 
-          <div className="max-w-3xl mx-auto text-center border-t-[3px] border-[var(--color-border)] pt-12 mt-12">
+          <div className="mx-auto mt-12 max-w-3xl border-t-[3px] border-[var(--color-border)] pt-12 text-center">
             <SectionHeading
               title="Get in Touch"
               subtitle="Have a question or want to work together? Leave a message!"

@@ -1,15 +1,24 @@
 "use client";
 
-import { useMemo } from 'react';
-import { createPluginRegistration } from '@embedpdf/core';
-import { EmbedPDF } from '@embedpdf/core/react';
-import { usePdfiumEngine } from '@embedpdf/engines/react';
-import { Viewport, ViewportPluginPackage } from '@embedpdf/plugin-viewport/react';
-import { Scroller, ScrollPluginPackage } from '@embedpdf/plugin-scroll/react';
-import { DocumentContent, DocumentManagerPluginPackage } from '@embedpdf/plugin-document-manager/react';
-import { RenderLayer, RenderPluginPackage } from '@embedpdf/plugin-render/react';
-import { ZoomPluginPackage } from '@embedpdf/plugin-zoom/react';
-import { ZoomMode } from '@embedpdf/plugin-zoom';
+import { useMemo } from "react";
+import { createPluginRegistration } from "@embedpdf/core";
+import { EmbedPDF } from "@embedpdf/core/react";
+import { usePdfiumEngine } from "@embedpdf/engines/react";
+import {
+  Viewport,
+  ViewportPluginPackage,
+} from "@embedpdf/plugin-viewport/react";
+import { Scroller, ScrollPluginPackage } from "@embedpdf/plugin-scroll/react";
+import {
+  DocumentContent,
+  DocumentManagerPluginPackage,
+} from "@embedpdf/plugin-document-manager/react";
+import {
+  RenderLayer,
+  RenderPluginPackage,
+} from "@embedpdf/plugin-render/react";
+import { ZoomPluginPackage } from "@embedpdf/plugin-zoom/react";
+import { ZoomMode } from "@embedpdf/plugin-zoom";
 
 interface ResumeViewerProps {
   resumeUrl: string;
@@ -35,7 +44,7 @@ export default function ResumeViewer({ resumeUrl }: ResumeViewerProps) {
 
   if (!resumeUrl) {
     return (
-      <div className="flex items-center justify-center h-full text-[var(--color-text-muted)] font-bold uppercase tracking-wider">
+      <div className="flex h-full items-center justify-center font-bold tracking-wider text-[var(--color-text-muted)] uppercase">
         Resume URL not provided
       </div>
     );
@@ -43,35 +52,53 @@ export default function ResumeViewer({ resumeUrl }: ResumeViewerProps) {
 
   if (isLoading || !engine) {
     return (
-      <div className="flex items-center justify-center h-full text-[var(--color-text-muted)] font-bold uppercase tracking-wider">
+      <div className="flex h-full items-center justify-center font-bold tracking-wider text-[var(--color-text-muted)] uppercase">
         Loading PDF Engine...
       </div>
     );
   }
 
   return (
-    <div className="w-full h-full relative">
+    <div className="relative h-full w-full">
       <EmbedPDF engine={engine} plugins={plugins}>
-        {({ activeDocumentId }) => activeDocumentId && (
-          <DocumentContent documentId={activeDocumentId}>
-            {({ isLoaded }) => isLoaded ? (
-              <Viewport documentId={activeDocumentId} style={{ backgroundColor: 'transparent' }}>
-                <Scroller 
-                  documentId={activeDocumentId} 
-                  renderPage={({ width, height, pageIndex }) => (
-                    <div style={{ width, height, margin: '0 auto 16px auto', backgroundColor: 'white', border: '1px solid var(--color-border)' }}>
-                      <RenderLayer documentId={activeDocumentId} pageIndex={pageIndex} />
-                    </div>
-                  )} 
-                />
-              </Viewport>
-            ) : (
-              <div className="flex items-center justify-center h-full text-[var(--color-text-muted)] font-bold uppercase tracking-wider">
-                Loading PDF...
-              </div>
-            )}
-          </DocumentContent>
-        )}
+        {({ activeDocumentId }) =>
+          activeDocumentId && (
+            <DocumentContent documentId={activeDocumentId}>
+              {({ isLoaded }) =>
+                isLoaded ? (
+                  <Viewport
+                    documentId={activeDocumentId}
+                    style={{ backgroundColor: "transparent" }}
+                  >
+                    <Scroller
+                      documentId={activeDocumentId}
+                      renderPage={({ width, height, pageIndex }) => (
+                        <div
+                          style={{
+                            width,
+                            height,
+                            margin: "0 auto 16px auto",
+                            backgroundColor: "white",
+                            border: "1px solid var(--color-border)",
+                          }}
+                        >
+                          <RenderLayer
+                            documentId={activeDocumentId}
+                            pageIndex={pageIndex}
+                          />
+                        </div>
+                      )}
+                    />
+                  </Viewport>
+                ) : (
+                  <div className="flex h-full items-center justify-center font-bold tracking-wider text-[var(--color-text-muted)] uppercase">
+                    Loading PDF...
+                  </div>
+                )
+              }
+            </DocumentContent>
+          )
+        }
       </EmbedPDF>
     </div>
   );

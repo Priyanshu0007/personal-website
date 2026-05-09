@@ -57,44 +57,43 @@ export default async function ProjectsPage({
   });
 
   return (
-    
-      <section className="section" id="projects-page">
-        <div className="container">
-          <SectionHeading
-            title="All Projects"
-            subtitle="Everything I've built — from side projects to production apps."
-            accent="var(--color-secondary)"
-          />
+    <section className="section" id="projects-page">
+      <div className="container">
+        <SectionHeading
+          title="All Projects"
+          subtitle="Everything I've built — from side projects to production apps."
+          accent="var(--color-secondary)"
+        />
 
-          {/* Filters */}
-          <Suspense fallback={null}>
-            <ProjectFilters />
-          </Suspense>
+        {/* Filters */}
+        <Suspense fallback={null}>
+          <ProjectFilters />
+        </Suspense>
 
-          {/* Project Grid */}
-          {projects.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-              {projects.map((project, i) => (
-                <ProjectCard key={project.id} project={project} index={i} />
-              ))}
-            </div>
-          ) : (
-            <div className="neo-card-flat text-center py-16">
-              <p className="text-4xl mb-4">🔍</p>
-              <h3 className="text-xl font-extrabold mb-2">No projects found</h3>
-              <p className="text-[var(--color-text-muted)]">
-                Try adjusting your filters to see more projects.
-              </p>
-            </div>
-          )}
-
-          {/* Count */}
-          <div className="mt-8 text-center">
-            <p className="text-sm font-bold text-[var(--color-text-muted)] uppercase tracking-wider">
-              Showing {projects.length} project{projects.length !== 1 ? "s" : ""}
+        {/* Project Grid */}
+        {projects.length > 0 ? (
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8 lg:grid-cols-3">
+            {projects.map((project, i) => (
+              <ProjectCard key={project.id} project={project} index={i} />
+            ))}
+          </div>
+        ) : (
+          <div className="neo-card-flat py-16 text-center">
+            <p className="mb-4 text-4xl">🔍</p>
+            <h3 className="mb-2 text-xl font-extrabold">No projects found</h3>
+            <p className="text-[var(--color-text-muted)]">
+              Try adjusting your filters to see more projects.
             </p>
           </div>
+        )}
+
+        {/* Count */}
+        <div className="mt-8 text-center">
+          <p className="text-sm font-bold tracking-wider text-[var(--color-text-muted)] uppercase">
+            Showing {projects.length} project{projects.length !== 1 ? "s" : ""}
+          </p>
         </div>
-      </section>
+      </div>
+    </section>
   );
 }
