@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { Suspense } from "react";
 import {
   getLandingData,
   getFeaturedProjects,
@@ -15,19 +16,34 @@ import HeroShapes from "@/components/ui/HeroShapes";
 import ContactForm from "@/components/ui/ContactForm";
 import { envConfig } from "@/utils/envConfig";
 
+async function FeaturedProjectsSection() {
+  const featuredProjects = await getFeaturedProjects();
+
+  return (
+    <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8">
+      {featuredProjects.map((project, i) => (
+        <ProjectCard key={project.id} project={project} index={i} />
+      ))}
+    </div>
+  );
+}
+
+async function LatestBlogsSection() {
+  const allBlogs = await getAllBlogs();
+  const blogs = allBlogs.slice(0, 3);
+
+  return (
+    <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8 lg:grid-cols-3">
+      {blogs.map((blog, i) => (
+        <BlogCard key={blog.id} blog={blog} index={i} />
+      ))}
+    </div>
+  );
+}
+
 export default async function Home() {
   const landing = getLandingData();
   const personal = getPersonalData();
-
-  // Defer fetching non-critical data
-  const featuredProjectsPromise = getFeaturedProjects();
-  const allBlogsPromise = getAllBlogs();
-
-  const [featuredProjects, allBlogs] = await Promise.all([
-    featuredProjectsPromise,
-    allBlogsPromise,
-  ]);
-  const blogs = allBlogs.slice(0, 3);
 
   return (
     <>
@@ -269,11 +285,20 @@ export default async function Home() {
             accent="var(--color-secondary)"
           />
 
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8">
-            {featuredProjects.map((project, i) => (
-              <ProjectCard key={project.id} project={project} index={i} />
-            ))}
-          </div>
+          <Suspense
+            fallback={
+              <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8">
+                {[1, 2].map((i) => (
+                  <div
+                    key={i}
+                    className="h-[400px] w-full animate-pulse border-[3px] border-[var(--color-border)] bg-[var(--color-surface-secondary)]"
+                  />
+                ))}
+              </div>
+            }
+          >
+            <FeaturedProjectsSection />
+          </Suspense>
 
           {/* View All CTA */}
           <div className="mt-10 text-center">
@@ -302,11 +327,20 @@ export default async function Home() {
             accent="var(--color-tertiary)"
           />
 
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8 lg:grid-cols-3">
-            {blogs.map((blog, i) => (
-              <BlogCard key={blog.id} blog={blog} index={i} />
-            ))}
-          </div>
+          <Suspense
+            fallback={
+              <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8 lg:grid-cols-3">
+                {[1, 2, 3].map((i) => (
+                  <div
+                    key={i}
+                    className="h-[300px] w-full animate-pulse border-[3px] border-[var(--color-border)] bg-[var(--color-surface-secondary)]"
+                  />
+                ))}
+              </div>
+            }
+          >
+            <LatestBlogsSection />
+          </Suspense>
 
           {/* View All CTA */}
           <div className="mt-10 text-center">

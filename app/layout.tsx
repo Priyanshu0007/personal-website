@@ -135,16 +135,6 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://cdn.statically.io" />
         <link rel="dns-prefetch" href="https://cdn.statically.io" />
-        <link
-          rel="preload"
-          href={
-            envConfig.profilePicUrl ||
-            "https://cdn.statically.io/gh/Priyanshu0007/CDN@main/profile.png"
-          }
-          as="image"
-          type="image/png"
-          fetchPriority="high"
-        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

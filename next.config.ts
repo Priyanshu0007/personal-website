@@ -9,6 +9,10 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: "https",
+        hostname: "cdn.statically.io",
+      },
+      {
+        protocol: "https",
         hostname: "images.unsplash.com",
       },
     ],
