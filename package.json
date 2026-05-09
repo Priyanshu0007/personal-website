@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "db:push": "drizzle-kit push",
+    "db:studio": "drizzle-kit studio"
   },
   "dependencies": {
     "@embedpdf/core": "2.14.2",
@@ -16,6 +18,9 @@
     "@embedpdf/plugin-scroll": "2.14.2",
     "@embedpdf/plugin-viewport": "2.14.2",
     "@embedpdf/plugin-zoom": "2.14.2",
+    "@neondatabase/serverless": "^1.1.0",
+    "dotenv": "^17.4.2",
+    "drizzle-orm": "^0.45.2",
     "framer-motion": "12.38.0",
     "lucide-react": "1.14.0",
     "next": "16.2.4",
@@ -26,9 +31,11 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss": "4",
+    "@types/dotenv": "^8.2.3",
     "@types/node": "20",
     "@types/react": "19",
     "@types/react-dom": "19",
+    "drizzle-kit": "^0.31.10",
     "eslint": "9",
     "eslint-config-next": "16.2.4",
     "tailwindcss": "4",

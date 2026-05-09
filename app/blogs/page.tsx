@@ -8,8 +8,8 @@ export const metadata: Metadata = {
   description: "Read my latest articles, tutorials, and thoughts on software engineering and design.",
 };
 
-export default function BlogsPage() {
-  const blogs = getAllBlogs();
+export default async function BlogsPage() {
+  const blogs = await getAllBlogs();
   const personal = getPersonalData();
 
   return (

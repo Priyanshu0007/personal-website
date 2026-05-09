@@ -10,11 +10,12 @@ import HeroShapes from "@/components/ui/HeroShapes";
 import ContactForm from "@/components/ui/ContactForm";
 import { envConfig } from "@/utils/envConfig";
 
-export default function Home() {
+export default async function Home() {
   const landing = getLandingData();
   const personal = getPersonalData();
-  const featuredProjects = getFeaturedProjects();
-  const blogs = getAllBlogs().slice(0, 3);
+  const featuredProjects = await getFeaturedProjects();
+  const allBlogs = await getAllBlogs();
+  const blogs = allBlogs.slice(0, 3);
 
   return (
     <>

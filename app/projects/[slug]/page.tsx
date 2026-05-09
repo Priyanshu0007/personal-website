@@ -10,8 +10,9 @@ import BackButton from "@/components/ui/BackButton";
 import ScreenshotCarousel from "@/components/ui/ScreenshotCarousel";
 
 // Pre-generate all project pages at build time
-export function generateStaticParams() {
-  return getProjectSlugs().map((slug) => ({ slug }));
+export async function generateStaticParams() {
+  const slugs = await getProjectSlugs();
+  return slugs.map((slug) => ({ slug }));
 }
 
 // Dynamic metadata per project
@@ -19,12 +20,16 @@ export async function generateMetadata(
   props: PageProps<"/projects/[slug]">
 ): Promise<Metadata> {
   const { slug } = await props.params;
-  const project = getProjectBySlug(slug);
+  const project = await getProjectBySlug(slug);
   if (!project) return { title: "Project Not Found" };
 
   return {
     title: project.title,
-    description: `${project.description} Built by Priyanshu Gupta with ${project.techStack.slice(0, 3).join(", ")}.`,
+    description: `${
+      project.description
+    } Built by Priyanshu Gupta with ${project.techStack
+      .slice(0, 3)
+      .join(", ")}.`,
     keywords: [
       project.title,
       ...project.techStack,
@@ -76,13 +81,13 @@ export default async function ProjectDetailPage(
   props: PageProps<"/projects/[slug]">
 ) {
   const { slug } = await props.params;
-  const project = getProjectBySlug(slug);
+  const project = await getProjectBySlug(slug);
 
   if (!project) {
     notFound();
   }
 
-  const { prev, next } = getAdjacentProjects(slug);
+  const { prev, next } = await getAdjacentProjects(slug);
   const rawColor = categoryRawColors[project.category];
 
   return (
@@ -137,7 +142,8 @@ export default async function ProjectDetailPage(
                 color: "#FFFFFF",
               }}
             >
-              {categoryEmojis[project.category]} {categoryLabels[project.category]}
+              {categoryEmojis[project.category]}{" "}
+              {categoryLabels[project.category]}
             </span>
             {project.isFavorite && (
               <span className="neo-badge neo-badge-secondary text-xs">
@@ -360,7 +366,10 @@ export default async function ProjectDetailPage(
 
                 <div
                   className="w-full h-[2px]"
-                  style={{ backgroundColor: "var(--color-border)", opacity: 0.2 }}
+                  style={{
+                    backgroundColor: "var(--color-border)",
+                    opacity: 0.2,
+                  }}
                 />
 
                 {/* Date */}
@@ -378,7 +387,10 @@ export default async function ProjectDetailPage(
 
                 <div
                   className="w-full h-[2px]"
-                  style={{ backgroundColor: "var(--color-border)", opacity: 0.2 }}
+                  style={{
+                    backgroundColor: "var(--color-border)",
+                    opacity: 0.2,
+                  }}
                 />
 
                 {/* Stack count */}
@@ -393,7 +405,10 @@ export default async function ProjectDetailPage(
 
                 <div
                   className="w-full h-[2px]"
-                  style={{ backgroundColor: "var(--color-border)", opacity: 0.2 }}
+                  style={{
+                    backgroundColor: "var(--color-border)",
+                    opacity: 0.2,
+                  }}
                 />
 
                 {/* Screenshots */}

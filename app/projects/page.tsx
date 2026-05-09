@@ -37,7 +37,7 @@ export default async function ProjectsPage({
   const sort = (params.sort as SortOrder) || "newest";
   const showFavorites = params.favorites === "true";
 
-  let projects = getAllProjects();
+  let projects = await getAllProjects();
 
   // Filter by category
   if (category !== "all") {

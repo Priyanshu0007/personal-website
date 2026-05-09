@@ -1,9 +1,10 @@
+import { db } from "@/db";
+import { projects, blogs } from "@/db/schema";
+import { eq, desc } from "drizzle-orm";
 import type { LandingData, PersonalData, Project, Blog } from "@/types";
 
 import landingData from "@/data/landing.json";
 import personalData from "@/data/personal.json";
-import projectsData from "@/data/projects.json";
-import blogsData from "@/data/blogs.json";
 import { envConfig } from "@/utils/envConfig";
 
 export function getPersonalData(): PersonalData {
@@ -18,33 +19,48 @@ export function getLandingData(): LandingData {
   return landingData as LandingData;
 }
 
-export function getAllProjects(): Project[] {
-  return projectsData as Project[];
+export async function getAllProjects(): Promise<Project[]> {
+  const result = await db.select().from(projects);
+  // @ts-ignore - mapping schema to type
+  return result as Project[];
 }
 
-export function getFeaturedProjects(): Project[] {
-  return (projectsData as Project[]).filter((p) => p.featured);
+export async function getFeaturedProjects(): Promise<Project[]> {
+  const result = await db
+    .select()
+    .from(projects)
+    .where(eq(projects.featured, true));
+  // @ts-ignore - mapping schema to type
+  return result as Project[];
 }
 
-export function getProjectBySlug(slug: string): Project | undefined {
-  return (projectsData as Project[]).find((p) => p.slug === slug);
+export async function getProjectBySlug(slug: string): Promise<Project | undefined> {
+  const result = await db
+    .select()
+    .from(projects)
+    .where(eq(projects.slug, slug))
+    .limit(1);
+  // @ts-ignore - mapping schema to type
+  return result[0] as Project | undefined;
 }
 
-export function getProjectSlugs(): string[] {
-  return (projectsData as Project[]).map((p) => p.slug);
+export async function getProjectSlugs(): Promise<string[]> {
+  const result = await db.select({ slug: projects.slug }).from(projects);
+  return result.map((p) => p.slug);
 }
 
-export function getAdjacentProjects(
+export async function getAdjacentProjects(
   slug: string
-): { prev: Project | null; next: Project | null } {
-  const projects = projectsData as Project[];
-  const index = projects.findIndex((p) => p.slug === slug);
+): Promise<{ prev: Project | null; next: Project | null }> {
+  const allProjects = await getAllProjects();
+  const index = allProjects.findIndex((p) => p.slug === slug);
   return {
-    prev: index > 0 ? projects[index - 1] : null,
-    next: index < projects.length - 1 ? projects[index + 1] : null,
+    prev: index > 0 ? allProjects[index - 1] : null,
+    next: index < allProjects.length - 1 ? allProjects[index + 1] : null,
   };
 }
 
-export function getAllBlogs(): Blog[] {
-  return blogsData as Blog[];
+export async function getAllBlogs(): Promise<Blog[]> {
+  const result = await db.select().from(blogs);
+  return result as Blog[];
 }
