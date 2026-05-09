@@ -113,7 +113,7 @@ export default async function ProjectDetailPage({
         >
           <Image
             src={project.thumbnail}
-            alt={project.title}
+            alt={`Main screenshot for ${project.title}`}
             fill
             className="object-cover"
             priority
@@ -127,6 +127,7 @@ export default async function ProjectDetailPage({
               background:
                 "linear-gradient(to top, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.1) 50%, transparent 100%)",
             }}
+            aria-hidden="true"
           />
 
           {/* Floating project number */}
@@ -137,6 +138,7 @@ export default async function ProjectDetailPage({
               color: "#fff",
               boxShadow: "var(--shadow-sm)",
             }}
+            aria-hidden="true"
           >
             {String(project.id).padStart(2, "0")}
           </div>
@@ -150,12 +152,17 @@ export default async function ProjectDetailPage({
                 color: "#FFFFFF",
               }}
             >
-              {categoryEmojis[project.category]}{" "}
+              <span role="img" aria-label="Project category" className="mr-1">
+                {categoryEmojis[project.category]}
+              </span>{" "}
               {categoryLabels[project.category]}
             </span>
             {project.isFavorite && (
               <span className="neo-badge neo-badge-secondary text-xs">
-                ★ Favorite
+                <span role="img" aria-label="Favorite" className="mr-1">
+                  ★
+                </span>{" "}
+                Favorite
               </span>
             )}
           </div>
@@ -192,7 +199,10 @@ export default async function ProjectDetailPage({
                 className="neo-btn neo-btn-primary w-full sm:w-auto"
                 id="project-live-link"
               >
-                🌐 Live Demo
+                <span role="img" aria-label="Globe" className="mr-1">
+                  🌐
+                </span>{" "}
+                Live Demo
               </a>
             )}
             {project.githubUrl && (
@@ -203,7 +213,10 @@ export default async function ProjectDetailPage({
                 className="neo-btn neo-btn-secondary w-full sm:w-auto"
                 id="project-github-link"
               >
-                💻 Source Code
+                <span role="img" aria-label="Computer" className="mr-1">
+                  💻
+                </span>{" "}
+                Source Code
               </a>
             )}
           </div>
@@ -236,6 +249,7 @@ export default async function ProjectDetailPage({
                 <span
                   className="inline-block h-1 w-8"
                   style={{ backgroundColor: rawColor }}
+                  aria-hidden="true"
                 />
                 About This Project
               </h2>
@@ -261,6 +275,7 @@ export default async function ProjectDetailPage({
                   <span
                     className="inline-block h-1 w-8"
                     style={{ backgroundColor: rawColor }}
+                    aria-hidden="true"
                   />
                   Key Features
                 </h2>
@@ -277,6 +292,7 @@ export default async function ProjectDetailPage({
                       <span
                         className="mb-2 block text-3xl font-extrabold opacity-30"
                         style={{ color: rawColor }}
+                        aria-hidden="true"
                       >
                         {String(i + 1).padStart(2, "0")}
                       </span>
@@ -287,6 +303,7 @@ export default async function ProjectDetailPage({
                       <div
                         className="absolute right-0 bottom-0 h-4 w-4"
                         style={{ backgroundColor: rawColor }}
+                        aria-hidden="true"
                       />
                     </div>
                   ))}
@@ -308,6 +325,7 @@ export default async function ProjectDetailPage({
                   <span
                     className="inline-block h-1 w-8"
                     style={{ backgroundColor: rawColor }}
+                    aria-hidden="true"
                   />
                   Screenshots
                 </h2>
@@ -327,7 +345,9 @@ export default async function ProjectDetailPage({
             {/* Tech Stack */}
             <div className="neo-card">
               <h3 className="mb-4 flex items-center gap-2 text-sm font-extrabold tracking-wider text-[var(--color-text-muted)] uppercase">
-                <span className="text-base">🛠</span>
+                <span className="text-base" role="img" aria-label="Tools">
+                  🛠
+                </span>
                 Tech Stack
               </h3>
               <div className="flex flex-wrap gap-2">
@@ -351,7 +371,9 @@ export default async function ProjectDetailPage({
               }}
             >
               <h3 className="flex items-center gap-2 text-sm font-extrabold tracking-wider text-[var(--color-text-muted)] uppercase">
-                <span className="text-base">📋</span>
+                <span className="text-base" role="img" aria-label="Clipboard">
+                  📋
+                </span>
                 Project Info
               </h3>
 
@@ -453,7 +475,11 @@ export default async function ProjectDetailPage({
                 }}
               />
               <div className="relative z-10">
-                <span className="block text-5xl leading-none font-extrabold text-white">
+                <span
+                  className="block text-5xl leading-none font-extrabold text-white"
+                  role="img"
+                  aria-label="Category icon"
+                >
                   {categoryEmojis[project.category]}
                 </span>
                 <span className="mt-2 block text-sm font-bold text-white opacity-90">
@@ -477,7 +503,10 @@ export default async function ProjectDetailPage({
                   rel="noopener noreferrer"
                   className="neo-btn neo-btn-primary w-full text-sm"
                 >
-                  🌐 View Live Demo
+                  <span role="img" aria-label="Globe" className="mr-1">
+                    🌐
+                  </span>{" "}
+                  View Live Demo
                 </a>
               )}
               {project.githubUrl && (
@@ -487,7 +516,10 @@ export default async function ProjectDetailPage({
                   rel="noopener noreferrer"
                   className="neo-btn neo-btn-secondary w-full text-sm"
                 >
-                  💻 View Source Code
+                  <span role="img" aria-label="Computer" className="mr-1">
+                    💻
+                  </span>{" "}
+                  View Source Code
                 </a>
               )}
             </div>

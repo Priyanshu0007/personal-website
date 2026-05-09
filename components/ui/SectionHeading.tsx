@@ -23,6 +23,7 @@ export default function SectionHeading({
         className={`mb-4 inline-flex items-center gap-3 ${
           align === "center" ? "justify-center" : ""
         }`}
+        aria-hidden="true"
       >
         <span
           className="block h-4 w-4 rotate-45 border-[3px] border-[var(--color-border)]"

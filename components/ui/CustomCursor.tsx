@@ -48,6 +48,7 @@ export default function CustomCursor() {
   return (
     <motion.div
       className="pointer-events-none fixed top-0 left-0 z-[100] hidden h-6 w-6 rounded-full bg-white mix-blend-difference md:block"
+      aria-hidden="true"
       animate={{
         x: mousePosition.x - 12,
         y: mousePosition.y - 12,

@@ -37,8 +37,12 @@ export default function Navbar({
             href="/"
             className="group flex items-center gap-2"
             id="nav-logo"
+            aria-label={`Home - ${name}`}
           >
-            <span className="flex h-10 w-10 items-center justify-center border-[3px] border-[var(--color-border)] bg-[var(--color-primary)] text-lg font-extrabold transition-transform group-hover:scale-110 group-hover:rotate-[-4deg] md:h-12 md:w-12 md:text-xl">
+            <span
+              className="flex h-10 w-10 items-center justify-center border-[3px] border-[var(--color-border)] bg-[var(--color-primary)] text-lg font-extrabold transition-transform group-hover:scale-110 group-hover:rotate-[-4deg] md:h-12 md:w-12 md:text-xl"
+              aria-hidden="true"
+            >
               {shortName}
             </span>
             <span className="hidden text-lg font-extrabold tracking-tight sm:block md:text-xl">
@@ -47,7 +51,7 @@ export default function Navbar({
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden items-center gap-1 md:flex">
+          <div className="hidden items-center gap-1 md:flex" role="menubar">
             {navigation.map((item) => {
               const isActive = pathname === item.href;
               return (
@@ -55,6 +59,8 @@ export default function Navbar({
                   key={item.href}
                   href={item.href}
                   id={`nav-${item.label.toLowerCase()}`}
+                  role="menuitem"
+                  aria-current={isActive ? "page" : undefined}
                   className={`border-[3px] px-4 py-2 text-sm font-bold tracking-wider uppercase transition-all ${
                     isActive
                       ? "border-[var(--color-border)] bg-[var(--color-primary)] shadow-[3px_3px_0px_var(--color-shadow)]"
@@ -73,20 +79,20 @@ export default function Navbar({
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex h-10 w-10 items-center justify-center border-[3px] border-[var(--color-border)] bg-[var(--color-surface)] transition-colors hover:bg-[var(--color-text)] hover:text-[var(--color-surface)]"
-                aria-label="GitHub"
+                aria-label="Visit GitHub Profile"
                 id="nav-github"
               >
-                <GitHubIcon />
+                <GitHubIcon aria-hidden="true" />
               </a>
               <a
                 href={socials.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex h-10 w-10 items-center justify-center border-[3px] border-[var(--color-border)] bg-[var(--color-surface)] transition-colors hover:bg-[#0077B5] hover:text-white"
-                aria-label="LinkedIn"
+                aria-label="Visit LinkedIn Profile"
                 id="nav-linkedin"
               >
-                <LinkedInIcon />
+                <LinkedInIcon aria-hidden="true" />
               </a>
               <ThemeToggle />
             </div>
@@ -96,30 +102,39 @@ export default function Navbar({
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
             className="flex h-10 w-10 flex-col items-center justify-center border-[3px] border-[var(--color-border)] bg-[var(--color-surface)] transition-colors hover:bg-[var(--color-primary)] md:hidden"
-            aria-label="Toggle menu"
+            aria-label={mobileOpen ? "Close menu" : "Open menu"}
+            aria-expanded={mobileOpen}
+            aria-controls="mobile-menu"
             id="nav-mobile-toggle"
           >
             <span
               className={`block h-0.5 w-5 bg-[var(--color-text)] transition-transform ${
                 mobileOpen ? "translate-y-1 rotate-45" : ""
               }`}
+              aria-hidden="true"
             />
             <span
               className={`my-1 block h-0.5 w-5 bg-[var(--color-text)] transition-opacity ${
                 mobileOpen ? "opacity-0" : ""
               }`}
+              aria-hidden="true"
             />
             <span
               className={`block h-0.5 w-5 bg-[var(--color-text)] transition-transform ${
                 mobileOpen ? "-translate-y-1 -rotate-45" : ""
               }`}
+              aria-hidden="true"
             />
           </button>
         </div>
 
         {/* Mobile Menu */}
         {mobileOpen && (
-          <div className="animate-slide-in-up border-t-[3px] border-[var(--color-border)] bg-[var(--color-surface)] md:hidden">
+          <div
+            id="mobile-menu"
+            className="animate-slide-in-up border-t-[3px] border-[var(--color-border)] bg-[var(--color-surface)] md:hidden"
+            role="menu"
+          >
             <div className="container flex flex-col gap-2 py-4">
               {navigation.map((item) => {
                 const isActive = pathname === item.href;
@@ -128,6 +143,8 @@ export default function Navbar({
                     key={item.href}
                     href={item.href}
                     onClick={() => setMobileOpen(false)}
+                    role="menuitem"
+                    aria-current={isActive ? "page" : undefined}
                     className={`border-[3px] px-4 py-3 text-base font-bold tracking-wider uppercase transition-all ${
                       isActive
                         ? "border-[var(--color-border)] bg-[var(--color-primary)] shadow-[3px_3px_0px_var(--color-shadow)]"
@@ -146,16 +163,18 @@ export default function Navbar({
                   target="_blank"
                   rel="noopener noreferrer"
                   className="neo-btn neo-btn-secondary neo-btn-sm flex-1"
+                  aria-label="Visit GitHub Profile"
                 >
-                  <GitHubIcon /> GitHub
+                  <GitHubIcon aria-hidden="true" /> GitHub
                 </a>
                 <a
                   href={socials.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="neo-btn neo-btn-secondary neo-btn-sm flex-1"
+                  aria-label="Visit LinkedIn Profile"
                 >
-                  <LinkedInIcon /> LinkedIn
+                  <LinkedInIcon aria-hidden="true" /> LinkedIn
                 </a>
               </div>
               <div className="mt-2 flex justify-end">

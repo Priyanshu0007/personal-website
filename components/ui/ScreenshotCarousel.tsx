@@ -87,6 +87,8 @@ export default function ScreenshotCarousel({
         <div
           className="neo-badge absolute top-4 right-4 z-10 text-xs"
           style={{ backgroundColor: accentColor, color: "#fff" }}
+          aria-live="polite"
+          aria-atomic="true"
         >
           {String(current + 1).padStart(2, "0")} /{" "}
           {String(total).padStart(2, "0")}
@@ -108,9 +110,16 @@ export default function ScreenshotCarousel({
           onPointerMove={handlePointerMove}
           onPointerUp={handlePointerUp}
           onPointerCancel={handlePointerUp}
+          role="listbox"
+          aria-label="Screenshot gallery"
         >
           {images.map((image, i) => (
-            <div key={i} className="relative aspect-[16/9] w-full shrink-0">
+            <div
+              key={i}
+              className="relative aspect-[16/9] w-full shrink-0"
+              role="option"
+              aria-selected={current === i}
+            >
               <Image
                 src={image}
                 alt={`${title} screenshot ${i + 1}`}
@@ -127,6 +136,7 @@ export default function ScreenshotCarousel({
                   background:
                     "linear-gradient(to top, rgba(0,0,0,0.15) 0%, transparent 40%)",
                 }}
+                aria-hidden="true"
               />
             </div>
           ))}
@@ -144,7 +154,7 @@ export default function ScreenshotCarousel({
               aria-label="Previous screenshot"
               id="carousel-prev"
             >
-              ←
+              <span aria-hidden="true">←</span>
             </button>
             <button
               onClick={goNext}
@@ -155,7 +165,7 @@ export default function ScreenshotCarousel({
               aria-label="Next screenshot"
               id="carousel-next"
             >
-              →
+              <span aria-hidden="true">→</span>
             </button>
           </>
         )}
@@ -163,7 +173,11 @@ export default function ScreenshotCarousel({
 
       {/* Dot indicators */}
       {total > 1 && (
-        <div className="mt-4 flex items-center justify-center gap-2">
+        <div
+          className="mt-4 flex items-center justify-center gap-2"
+          role="tablist"
+          aria-label="Carousel navigation"
+        >
           {images.map((_, i) => (
             <button
               key={i}
@@ -177,6 +191,8 @@ export default function ScreenshotCarousel({
                 transform: i === current ? "scale(1.3)" : "scale(1)",
               }}
               aria-label={`Go to screenshot ${i + 1}`}
+              aria-selected={i === current}
+              role="tab"
             />
           ))}
         </div>
@@ -184,7 +200,7 @@ export default function ScreenshotCarousel({
 
       {/* Thumbnail strip */}
       {total > 1 && (
-        <div className="mt-4 hidden gap-2 md:flex">
+        <div className="mt-4 hidden gap-2 md:flex" aria-hidden="true">
           {images.map((image, i) => (
             <button
               key={i}
@@ -198,6 +214,7 @@ export default function ScreenshotCarousel({
                   i === current ? `4px 4px 0px ${accentColor}` : "none",
                 transform: i === current ? "translate(-2px, -2px)" : "none",
               }}
+              tabIndex={-1}
             >
               <div className="relative h-full w-full">
                 <Image

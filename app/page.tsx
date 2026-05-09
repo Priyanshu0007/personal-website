@@ -121,7 +121,8 @@ export default async function Home() {
                     scroll={false}
                     id="hero-cta-primary"
                   >
-                    {landing.hero.ctaPrimary.label} →
+                    {landing.hero.ctaPrimary.label}{" "}
+                    <span aria-hidden="true">→</span>
                   </Link>
                   <a
                     href={landing.hero.ctaSecondary.href}
@@ -137,12 +138,16 @@ export default async function Home() {
                   <span className="text-sm font-bold tracking-wider text-[var(--color-text-muted)] uppercase">
                     Find me on
                   </span>
-                  <div className="h-[2px] w-8 bg-[var(--color-border)]" />
+                  <div
+                    className="h-[2px] w-8 bg-[var(--color-border)]"
+                    aria-hidden="true"
+                  />
                   <a
                     href={personal.socials.github}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-sm font-bold underline decoration-[var(--color-primary)] decoration-2 underline-offset-4 transition-colors hover:text-[var(--color-secondary)]"
+                    aria-label="Visit GitHub Profile"
                   >
                     GitHub
                   </a>
@@ -151,6 +156,7 @@ export default async function Home() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-sm font-bold underline decoration-[var(--color-tertiary)] decoration-2 underline-offset-4 transition-colors hover:text-[var(--color-secondary)]"
+                    aria-label="Visit LinkedIn Profile"
                   >
                     LinkedIn
                   </a>
@@ -162,7 +168,10 @@ export default async function Home() {
             <div className="order-1 w-full max-w-[320px] flex-shrink-0 lg:order-2 lg:max-w-[380px]">
               <div className="group relative">
                 {/* Background shadow box */}
-                <div className="absolute inset-0 translate-x-4 translate-y-4 border-[3px] border-[var(--color-text)] bg-[var(--color-secondary)] transition-transform group-hover:translate-x-2 group-hover:translate-y-2" />
+                <div
+                  className="absolute inset-0 translate-x-4 translate-y-4 border-[3px] border-[var(--color-text)] bg-[var(--color-secondary)] transition-transform group-hover:translate-x-2 group-hover:translate-y-2"
+                  aria-hidden="true"
+                />
 
                 {/* Image container */}
                 <div className="relative overflow-hidden border-[3px] border-[var(--color-text)] bg-[var(--color-surface)]">
@@ -171,7 +180,7 @@ export default async function Home() {
                       envConfig.profilePicUrl ||
                       "https://cdn.statically.io/gh/Priyanshu0007/CDN@main/profile.png"
                     }
-                    alt={landing.hero.name}
+                    alt={`Profile picture of ${landing.hero.name}`}
                     width={828}
                     height={1079}
                     className="h-auto w-full object-cover grayscale transition-[filter] duration-500 lg:hover:grayscale-0"
@@ -183,7 +192,10 @@ export default async function Home() {
 
                 {/* Floating badge over image */}
                 <div className="absolute -right-4 -bottom-4 rotate-3 border-[3px] border-[var(--color-text)] bg-[var(--color-primary)] px-4 py-2 text-sm font-black shadow-[4px_4px_0px_var(--color-text)]">
-                  HI THERE! 👋
+                  HI THERE!{" "}
+                  <span role="img" aria-label="Waving hand">
+                    👋
+                  </span>
                 </div>
               </div>
             </div>
@@ -309,7 +321,7 @@ export default async function Home() {
               scroll={false}
               id="view-all-projects"
             >
-              View All Projects →
+              View All Projects <span aria-hidden="true">→</span>
             </Link>
           </div>
         </div>
@@ -329,7 +341,10 @@ export default async function Home() {
 
           <Suspense
             fallback={
-              <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8 lg:grid-cols-3">
+              <div
+                className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8 lg:grid-cols-3"
+                aria-hidden="true"
+              >
                 {[1, 2, 3].map((i) => (
                   <div
                     key={i}
@@ -351,7 +366,7 @@ export default async function Home() {
               scroll={false}
               id="view-all-blogs"
             >
-              View All Articles →
+              View All Articles <span aria-hidden="true">→</span>
             </Link>
           </div>
         </div>
@@ -407,7 +422,10 @@ export default async function Home() {
                 className="neo-btn neo-btn-secondary neo-btn-lg w-full sm:w-auto"
                 id="contact-linkedin"
               >
-                💼 Connect on LinkedIn
+                <span role="img" aria-label="Briefcase" className="mr-1">
+                  💼
+                </span>{" "}
+                Connect on LinkedIn
               </a>
               <a
                 href={personal.socials.github}
@@ -416,12 +434,15 @@ export default async function Home() {
                 className="neo-btn neo-btn-secondary neo-btn-lg w-full sm:w-auto"
                 id="contact-github"
               >
-                🐙 GitHub Profile
+                <span role="img" aria-label="Octocat" className="mr-1">
+                  🐙
+                </span>{" "}
+                GitHub Profile
               </a>
             </div>
 
             {/* Or divider */}
-            <div className="my-8 flex items-center gap-4">
+            <div className="my-8 flex items-center gap-4" aria-hidden="true">
               <div className="h-[3px] flex-1 bg-[var(--color-border)]" />
               <span className="text-sm font-extrabold tracking-wider text-[var(--color-text-muted)] uppercase">
                 Or drop a message

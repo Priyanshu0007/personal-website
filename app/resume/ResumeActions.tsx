@@ -58,10 +58,27 @@ export default function ResumeActions({ resumeUrl }: ResumeActionsProps) {
         onClick={handleDownload}
         className="neo-btn neo-btn-primary"
       >
-        📥 Download Resume
+        <span role="img" aria-label="Download" className="mr-1">
+          📥
+        </span>{" "}
+        Download Resume
       </a>
       <button onClick={handleCopyLink} className="neo-btn neo-btn-secondary">
-        {copied ? "✅ Copied!" : "🔗 Copy Link"}
+        {copied ? (
+          <>
+            <span role="img" aria-label="Check" className="mr-1">
+              ✅
+            </span>{" "}
+            Copied!
+          </>
+        ) : (
+          <>
+            <span role="img" aria-label="Link" className="mr-1">
+              🔗
+            </span>{" "}
+            Copy Link
+          </>
+        )}
       </button>
     </div>
   );

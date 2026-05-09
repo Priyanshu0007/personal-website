@@ -179,6 +179,8 @@ export default function UsesPage() {
                 <span
                   className="flex h-10 w-10 items-center justify-center border-[3px] border-[var(--color-border)] text-xl"
                   style={{ backgroundColor: section.color }}
+                  role="img"
+                  aria-label={`${section.title} icon`}
                 >
                   {section.emoji}
                 </span>

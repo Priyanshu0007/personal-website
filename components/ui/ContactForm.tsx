@@ -14,7 +14,8 @@ function SubmitButton() {
       className={`neo-btn neo-btn-primary neo-btn-lg w-full ${pending ? "cursor-not-allowed opacity-70" : ""}`}
       id="contact-submit"
     >
-      {pending ? "Sending..." : "Send Message →"}
+      {pending ? "Sending..." : "Send Message"}{" "}
+      {!pending && <span aria-hidden="true">→</span>}
     </button>
   );
 }
@@ -28,13 +29,19 @@ export default function ContactForm() {
   return (
     <form action={formAction} className="mx-auto max-w-xl space-y-4 text-left">
       {state?.success && (
-        <div className="mb-4 border-[3px] border-[#166534] bg-[#dcfce7] p-4 text-sm text-[#166534] shadow-[4px_4px_0px_#166534]">
+        <div
+          className="mb-4 border-[3px] border-[#166534] bg-[#dcfce7] p-4 text-sm text-[#166534] shadow-[4px_4px_0px_#166534]"
+          role="alert"
+        >
           <span className="font-extrabold">Success!</span> Your message has been
           sent successfully.
         </div>
       )}
       {state?.error && (
-        <div className="mb-4 border-[3px] border-[#991b1b] bg-[#fee2e2] p-4 text-sm text-[#991b1b] shadow-[4px_4px_0px_#991b1b]">
+        <div
+          className="mb-4 border-[3px] border-[#991b1b] bg-[#fee2e2] p-4 text-sm text-[#991b1b] shadow-[4px_4px_0px_#991b1b]"
+          role="alert"
+        >
           <span className="font-extrabold">Error!</span> {state.error}
         </div>
       )}

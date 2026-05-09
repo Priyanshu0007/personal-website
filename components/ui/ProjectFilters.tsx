@@ -35,7 +35,7 @@ export default function ProjectFilters() {
   return (
     <div className="mb-8 md:mb-12" id="project-filters">
       {/* Category filters */}
-      <div className="mb-4 flex flex-wrap gap-2">
+      <div className="mb-4 flex flex-wrap gap-2" role="group" aria-label="Filter by category">
         {categories.map((cat) => (
           <button
             key={cat.value}
@@ -44,6 +44,7 @@ export default function ProjectFilters() {
                 category: cat.value === "all" ? null : cat.value,
               })
             }
+            aria-pressed={activeCategory === cat.value}
             className={`neo-btn neo-btn-sm text-xs font-bold tracking-wider uppercase ${
               activeCategory === cat.value
                 ? "border-[var(--color-border)] bg-[var(--color-primary)] shadow-[3px_3px_0px_var(--color-shadow)]"
@@ -57,12 +58,13 @@ export default function ProjectFilters() {
       </div>
 
       {/* Secondary filters */}
-      <div className="flex flex-wrap items-center gap-2">
+      <div className="flex flex-wrap items-center gap-2" role="group" aria-label="Other filters">
         {/* Favorites toggle */}
         <button
           onClick={() =>
             updateFilters({ favorites: showFavorites ? null : "true" })
           }
+          aria-pressed={showFavorites}
           className={`neo-btn neo-btn-sm text-xs font-bold ${
             showFavorites
               ? "border-[var(--color-border)] bg-[var(--color-primary)] shadow-[3px_3px_0px_var(--color-shadow)]"
@@ -70,7 +72,10 @@ export default function ProjectFilters() {
           }`}
           id="filter-favorites"
         >
-          ★ Favorites
+          <span role="img" aria-label="Star" className="mr-1">
+            ★
+          </span>{" "}
+          Favorites
         </button>
 
         {/* Sort toggle */}
@@ -82,8 +87,10 @@ export default function ProjectFilters() {
           }
           className="neo-btn neo-btn-sm neo-btn-secondary text-xs font-bold"
           id="filter-sort"
+          aria-label={`Sort by ${activeSort === "newest" ? "oldest" : "newest"} first`}
         >
-          {activeSort === "newest" ? "↓ Newest First" : "↑ Oldest First"}
+          <span aria-hidden="true">{activeSort === "newest" ? "↓" : "↑"}</span>{" "}
+          {activeSort === "newest" ? "Newest First" : "Oldest First"}
         </button>
       </div>
     </div>

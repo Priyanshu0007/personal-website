@@ -20,6 +20,7 @@ export default function BlogCard({ blog, index }: BlogCardProps) {
       target="_blank"
       rel="noopener noreferrer"
       className="group block h-full"
+      aria-label={`Read article: ${blog.title} on ${blog.platform}`}
     >
       <article className="neo-card flex h-full flex-col overflow-hidden p-0">
         {/* Thumbnail Area */}
@@ -30,14 +31,20 @@ export default function BlogCard({ blog, index }: BlogCardProps) {
           }}
         >
           {/* Decorative Number */}
-          <div className="absolute inset-0 flex items-center justify-center opacity-40 transition-opacity group-hover:opacity-60">
+          <div
+            className="absolute inset-0 flex items-center justify-center opacity-40 transition-opacity group-hover:opacity-60"
+            aria-hidden="true"
+          >
             <div className="text-6xl font-black" style={{ color: color }}>
               {String(index + 1).padStart(2, "0")}
             </div>
           </div>
 
           {/* Decorative geometric patterns */}
-          <div className="absolute top-0 right-0 h-24 w-24 origin-top-right rounded-bl-full bg-black/5 transition-transform group-hover:scale-110" />
+          <div
+            className="absolute top-0 right-0 h-24 w-24 origin-top-right rounded-bl-full bg-black/5 transition-transform group-hover:scale-110"
+            aria-hidden="true"
+          />
 
           {/* Platform badge */}
           <div
@@ -75,6 +82,7 @@ export default function BlogCard({ blog, index }: BlogCardProps) {
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
+                aria-hidden="true"
               >
                 <path
                   strokeLinecap="square"

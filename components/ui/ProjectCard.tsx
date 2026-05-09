@@ -29,6 +29,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
       scroll={false}
       className="group block"
       id={`project-card-${project.slug}`}
+      aria-label={`View project: ${project.title}`}
     >
       <article className="neo-card flex h-full flex-col overflow-hidden p-0">
         {/* Thumbnail */}
@@ -43,34 +44,20 @@ export default function ProjectCard({ project }: ProjectCardProps) {
           {/* Thumbnail Image */}
           <Image
             src={project.thumbnail}
-            alt={project.title}
+            alt={`Thumbnail for ${project.title}`}
             fill
             className="object-cover transition-transform duration-500 group-hover:scale-105"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px"
             loading="lazy"
           />
 
-          {/* Decorative pattern for placeholder (as fallback/overlay) */}
-          {/* <div className="absolute inset-0 flex items-center justify-center bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity">
-              <div className="text-center">
-                <div
-                  className="text-5xl md:text-6xl font-extrabold opacity-10"
-                  style={{ color: categoryColors[project.category] }}
-                >
-                  {String(project.id).padStart(2, "0")}
-                </div>
-                <div
-                  className="mt-2 text-sm font-bold uppercase tracking-wider opacity-40"
-                  style={{ color: categoryColors[project.category] }}
-                >
-                  {project.title}
-                </div>
-              </div>
-            </div> */}
-
           {/* Favorite badge */}
           {project.isFavorite && (
-            <div className="absolute top-3 right-3 flex h-8 w-8 items-center justify-center border-[2px] border-[var(--color-border)] bg-[var(--color-primary)] text-sm">
+            <div
+              className="absolute top-3 right-3 flex h-8 w-8 items-center justify-center border-[2px] border-[var(--color-border)] bg-[var(--color-primary)] text-sm"
+              role="img"
+              aria-label="Favorite project"
+            >
               ★
             </div>
           )}
@@ -90,7 +77,10 @@ export default function ProjectCard({ project }: ProjectCardProps) {
             <h3 className="absolute inset-0 overflow-hidden text-xl font-extrabold text-ellipsis whitespace-nowrap transition-opacity group-hover:opacity-0">
               {project.title}
             </h3>
-            <div className="pointer-events-none absolute inset-0 flex items-center opacity-0 transition-opacity group-hover:opacity-100">
+            <div
+              className="pointer-events-none absolute inset-0 flex items-center opacity-0 transition-opacity group-hover:opacity-100"
+              aria-hidden="true"
+            >
               <div
                 className="marquee-track [animation-play-state:paused] group-hover:[animation-play-state:running]"
                 style={{ animationDuration: "6s" }}
@@ -98,7 +88,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
                 {[...Array(8)].map((_, i) => (
                   <span
                     key={i}
-                    className="mr-4 text-xl font-extrabold whitespace-nowrap text-[var(--color-secondary)]"
+                    className="mr-8 text-xl font-extrabold whitespace-nowrap"
                   >
                     {project.title}
                   </span>

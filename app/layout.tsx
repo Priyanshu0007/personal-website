@@ -152,6 +152,12 @@ export default function RootLayout({
         className="flex min-h-full flex-col antialiased"
         style={{ fontFamily: "var(--font-body), system-ui, sans-serif" }}
       >
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:border-[3px] focus:border-[var(--color-border)] focus:bg-[var(--color-primary)] focus:px-4 focus:py-2 focus:font-bold focus:text-white focus:shadow-[4px_4px_0px_var(--color-shadow)]"
+        >
+          Skip to main content
+        </a>
         <ThemeProvider
           attribute="class"
           defaultTheme="light"
@@ -164,7 +170,9 @@ export default function RootLayout({
             navigation={personal.navigation}
             socials={personal.socials}
           />
-          <main className="flex-1">{children}</main>
+          <main className="flex-1" id="main-content">
+            {children}
+          </main>
           <Footer name={personal.name} socials={personal.socials} />
           <ClientEnhancements />
         </ThemeProvider>
