@@ -104,7 +104,7 @@ export default async function Home() {
                         className="neo-badge text-sm"
                         style={{
                           backgroundColor: colors[i % colors.length],
-                          color: i === 0 ? "var(--color-text)" : "#FFFFFF",
+                          color: "#000000",
                         }}
                       >
                         {role}

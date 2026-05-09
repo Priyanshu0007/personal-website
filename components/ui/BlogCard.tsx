@@ -48,7 +48,7 @@ export default function BlogCard({ blog, index }: BlogCardProps) {
 
           {/* Platform badge */}
           <div
-            className="absolute top-3 left-3 border-[2px] border-[var(--color-border)] px-2 py-1 text-xs font-bold tracking-wider text-white uppercase"
+            className="absolute top-3 left-3 border-[2px] border-[var(--color-border)] px-2 py-1 text-xs font-bold tracking-wider text-black uppercase"
             style={{ backgroundColor: color }}
           >
             {blog.platform}

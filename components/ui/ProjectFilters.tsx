@@ -35,7 +35,11 @@ export default function ProjectFilters() {
   return (
     <div className="mb-8 md:mb-12" id="project-filters">
       {/* Category filters */}
-      <div className="mb-4 flex flex-wrap gap-2" role="group" aria-label="Filter by category">
+      <div
+        className="mb-4 flex flex-wrap gap-2"
+        role="group"
+        aria-label="Filter by category"
+      >
         {categories.map((cat) => (
           <button
             key={cat.value}
@@ -47,7 +51,7 @@ export default function ProjectFilters() {
             aria-pressed={activeCategory === cat.value}
             className={`neo-btn neo-btn-sm text-xs font-bold tracking-wider uppercase ${
               activeCategory === cat.value
-                ? "border-[var(--color-border)] bg-[var(--color-primary)] shadow-[3px_3px_0px_var(--color-shadow)]"
+                ? "border-[var(--color-border)] bg-[var(--color-primary)] text-black shadow-[3px_3px_0px_var(--color-shadow)]"
                 : "border-[var(--color-border)] bg-[var(--color-surface)] hover:bg-[var(--color-bg-secondary)]"
             }`}
             id={`filter-${cat.value}`}
@@ -58,7 +62,11 @@ export default function ProjectFilters() {
       </div>
 
       {/* Secondary filters */}
-      <div className="flex flex-wrap items-center gap-2" role="group" aria-label="Other filters">
+      <div
+        className="flex flex-wrap items-center gap-2"
+        role="group"
+        aria-label="Other filters"
+      >
         {/* Favorites toggle */}
         <button
           onClick={() =>
@@ -67,7 +75,7 @@ export default function ProjectFilters() {
           aria-pressed={showFavorites}
           className={`neo-btn neo-btn-sm text-xs font-bold ${
             showFavorites
-              ? "border-[var(--color-border)] bg-[var(--color-primary)] shadow-[3px_3px_0px_var(--color-shadow)]"
+              ? "border-[var(--color-border)] bg-[var(--color-primary)] text-black shadow-[3px_3px_0px_var(--color-shadow)]"
               : "border-[var(--color-border)] bg-[var(--color-surface)] hover:bg-[var(--color-bg-secondary)]"
           }`}
           id="filter-favorites"

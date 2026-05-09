@@ -199,7 +199,7 @@ export default async function ProjectDetailPage({
               className="neo-badge text-xs"
               style={{
                 backgroundColor: rawColor,
-                color: "#FFFFFF",
+                color: "#000000",
               }}
             >
               <span role="img" aria-label="Project category" className="mr-1">

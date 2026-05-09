@@ -77,7 +77,12 @@ export default function ScreenshotCarousel({
   };
 
   return (
-    <div className="relative" id="screenshot-carousel">
+    <section
+      className="relative"
+      id="screenshot-carousel"
+      aria-roledescription="carousel"
+      aria-label={`${title} screenshots`}
+    >
       {/* Main viewport */}
       <div
         className="relative overflow-hidden border-[3px] border-[var(--color-border)]"
@@ -85,11 +90,12 @@ export default function ScreenshotCarousel({
       >
         {/* Slide counter badge */}
         <div
-          className="neo-badge absolute top-4 right-4 z-10 text-xs"
-          style={{ backgroundColor: accentColor, color: "#fff" }}
+          className="neo-badge absolute top-4 right-4 z-10 text-xs text-white"
+          style={{ backgroundColor: accentColor }}
           aria-live="polite"
           aria-atomic="true"
         >
+          <span className="sr-only">Slide</span>
           {String(current + 1).padStart(2, "0")} /{" "}
           {String(total).padStart(2, "0")}
         </div>
@@ -110,22 +116,22 @@ export default function ScreenshotCarousel({
           onPointerMove={handlePointerMove}
           onPointerUp={handlePointerUp}
           onPointerCancel={handlePointerUp}
-          role="listbox"
-          aria-label="Screenshot gallery"
         >
           {images.map((image, i) => (
             <div
               key={i}
               className="relative aspect-[16/9] w-full shrink-0"
-              role="option"
-              aria-selected={current === i}
+              role="group"
+              aria-roledescription="slide"
+              aria-label={`${i + 1} of ${total}`}
+              aria-hidden={current !== i}
             >
               <Image
                 src={image}
                 alt={`${title} screenshot ${i + 1}`}
                 fill
                 className="object-cover"
-                loading="lazy"
+                loading={i === 0 ? "eager" : "lazy"}
                 draggable={false}
                 sizes="(max-width: 1024px) 100vw, 896px"
               />
@@ -200,7 +206,11 @@ export default function ScreenshotCarousel({
 
       {/* Thumbnail strip */}
       {total > 1 && (
-        <div className="mt-4 hidden gap-2 md:flex" aria-hidden="true">
+        <div
+          className="mt-4 hidden gap-2 md:flex"
+          role="tablist"
+          aria-label="Screenshot thumbnails"
+        >
           {images.map((image, i) => (
             <button
               key={i}
@@ -214,12 +224,15 @@ export default function ScreenshotCarousel({
                   i === current ? `4px 4px 0px ${accentColor}` : "none",
                 transform: i === current ? "translate(-2px, -2px)" : "none",
               }}
-              tabIndex={-1}
+              role="tab"
+              aria-selected={i === current}
+              aria-label={`Go to screenshot ${i + 1}`}
+              aria-controls="screenshot-carousel"
             >
               <div className="relative h-full w-full">
                 <Image
                   src={image}
-                  alt={`Thumbnail ${i + 1}`}
+                  alt=""
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 20vw, 10vw"
@@ -229,6 +242,6 @@ export default function ScreenshotCarousel({
           ))}
         </div>
       )}
-    </div>
+    </section>
   );
 }

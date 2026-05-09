@@ -221,7 +221,7 @@
 
   .neo-btn-primary {
     background-color: var(--color-primary);
-    color: #ffffff;
+    color: #000000;
     box-shadow: var(--shadow-md);
   }
 
