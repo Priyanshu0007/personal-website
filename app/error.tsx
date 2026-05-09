@@ -58,7 +58,7 @@ export default function Error({
         </h1>
 
         <p className="mb-10 max-w-2xl text-xl leading-relaxed text-[var(--color-text-secondary)] md:text-2xl">
-          An unexpected error occurred in the matrix. Don't panic, it's probably
+          An unexpected error occurred in the matrix. Don&apos;t panic, it&apos;s probably
           not your fault.
         </p>
 

@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { Blog } from "@/types";
 
 interface BlogCardProps {

@@ -5,7 +5,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const personal = getPersonalData();
   const baseUrl = personal.seo.siteUrl;
   const projectSlugs = await getProjectSlugs();
-  const allBlogs = await getAllBlogs();
+  await getAllBlogs();
 
   const staticPages: MetadataRoute.Sitemap = [
     {

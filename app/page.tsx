@@ -18,8 +18,15 @@ import { envConfig } from "@/utils/envConfig";
 export default async function Home() {
   const landing = getLandingData();
   const personal = getPersonalData();
-  const featuredProjects = await getFeaturedProjects();
-  const allBlogs = await getAllBlogs();
+
+  // Defer fetching non-critical data
+  const featuredProjectsPromise = getFeaturedProjects();
+  const allBlogsPromise = getAllBlogs();
+
+  const [featuredProjects, allBlogs] = await Promise.all([
+    featuredProjectsPromise,
+    allBlogsPromise,
+  ]);
   const blogs = allBlogs.slice(0, 3);
 
   return (
@@ -95,7 +102,6 @@ export default async function Home() {
                   <Link
                     href={landing.hero.ctaPrimary.href}
                     className="neo-btn neo-btn-primary neo-btn-lg"
-                    transitionTypes={["nav-forward"]}
                     scroll={false}
                     id="hero-cta-primary"
                   >
@@ -154,7 +160,8 @@ export default async function Home() {
                     height={1079}
                     className="h-auto w-full object-cover grayscale transition-[filter] duration-500 lg:hover:grayscale-0"
                     priority
-                    sizes="(max-width: 768px) 320px, (max-width: 1024px) 380px, 450px"
+                    fetchPriority="high"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 380px, 450px"
                   />
                 </div>
 

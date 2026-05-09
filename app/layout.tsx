@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
 import { Bricolage_Grotesque, DM_Sans } from "next/font/google";
 import { getPersonalData } from "@/lib/data";
+import { envConfig } from "@/utils/envConfig";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-import ScrollPreserver from "@/components/ui/ScrollPreserver";
+import ClientEnhancements from "@/components/layout/ClientEnhancements";
 import { ThemeProvider } from "@/components/ui/ThemeProvider";
-import NoiseOverlay from "@/components/ui/NoiseOverlay";
-import ScrollProgress from "@/components/ui/ScrollProgress";
 import "./globals.css";
 
 const bricolage = Bricolage_Grotesque({
@@ -136,6 +135,16 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://cdn.statically.io" />
         <link rel="dns-prefetch" href="https://cdn.statically.io" />
+        <link
+          rel="preload"
+          href={
+            envConfig.profilePicUrl ||
+            "https://cdn.statically.io/gh/Priyanshu0007/CDN@main/profile.png"
+          }
+          as="image"
+          type="image/png"
+          fetchPriority="high"
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -153,10 +162,12 @@ export default function RootLayout({
         className="flex min-h-full flex-col antialiased"
         style={{ fontFamily: "var(--font-body), system-ui, sans-serif" }}
       >
-        <ThemeProvider attribute="class" defaultTheme="light">
-          <NoiseOverlay />
-          <ScrollProgress />
-          <ScrollPreserver />
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="light"
+          enableSystem
+          disableTransitionOnChange
+        >
           <Navbar
             name={personal.name}
             shortName={personal.shortName}
@@ -165,6 +176,7 @@ export default function RootLayout({
           />
           <main className="flex-1">{children}</main>
           <Footer name={personal.name} socials={personal.socials} />
+          <ClientEnhancements />
         </ThemeProvider>
       </body>
     </html>

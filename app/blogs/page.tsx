@@ -1,6 +1,5 @@
 import { Metadata } from "next";
 import { getPersonalData, getAllBlogs } from "@/lib/data";
-import SectionHeading from "@/components/ui/SectionHeading";
 import BlogCard from "@/components/ui/BlogCard";
 
 export const metadata: Metadata = {
@@ -49,7 +48,7 @@ export default async function BlogsPage() {
             <div className="mb-4 text-4xl">✍️</div>
             <h3 className="mb-2 text-2xl font-black">No Articles Yet</h3>
             <p className="text-[var(--color-text-secondary)]">
-              I'm working on some exciting new content. Check back soon!
+              I&apos;m working on some exciting new content. Check back soon!
             </p>
           </div>
         )}

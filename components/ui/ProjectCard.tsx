@@ -21,7 +21,7 @@ const categoryLabels: Record<string, string> = {
   other: "Other",
 };
 
-export default function ProjectCard({ project, index = 0 }: ProjectCardProps) {
+export default function ProjectCard({ project }: ProjectCardProps) {
   return (
     <Link
       href={`/projects/${project.slug}`}
