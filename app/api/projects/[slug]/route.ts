@@ -1,15 +1,15 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { db } from "@/db";
 import { projects } from "@/db/schema";
 import { eq } from "drizzle-orm";
 import { cleanUrl, cleanUrls } from "@/utils/formatters";
 
 export async function GET(
-  request: Request,
-  { params }: { params: Promise<{ slug: string }> }
-) {
+  request: NextRequest,
+  context: { params: Promise<{ slug: string }> }
+): Promise<Response> {
   try {
-    const { slug } = await params;
+    const { slug } = await context.params;
     const result = await db
       .select()
       .from(projects)

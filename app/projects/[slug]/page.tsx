@@ -17,10 +17,12 @@ export async function generateStaticParams() {
 }
 
 // Dynamic metadata per project
-export async function generateMetadata(
-  props: PageProps<"/projects/[slug]">
-): Promise<Metadata> {
-  const { slug } = await props.params;
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
   const project = await getProjectBySlug(slug);
   if (!project) return { title: "Project Not Found" };
 
@@ -78,10 +80,12 @@ const categoryRawColors: Record<string, string> = {
   other: "#F97316",
 };
 
-export default async function ProjectDetailPage(
-  props: PageProps<"/projects/[slug]">
-) {
-  const { slug } = await props.params;
+export default async function ProjectDetailPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
   const project = await getProjectBySlug(slug);
 
   if (!project) {
