@@ -46,10 +46,9 @@ export default function HobbyCard({ hobby, index }: HobbyCardProps) {
           {hobby.tags.map((tag) => (
             <span
               key={tag}
-              className="border-[2px] border-[var(--color-border)] px-2 py-0.5 text-[0.65rem] font-bold tracking-wider uppercase"
+              className="border-[2px] border-[var(--color-border)] px-2 py-0.5 text-[0.65rem] font-bold tracking-wider text-black uppercase"
               style={{
-                backgroundColor: `${hobby.color}20`,
-                color: hobby.color,
+                backgroundColor: hobby.color,
               }}
             >
               {tag}

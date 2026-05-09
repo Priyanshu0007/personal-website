@@ -269,9 +269,9 @@ export default async function Home() {
 
               {/* Skills */}
               <div>
-                <h4 className="mb-3 text-sm font-extrabold tracking-wider text-[var(--color-text-muted)] uppercase">
+                <h3 className="mb-3 text-sm font-extrabold tracking-wider text-[var(--color-text-muted)] uppercase">
                   Skills & Technologies
-                </h4>
+                </h3>
                 <div className="flex flex-wrap gap-2">
                   {landing.about.skills.map((skill) => (
                     <span
@@ -320,6 +320,7 @@ export default async function Home() {
               transitionTypes={["nav-forward"]}
               scroll={false}
               id="view-all-projects"
+              aria-label="View all projects in my portfolio"
             >
               View All Projects <span aria-hidden="true">→</span>
             </Link>
@@ -365,6 +366,7 @@ export default async function Home() {
               transitionTypes={["nav-forward"]}
               scroll={false}
               id="view-all-blogs"
+              aria-label="View all articles in my blog"
             >
               View All Articles <span aria-hidden="true">→</span>
             </Link>

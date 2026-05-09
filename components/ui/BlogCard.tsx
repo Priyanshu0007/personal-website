@@ -3,9 +3,14 @@ import { Blog } from "@/types";
 interface BlogCardProps {
   blog: Blog;
   index: number;
+  as?: "h2" | "h3";
 }
 
-export default function BlogCard({ blog, index }: BlogCardProps) {
+export default function BlogCard({
+  blog,
+  index,
+  as: Tag = "h3",
+}: BlogCardProps) {
   const bgColors = [
     "var(--color-primary)",
     "var(--color-secondary)",
@@ -62,9 +67,9 @@ export default function BlogCard({ blog, index }: BlogCardProps) {
             </span>
           </div>
 
-          <h3 className="mb-3 line-clamp-2 text-xl leading-tight font-black transition-opacity group-hover:opacity-80 md:text-2xl">
+          <Tag className="mb-3 line-clamp-2 text-xl leading-tight font-black transition-opacity group-hover:opacity-80 md:text-2xl">
             {blog.title}
-          </h3>
+          </Tag>
 
           <p className="mb-6 line-clamp-3 flex-1 text-sm text-[var(--color-text-secondary)]">
             {blog.description}

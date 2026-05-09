@@ -19,7 +19,10 @@ export default function Error({
   return (
     <div className="section relative flex min-h-[80vh] items-center justify-center overflow-hidden">
       {/* Decorative shapes */}
-      <div className="pointer-events-none absolute inset-0 hidden md:block">
+      <div
+        className="pointer-events-none absolute inset-0 hidden md:block"
+        aria-hidden="true"
+      >
         <motion.div
           drag
           dragConstraints={{ left: -100, right: 100, top: -100, bottom: 100 }}
@@ -58,8 +61,8 @@ export default function Error({
         </h1>
 
         <p className="mb-10 max-w-2xl text-xl leading-relaxed text-[var(--color-text-secondary)] md:text-2xl">
-          An unexpected error occurred in the matrix. Don&apos;t panic, it&apos;s probably
-          not your fault.
+          An unexpected error occurred in the matrix. Don&apos;t panic,
+          it&apos;s probably not your fault.
         </p>
 
         <div className="flex flex-wrap justify-center gap-4">

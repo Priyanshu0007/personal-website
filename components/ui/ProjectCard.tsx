@@ -5,6 +5,7 @@ import type { Project } from "@/types";
 interface ProjectCardProps {
   project: Project;
   index?: number;
+  as?: "h2" | "h3";
 }
 
 const categoryColors: Record<string, string> = {
@@ -21,7 +22,10 @@ const categoryLabels: Record<string, string> = {
   other: "Other",
 };
 
-export default function ProjectCard({ project }: ProjectCardProps) {
+export default function ProjectCard({
+  project,
+  as: Tag = "h3",
+}: ProjectCardProps) {
   return (
     <Link
       href={`/projects/${project.slug}`}
@@ -74,9 +78,9 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         {/* Content */}
         <div className="flex flex-1 flex-col p-5">
           <div className="relative mb-2 h-7 overflow-hidden">
-            <h3 className="absolute inset-0 overflow-hidden text-xl font-extrabold text-ellipsis whitespace-nowrap transition-opacity group-hover:opacity-0">
+            <Tag className="absolute inset-0 overflow-hidden text-xl font-extrabold text-ellipsis whitespace-nowrap transition-opacity group-hover:opacity-0">
               {project.title}
-            </h3>
+            </Tag>
             <div
               className="pointer-events-none absolute inset-0 flex items-center opacity-0 transition-opacity group-hover:opacity-100"
               aria-hidden="true"

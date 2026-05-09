@@ -72,7 +72,7 @@ export default async function BlogsPage() {
         {blogs.length > 0 ? (
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8 lg:grid-cols-3">
             {blogs.map((blog, i) => (
-              <BlogCard key={blog.id} blog={blog} index={i} />
+              <BlogCard key={blog.id} blog={blog} index={i} as="h2" />
             ))}
           </div>
         ) : (
@@ -80,7 +80,7 @@ export default async function BlogsPage() {
             <div className="mb-4 text-4xl" role="img" aria-label="Writing">
               ✍️
             </div>
-            <h3 className="mb-2 text-2xl font-black">No Articles Yet</h3>
+            <h2 className="mb-2 text-2xl font-black">No Articles Yet</h2>
             <p className="text-[var(--color-text-secondary)]">
               I&apos;m working on some exciting new content. Check back soon!
             </p>

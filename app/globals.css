@@ -337,17 +337,17 @@
     letter-spacing: 0.05em;
     border: 2px solid var(--color-border);
     background-color: var(--color-primary);
-    color: #ffffff;
+    color: #000000;
   }
 
   .neo-badge-secondary {
     background-color: var(--color-secondary);
-    color: #ffffff;
+    color: #000000;
   }
 
   .neo-badge-tertiary {
     background-color: var(--color-tertiary);
-    color: #ffffff;
+    color: #000000;
   }
 
   .neo-badge-outline {
