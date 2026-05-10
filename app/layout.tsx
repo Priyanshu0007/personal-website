@@ -7,6 +7,7 @@ import Footer from "@/components/layout/Footer";
 import ClientEnhancements from "@/components/layout/ClientEnhancements";
 import { ThemeProvider } from "@/components/ui/ThemeProvider";
 import FirebaseAnalytics from "@/components/FirebaseAnalytics";
+import MsClarity from "@/components/MsClarity";
 import "./globals.css";
 
 const bricolage = Bricolage_Grotesque({
@@ -195,6 +196,7 @@ export default function RootLayout({
           <Footer name={personal.name} socials={personal.socials} />
           <ClientEnhancements />
           <FirebaseAnalytics />
+          <MsClarity />
         </ThemeProvider>
       </body>
     </html>
