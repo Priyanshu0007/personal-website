@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import { trackUserAction, AnalyticsEvents } from "@/lib/analytics";
 

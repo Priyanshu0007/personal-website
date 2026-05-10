@@ -1,3 +1,5 @@
+"use client";
+
 import { Blog } from "@/types";
 import { trackUserAction, AnalyticsEvents } from "@/lib/analytics";
 

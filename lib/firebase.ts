@@ -24,6 +24,11 @@ export const analytics = typeof window !== "undefined" ? isSupported().then(yes 
  * @param eventParams Optional parameters to send with the event (e.g., { page: '/about', item: 'resume' })
  */
 export const trackEvent = async (eventName: string, eventParams?: Record<string, any>) => {
+  // Helpful log for local testing
+  if (process.env.NODE_ENV !== "production") {
+    console.log(`📊 [Analytics Event]: ${eventName}`, eventParams || {});
+  }
+
   if (typeof window !== "undefined" && analytics) {
     const analyticsInstance = await analytics;
     if (analyticsInstance) {
