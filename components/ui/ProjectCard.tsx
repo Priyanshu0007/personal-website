@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { trackUserAction, AnalyticsEvents } from "@/lib/analytics";
 import type { Project } from "@/types";
 
 interface ProjectCardProps {
@@ -31,6 +32,7 @@ export default function ProjectCard({
       href={`/projects/${project.slug}`}
       transitionTypes={["nav-forward"]}
       scroll={false}
+      onClick={() => trackUserAction(AnalyticsEvents.PROJECT_VIEW, { project_slug: project.slug, project_name: project.title })}
       className="group block"
       id={`project-card-${project.slug}`}
       aria-label={`View project: ${project.title}`}

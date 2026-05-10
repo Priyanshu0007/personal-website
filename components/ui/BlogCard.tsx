@@ -1,4 +1,5 @@
 import { Blog } from "@/types";
+import { trackUserAction, AnalyticsEvents } from "@/lib/analytics";
 
 interface BlogCardProps {
   blog: Blog;
@@ -24,6 +25,7 @@ export default function BlogCard({
       href={blog.url}
       target="_blank"
       rel="noopener noreferrer"
+      onClick={() => trackUserAction(AnalyticsEvents.BLOG_VIEW, { blog_title: blog.title, platform: blog.platform })}
       className="group block h-full"
       aria-label={`Read article: ${blog.title} on ${blog.platform}`}
     >
