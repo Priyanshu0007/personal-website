@@ -37,10 +37,10 @@ export default function BlogCard({
         >
           {/* Decorative Number */}
           <div
-            className="absolute inset-0 flex items-center justify-center opacity-40 transition-opacity group-hover:opacity-60"
+            className="absolute inset-0 flex items-center justify-center transition-transform group-hover:scale-110"
             aria-hidden="true"
           >
-            <div className="text-6xl font-black" style={{ color: color }}>
+            <div className="text-6xl font-black text-[var(--color-text-muted)] opacity-80">
               {String(index + 1).padStart(2, "0")}
             </div>
           </div>
@@ -78,8 +78,7 @@ export default function BlogCard({
           {/* Footer */}
           <div className="flex items-center justify-between border-t-[2px] border-[var(--color-border)] pt-3">
             <span
-              className="inline-flex items-center gap-1 text-sm font-bold tracking-wider uppercase transition-transform group-hover:translate-x-1"
-              style={{ color: color }}
+              className="inline-flex items-center gap-1 text-sm font-bold tracking-wider uppercase transition-transform group-hover:translate-x-1 text-[var(--color-text)]"
             >
               Read Article
               <svg

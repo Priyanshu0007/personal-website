@@ -253,12 +253,13 @@ export default async function Home() {
                     <div
                       className="mb-1 text-2xl font-extrabold md:text-3xl"
                       style={{
-                        color: stat.color,
                         fontFamily:
                           "var(--font-heading), system-ui, sans-serif",
                       }}
                     >
-                      {stat.value}
+                      <span className="neo-highlight" style={{ backgroundColor: stat.color }}>
+                        {stat.value}
+                      </span>
                     </div>
                     <div className="text-xs font-bold tracking-wider text-[var(--color-text-muted)] uppercase">
                       {stat.label}

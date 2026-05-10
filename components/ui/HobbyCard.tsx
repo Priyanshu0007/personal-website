@@ -28,10 +28,7 @@ export default function HobbyCard({ hobby, index }: HobbyCardProps) {
       </div>
 
       {/* Title */}
-      <h3
-        className="mb-2 text-lg font-extrabold"
-        style={{ color: hobby.color }}
-      >
+      <h3 className="mb-2 text-lg font-extrabold text-[var(--color-text)]">
         {hobby.title}
       </h3>
 

@@ -130,7 +130,7 @@ export default function ProjectCard({
                 year: "numeric",
               })}
             </span>
-            <span className="inline-flex items-center gap-1 text-sm font-bold text-[var(--color-secondary)] transition-transform group-hover:translate-x-1">
+            <span className="inline-flex items-center gap-1 text-sm font-bold text-[var(--color-text)] transition-transform group-hover:translate-x-1">
               View Details →
             </span>
           </div>
