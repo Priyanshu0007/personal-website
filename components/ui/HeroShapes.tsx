@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export default function HeroShapes() {
   return (
-    <div className="hidden md:block">
+    <div className="hidden md:block" aria-hidden="true">
       <motion.div
         drag
         dragConstraints={{ left: -100, right: 100, top: -100, bottom: 100 }}

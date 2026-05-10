@@ -12,7 +12,7 @@
   --color-surface: #ffffff;
   --color-text: #0f172a;
   --color-text-secondary: #1e293b;
-  --color-text-muted: #475569;
+  --color-text-muted: #334155;
   --color-border: #0f172a;
   --color-shadow: #0f172a;
 
@@ -59,8 +59,8 @@
   --color-bg-secondary: #0f172a;
   --color-surface: #1e293b;
   --color-text: #f8fafc;
-  --color-text-secondary: #cbd5e1;
-  --color-text-muted: #94a3b8;
+  --color-text-secondary: #e2e8f0;
+  --color-text-muted: #cbd5e1;
   --color-border: #f8fafc;
   --color-shadow: #f8fafc;
 
@@ -337,17 +337,17 @@
     letter-spacing: 0.05em;
     border: 2px solid var(--color-border);
     background-color: var(--color-primary);
-    color: #ffffff;
+    color: #000000;
   }
 
   .neo-badge-secondary {
     background-color: var(--color-secondary);
-    color: #ffffff;
+    color: #000000;
   }
 
   .neo-badge-tertiary {
     background-color: var(--color-tertiary);
-    color: #ffffff;
+    color: #000000;
   }
 
   .neo-badge-outline {

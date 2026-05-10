@@ -7,7 +7,10 @@ export default function NotFound() {
   return (
     <div className="section relative flex min-h-[80vh] items-center justify-center overflow-hidden">
       {/* Decorative shapes */}
-      <div className="pointer-events-none absolute inset-0 hidden md:block">
+      <div
+        className="pointer-events-none absolute inset-0 hidden md:block"
+        aria-hidden="true"
+      >
         <motion.div
           drag
           dragConstraints={{ left: -100, right: 100, top: -100, bottom: 100 }}
@@ -59,6 +62,7 @@ export default function NotFound() {
           href="/"
           className="neo-btn neo-btn-primary neo-btn-lg px-8 py-4 text-lg"
           scroll={false}
+          aria-label="Return to the home page"
         >
           ← Back to Reality
         </Link>

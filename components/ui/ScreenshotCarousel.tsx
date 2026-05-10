@@ -90,7 +90,7 @@ export default function ScreenshotCarousel({
       >
         {/* Slide counter badge */}
         <div
-          className="neo-badge absolute top-4 right-4 z-10 text-xs text-white"
+          className="neo-badge absolute top-4 right-4 z-10 text-xs text-black"
           style={{ backgroundColor: accentColor }}
           aria-live="polite"
           aria-atomic="true"

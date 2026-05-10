@@ -78,7 +78,7 @@ export default function Navbar({
                 href={socials.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex h-10 w-10 items-center justify-center border-[3px] border-[var(--color-border)] bg-[var(--color-surface)] transition-colors hover:bg-[var(--color-text)] hover:text-[var(--color-surface)]"
+                className="flex h-11 w-11 items-center justify-center border-[3px] border-[var(--color-border)] bg-[var(--color-surface)] transition-colors hover:bg-[var(--color-text)] hover:text-[var(--color-surface)]"
                 aria-label="Visit GitHub Profile"
                 id="nav-github"
               >
@@ -88,7 +88,7 @@ export default function Navbar({
                 href={socials.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex h-10 w-10 items-center justify-center border-[3px] border-[var(--color-border)] bg-[var(--color-surface)] transition-colors hover:bg-[#0077B5] hover:text-white"
+                className="flex h-11 w-11 items-center justify-center border-[3px] border-[var(--color-border)] bg-[var(--color-surface)] transition-colors hover:bg-[#0077B5] hover:text-white"
                 aria-label="Visit LinkedIn Profile"
                 id="nav-linkedin"
               >

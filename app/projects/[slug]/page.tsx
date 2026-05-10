@@ -248,6 +248,7 @@ export default async function ProjectDetailPage({
                 rel="noopener noreferrer"
                 className="neo-btn neo-btn-primary w-full sm:w-auto"
                 id="project-live-link"
+                aria-label={`View live demo of ${project.title}`}
               >
                 <span role="img" aria-label="Globe" className="mr-1">
                   🌐
@@ -262,6 +263,7 @@ export default async function ProjectDetailPage({
                 rel="noopener noreferrer"
                 className="neo-btn neo-btn-secondary w-full sm:w-auto"
                 id="project-github-link"
+                aria-label={`View source code of ${project.title} on GitHub`}
               >
                 <span role="img" aria-label="Computer" className="mr-1">
                   💻
@@ -552,6 +554,7 @@ export default async function ProjectDetailPage({
                   target="_blank"
                   rel="noopener noreferrer"
                   className="neo-btn neo-btn-primary w-full text-sm"
+                  aria-label={`View live demo of ${project.title}`}
                 >
                   <span role="img" aria-label="Globe" className="mr-1">
                     🌐
@@ -565,6 +568,7 @@ export default async function ProjectDetailPage({
                   target="_blank"
                   rel="noopener noreferrer"
                   className="neo-btn neo-btn-secondary w-full text-sm"
+                  aria-label={`View source code of ${project.title} on GitHub`}
                 >
                   <span role="img" aria-label="Computer" className="mr-1">
                     💻

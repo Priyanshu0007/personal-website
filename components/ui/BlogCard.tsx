@@ -3,9 +3,14 @@ import { Blog } from "@/types";
 interface BlogCardProps {
   blog: Blog;
   index: number;
+  as?: "h2" | "h3";
 }
 
-export default function BlogCard({ blog, index }: BlogCardProps) {
+export default function BlogCard({
+  blog,
+  index,
+  as: Tag = "h3",
+}: BlogCardProps) {
   const bgColors = [
     "var(--color-primary)",
     "var(--color-secondary)",
@@ -32,10 +37,10 @@ export default function BlogCard({ blog, index }: BlogCardProps) {
         >
           {/* Decorative Number */}
           <div
-            className="absolute inset-0 flex items-center justify-center opacity-40 transition-opacity group-hover:opacity-60"
+            className="absolute inset-0 flex items-center justify-center transition-transform group-hover:scale-110"
             aria-hidden="true"
           >
-            <div className="text-6xl font-black" style={{ color: color }}>
+            <div className="text-6xl font-black text-[var(--color-text-muted)] opacity-80">
               {String(index + 1).padStart(2, "0")}
             </div>
           </div>
@@ -62,9 +67,9 @@ export default function BlogCard({ blog, index }: BlogCardProps) {
             </span>
           </div>
 
-          <h3 className="mb-3 line-clamp-2 text-xl leading-tight font-black transition-opacity group-hover:opacity-80 md:text-2xl">
+          <Tag className="mb-3 line-clamp-2 text-xl leading-tight font-black transition-opacity group-hover:opacity-80 md:text-2xl">
             {blog.title}
-          </h3>
+          </Tag>
 
           <p className="mb-6 line-clamp-3 flex-1 text-sm text-[var(--color-text-secondary)]">
             {blog.description}
@@ -73,8 +78,7 @@ export default function BlogCard({ blog, index }: BlogCardProps) {
           {/* Footer */}
           <div className="flex items-center justify-between border-t-[2px] border-[var(--color-border)] pt-3">
             <span
-              className="inline-flex items-center gap-1 text-sm font-bold tracking-wider uppercase transition-transform group-hover:translate-x-1"
-              style={{ color: color }}
+              className="inline-flex items-center gap-1 text-sm font-bold tracking-wider uppercase transition-transform group-hover:translate-x-1 text-[var(--color-text)]"
             >
               Read Article
               <svg

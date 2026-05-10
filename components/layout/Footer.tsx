@@ -66,7 +66,7 @@ export default function Footer({ name, socials }: FooterProps) {
               href={socials.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex h-10 w-10 items-center justify-center border-[3px] border-[var(--color-border)] bg-[var(--color-surface)] transition-colors hover:bg-[var(--color-text)] hover:text-[var(--color-surface)]"
+              className="flex h-11 w-11 items-center justify-center border-[3px] border-[var(--color-border)] bg-[var(--color-surface)] transition-colors hover:bg-[var(--color-text)] hover:text-[var(--color-surface)]"
               aria-label="Visit GitHub Profile"
               id="footer-github"
             >
@@ -84,7 +84,7 @@ export default function Footer({ name, socials }: FooterProps) {
               href={socials.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex h-10 w-10 items-center justify-center border-[3px] border-[var(--color-border)] bg-[var(--color-surface)] transition-colors hover:bg-[#0077B5] hover:text-white"
+              className="flex h-11 w-11 items-center justify-center border-[3px] border-[var(--color-border)] bg-[var(--color-surface)] transition-colors hover:bg-[#0077B5] hover:text-white"
               aria-label="Visit LinkedIn Profile"
               id="footer-linkedin"
             >
@@ -102,7 +102,7 @@ export default function Footer({ name, socials }: FooterProps) {
               href={socials.medium}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex h-10 w-10 items-center justify-center border-[3px] border-[var(--color-border)] bg-[var(--color-surface)] transition-colors hover:bg-[#00ab6c] hover:text-white"
+              className="flex h-11 w-11 items-center justify-center border-[3px] border-[var(--color-border)] bg-[var(--color-surface)] transition-colors hover:bg-[#00ab6c] hover:text-white"
               aria-label="Visit Medium Profile"
               id="footer-medium"
             >
@@ -120,7 +120,7 @@ export default function Footer({ name, socials }: FooterProps) {
               href={socials.devto}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex h-10 w-10 items-center justify-center border-[3px] border-[var(--color-border)] bg-[var(--color-surface)] transition-colors hover:bg-[#000000] hover:text-white"
+              className="flex h-11 w-11 items-center justify-center border-[3px] border-[var(--color-border)] bg-[var(--color-surface)] transition-colors hover:bg-[#000000] hover:text-white"
               aria-label="Visit Dev.to Profile"
               id="footer-devto"
             >
