@@ -25,10 +25,9 @@ export const analytics = typeof window !== "undefined" ? isSupported().then(yes 
  */
 export const trackEvent = async (eventName: string, eventParams?: Record<string, any>) => {
   // Helpful log for local testing
-  if (process.env.NODE_ENV !== "production") {
-    console.log(`📊 [Analytics Event]: ${eventName}`, eventParams || {});
-  }
-
+  // if (process.env.NODE_ENV !== "production") {
+  //   console.log(`📊 [Analytics Event]: ${eventName}`, eventParams || {});
+  // }
   if (typeof window !== "undefined" && analytics) {
     const analyticsInstance = await analytics;
     if (analyticsInstance) {
