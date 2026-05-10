@@ -28,10 +28,30 @@ export const AnalyticsEvents = {
   CAROUSEL_PREV: "carousel_prev",
 } as const;
 
+declare global {
+  interface Window {
+    clarity?: (...args: any[]) => void;
+  }
+}
+
 // Helper function with strict typing for the event name
 export const trackUserAction = (
   eventName: typeof AnalyticsEvents[keyof typeof AnalyticsEvents],
   params?: Record<string, string | number | boolean>
 ) => {
+  // Track with Firebase
   trackEvent(eventName, params);
+
+  // Track with MS Clarity
+  if (typeof window !== "undefined" && window.clarity) {
+    // Fire the custom event
+    window.clarity("event", eventName);
+
+    // If there are additional parameters, set them as custom tags
+    if (params) {
+      Object.entries(params).forEach(([key, value]) => {
+        window.clarity!("set", key, value.toString());
+      });
+    }
+  }
 };
