@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import ThemeToggle from "@/components/ui/ThemeToggle";
 import { usePathname } from "next/navigation";
+import { trackUserAction, AnalyticsEvents } from "@/lib/analytics";
 import type { NavItem } from "@/types";
 
 interface NavbarProps {
@@ -61,6 +62,7 @@ export default function Navbar({
                   id={`nav-${item.label.toLowerCase()}`}
                   role="menuitem"
                   aria-current={isActive ? "page" : undefined}
+                  onClick={() => trackUserAction(AnalyticsEvents.NAV_LINK_CLICK, { link_name: item.label, destination: item.href })}
                   className={`border-[3px] px-4 py-2 text-sm font-bold tracking-wider uppercase transition-all ${
                     isActive
                       ? "border-[var(--color-border)] bg-[var(--color-primary)] text-black shadow-[3px_3px_0px_var(--color-shadow)]"
@@ -80,6 +82,7 @@ export default function Navbar({
                 rel="noopener noreferrer"
                 className="flex h-11 w-11 items-center justify-center border-[3px] border-[var(--color-border)] bg-[var(--color-surface)] transition-colors hover:bg-[var(--color-text)] hover:text-[var(--color-surface)]"
                 aria-label="Visit GitHub Profile"
+                onClick={() => trackUserAction(AnalyticsEvents.SOCIAL_LINK_CLICK, { platform: "github" })}
                 id="nav-github"
               >
                 <GitHubIcon aria-hidden="true" />
@@ -90,6 +93,7 @@ export default function Navbar({
                 rel="noopener noreferrer"
                 className="flex h-11 w-11 items-center justify-center border-[3px] border-[var(--color-border)] bg-[var(--color-surface)] transition-colors hover:bg-[#0077B5] hover:text-white"
                 aria-label="Visit LinkedIn Profile"
+                onClick={() => trackUserAction(AnalyticsEvents.SOCIAL_LINK_CLICK, { platform: "linkedin" })}
                 id="nav-linkedin"
               >
                 <LinkedInIcon aria-hidden="true" />
@@ -142,7 +146,10 @@ export default function Navbar({
                   <Link
                     key={item.href}
                     href={item.href}
-                    onClick={() => setMobileOpen(false)}
+                    onClick={() => {
+                      setMobileOpen(false);
+                      trackUserAction(AnalyticsEvents.NAV_LINK_CLICK, { link_name: item.label, destination: item.href, is_mobile: true });
+                    }}
                     role="menuitem"
                     aria-current={isActive ? "page" : undefined}
                     className={`border-[3px] px-4 py-3 text-base font-bold tracking-wider uppercase transition-all ${
@@ -163,6 +170,7 @@ export default function Navbar({
                   target="_blank"
                   rel="noopener noreferrer"
                   className="neo-btn neo-btn-secondary neo-btn-sm flex-1"
+                  onClick={() => trackUserAction(AnalyticsEvents.SOCIAL_LINK_CLICK, { platform: "github", is_mobile: true })}
                   aria-label="Visit GitHub Profile"
                 >
                   <GitHubIcon aria-hidden="true" /> GitHub
@@ -172,6 +180,7 @@ export default function Navbar({
                   target="_blank"
                   rel="noopener noreferrer"
                   className="neo-btn neo-btn-secondary neo-btn-sm flex-1"
+                  onClick={() => trackUserAction(AnalyticsEvents.SOCIAL_LINK_CLICK, { platform: "linkedin", is_mobile: true })}
                   aria-label="Visit LinkedIn Profile"
                 >
                   <LinkedInIcon aria-hidden="true" /> LinkedIn

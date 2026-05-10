@@ -1,8 +1,9 @@
 "use client";
 
-import { useActionState } from "react";
+import { useActionState, useEffect } from "react";
 import { sendContactEmail } from "@/actions/contact";
 import { useFormStatus } from "react-dom";
+import { trackUserAction, AnalyticsEvents } from "@/lib/analytics";
 
 function SubmitButton() {
   const { pending } = useFormStatus();
@@ -25,6 +26,14 @@ export default function ContactForm() {
     success: false,
     error: null,
   });
+
+  useEffect(() => {
+    if (state?.success) {
+      trackUserAction(AnalyticsEvents.CONTACT_FORM_SUBMIT);
+    } else if (state?.error) {
+      trackUserAction(AnalyticsEvents.CONTACT_FORM_ERROR, { error_message: state.error });
+    }
+  }, [state]);
 
   return (
     <form action={formAction} className="mx-auto max-w-xl space-y-4 text-left">

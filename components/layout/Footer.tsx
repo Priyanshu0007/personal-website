@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { trackUserAction, AnalyticsEvents } from "@/lib/analytics";
 
 interface FooterProps {
   name: string;
@@ -36,6 +39,7 @@ export default function Footer({ name, socials }: FooterProps) {
           <div className="flex items-center gap-4">
             <Link
               href="/"
+              onClick={() => trackUserAction(AnalyticsEvents.FOOTER_LINK_CLICK, { link_name: "Home", destination: "/" })}
               className="text-sm font-bold tracking-wider uppercase transition-colors hover:text-[var(--color-secondary)]"
             >
               Home
@@ -45,6 +49,7 @@ export default function Footer({ name, socials }: FooterProps) {
             </span>
             <Link
               href="/projects"
+              onClick={() => trackUserAction(AnalyticsEvents.FOOTER_LINK_CLICK, { link_name: "Projects", destination: "/projects" })}
               className="text-sm font-bold tracking-wider uppercase transition-colors hover:text-[var(--color-secondary)]"
             >
               Projects
@@ -54,6 +59,7 @@ export default function Footer({ name, socials }: FooterProps) {
             </span>
             <Link
               href="/uses"
+              onClick={() => trackUserAction(AnalyticsEvents.FOOTER_LINK_CLICK, { link_name: "Uses", destination: "/uses" })}
               className="text-sm font-bold tracking-wider uppercase transition-colors hover:text-[var(--color-secondary)]"
             >
               Uses
@@ -68,6 +74,7 @@ export default function Footer({ name, socials }: FooterProps) {
               rel="noopener noreferrer"
               className="flex h-11 w-11 items-center justify-center border-[3px] border-[var(--color-border)] bg-[var(--color-surface)] transition-colors hover:bg-[var(--color-text)] hover:text-[var(--color-surface)]"
               aria-label="Visit GitHub Profile"
+              onClick={() => trackUserAction(AnalyticsEvents.SOCIAL_LINK_CLICK, { platform: "github", location: "footer" })}
               id="footer-github"
             >
               <svg
@@ -86,6 +93,7 @@ export default function Footer({ name, socials }: FooterProps) {
               rel="noopener noreferrer"
               className="flex h-11 w-11 items-center justify-center border-[3px] border-[var(--color-border)] bg-[var(--color-surface)] transition-colors hover:bg-[#0077B5] hover:text-white"
               aria-label="Visit LinkedIn Profile"
+              onClick={() => trackUserAction(AnalyticsEvents.SOCIAL_LINK_CLICK, { platform: "linkedin", location: "footer" })}
               id="footer-linkedin"
             >
               <svg
@@ -104,6 +112,7 @@ export default function Footer({ name, socials }: FooterProps) {
               rel="noopener noreferrer"
               className="flex h-11 w-11 items-center justify-center border-[3px] border-[var(--color-border)] bg-[var(--color-surface)] transition-colors hover:bg-[#00ab6c] hover:text-white"
               aria-label="Visit Medium Profile"
+              onClick={() => trackUserAction(AnalyticsEvents.SOCIAL_LINK_CLICK, { platform: "medium", location: "footer" })}
               id="footer-medium"
             >
               <svg
@@ -122,6 +131,7 @@ export default function Footer({ name, socials }: FooterProps) {
               rel="noopener noreferrer"
               className="flex h-11 w-11 items-center justify-center border-[3px] border-[var(--color-border)] bg-[var(--color-surface)] transition-colors hover:bg-[#000000] hover:text-white"
               aria-label="Visit Dev.to Profile"
+              onClick={() => trackUserAction(AnalyticsEvents.SOCIAL_LINK_CLICK, { platform: "devto", location: "footer" })}
               id="footer-devto"
             >
               <svg
