@@ -5,7 +5,7 @@
    ======================================== */
 
 /* --- Design Tokens --- */
-:root {
+@theme {
   /* Colors */
   --color-bg: #e0e7ff;
   --color-bg-secondary: #c7d2fe;
@@ -27,15 +27,22 @@
   --color-accent-purple: #8b5cf6;
   --color-accent-orange: #f97316;
 
-  /* Borders */
-  --border-width: 3px;
-  --border: var(--border-width) solid var(--color-border);
-
   /* Shadows */
   --shadow-sm: 3px 3px 0px var(--color-shadow);
   --shadow-md: 6px 6px 0px var(--color-shadow);
   --shadow-lg: 8px 8px 0px var(--color-shadow);
   --shadow-xl: 12px 12px 0px var(--color-shadow);
+
+  /* Spacing */
+  --spacing-section: clamp(3rem, 8vw, 6rem);
+  --spacing-container-max: 1200px;
+  --spacing-container: clamp(1rem, 4vw, 2rem);
+}
+
+:root {
+  /* Borders */
+  --border-width: 3px;
+  --border: var(--border-width) solid var(--color-border);
 
   /* Spacing */
   --section-padding: clamp(3rem, 8vw, 6rem);

@@ -29,9 +29,9 @@ export default function Navbar({
   return (
     <header className="sticky top-0 z-50 w-full">
       {/* Top accent bar */}
-      <div className="h-1.5 w-full bg-[var(--color-primary)]" />
+      <div className="h-1.5 w-full bg-primary" />
 
-      <nav className="border-b-[3px] border-[var(--color-border)] bg-[var(--color-surface)]">
+      <nav className="border-b-[3px] border-border bg-surface">
         <div className="container flex h-16 items-center justify-between md:h-20">
           {/* Logo */}
           <Link
@@ -41,7 +41,7 @@ export default function Navbar({
             aria-label={`Home - ${name}`}
           >
             <span
-              className="flex h-10 w-10 items-center justify-center border-[3px] border-[var(--color-border)] bg-[var(--color-primary)] text-lg font-extrabold transition-transform group-hover:scale-110 group-hover:rotate-[-4deg] md:h-12 md:w-12 md:text-xl"
+              className="flex h-10 w-10 items-center justify-center border-[3px] border-border bg-primary text-lg font-extrabold transition-transform group-hover:scale-110 group-hover:rotate-[-4deg] md:h-12 md:w-12 md:text-xl"
               aria-hidden="true"
             >
               {shortName}
@@ -65,8 +65,8 @@ export default function Navbar({
                   onClick={() => trackUserAction(AnalyticsEvents.NAV_LINK_CLICK, { link_name: item.label, destination: item.href })}
                   className={`border-[3px] px-4 py-2 text-sm font-bold tracking-wider uppercase transition-all ${
                     isActive
-                      ? "border-[var(--color-border)] bg-[var(--color-primary)] text-black shadow-[3px_3px_0px_var(--color-shadow)]"
-                      : "border-transparent hover:border-[var(--color-border)] hover:bg-[var(--color-bg-secondary)]"
+                      ? "border-border bg-primary text-black shadow-[3px_3px_0px_var(--color-shadow)]"
+                      : "border-transparent hover:border-border hover:bg-bg-secondary"
                   }`}
                 >
                   {item.label}
@@ -80,7 +80,7 @@ export default function Navbar({
                 href={socials.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex h-11 w-11 items-center justify-center border-[3px] border-[var(--color-border)] bg-[var(--color-surface)] transition-colors hover:bg-[var(--color-text)] hover:text-[var(--color-surface)]"
+                className="flex h-11 w-11 items-center justify-center border-[3px] border-border bg-surface transition-colors hover:bg-text hover:text-surface"
                 aria-label="Visit GitHub Profile"
                 onClick={() => trackUserAction(AnalyticsEvents.SOCIAL_LINK_CLICK, { platform: "github" })}
                 id="nav-github"
@@ -91,7 +91,7 @@ export default function Navbar({
                 href={socials.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex h-11 w-11 items-center justify-center border-[3px] border-[var(--color-border)] bg-[var(--color-surface)] transition-colors hover:bg-[#0077B5] hover:text-white"
+                className="flex h-11 w-11 items-center justify-center border-[3px] border-border bg-surface transition-colors hover:bg-[#0077B5] hover:text-white"
                 aria-label="Visit LinkedIn Profile"
                 onClick={() => trackUserAction(AnalyticsEvents.SOCIAL_LINK_CLICK, { platform: "linkedin" })}
                 id="nav-linkedin"
@@ -105,26 +105,26 @@ export default function Navbar({
           {/* Mobile Hamburger */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="flex h-12 w-12 flex-col items-center justify-center border-[3px] border-[var(--color-border)] bg-[var(--color-surface)] transition-colors hover:bg-[var(--color-primary)] md:hidden"
+            className="flex h-12 w-12 flex-col items-center justify-center border-[3px] border-border bg-surface transition-colors hover:bg-primary md:hidden"
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
             aria-expanded={mobileOpen}
             aria-controls="mobile-menu"
             id="nav-mobile-toggle"
           >
             <span
-              className={`block h-0.5 w-5 bg-[var(--color-text)] transition-transform ${
+              className={`block h-0.5 w-5 bg-text transition-transform ${
                 mobileOpen ? "translate-y-1 rotate-45" : ""
               }`}
               aria-hidden="true"
             />
             <span
-              className={`my-1 block h-0.5 w-5 bg-[var(--color-text)] transition-opacity ${
+              className={`my-1 block h-0.5 w-5 bg-text transition-opacity ${
                 mobileOpen ? "opacity-0" : ""
               }`}
               aria-hidden="true"
             />
             <span
-              className={`block h-0.5 w-5 bg-[var(--color-text)] transition-transform ${
+              className={`block h-0.5 w-5 bg-text transition-transform ${
                 mobileOpen ? "-translate-y-1 -rotate-45" : ""
               }`}
               aria-hidden="true"
@@ -136,7 +136,7 @@ export default function Navbar({
         {mobileOpen && (
           <div
             id="mobile-menu"
-            className="animate-slide-in-up border-t-[3px] border-[var(--color-border)] bg-[var(--color-surface)] md:hidden"
+            className="animate-slide-in-up border-t-[3px] border-border bg-surface md:hidden"
             role="menu"
           >
             <div className="container flex flex-col gap-2 py-4">
@@ -154,8 +154,8 @@ export default function Navbar({
                     aria-current={isActive ? "page" : undefined}
                     className={`border-[3px] px-4 py-3 text-base font-bold tracking-wider uppercase transition-all ${
                       isActive
-                        ? "border-[var(--color-border)] bg-[var(--color-primary)] text-black shadow-[3px_3px_0px_var(--color-shadow)]"
-                        : "border-[var(--color-border)] bg-[var(--color-surface)] hover:bg-[var(--color-bg-secondary)]"
+                        ? "border-border bg-primary text-black shadow-[3px_3px_0px_var(--color-shadow)]"
+                        : "border-border bg-surface hover:bg-bg-secondary"
                     }`}
                   >
                     {item.label}

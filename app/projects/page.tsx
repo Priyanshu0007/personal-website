@@ -111,7 +111,7 @@ export default async function ProjectsPage({
           <div className="neo-card-flat py-16 text-center">
             <p className="mb-4 text-4xl">🔍</p>
             <h3 className="mb-2 text-xl font-extrabold">No projects found</h3>
-            <p className="text-[var(--color-text-muted)]">
+            <p className="text-text-muted">
               Try adjusting your filters to see more projects.
             </p>
           </div>
@@ -119,7 +119,7 @@ export default async function ProjectsPage({
 
         {/* Count */}
         <div className="mt-8 text-center">
-          <p className="text-sm font-bold tracking-wider text-[var(--color-text-muted)] uppercase">
+          <p className="text-sm font-bold tracking-wider text-text-muted uppercase">
             Showing {projects.length} project{projects.length !== 1 ? "s" : ""}
           </p>
         </div>

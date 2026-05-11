@@ -44,7 +44,7 @@ export default function ResumeViewer({ resumeUrl }: ResumeViewerProps) {
 
   if (!resumeUrl) {
     return (
-      <div className="flex h-full items-center justify-center font-bold tracking-wider text-[var(--color-text-muted)] uppercase">
+      <div className="flex h-full items-center justify-center font-bold tracking-wider text-text-muted uppercase">
         Resume URL not provided
       </div>
     );
@@ -52,7 +52,7 @@ export default function ResumeViewer({ resumeUrl }: ResumeViewerProps) {
 
   if (isLoading || !engine) {
     return (
-      <div className="flex h-full items-center justify-center font-bold tracking-wider text-[var(--color-text-muted)] uppercase">
+      <div className="flex h-full items-center justify-center font-bold tracking-wider text-text-muted uppercase">
         Loading PDF Engine...
       </div>
     );
@@ -91,7 +91,7 @@ export default function ResumeViewer({ resumeUrl }: ResumeViewerProps) {
                     />
                   </Viewport>
                 ) : (
-                  <div className="flex h-full items-center justify-center font-bold tracking-wider text-[var(--color-text-muted)] uppercase">
+                  <div className="flex h-full items-center justify-center font-bold tracking-wider text-text-muted uppercase">
                     Loading PDF...
                   </div>
                 )

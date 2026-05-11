@@ -42,7 +42,7 @@ export default function ProjectCard({
       <article className="neo-card flex h-full flex-col overflow-hidden p-0">
         {/* Thumbnail */}
         <div
-          className="relative aspect-[16/10] w-full overflow-hidden border-b-[3px] border-[var(--color-border)]"
+          className="relative aspect-[16/10] w-full overflow-hidden border-b-[3px] border-border"
           style={{
             backgroundColor: `color-mix(in srgb, ${
               categoryColors[project.category]
@@ -62,7 +62,7 @@ export default function ProjectCard({
           {/* Favorite badge */}
           {project.isFavorite && (
             <div
-              className="absolute top-3 right-3 flex h-8 w-8 items-center justify-center border-[2px] border-[var(--color-border)] bg-[var(--color-primary)] text-sm"
+              className="absolute top-3 right-3 flex h-8 w-8 items-center justify-center border-[2px] border-border bg-primary text-sm"
               role="img"
               aria-label="Favorite project"
             >
@@ -72,7 +72,7 @@ export default function ProjectCard({
 
           {/* Category badge */}
           <div
-            className="absolute top-3 left-3 border-[2px] border-[var(--color-border)] px-2 py-1 text-xs font-bold tracking-wider text-black uppercase"
+            className="absolute top-3 left-3 border-[2px] border-border px-2 py-1 text-xs font-bold tracking-wider text-black uppercase"
             style={{ backgroundColor: categoryColors[project.category] }}
           >
             {categoryLabels[project.category]}
@@ -105,7 +105,7 @@ export default function ProjectCard({
             </div>
           </div>
 
-          <p className="mb-4 line-clamp-2 flex-1 text-sm text-[var(--color-text-secondary)]">
+          <p className="mb-4 line-clamp-2 flex-1 text-sm text-text-secondary">
             {project.description}
           </p>
 
@@ -127,14 +127,14 @@ export default function ProjectCard({
           </div>
 
           {/* Footer */}
-          <div className="flex items-center justify-between border-t-[2px] border-[var(--color-border)] pt-3">
-            <span className="text-xs font-bold text-[var(--color-text-muted)]">
+          <div className="flex items-center justify-between border-t-[2px] border-border pt-3">
+            <span className="text-xs font-bold text-text-muted">
               {new Date(project.createdAt).toLocaleDateString("en-US", {
                 month: "short",
                 year: "numeric",
               })}
             </span>
-            <span className="inline-flex items-center gap-1 text-sm font-bold text-[var(--color-text)] transition-transform group-hover:translate-x-1">
+            <span className="inline-flex items-center gap-1 text-sm font-bold text-text transition-transform group-hover:translate-x-1">
               View Details →
             </span>
           </div>

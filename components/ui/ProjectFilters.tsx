@@ -51,8 +51,8 @@ export default function ProjectFilters() {
             aria-pressed={activeCategory === cat.value}
             className={`neo-btn neo-btn-sm text-xs font-bold tracking-wider uppercase ${
               activeCategory === cat.value
-                ? "border-[var(--color-border)] bg-[var(--color-primary)] text-black shadow-[3px_3px_0px_var(--color-shadow)]"
-                : "border-[var(--color-border)] bg-[var(--color-surface)] hover:bg-[var(--color-bg-secondary)]"
+                ? "border-border bg-primary text-black shadow-[3px_3px_0px_var(--color-shadow)]"
+                : "border-border bg-surface hover:bg-bg-secondary"
             }`}
             id={`filter-${cat.value}`}
           >
@@ -75,8 +75,8 @@ export default function ProjectFilters() {
           aria-pressed={showFavorites}
           className={`neo-btn neo-btn-sm text-xs font-bold ${
             showFavorites
-              ? "border-[var(--color-border)] bg-[var(--color-primary)] text-black shadow-[3px_3px_0px_var(--color-shadow)]"
-              : "border-[var(--color-border)] bg-[var(--color-surface)] hover:bg-[var(--color-bg-secondary)]"
+              ? "border-border bg-primary text-black shadow-[3px_3px_0px_var(--color-shadow)]"
+              : "border-border bg-surface hover:bg-bg-secondary"
           }`}
           id="filter-favorites"
         >

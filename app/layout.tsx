@@ -174,7 +174,7 @@ export default function RootLayout({
       >
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:border-[3px] focus:border-[var(--color-border)] focus:bg-[var(--color-primary)] focus:px-4 focus:py-2 focus:font-bold focus:text-black focus:shadow-[4px_4px_0px_var(--color-shadow)]"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:border-[3px] focus:border-border focus:bg-primary focus:px-4 focus:py-2 focus:font-bold focus:text-black focus:shadow-[4px_4px_0px_var(--color-shadow)]"
         >
           Skip to main content
         </a>
