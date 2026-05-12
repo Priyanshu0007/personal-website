@@ -35,7 +35,7 @@ export async function sendContactEmail(
     const { name, email, message } = validatedData.data;
 
     const { error } = await resend.emails.send({
-      from: "Portfolio Contact <onboarding@resend.dev>", // onboarding@resend.dev is allowed on free tier
+      from: envConfig.resendFromEmail,
       to: envConfig.contactEmailTo,
       subject: `New Contact Form Submission from ${name}`,
       text: `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,

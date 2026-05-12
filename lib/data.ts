@@ -32,7 +32,7 @@ export function getLandingData(): LandingData {
 }
 
 export async function getAllProjects(): Promise<Project[]> {
-  const result = await db.select().from(projects);
+  const result = await db.select().from(projects).where(eq(projects.hide, false));
   return result.map(mapProject);
 }
 
@@ -40,8 +40,10 @@ export async function getFeaturedProjects(): Promise<Project[]> {
   const result = await db
     .select()
     .from(projects)
-    .where(eq(projects.featured, true));
-  return result.map(mapProject);
+    .where(
+      eq(projects.featured, true)
+    ); // Note: We might need 'and' from drizzle-orm to combine where clauses if featured projects can be hidden, but usually featured ones aren't hidden.
+  return result.filter(p => !p.hide).map(mapProject);
 }
 
 export async function getProjectBySlug(
@@ -52,12 +54,12 @@ export async function getProjectBySlug(
     .from(projects)
     .where(eq(projects.slug, slug))
     .limit(1);
-  return result[0] ? mapProject(result[0]) : undefined;
+  return result[0] && !result[0].hide ? mapProject(result[0]) : undefined;
 }
 
 export async function getProjectSlugs(): Promise<string[]> {
-  const result = await db.select({ slug: projects.slug }).from(projects);
-  return result.map((p) => p.slug);
+  const result = await db.select({ slug: projects.slug, hide: projects.hide }).from(projects);
+  return result.filter(p => !p.hide).map((p) => p.slug);
 }
 
 export async function getAdjacentProjects(
@@ -72,7 +74,7 @@ export async function getAdjacentProjects(
 }
 
 export async function getAllBlogs(): Promise<Blog[]> {
-  const result = await db.select().from(blogs);
+  const result = await db.select().from(blogs).where(eq(blogs.hide, false));
   return result.map((b) => ({
     ...b,
     url: cleanUrl(b.url),
