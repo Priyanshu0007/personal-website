@@ -85,7 +85,7 @@ export default function ScreenshotCarousel({
     >
       {/* Main viewport */}
       <div
-        className="relative overflow-hidden border-[3px] border-[var(--color-border)]"
+        className="relative overflow-hidden border-[3px] border-border"
         style={{ boxShadow: "var(--shadow-lg)" }}
       >
         {/* Slide counter badge */}
@@ -153,7 +153,7 @@ export default function ScreenshotCarousel({
           <>
             <button
               onClick={goPrev}
-              className="absolute top-1/2 left-3 z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center border-[3px] border-[var(--color-border)] bg-[var(--color-surface)] text-lg font-extrabold transition-all hover:translate-x-[-2px] hover:translate-y-[calc(-50%-2px)]"
+              className="absolute top-1/2 left-3 z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center border-[3px] border-border bg-surface text-lg font-extrabold transition-all hover:translate-x-[-2px] hover:translate-y-[calc(-50%-2px)]"
               style={{
                 boxShadow: "var(--shadow-sm)",
               }}
@@ -164,7 +164,7 @@ export default function ScreenshotCarousel({
             </button>
             <button
               onClick={goNext}
-              className="absolute top-1/2 right-3 z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center border-[3px] border-[var(--color-border)] bg-[var(--color-surface)] text-lg font-extrabold transition-all hover:translate-x-[2px] hover:translate-y-[calc(-50%-2px)]"
+              className="absolute top-1/2 right-3 z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center border-[3px] border-border bg-surface text-lg font-extrabold transition-all hover:translate-x-[2px] hover:translate-y-[calc(-50%-2px)]"
               style={{
                 boxShadow: "var(--shadow-sm)",
               }}
@@ -188,7 +188,7 @@ export default function ScreenshotCarousel({
             <button
               key={i}
               onClick={() => goTo(i)}
-              className="h-3 w-3 border-2 border-[var(--color-border)] transition-all"
+              className="h-3 w-3 border-2 border-border transition-all"
               style={{
                 backgroundColor:
                   i === current ? accentColor : "var(--color-surface)",

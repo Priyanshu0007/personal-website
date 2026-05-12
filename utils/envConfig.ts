@@ -1,9 +1,21 @@
 export const envConfig = {
+  // Public URLs
   resumeUrl: process.env.NEXT_PUBLIC_RESUME_URL || "",
   profilePicUrl: process.env.NEXT_PUBLIC_PROFILE_PIC_URL || "",
-  resendApiKey: process.env.RESEND_API_KEY || "",
-  contactEmailTo: process.env.CONTACT_EMAIL_TO || "",
   clarityProjectId: process.env.NEXT_PUBLIC_CLARITY_PROJECT_ID || "",
+
+  // Resend
+  resendApiKey: process.env.RESEND_API_KEY || "",
+  resendFromEmail: process.env.RESEND_FROM_EMAIL || "onboarding@resend.dev",
+  contactEmailTo: process.env.CONTACT_EMAIL_TO || "",
+
+  // Database
+  databaseUrl: process.env.DATABASE_URL || "",
+
+  // NextAuth
+  nextAuthSecret: process.env.NEXTAUTH_SECRET || "",
+
+  // Firebase
   firebase: {
     apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY || "",
     authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN || "",

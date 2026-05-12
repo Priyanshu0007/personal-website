@@ -26,7 +26,7 @@ export default function Error({
         <motion.div
           drag
           dragConstraints={{ left: -100, right: 100, top: -100, bottom: 100 }}
-          className="hover-target pointer-events-auto absolute top-[30%] left-[15%] h-20 w-20 cursor-grab border-[3px] border-[var(--color-border)] bg-[var(--color-tertiary)] opacity-80 active:cursor-grabbing"
+          className="hover-target pointer-events-auto absolute top-[30%] left-[15%] h-20 w-20 cursor-grab border-[3px] border-border bg-tertiary opacity-80 active:cursor-grabbing"
           animate={{ rotate: [-10, 10, -10] }}
           transition={{ duration: 2, ease: "easeInOut", repeat: Infinity }}
           whileHover={{ scale: 1.1 }}
@@ -34,7 +34,7 @@ export default function Error({
         <motion.div
           drag
           dragConstraints={{ left: -100, right: 100, top: -100, bottom: 100 }}
-          className="hover-target pointer-events-auto absolute right-[15%] bottom-[25%] h-24 w-24 cursor-grab rounded-full border-[3px] border-[var(--color-border)] bg-[var(--color-accent-purple)] opacity-80 active:cursor-grabbing"
+          className="hover-target pointer-events-auto absolute right-[15%] bottom-[25%] h-24 w-24 cursor-grab rounded-full border-[3px] border-border bg-accent-purple opacity-80 active:cursor-grabbing"
           animate={{ scale: [1, 1.05, 1] }}
           transition={{ duration: 1.5, ease: "easeInOut", repeat: Infinity }}
           whileHover={{ scale: 1.1 }}
@@ -48,7 +48,7 @@ export default function Error({
           transition={{ duration: 0.5, ease: "easeInOut" }}
           className="mb-8"
         >
-          <span className="inline-block border-[4px] border-[var(--color-text)] bg-[var(--color-text)] px-8 py-4 text-6xl font-black text-[var(--color-surface)] shadow-[8px_8px_0px_var(--color-secondary)] md:text-8xl">
+          <span className="inline-block border-[4px] border-text bg-text px-8 py-4 text-6xl font-black text-surface shadow-[8px_8px_0px_var(--color-secondary)] md:text-8xl">
             OOPS!
           </span>
         </motion.div>
@@ -60,7 +60,7 @@ export default function Error({
           <span className="neo-highlight">Something went wrong</span>
         </h1>
 
-        <p className="mb-10 max-w-2xl text-xl leading-relaxed text-[var(--color-text-secondary)] md:text-2xl">
+        <p className="mb-10 max-w-2xl text-xl leading-relaxed text-text-secondary md:text-2xl">
           An unexpected error occurred in the matrix. Don&apos;t panic,
           it&apos;s probably not your fault.
         </p>

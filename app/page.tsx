@@ -59,7 +59,7 @@ export default async function Home() {
               <div className="max-w-3xl">
                 {/* Greeting */}
                 <div className="mb-6 md:mb-8">
-                  <span className="inline-block -rotate-2 transform border-[3px] border-[var(--color-text)] bg-[var(--color-text)] px-4 py-1.5 text-lg font-black text-[var(--color-surface)] shadow-[4px_4px_0px_var(--color-primary)] md:text-xl">
+                  <span className="inline-block -rotate-2 transform border-[3px] border-text bg-text px-4 py-1.5 text-lg font-black text-surface shadow-[4px_4px_0px_var(--color-primary)] md:text-xl">
                     {landing.hero.greeting}
                   </span>
                 </div>
@@ -76,7 +76,7 @@ export default async function Home() {
 
                 {/* Tagline */}
                 <p
-                  className="mb-6 text-2xl font-extrabold text-[var(--color-text)] md:text-4xl"
+                  className="mb-6 text-2xl font-extrabold text-text md:text-4xl"
                   style={{
                     fontFamily: "var(--font-heading), system-ui, sans-serif",
                   }}
@@ -85,7 +85,7 @@ export default async function Home() {
                 </p>
 
                 {/* Description */}
-                <p className="mb-8 max-w-2xl text-lg leading-relaxed text-[var(--color-text-secondary)] md:text-xl">
+                <p className="mb-8 max-w-2xl text-lg leading-relaxed text-text-secondary md:text-xl">
                   {landing.hero.description}
                 </p>
 
@@ -135,18 +135,18 @@ export default async function Home() {
 
                 {/* Social strip */}
                 <div className="mt-10 flex items-center gap-4">
-                  <span className="text-sm font-bold tracking-wider text-[var(--color-text-muted)] uppercase">
+                  <span className="text-sm font-bold tracking-wider text-text-muted uppercase">
                     Find me on
                   </span>
                   <div
-                    className="h-[2px] w-8 bg-[var(--color-border)]"
+                    className="h-[2px] w-8 bg-border"
                     aria-hidden="true"
                   />
                   <a
                     href={personal.socials.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-sm font-bold underline decoration-[var(--color-primary)] decoration-2 underline-offset-4 transition-colors hover:text-[var(--color-secondary)]"
+                    className="text-sm font-bold underline decoration-primary decoration-2 underline-offset-4 transition-colors hover:text-secondary"
                     aria-label="Visit GitHub Profile"
                   >
                     GitHub
@@ -155,7 +155,7 @@ export default async function Home() {
                     href={personal.socials.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-sm font-bold underline decoration-[var(--color-tertiary)] decoration-2 underline-offset-4 transition-colors hover:text-[var(--color-secondary)]"
+                    className="text-sm font-bold underline decoration-tertiary decoration-2 underline-offset-4 transition-colors hover:text-secondary"
                     aria-label="Visit LinkedIn Profile"
                   >
                     LinkedIn
@@ -169,12 +169,12 @@ export default async function Home() {
               <div className="group relative">
                 {/* Background shadow box */}
                 <div
-                  className="absolute inset-0 translate-x-4 translate-y-4 border-[3px] border-[var(--color-text)] bg-[var(--color-secondary)] transition-transform group-hover:translate-x-2 group-hover:translate-y-2"
+                  className="absolute inset-0 translate-x-4 translate-y-4 border-[3px] border-text bg-secondary transition-transform group-hover:translate-x-2 group-hover:translate-y-2"
                   aria-hidden="true"
                 />
 
                 {/* Image container */}
-                <div className="relative overflow-hidden border-[3px] border-[var(--color-text)] bg-[var(--color-surface)]">
+                <div className="relative overflow-hidden border-[3px] border-text bg-surface">
                   <Image
                     src={
                       envConfig.profilePicUrl ||
@@ -191,7 +191,7 @@ export default async function Home() {
                 </div>
 
                 {/* Floating badge over image */}
-                <div className="absolute -right-4 -bottom-4 rotate-3 border-[3px] border-[var(--color-text)] bg-[var(--color-primary)] px-4 py-2 text-sm font-black shadow-[4px_4px_0px_var(--color-text)]">
+                <div className="absolute -right-4 -bottom-4 rotate-3 border-[3px] border-text bg-primary px-4 py-2 text-sm font-black shadow-[4px_4px_0px_var(--color-text)]">
                   HI THERE!{" "}
                   <span role="img" aria-label="Waving hand">
                     👋
@@ -205,7 +205,7 @@ export default async function Home() {
 
       {/* ===================== ABOUT SECTION ===================== */}
       <section
-        className="section border-y-[3px] border-[var(--color-border)] bg-[var(--color-surface)]"
+        className="section border-y-[3px] border-border bg-surface"
         id="about"
       >
         <div className="container">
@@ -220,7 +220,7 @@ export default async function Home() {
               <p className="mb-4 text-lg leading-relaxed">
                 {landing.about.bio}
               </p>
-              <p className="text-lg leading-relaxed text-[var(--color-text-secondary)]">
+              <p className="text-lg leading-relaxed text-text-secondary">
                 {landing.about.bioExtended}
               </p>
             </div>
@@ -261,7 +261,7 @@ export default async function Home() {
                         {stat.value}
                       </span>
                     </div>
-                    <div className="text-xs font-bold tracking-wider text-[var(--color-text-muted)] uppercase">
+                    <div className="text-xs font-bold tracking-wider text-text-muted uppercase">
                       {stat.label}
                     </div>
                   </div>
@@ -270,7 +270,7 @@ export default async function Home() {
 
               {/* Skills */}
               <div>
-                <h3 className="mb-3 text-sm font-extrabold tracking-wider text-[var(--color-text-muted)] uppercase">
+                <h3 className="mb-3 text-sm font-extrabold tracking-wider text-text-muted uppercase">
                   Skills & Technologies
                 </h3>
                 <div className="flex flex-wrap gap-2">
@@ -304,7 +304,7 @@ export default async function Home() {
                 {[1, 2].map((i) => (
                   <div
                     key={i}
-                    className="h-[400px] w-full animate-pulse border-[3px] border-[var(--color-border)] bg-[var(--color-surface-secondary)]"
+                    className="h-[400px] w-full animate-pulse border-[3px] border-border bg-surface-secondary"
                   />
                 ))}
               </div>
@@ -331,7 +331,7 @@ export default async function Home() {
 
       {/* ===================== LATEST BLOGS ===================== */}
       <section
-        className="section border-y-[3px] border-[var(--color-border)] bg-[var(--color-surface)]"
+        className="section border-y-[3px] border-border bg-surface"
         id="latest-blogs"
       >
         <div className="container">
@@ -350,7 +350,7 @@ export default async function Home() {
                 {[1, 2, 3].map((i) => (
                   <div
                     key={i}
-                    className="h-[300px] w-full animate-pulse border-[3px] border-[var(--color-border)] bg-[var(--color-surface-secondary)]"
+                    className="h-[300px] w-full animate-pulse border-[3px] border-border bg-surface-secondary"
                   />
                 ))}
               </div>
@@ -380,7 +380,7 @@ export default async function Home() {
 
       {/* ===================== BEYOND CODE ===================== */}
       <section
-        className="section border-y-[3px] border-[var(--color-border)] bg-[var(--color-surface)]"
+        className="section border-y-[3px] border-border bg-surface"
         id="beyond-code"
       >
         <div className="container">
@@ -446,11 +446,11 @@ export default async function Home() {
 
             {/* Or divider */}
             <div className="my-8 flex items-center gap-4" aria-hidden="true">
-              <div className="h-[3px] flex-1 bg-[var(--color-border)]" />
-              <span className="text-sm font-extrabold tracking-wider text-[var(--color-text-muted)] uppercase">
+              <div className="h-[3px] flex-1 bg-border" />
+              <span className="text-sm font-extrabold tracking-wider text-text-muted uppercase">
                 Or drop a message
               </span>
-              <div className="h-[3px] flex-1 bg-[var(--color-border)]" />
+              <div className="h-[3px] flex-1 bg-border" />
             </div>
 
             {/* Simple contact form */}

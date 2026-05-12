@@ -34,7 +34,7 @@ export default function BlogCard({
       <article className="neo-card flex h-full flex-col overflow-hidden p-0">
         {/* Thumbnail Area */}
         <div
-          className="relative h-32 w-full overflow-hidden border-b-[3px] border-[var(--color-border)]"
+          className="relative h-32 w-full overflow-hidden border-b-[3px] border-border"
           style={{
             backgroundColor: `color-mix(in srgb, ${color} 15%, transparent)`,
           }}
@@ -44,7 +44,7 @@ export default function BlogCard({
             className="absolute inset-0 flex items-center justify-center transition-transform group-hover:scale-110"
             aria-hidden="true"
           >
-            <div className="text-6xl font-black text-[var(--color-text-muted)] opacity-80">
+            <div className="text-6xl font-black text-text-muted opacity-80">
               {String(index + 1).padStart(2, "0")}
             </div>
           </div>
@@ -57,7 +57,7 @@ export default function BlogCard({
 
           {/* Platform badge */}
           <div
-            className="absolute top-3 left-3 border-[2px] border-[var(--color-border)] px-2 py-1 text-xs font-bold tracking-wider text-black uppercase"
+            className="absolute top-3 left-3 border-[2px] border-border px-2 py-1 text-xs font-bold tracking-wider text-black uppercase"
             style={{ backgroundColor: color }}
           >
             {blog.platform}
@@ -66,7 +66,7 @@ export default function BlogCard({
 
         <div className="flex flex-1 flex-col p-5">
           <div className="mb-2">
-            <span className="text-xs font-bold text-[var(--color-text-muted)]">
+            <span className="text-xs font-bold text-text-muted">
               {blog.date}
             </span>
           </div>
@@ -75,14 +75,14 @@ export default function BlogCard({
             {blog.title}
           </Tag>
 
-          <p className="mb-6 line-clamp-3 flex-1 text-sm text-[var(--color-text-secondary)]">
+          <p className="mb-6 line-clamp-3 flex-1 text-sm text-text-secondary">
             {blog.description}
           </p>
 
           {/* Footer */}
-          <div className="flex items-center justify-between border-t-[2px] border-[var(--color-border)] pt-3">
+          <div className="flex items-center justify-between border-t-[2px] border-border pt-3">
             <span
-              className="inline-flex items-center gap-1 text-sm font-bold tracking-wider uppercase transition-transform group-hover:translate-x-1 text-[var(--color-text)]"
+              className="inline-flex items-center gap-1 text-sm font-bold tracking-wider uppercase transition-transform group-hover:translate-x-1 text-text"
             >
               Read Article
               <svg

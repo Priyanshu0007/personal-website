@@ -14,6 +14,7 @@ export interface Project {
   featured: boolean;
   createdAt: string;
   highlights: string[];
+  hide: boolean;
 }
 
 export interface Social {
@@ -31,6 +32,7 @@ export interface Blog {
   platform: string;
   date: string;
   description: string;
+  hide: boolean;
 }
 
 export interface NavItem {

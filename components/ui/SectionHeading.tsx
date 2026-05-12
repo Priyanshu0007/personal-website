@@ -26,7 +26,7 @@ export default function SectionHeading({
         aria-hidden="true"
       >
         <span
-          className="block h-4 w-4 rotate-45 border-[3px] border-[var(--color-border)]"
+          className="block h-4 w-4 rotate-45 border-[3px] border-border"
           style={{ backgroundColor: accent }}
         />
         <span
@@ -36,7 +36,7 @@ export default function SectionHeading({
       </div>
       <Tag className="font-extrabold">{title}</Tag>
       {subtitle && (
-        <p className="mt-3 max-w-2xl text-lg text-[var(--color-text-secondary)]">
+        <p className="mt-3 max-w-2xl text-lg text-text-secondary">
           {subtitle}
         </p>
       )}

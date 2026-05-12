@@ -59,10 +59,10 @@ export default async function BlogsPage() {
             className="mb-6 text-4xl font-black md:text-6xl lg:text-7xl"
             style={{ fontFamily: "var(--font-heading), system-ui, sans-serif" }}
           >
-            My <span className="text-[var(--color-secondary)]">Blogs</span>
+            My <span className="text-secondary">Blogs</span>
           </h1>
 
-          <p className="max-w-2xl border-l-[4px] border-[var(--color-primary)] py-2 pl-6 text-xl leading-relaxed text-[var(--color-text-secondary)]">
+          <p className="max-w-2xl border-l-[4px] border-primary py-2 pl-6 text-xl leading-relaxed text-text-secondary">
             A collection of articles, tutorials, and my thoughts on front-end
             development, animations, and software engineering.
           </p>
@@ -76,12 +76,12 @@ export default async function BlogsPage() {
             ))}
           </div>
         ) : (
-          <div className="neo-card bg-[var(--color-surface)] p-12 text-center">
+          <div className="neo-card bg-surface p-12 text-center">
             <div className="mb-4 text-4xl" role="img" aria-label="Writing">
               ✍️
             </div>
             <h2 className="mb-2 text-2xl font-black">No Articles Yet</h2>
-            <p className="text-[var(--color-text-secondary)]">
+            <p className="text-text-secondary">
               I&apos;m working on some exciting new content. Check back soon!
             </p>
           </div>
