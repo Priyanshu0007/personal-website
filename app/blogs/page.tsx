@@ -14,6 +14,22 @@ export const metadata: Metadata = {
     description:
       "Read my latest articles, tutorials, and thoughts on software engineering and design.",
     type: "website",
+    url: "https://priyanshugupta.in/blogs",
+    images: [
+      {
+        url: "https://priyanshugupta.in/og-blogs.png",
+        width: 1200,
+        height: 630,
+        alt: "Priyanshu Gupta's Blog Articles",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Blogs | Priyanshu Gupta",
+    description:
+      "Read my latest articles, tutorials, and thoughts on software engineering and design.",
+    images: ["https://priyanshugupta.in/og-blogs.png"],
   },
 };
 
@@ -62,7 +78,7 @@ export default async function BlogsPage() {
             My <span className="text-secondary">Blogs</span>
           </h1>
 
-          <p className="max-w-2xl border-l-[4px] border-primary py-2 pl-6 text-xl leading-relaxed text-text-secondary">
+          <p className="max-w-2xl border-l-4 border-primary py-2 pl-6 text-xl leading-relaxed text-text-secondary">
             A collection of articles, tutorials, and my thoughts on front-end
             development, animations, and software engineering.
           </p>
