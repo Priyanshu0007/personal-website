@@ -21,6 +21,9 @@ export async function GET(
     }
 
     const p = result[0];
+    if (!p) {
+      return NextResponse.json({ error: "Project not found" }, { status: 404 });
+    }
     const cleanedProject = {
       ...p,
       thumbnail: cleanUrl(p.thumbnail),

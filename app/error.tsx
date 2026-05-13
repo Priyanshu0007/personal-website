@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { trackUserAction, AnalyticsEvents } from "@/lib/analytics";
 
 export default function Error({
   error,
@@ -14,6 +15,12 @@ export default function Error({
   useEffect(() => {
     // Log the error to an error reporting service
     console.error(error);
+    trackUserAction(AnalyticsEvents.ERROR_OCCURRED, {
+      error_message: error.message,
+      error_digest: error.digest || "none",
+      page_path: "global",
+      error_type: "page_error",
+    });
   }, [error]);
 
   return (

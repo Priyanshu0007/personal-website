@@ -26,8 +26,9 @@ export async function sendContactEmail(
     const validatedData = contactSchema.safeParse(rawData);
 
     if (!validatedData.success) {
+      const firstIssue = validatedData.error.issues[0];
       return {
-        error: validatedData.error.issues[0].message,
+        error: firstIssue ? firstIssue.message : "Validation failed",
         success: false,
       };
     }

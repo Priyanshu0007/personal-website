@@ -16,6 +16,9 @@ import HeroShapes from "@/components/ui/HeroShapes";
 import ContactForm from "@/components/ui/ContactForm";
 import { envConfig } from "@/utils/envConfig";
 
+// Revalidate every hour (3600 seconds) - ISR for incremental updates
+export const revalidate = 3600;
+
 async function FeaturedProjectsSection() {
   const featuredProjects = await getFeaturedProjects();
 

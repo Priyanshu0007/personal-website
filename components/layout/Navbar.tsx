@@ -63,6 +63,7 @@ export default function Navbar({
                   role="menuitem"
                   aria-current={isActive ? "page" : undefined}
                   onClick={() => trackUserAction(AnalyticsEvents.NAV_LINK_CLICK, { link_name: item.label, destination: item.href })}
+                  prefetch={true}
                   className={`border-[3px] px-4 py-2 text-sm font-bold tracking-wider uppercase transition-all ${
                     isActive
                       ? "border-border bg-primary text-black shadow-[3px_3px_0px_var(--color-shadow)]"
@@ -152,6 +153,7 @@ export default function Navbar({
                     }}
                     role="menuitem"
                     aria-current={isActive ? "page" : undefined}
+                    prefetch={true}
                     className={`border-[3px] px-4 py-3 text-base font-bold tracking-wider uppercase transition-all ${
                       isActive
                         ? "border-border bg-primary text-black shadow-[3px_3px_0px_var(--color-shadow)]"

@@ -19,7 +19,7 @@ const emptyBlog: BlogFormData = {
   title: "",
   url: "",
   platform: "Medium",
-  date: new Date().toISOString().split("T")[0],
+  date: new Date().toISOString().split("T")[0] || "",
   description: "",
   hide: false,
 };

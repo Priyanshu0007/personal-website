@@ -9,7 +9,20 @@ import {
   getPersonalData,
 } from "@/lib/data";
 import BackButton from "@/components/ui/BackButton";
-import ScreenshotCarousel from "@/components/ui/ScreenshotCarousel";
+import dynamic from "next/dynamic";
+
+// Revalidate every hour (3600 seconds) - ISR for incremental updates
+export const revalidate = 3600;
+
+const ScreenshotCarousel = dynamic(
+  () => import("@/components/ui/ScreenshotCarousel"),
+  {
+    loading: () => (
+      <div className="aspect-video w-full animate-pulse rounded-lg border-[3px] border-border bg-surface" />
+    ),
+    ssr: true,
+  }
+);
 
 // Pre-generate all project pages at build time
 export async function generateStaticParams() {
@@ -44,7 +57,7 @@ export async function generateMetadata({
       title: `${project.title} | Priyanshu Gupta`,
       description: project.description,
       type: "article",
-      images: project.images.length > 0 ? [project.images[0]] : [],
+      images: project.images[0] ? [project.images[0]] : [],
     },
     alternates: {
       canonical: `/projects/${slug}`,
@@ -95,7 +108,7 @@ export default async function ProjectDetailPage({
   }
 
   const { prev, next } = await getAdjacentProjects(slug);
-  const rawColor = categoryRawColors[project.category];
+  const rawColor = categoryRawColors[project.category] || "#3B82F6";
 
   const breadcrumbJsonLd = {
     "@context": "https://schema.org",
@@ -592,6 +605,7 @@ export default async function ProjectDetailPage({
               href={`/projects/${prev.slug}`}
               transitionTypes={["nav-back"]}
               scroll={false}
+              prefetch={true}
               className="neo-card group flex flex-col"
               id="project-prev"
             >
@@ -610,6 +624,7 @@ export default async function ProjectDetailPage({
               href={`/projects/${next.slug}`}
               transitionTypes={["nav-forward"]}
               scroll={false}
+              prefetch={true}
               className="neo-card group flex flex-col text-right"
               id="project-next"
             >

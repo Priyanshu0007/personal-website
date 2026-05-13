@@ -34,6 +34,7 @@ export default function ProjectCard({
       href={`/projects/${project.slug}`}
       transitionTypes={["nav-forward"]}
       scroll={false}
+      prefetch={true}
       onClick={() => trackUserAction(AnalyticsEvents.PROJECT_VIEW, { project_slug: project.slug, project_name: project.title })}
       className="group block"
       id={`project-card-${project.slug}`}

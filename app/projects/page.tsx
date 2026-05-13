@@ -6,6 +6,9 @@ import ProjectCard from "@/components/ui/ProjectCard";
 import ProjectFilters from "@/components/ui/ProjectFilters";
 import type { ProjectCategory, SortOrder } from "@/types";
 
+// Revalidate every hour (3600 seconds) - ISR for incremental updates
+export const revalidate = 3600;
+
 export const metadata: Metadata = {
   title: "Projects",
   description:

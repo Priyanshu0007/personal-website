@@ -67,9 +67,11 @@ export async function getAdjacentProjects(
 ): Promise<{ prev: Project | null; next: Project | null }> {
   const allProjects = await getAllProjects();
   const index = allProjects.findIndex((p) => p.slug === slug);
+  const prevProject = index > 0 ? allProjects[index - 1] ?? null : null;
+  const nextProject = index < allProjects.length - 1 ? allProjects[index + 1] ?? null : null;
   return {
-    prev: index > 0 ? allProjects[index - 1] : null,
-    next: index < allProjects.length - 1 ? allProjects[index + 1] : null,
+    prev: prevProject,
+    next: nextProject,
   };
 }
 
