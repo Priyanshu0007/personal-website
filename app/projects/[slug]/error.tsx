@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { trackUserAction, AnalyticsEvents } from "@/lib/analytics";
 
 export default function ProjectDetailError({
   error,
@@ -13,6 +14,12 @@ export default function ProjectDetailError({
 }) {
   useEffect(() => {
     console.error("Project detail error:", error);
+    trackUserAction(AnalyticsEvents.ERROR_OCCURRED, {
+      error_message: error.message,
+      error_digest: error.digest || "none",
+      page_path: "/projects/[slug]",
+      error_type: "page_error",
+    });
   }, [error]);
 
   return (

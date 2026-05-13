@@ -19,7 +19,7 @@ export const authOptions: NextAuthOptions = {
 
         // 1️⃣ Verify email is whitelisted
         const admin = await db.select().from(allowedAdmins).where(eq(allowedAdmins.email, credentials.email));
-        if (!admin.length) return null;
+        if (!admin.length || !admin[0]) return null;
 
         // 2️⃣ Verify OTP (must exist and not expired)
         const otpRows = await db.select().from(otps).where(
@@ -27,7 +27,7 @@ export const authOptions: NextAuthOptions = {
         );
         if (!otpRows.length) return null;
         const otpRow = otpRows[0];
-        if (otpRow.expiresAt < new Date()) return null; // expired
+        if (!otpRow || otpRow.expiresAt < new Date()) return null; // expired
 
         // 3️⃣ Consume OTP so it cannot be reused
         await db.delete(otps).where(eq(otps.email, credentials.email));

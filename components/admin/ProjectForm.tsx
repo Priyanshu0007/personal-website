@@ -39,7 +39,7 @@ const emptyProject: ProjectFormData = {
   githubUrl: "",
   isFavorite: false,
   featured: false,
-  createdAt: new Date().toISOString().split("T")[0],
+  createdAt: new Date().toISOString().split("T")[0] || "",
   highlights: [],
   hide: false,
 };

@@ -2,6 +2,9 @@ import { Metadata } from "next";
 import { getPersonalData, getAllBlogs } from "@/lib/data";
 import BlogCard from "@/components/ui/BlogCard";
 
+// Revalidate every hour (3600 seconds) - ISR for incremental updates
+export const revalidate = 3600;
+
 export const metadata: Metadata = {
   title: "Blogs",
   description:

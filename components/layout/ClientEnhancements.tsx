@@ -1,6 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
+import { useEffect } from "react";
 import ScrollPreserver from "@/components/ui/ScrollPreserver";
 
 const NoiseOverlay = dynamic(() => import("@/components/ui/NoiseOverlay"), {
@@ -10,9 +11,28 @@ const ScrollProgress = dynamic(() => import("@/components/ui/ScrollProgress"), {
   ssr: false,
 });
 
+// Register service worker for PWA offline support
+function ServiceWorkerRegistration() {
+  useEffect(() => {
+    if ("serviceWorker" in navigator && process.env.NODE_ENV === "production") {
+      navigator.serviceWorker
+        .register("/sw.js")
+        .then((registration) => {
+          console.log("Service Worker registered:", registration.scope);
+        })
+        .catch((error) => {
+          console.error("Service Worker registration failed:", error);
+        });
+    }
+  }, []);
+
+  return null;
+}
+
 export default function ClientEnhancements() {
   return (
     <>
+      <ServiceWorkerRegistration />
       <NoiseOverlay />
       <ScrollProgress />
       <ScrollPreserver />

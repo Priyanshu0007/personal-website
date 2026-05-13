@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { trackUserAction, AnalyticsEvents } from "@/lib/analytics";
 
 export default function BlogsError({
   error,
@@ -13,6 +14,12 @@ export default function BlogsError({
 }) {
   useEffect(() => {
     console.error("Blogs page error:", error);
+    trackUserAction(AnalyticsEvents.ERROR_OCCURRED, {
+      error_message: error.message,
+      error_digest: error.digest || "none",
+      page_path: "/blogs",
+      error_type: "page_error",
+    });
   }, [error]);
 
   return (
