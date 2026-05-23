@@ -4,9 +4,6 @@ import dynamic from "next/dynamic";
 import { useEffect } from "react";
 import ScrollPreserver from "@/components/ui/ScrollPreserver";
 
-const NoiseOverlay = dynamic(() => import("@/components/ui/NoiseOverlay"), {
-  ssr: false,
-});
 const ScrollProgress = dynamic(() => import("@/components/ui/ScrollProgress"), {
   ssr: false,
 });
@@ -33,7 +30,6 @@ export default function ClientEnhancements() {
   return (
     <>
       <ServiceWorkerRegistration />
-      <NoiseOverlay />
       <ScrollProgress />
       <ScrollPreserver />
     </>

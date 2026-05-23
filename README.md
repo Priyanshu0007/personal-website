@@ -216,7 +216,6 @@ portfolio/
 │   │   ├── SectionHeading.tsx    # Reusable section header
 │   │   ├── HeroShapes.tsx        # Animated geometric decorations
 │   │   ├── Marquee.tsx           # Horizontal scrolling ticker
-│   │   ├── NoiseOverlay.tsx      # Subtle grain texture
 │   │   ├── ScrollProgress.tsx    # Page scroll progress indicator
 │   │   ├── ScrollPreserver.tsx   # Maintains scroll on navigation
 │   │   ├── HobbyCard.tsx         # Hobby display card
