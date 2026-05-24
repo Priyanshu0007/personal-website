@@ -193,18 +193,6 @@ export default async function ProjectDetailPage({
             aria-hidden="true"
           />
 
-          {/* Floating project number */}
-          <div
-            className="absolute top-4 left-4 flex h-14 w-14 items-center justify-center border-[3px] border-border text-lg font-extrabold"
-            style={{
-              backgroundColor: rawColor,
-              color: "#fff",
-              boxShadow: "var(--shadow-sm)",
-            }}
-            aria-hidden="true"
-          >
-            {String(project.id).padStart(2, "0")}
-          </div>
 
           {/* Category badge on hero */}
           <div className="absolute bottom-4 left-4 flex items-center gap-2">
