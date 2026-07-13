@@ -178,7 +178,7 @@ export default async function ProjectDetailPage({
             src={project.thumbnail}
             alt={`Main screenshot for ${project.title}`}
             fill
-            className="object-cover"
+            className="object-contain"
             priority
             sizes="(max-width: 1200px) 100vw, 1200px"
           />
