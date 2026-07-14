@@ -50,12 +50,11 @@ export default function ProjectCard({
             } 15%, transparent)`,
           }}
         >
-          {/* Thumbnail Image */}
           <Image
             src={project.thumbnail}
             alt={`Thumbnail for ${project.title}`}
             fill
-            className="object-cover transition-transform duration-500 group-hover:scale-105"
+            className="object-contain transition-transform duration-500 group-hover:scale-105"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px"
             loading="lazy"
           />

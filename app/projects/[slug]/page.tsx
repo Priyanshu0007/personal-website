@@ -174,18 +174,27 @@ export default async function ProjectDetailPage({
             boxShadow: "var(--shadow-lg)",
           }}
         >
+          {project.category === "react-native" && (
+            <Image
+              src={project.thumbnail}
+              alt=""
+              fill
+              className="object-cover opacity-40 blur-2xl scale-110"
+              aria-hidden="true"
+            />
+          )}
           <Image
             src={project.thumbnail}
             alt={`Main screenshot for ${project.title}`}
             fill
-            className="object-cover"
+            className="object-contain z-10"
             priority
             sizes="(max-width: 1200px) 100vw, 1200px"
           />
 
           {/* Gradient overlay for readability */}
           <div
-            className="absolute inset-0"
+            className="absolute inset-0 z-20"
             style={{
               background:
                 "linear-gradient(to top, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.1) 50%, transparent 100%)",
@@ -193,21 +202,9 @@ export default async function ProjectDetailPage({
             aria-hidden="true"
           />
 
-          {/* Floating project number */}
-          <div
-            className="absolute top-4 left-4 flex h-14 w-14 items-center justify-center border-[3px] border-border text-lg font-extrabold"
-            style={{
-              backgroundColor: rawColor,
-              color: "#fff",
-              boxShadow: "var(--shadow-sm)",
-            }}
-            aria-hidden="true"
-          >
-            {String(project.id).padStart(2, "0")}
-          </div>
 
           {/* Category badge on hero */}
-          <div className="absolute bottom-4 left-4 flex items-center gap-2">
+          <div className="absolute bottom-4 left-4 z-20 flex items-center gap-2">
             <span
               className="neo-badge text-xs"
               style={{
@@ -398,6 +395,7 @@ export default async function ProjectDetailPage({
                   images={project.images}
                   title={project.title}
                   accentColor={rawColor}
+                  isMobile={project.category === "react-native"}
                 />
               </section>
             )}
