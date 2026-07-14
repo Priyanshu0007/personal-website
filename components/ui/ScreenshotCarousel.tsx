@@ -7,12 +7,14 @@ interface ScreenshotCarouselProps {
   images: string[];
   title: string;
   accentColor: string;
+  isMobile?: boolean;
 }
 
 export default function ScreenshotCarousel({
   images,
   title,
   accentColor,
+  isMobile = false,
 }: ScreenshotCarouselProps) {
   const [current, setCurrent] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
@@ -85,7 +87,9 @@ export default function ScreenshotCarousel({
     >
       {/* Main viewport */}
       <div
-        className="relative overflow-hidden border-[3px] border-border"
+        className={`relative overflow-hidden border-[3px] border-border ${
+          isMobile ? "max-w-sm mx-auto" : "w-full"
+        }`}
         style={{ boxShadow: "var(--shadow-lg)" }}
       >
         {/* Slide counter badge */}
@@ -120,7 +124,9 @@ export default function ScreenshotCarousel({
           {images.map((image, i) => (
             <div
               key={i}
-              className="relative aspect-[16/9] w-full shrink-0"
+              className={`relative ${
+                isMobile ? "aspect-[9/16]" : "aspect-[16/9]"
+              } w-full shrink-0`}
               role="group"
               aria-roledescription="slide"
               aria-label={`${i + 1} of ${total}`}
@@ -207,7 +213,9 @@ export default function ScreenshotCarousel({
       {/* Thumbnail strip */}
       {total > 1 && (
         <div
-          className="mt-4 hidden gap-2 md:flex"
+          className={`mt-4 hidden gap-2 md:flex ${
+            isMobile ? "flex-wrap justify-center" : ""
+          }`}
           role="tablist"
           aria-label="Screenshot thumbnails"
         >
@@ -215,7 +223,9 @@ export default function ScreenshotCarousel({
             <button
               key={i}
               onClick={() => goTo(i)}
-              className="aspect-[16/9] flex-1 overflow-hidden border-[3px] transition-all"
+              className={`${
+                isMobile ? "aspect-[9/16] w-20 flex-none" : "aspect-[16/9] flex-1"
+              } overflow-hidden border-[3px] transition-all`}
               style={{
                 borderColor:
                   i === current ? accentColor : "var(--color-border)",
