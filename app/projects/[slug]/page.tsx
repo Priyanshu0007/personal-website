@@ -194,7 +194,7 @@ export default async function ProjectDetailPage({
 
           {/* Gradient overlay for readability */}
           <div
-            className="absolute inset-0"
+            className="absolute inset-0 z-20"
             style={{
               background:
                 "linear-gradient(to top, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.1) 50%, transparent 100%)",
@@ -204,7 +204,7 @@ export default async function ProjectDetailPage({
 
 
           {/* Category badge on hero */}
-          <div className="absolute bottom-4 left-4 flex items-center gap-2">
+          <div className="absolute bottom-4 left-4 z-20 flex items-center gap-2">
             <span
               className="neo-badge text-xs"
               style={{
