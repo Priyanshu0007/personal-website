@@ -40,7 +40,14 @@ export default function ProjectCard({
       id={`project-card-${project.slug}`}
       aria-label={`View project: ${project.title}`}
     >
-      <article className="glass-card flex h-full flex-col overflow-hidden p-0">
+      <article
+        className="glass-card glass-border-glow glass-sweep flex h-full flex-col overflow-hidden p-0"
+        style={
+          {
+            "--glow-color": categoryColors[project.category],
+          } as React.CSSProperties
+        }
+      >
         {/* Thumbnail */}
         <div
           className="relative aspect-[16/10] w-full overflow-hidden"

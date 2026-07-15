@@ -31,12 +31,19 @@ export default function BlogCard({
       className="group block h-full"
       aria-label={`Read article: ${blog.title} on ${blog.platform}`}
     >
-      <article className="glass-card flex h-full flex-col overflow-hidden p-0">
+      <article
+        className="glass-card glass-border-glow glass-sweep flex h-full flex-col overflow-hidden p-0"
+        style={
+          {
+            "--glow-color": color,
+          } as React.CSSProperties
+        }
+      >
         {/* Thumbnail Area */}
         <div
           className="relative h-32 w-full overflow-hidden"
           style={{
-            backgroundColor: `color-mix(in srgb, ${color} 15%, transparent)`,
+            background: `radial-gradient(circle at top right, color-mix(in srgb, ${color} 25%, transparent) 0%, color-mix(in srgb, ${color} 5%, transparent) 100%)`,
           }}
         >
           {/* Decorative Number */}

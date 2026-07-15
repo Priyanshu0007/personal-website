@@ -20,18 +20,18 @@ export default function SectionHeading({
       }`}
     >
       <div
-        className={`mb-4 inline-flex items-center gap-3 ${
+        className={`mb-4 inline-flex items-center gap-2 ${
           align === "center" ? "justify-center" : ""
         }`}
         aria-hidden="true"
       >
         <span
-          className="block h-4 w-4 rotate-45 border border-border/30"
-          style={{ backgroundColor: accent }}
+          className="block h-2.5 w-2.5 rounded-full animate-pulse shadow-md"
+          style={{ backgroundColor: accent, boxShadow: `0 0 12px ${accent}` }}
         />
         <span
-          className="block h-[3px] w-12"
-          style={{ backgroundColor: accent }}
+          className="block h-[2px] w-12 rounded-full"
+          style={{ background: `linear-gradient(90deg, ${accent}, transparent)` }}
         />
       </div>
       <Tag className="font-extrabold">{title}</Tag>

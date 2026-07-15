@@ -5,22 +5,19 @@ interface HobbyCardProps {
   index: number;
 }
 
-const rotations = ["-2deg", "1.5deg", "-1deg", "2deg", "-1.5deg"];
-
 export default function HobbyCard({ hobby, index }: HobbyCardProps) {
-  const rotation = rotations[index % rotations.length];
-
   return (
     <div
-      className="glass-card group cursor-default"
-      style={{
-        transform: `rotate(${rotation})`,
-        borderColor: hobby.color,
-      }}
+      className="glass-card glass-border-glow glass-sweep group cursor-default"
+      style={
+        {
+          "--glow-color": hobby.color,
+        } as React.CSSProperties
+      }
     >
       {/* Emoji */}
       <div
-        className="mb-3 text-4xl md:text-5xl"
+        className="mb-3 text-4xl md:text-5xl transition-transform duration-500 group-hover:-translate-y-2 group-hover:scale-110"
         role="img"
         aria-label={`${hobby.title} icon`}
       >
