@@ -191,7 +191,7 @@ export default function RootLayout({
             navigation={personal.navigation}
             socials={personal.socials}
           />
-          <main className="flex-1" id="main-content">
+          <main className="flex-1 pb-[5.5rem] md:pb-0" id="main-content">
             {children}
           </main>
           <Footer name={personal.name} socials={personal.socials} />

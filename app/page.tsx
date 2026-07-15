@@ -51,7 +51,7 @@ export default async function Home() {
   return (
     <>
       {/* ===================== HERO SECTION ===================== */}
-      <section className="section relative overflow-hidden pt-24 md:pt-32" id="hero">
+      <section className="section relative overflow-hidden pt-8 md:pt-32" id="hero">
         <HeroShapes />
 
         <div className="relative z-10 container">
