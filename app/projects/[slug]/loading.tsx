@@ -8,7 +8,7 @@ export default function ProjectDetailLoading() {
         <div className="mb-6 h-8 w-24 animate-pulse rounded bg-border" />
 
         {/* Hero Banner */}
-        <div className="relative mb-8 aspect-[16/9] w-full animate-pulse overflow-hidden border-[3px] border-border bg-surface" />
+        <div className="relative mb-8 aspect-[16/9] w-full animate-pulse overflow-hidden rounded-2xl border border-border/20 bg-surface" />
 
         {/* Project Header */}
         <div className="mb-6 flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
@@ -28,7 +28,7 @@ export default function ProjectDetailLoading() {
           <div className="mt-2 h-6 w-4/5 animate-pulse rounded bg-border" />
         </div>
 
-        <div className="neo-divider" />
+        <div className="glass-divider" />
 
         {/* Two Column Layout */}
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-3 lg:gap-12">
@@ -51,7 +51,7 @@ export default function ProjectDetailLoading() {
                 {Array.from({ length: 3 }).map((_, i) => (
                   <div
                     key={i}
-                    className="border-[3px] border-border bg-surface p-5"
+                    className="glass-card-flat p-5"
                   >
                     <div
                       className="mb-2 h-8 w-8 animate-pulse rounded bg-border"
@@ -66,14 +66,14 @@ export default function ProjectDetailLoading() {
             {/* Screenshots */}
             <section>
               <div className="mb-5 h-6 w-32 animate-pulse rounded bg-border" />
-              <div className="aspect-video w-full animate-pulse rounded-lg border-[3px] border-border bg-surface" />
+              <div className="aspect-video w-full animate-pulse rounded-lg border border-border/20 bg-surface" />
             </section>
           </div>
 
           {/* Right Sidebar */}
           <div className="space-y-6">
             {/* Tech Stack */}
-            <div className="neo-card">
+            <div className="glass-card">
               <div className="mb-4 h-4 w-24 animate-pulse rounded bg-border" />
               <div className="flex flex-wrap gap-2">
                 {Array.from({ length: 5 }).map((_, i) => (
@@ -86,7 +86,7 @@ export default function ProjectDetailLoading() {
             </div>
 
             {/* Project Info */}
-            <div className="space-y-4 border-[3px] border-border p-5">
+            <div className="glass-card-flat space-y-4 p-5">
               <div className="h-4 w-24 animate-pulse rounded bg-border" />
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
@@ -114,12 +114,12 @@ export default function ProjectDetailLoading() {
           </div>
         </div>
 
-        <div className="neo-divider" />
+        <div className="glass-divider" />
 
         {/* Prev/Next Navigation */}
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-          <div className="neo-card h-20 animate-pulse" />
-          <div className="neo-card h-20 animate-pulse" />
+          <div className="glass-card h-20 animate-pulse" />
+          <div className="glass-card h-20 animate-pulse" />
         </div>
       </div>
     </div>

@@ -26,7 +26,7 @@ export default function SectionHeading({
         aria-hidden="true"
       >
         <span
-          className="block h-4 w-4 rotate-45 border-[3px] border-border"
+          className="block h-4 w-4 rotate-45 border border-border/30"
           style={{ backgroundColor: accent }}
         />
         <span

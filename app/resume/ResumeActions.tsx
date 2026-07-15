@@ -56,14 +56,14 @@ export default function ResumeActions({ resumeUrl }: ResumeActionsProps) {
       <a
         href={resumeUrl}
         onClick={handleDownload}
-        className="neo-btn neo-btn-primary"
+        className="glass-btn glass-btn-primary"
       >
         <span role="img" aria-label="Download" className="mr-1">
           📥
         </span>{" "}
         Download Resume
       </a>
-      <button onClick={handleCopyLink} className="neo-btn neo-btn-secondary">
+      <button onClick={handleCopyLink} className="glass-btn glass-btn-secondary">
         {copied ? (
           <>
             <span role="img" aria-label="Check" className="mr-1">

@@ -31,7 +31,7 @@ export default function Navbar({
       {/* Top accent bar */}
       <div className="h-1.5 w-full bg-primary" />
 
-      <nav className="border-b-[3px] border-border bg-surface">
+      <nav className="border-b border-border/20 bg-surface/60 backdrop-blur-xl">
         <div className="container flex h-16 items-center justify-between md:h-20">
           {/* Logo */}
           <Link
@@ -41,7 +41,7 @@ export default function Navbar({
             aria-label={`Home - ${name}`}
           >
             <span
-              className="flex h-10 w-10 items-center justify-center border-[3px] border-border bg-primary text-lg font-extrabold transition-transform group-hover:scale-110 group-hover:rotate-[-4deg] md:h-12 md:w-12 md:text-xl"
+              className="flex h-10 w-10 items-center justify-center rounded-xl border border-border/30 bg-primary text-white text-lg font-extrabold transition-all group-hover:scale-105 group-hover:shadow-md md:h-12 md:w-12 md:text-xl"
               aria-hidden="true"
             >
               {shortName}
@@ -64,10 +64,10 @@ export default function Navbar({
                   aria-current={isActive ? "page" : undefined}
                   onClick={() => trackUserAction(AnalyticsEvents.NAV_LINK_CLICK, { link_name: item.label, destination: item.href })}
                   prefetch={true}
-                  className={`border-[3px] px-4 py-2 text-sm font-bold tracking-wider uppercase transition-all ${
+                  className={`rounded-full px-4 py-2 text-sm font-bold tracking-wider uppercase transition-all ${
                     isActive
-                      ? "border-border bg-primary text-black shadow-[3px_3px_0px_var(--color-shadow)]"
-                      : "border-transparent hover:border-border hover:bg-bg-secondary"
+                      ? "bg-primary text-white shadow-sm"
+                      : "hover:bg-text/10"
                   }`}
                 >
                   {item.label}
@@ -81,7 +81,7 @@ export default function Navbar({
                 href={socials.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex h-11 w-11 items-center justify-center border-[3px] border-border bg-surface transition-colors hover:bg-text hover:text-surface"
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-border/20 bg-surface/50 transition-colors hover:bg-text hover:text-surface"
                 aria-label="Visit GitHub Profile"
                 onClick={() => trackUserAction(AnalyticsEvents.SOCIAL_LINK_CLICK, { platform: "github" })}
                 id="nav-github"
@@ -92,7 +92,7 @@ export default function Navbar({
                 href={socials.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex h-11 w-11 items-center justify-center border-[3px] border-border bg-surface transition-colors hover:bg-[#0077B5] hover:text-white"
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-border/20 bg-surface/50 transition-colors hover:bg-[#0077B5] hover:text-white"
                 aria-label="Visit LinkedIn Profile"
                 onClick={() => trackUserAction(AnalyticsEvents.SOCIAL_LINK_CLICK, { platform: "linkedin" })}
                 id="nav-linkedin"
@@ -106,7 +106,7 @@ export default function Navbar({
           {/* Mobile Hamburger */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="flex h-12 w-12 flex-col items-center justify-center border-[3px] border-border bg-surface transition-colors hover:bg-primary md:hidden"
+            className="flex h-12 w-12 flex-col items-center justify-center rounded-xl border border-border/20 bg-surface transition-colors hover:bg-primary md:hidden"
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
             aria-expanded={mobileOpen}
             aria-controls="mobile-menu"
@@ -137,7 +137,7 @@ export default function Navbar({
         {mobileOpen && (
           <div
             id="mobile-menu"
-            className="animate-slide-in-up border-t-[3px] border-border bg-surface md:hidden"
+            className="animate-slide-in-up border-t border-border/20 bg-surface/90 backdrop-blur-xl md:hidden"
             role="menu"
           >
             <div className="container flex flex-col gap-2 py-4">
@@ -154,10 +154,10 @@ export default function Navbar({
                     role="menuitem"
                     aria-current={isActive ? "page" : undefined}
                     prefetch={true}
-                    className={`border-[3px] px-4 py-3 text-base font-bold tracking-wider uppercase transition-all ${
+                    className={`rounded-xl border px-4 py-3 text-base font-bold tracking-wider uppercase transition-all ${
                       isActive
-                        ? "border-border bg-primary text-black shadow-[3px_3px_0px_var(--color-shadow)]"
-                        : "border-border bg-surface hover:bg-bg-secondary"
+                        ? "border-primary/30 bg-primary text-white shadow-md"
+                        : "border-border/20 bg-surface hover:bg-bg-secondary"
                     }`}
                   >
                     {item.label}
@@ -171,7 +171,7 @@ export default function Navbar({
                   href={socials.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="neo-btn neo-btn-secondary neo-btn-sm flex-1"
+                  className="glass-btn glass-btn-secondary glass-btn-sm flex-1"
                   onClick={() => trackUserAction(AnalyticsEvents.SOCIAL_LINK_CLICK, { platform: "github", is_mobile: true })}
                   aria-label="Visit GitHub Profile"
                 >
@@ -181,7 +181,7 @@ export default function Navbar({
                   href={socials.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="neo-btn neo-btn-secondary neo-btn-sm flex-1"
+                  className="glass-btn glass-btn-secondary glass-btn-sm flex-1"
                   onClick={() => trackUserAction(AnalyticsEvents.SOCIAL_LINK_CLICK, { platform: "linkedin", is_mobile: true })}
                   aria-label="Visit LinkedIn Profile"
                 >

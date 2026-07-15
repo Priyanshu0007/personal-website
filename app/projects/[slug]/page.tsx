@@ -18,7 +18,7 @@ const ScreenshotCarousel = dynamic(
   () => import("@/components/ui/ScreenshotCarousel"),
   {
     loading: () => (
-      <div className="aspect-video w-full animate-pulse rounded-lg border-[3px] border-border bg-surface" />
+      <div className="aspect-video w-full animate-pulse rounded-lg border border-border/20 bg-surface" />
     ),
     ssr: true,
   }
@@ -168,7 +168,7 @@ export default async function ProjectDetailPage({
             HERO BANNER
             ============================================ */}
         <div
-          className="relative mb-8 aspect-[16/9] w-full overflow-hidden border-[3px] border-border"
+          className="relative mb-8 aspect-[16/9] w-full overflow-hidden rounded-2xl border border-border/20"
           style={{
             backgroundColor: `${categoryColors[project.category]}15`,
             boxShadow: "var(--shadow-lg)",
@@ -206,7 +206,7 @@ export default async function ProjectDetailPage({
           {/* Category badge on hero */}
           <div className="absolute bottom-4 left-4 z-20 flex items-center gap-2">
             <span
-              className="neo-badge text-xs"
+              className="glass-badge text-xs"
               style={{
                 backgroundColor: rawColor,
                 color: "#000000",
@@ -218,7 +218,7 @@ export default async function ProjectDetailPage({
               {categoryLabels[project.category]}
             </span>
             {project.isFavorite && (
-              <span className="neo-badge neo-badge-secondary text-xs">
+              <span className="glass-badge glass-badge-secondary text-xs">
                 <span role="img" aria-label="Favorite" className="mr-1">
                   ★
                 </span>{" "}
@@ -240,7 +240,7 @@ export default async function ProjectDetailPage({
               })}
             </span>
             <h1
-              className="text-3xl md:text-5xl"
+              className="text-4xl md:text-5xl"
               style={{
                 fontFamily: "var(--font-heading), system-ui, sans-serif",
               }}
@@ -256,7 +256,7 @@ export default async function ProjectDetailPage({
                 href={project.liveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="neo-btn neo-btn-primary w-full sm:w-auto"
+                className="glass-btn glass-btn-primary w-full sm:w-auto"
                 id="project-live-link"
                 aria-label={`View live demo of ${project.title}`}
               >
@@ -271,7 +271,7 @@ export default async function ProjectDetailPage({
                 href={project.githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="neo-btn neo-btn-secondary w-full sm:w-auto"
+                className="glass-btn glass-btn-secondary w-full sm:w-auto"
                 id="project-github-link"
                 aria-label={`View source code of ${project.title} on GitHub`}
               >
@@ -292,7 +292,7 @@ export default async function ProjectDetailPage({
           {project.description}
         </p>
 
-        <div className="neo-divider" />
+        <div className="glass-divider" />
 
         {/* ============================================
             MAIN CONTENT: TWO COLUMN LAYOUT
@@ -345,7 +345,7 @@ export default async function ProjectDetailPage({
                   {project.highlights.map((highlight, i) => (
                     <div
                       key={highlight}
-                      className="relative border-[3px] border-border bg-surface p-5 transition-all hover:translate-x-[-3px] hover:translate-y-[-3px]"
+                      className="glass-card-flat relative p-5 transition-all hover:translate-y-[-4px]"
                       style={{
                         boxShadow: "var(--shadow-md)",
                       }}
@@ -406,7 +406,7 @@ export default async function ProjectDetailPage({
               ============================================ */}
           <div className="space-y-6">
             {/* Tech Stack */}
-            <div className="neo-card">
+            <div className="glass-card">
               <h3 className="mb-4 flex items-center gap-2 text-sm font-extrabold tracking-wider text-text-muted uppercase">
                 <span className="text-base" role="img" aria-label="Tools">
                   🛠
@@ -417,7 +417,7 @@ export default async function ProjectDetailPage({
                 {project.techStack.map((tech) => (
                   <span
                     key={tech}
-                    className="neo-badge neo-badge-outline text-xs"
+                    className="glass-badge glass-badge-outline text-xs"
                   >
                     {tech}
                   </span>
@@ -427,9 +427,8 @@ export default async function ProjectDetailPage({
 
             {/* Project Info Card */}
             <div
-              className="space-y-4 border-[3px] border-border p-5"
+              className="glass-card-flat space-y-4 p-5"
               style={{
-                backgroundColor: "var(--color-surface)",
                 boxShadow: "var(--shadow-md)",
               }}
             >
@@ -447,7 +446,7 @@ export default async function ProjectDetailPage({
                     Type
                   </span>
                   <span
-                    className="neo-badge text-xs"
+                    className="glass-badge text-xs"
                     style={{
                       backgroundColor: rawColor,
                       color: "#fff",
@@ -518,7 +517,7 @@ export default async function ProjectDetailPage({
 
             {/* Quick stats decorative card */}
             <div
-              className="relative overflow-hidden border-[3px] border-border p-5"
+              className="relative overflow-hidden rounded-2xl border border-white/20 p-5"
               style={{
                 backgroundColor: rawColor,
                 boxShadow: "var(--shadow-md)",
@@ -564,7 +563,7 @@ export default async function ProjectDetailPage({
                   href={project.liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="neo-btn neo-btn-primary w-full text-sm"
+                  className="glass-btn glass-btn-primary w-full text-sm"
                   aria-label={`View live demo of ${project.title}`}
                 >
                   <span role="img" aria-label="Globe" className="mr-1">
@@ -578,7 +577,7 @@ export default async function ProjectDetailPage({
                   href={project.githubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="neo-btn neo-btn-secondary w-full text-sm"
+                  className="glass-btn glass-btn-secondary w-full text-sm"
                   aria-label={`View source code of ${project.title} on GitHub`}
                 >
                   <span role="img" aria-label="Computer" className="mr-1">
@@ -591,7 +590,7 @@ export default async function ProjectDetailPage({
           </div>
         </div>
 
-        <div className="neo-divider" />
+        <div className="glass-divider" />
 
         {/* ============================================
             PREV / NEXT NAVIGATION
@@ -604,7 +603,7 @@ export default async function ProjectDetailPage({
               transitionTypes={["nav-back"]}
               scroll={false}
               prefetch={true}
-              className="neo-card group flex flex-col"
+              className="glass-card group flex flex-col"
               id="project-prev"
             >
               <span className="mb-1 text-xs font-bold tracking-wider text-text-muted uppercase">
@@ -623,7 +622,7 @@ export default async function ProjectDetailPage({
               transitionTypes={["nav-forward"]}
               scroll={false}
               prefetch={true}
-              className="neo-card group flex flex-col text-right"
+              className="glass-card group flex flex-col text-right"
               id="project-next"
             >
               <span className="mb-1 text-xs font-bold tracking-wider text-text-muted uppercase">

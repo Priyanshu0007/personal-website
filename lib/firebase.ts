@@ -23,7 +23,7 @@ export const analytics = typeof window !== "undefined" ? isSupported().then(yes 
  * @param eventName The name of the event (e.g., 'button_click', 'form_submit')
  * @param eventParams Optional parameters to send with the event (e.g., { page: '/about', item: 'resume' })
  */
-export const trackEvent = async (eventName: string, eventParams?: Record<string, any>) => {
+export const trackEvent = async (eventName: string, eventParams?: Record<string, unknown>) => {
   // Helpful log for local testing
   // if (process.env.NODE_ENV !== "production") {
   //   console.log(`📊 [Analytics Event]: ${eventName}`, eventParams || {});

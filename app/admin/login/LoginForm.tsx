@@ -60,7 +60,7 @@ export default function LoginForm() {
       <div className="w-full max-w-sm sm:max-w-md">
         {/* Logo / brand */}
         <div className="mb-6 text-center">
-          <div className="inline-flex items-center justify-center w-16 h-16 border-4 border-black bg-primary text-black text-2xl font-black mb-3 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+          <div className="mb-3 flex h-16 w-16 items-center justify-center rounded-3xl border border-border/50 bg-primary text-2xl font-black text-white shadow-md">
             PG
           </div>
           <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground">Portfolio Admin</p>
@@ -68,10 +68,10 @@ export default function LoginForm() {
 
         <form
           onSubmit={handleSubmit}
-          className="flex flex-col gap-5 p-5 sm:p-8 border-4 border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] bg-surface"
+          className="flex flex-col gap-5 rounded-3xl border border-border/50 bg-surface p-5 shadow-md backdrop-blur-md sm:p-8"
         >
           <div className="space-y-1">
-            <h1 className="text-2xl sm:text-3xl font-black uppercase tracking-tighter">
+            <h1 className="text-2xl font-black uppercase tracking-tighter sm:text-3xl">
               {step === "email" ? "Sign In" : "Verify"}
             </h1>
             <p className="text-xs sm:text-sm text-muted-foreground font-bold uppercase tracking-wide">
@@ -80,7 +80,7 @@ export default function LoginForm() {
           </div>
 
           {error && (
-            <div className="p-3 border-2 border-black bg-red-500/20 text-red-600 dark:text-red-400 font-bold text-xs sm:text-sm flex items-center gap-2">
+            <div className="flex items-center gap-2 rounded-lg border border-border/50 bg-red-500/20 p-3 text-xs font-bold text-red-600 dark:text-red-400 sm:text-sm">
               <span className="text-base">⚠️</span>
               <span className="break-words min-w-0">{error}</span>
             </div>
@@ -98,13 +98,13 @@ export default function LoginForm() {
                     placeholder="admin@example.com"
                     required
                     disabled={loading}
-                    className="w-full p-3 border-2 border-black bg-background rounded-none outline-none focus:shadow-[4px_4px_0px_0px_var(--color-primary)] transition-all placeholder:text-muted-foreground/50 text-sm sm:text-base"
+                    className="w-full rounded-lg border border-border/50 bg-background p-3 text-sm outline-none transition-all placeholder:text-muted-foreground/50 focus:shadow-md sm:text-base"
                   />
                 </div>
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full p-3 sm:p-4 bg-primary text-black font-black uppercase tracking-widest text-sm border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] active:translate-y-1 active:shadow-none transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full rounded-xl border border-border/50 bg-primary p-3 font-black uppercase tracking-widest text-white shadow-md transition-all hover:-translate-y-1 hover:shadow-md active:translate-y-1 active:shadow-none disabled:cursor-not-allowed disabled:opacity-50 sm:p-4 text-sm"
                 >
                   {loading ? "Sending..." : "Request OTP"}
                 </button>
@@ -122,13 +122,13 @@ export default function LoginForm() {
                     maxLength={6}
                     disabled={loading}
                     inputMode="numeric"
-                    className="w-full p-3 border-2 border-black bg-background rounded-none outline-none focus:shadow-[4px_4px_0px_0px_var(--color-primary)] transition-all tracking-[0.4em] text-center font-bold text-lg sm:text-xl placeholder:tracking-normal placeholder:text-xs sm:placeholder:text-sm placeholder:text-muted-foreground/50"
+                    className="w-full rounded-lg border border-border/50 bg-background p-3 text-center font-bold text-lg tracking-[0.4em] outline-none transition-all placeholder:text-xs placeholder:tracking-normal placeholder:text-muted-foreground/50 focus:shadow-md sm:text-xl sm:placeholder:text-sm"
                   />
                 </div>
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full p-3 sm:p-4 bg-accent-green text-white font-black uppercase tracking-widest text-sm border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] active:translate-y-1 active:shadow-none transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full rounded-xl border border-border/50 bg-accent-green p-3 font-black uppercase tracking-widest text-white shadow-md transition-all hover:-translate-y-1 hover:shadow-md active:translate-y-1 active:shadow-none disabled:cursor-not-allowed disabled:opacity-50 sm:p-4 text-sm"
                 >
                   {loading ? "Verifying..." : "Verify & Login"}
                 </button>

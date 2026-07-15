@@ -40,10 +40,10 @@ export default function ProjectCard({
       id={`project-card-${project.slug}`}
       aria-label={`View project: ${project.title}`}
     >
-      <article className="neo-card flex h-full flex-col overflow-hidden p-0">
+      <article className="glass-card flex h-full flex-col overflow-hidden p-0">
         {/* Thumbnail */}
         <div
-          className="relative aspect-[16/10] w-full overflow-hidden border-b-[3px] border-border"
+          className="relative aspect-[16/10] w-full overflow-hidden"
           style={{
             backgroundColor: `color-mix(in srgb, ${
               categoryColors[project.category]
@@ -62,7 +62,7 @@ export default function ProjectCard({
           {/* Favorite badge */}
           {project.isFavorite && (
             <div
-              className="absolute top-3 right-3 flex h-8 w-8 items-center justify-center border-[2px] border-border bg-primary text-sm"
+              className="absolute top-3 right-3 flex h-8 w-8 items-center justify-center rounded-full bg-primary text-sm text-white shadow-md"
               role="img"
               aria-label="Favorite project"
             >
@@ -71,11 +71,13 @@ export default function ProjectCard({
           )}
 
           {/* Category badge */}
-          <div
-            className="absolute top-3 left-3 border-[2px] border-border px-2 py-1 text-xs font-bold tracking-wider text-black uppercase"
-            style={{ backgroundColor: categoryColors[project.category] }}
-          >
-            {categoryLabels[project.category]}
+          <div className="absolute top-3 left-3">
+            <span
+              className="glass-badge text-xs"
+              style={{ backgroundColor: categoryColors[project.category], color: "#000" }}
+            >
+              {categoryLabels[project.category]}
+            </span>
           </div>
         </div>
 
@@ -114,20 +116,20 @@ export default function ProjectCard({
             {project.techStack.slice(0, 4).map((tech) => (
               <span
                 key={tech}
-                className="neo-badge neo-badge-outline text-[0.65rem]"
+                className="glass-badge glass-badge-outline text-[0.65rem]"
               >
                 {tech}
               </span>
             ))}
             {project.techStack.length > 4 && (
-              <span className="neo-badge neo-badge-outline text-[0.65rem]">
+              <span className="glass-badge glass-badge-outline text-[0.65rem]">
                 +{project.techStack.length - 4}
               </span>
             )}
           </div>
 
           {/* Footer */}
-          <div className="flex items-center justify-between border-t-[2px] border-border pt-3">
+          <div className="flex items-center justify-between border-t border-border/20 pt-3">
             <span className="text-xs font-bold text-text-muted">
               {new Date(project.createdAt).toLocaleDateString("en-US", {
                 month: "short",

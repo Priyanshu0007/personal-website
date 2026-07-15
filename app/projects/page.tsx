@@ -111,8 +111,8 @@ export default async function ProjectsPage({
             ))}
           </div>
         ) : (
-          <div className="neo-card-flat py-16 text-center">
-            <p className="mb-4 text-4xl">🔍</p>
+          <div className="glass-card-flat py-16 text-center">
+            <p className="mb-4 text-5xl">🔍</p>
             <h3 className="mb-2 text-xl font-extrabold">No projects found</h3>
             <p className="text-text-muted">
               Try adjusting your filters to see more projects.

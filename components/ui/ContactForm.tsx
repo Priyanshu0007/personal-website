@@ -12,7 +12,7 @@ function SubmitButton() {
     <button
       type="submit"
       disabled={pending}
-      className={`neo-btn neo-btn-primary neo-btn-lg w-full ${pending ? "cursor-not-allowed opacity-70" : ""}`}
+      className={`glass-btn glass-btn-primary glass-btn-lg w-full ${pending ? "cursor-not-allowed opacity-70" : ""}`}
       id="contact-submit"
     >
       {pending ? "Sending..." : "Send Message"}{" "}
@@ -39,7 +39,7 @@ export default function ContactForm() {
     <form action={formAction} className="mx-auto max-w-xl space-y-4 text-left">
       {state?.success && (
         <div
-          className="mb-4 border-[3px] border-[#166534] bg-[#dcfce7] p-4 text-sm text-[#166534] shadow-[4px_4px_0px_#166534]"
+          className="mb-4 border border-[#166534] bg-[#dcfce7] p-4 text-sm text-[#166534] shadow-md"
           role="alert"
         >
           <span className="font-extrabold">Success!</span> Your message has been
@@ -48,7 +48,7 @@ export default function ContactForm() {
       )}
       {state?.error && (
         <div
-          className="mb-4 border-[3px] border-[#991b1b] bg-[#fee2e2] p-4 text-sm text-[#991b1b] shadow-[4px_4px_0px_#991b1b]"
+          className="mb-4 border border-[#991b1b] bg-[#fee2e2] p-4 text-sm text-[#991b1b] shadow-md"
           role="alert"
         >
           <span className="font-extrabold">Error!</span> {state.error}
@@ -69,7 +69,7 @@ export default function ContactForm() {
             name="name"
             autoComplete="name"
             placeholder="Your name"
-            className="neo-input"
+            className="glass-input"
             required
           />
         </div>
@@ -86,7 +86,7 @@ export default function ContactForm() {
             name="email"
             autoComplete="email"
             placeholder="your@email.com"
-            className="neo-input"
+            className="glass-input"
             required
           />
         </div>
@@ -102,7 +102,7 @@ export default function ContactForm() {
           id="contact-message"
           name="message"
           placeholder="Send me a <hello /> or a dad joke. I'm all ears! 💻✨"
-          className="neo-textarea"
+          className="glass-textarea"
           rows={5}
           required
         />

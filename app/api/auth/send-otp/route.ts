@@ -42,7 +42,7 @@ export async function POST(req: Request) {
     return NextResponse.json({ ok: true });
   } catch (error) {
     console.error("send-otp error:", error);
-    const message = (error as any)?.code === "42P01" ? "Database not initialized – allowed_admins table missing" : "Failed to send OTP";
+    const message = (error as { code?: string })?.code === "42P01" ? "Database not initialized – allowed_admins table missing" : "Failed to send OTP";
     return NextResponse.json({ error: message }, { status: 500 });
   }
 }

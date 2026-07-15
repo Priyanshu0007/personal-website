@@ -49,10 +49,10 @@ export default function ProjectFilters() {
               })
             }
             aria-pressed={activeCategory === cat.value}
-            className={`neo-btn neo-btn-sm text-xs font-bold tracking-wider uppercase ${
+            className={`glass-btn glass-btn-sm text-xs font-bold tracking-wider uppercase ${
               activeCategory === cat.value
-                ? "border-border bg-primary text-black shadow-[3px_3px_0px_var(--color-shadow)]"
-                : "border-border bg-surface hover:bg-bg-secondary"
+                ? "bg-primary text-white border-primary/30 shadow-md"
+                : "bg-surface border-border/20 hover:bg-bg-secondary"
             }`}
             id={`filter-${cat.value}`}
           >
@@ -73,10 +73,10 @@ export default function ProjectFilters() {
             updateFilters({ favorites: showFavorites ? null : "true" })
           }
           aria-pressed={showFavorites}
-          className={`neo-btn neo-btn-sm text-xs font-bold ${
+          className={`glass-btn glass-btn-sm text-xs font-bold ${
             showFavorites
-              ? "border-border bg-primary text-black shadow-[3px_3px_0px_var(--color-shadow)]"
-              : "border-border bg-surface hover:bg-bg-secondary"
+              ? "bg-primary text-white border-primary/30 shadow-md"
+              : "bg-surface border-border/20 hover:bg-bg-secondary"
           }`}
           id="filter-favorites"
         >
@@ -93,7 +93,7 @@ export default function ProjectFilters() {
               sort: activeSort === "newest" ? "oldest" : "newest",
             })
           }
-          className="neo-btn neo-btn-sm neo-btn-secondary text-xs font-bold"
+          className="glass-btn glass-btn-sm glass-btn-secondary text-xs font-bold"
           id="filter-sort"
           aria-label={`Sort by ${activeSort === "newest" ? "oldest" : "newest"} first`}
         >

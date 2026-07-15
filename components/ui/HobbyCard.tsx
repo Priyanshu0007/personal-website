@@ -12,7 +12,7 @@ export default function HobbyCard({ hobby, index }: HobbyCardProps) {
 
   return (
     <div
-      className="neo-card group cursor-default"
+      className="glass-card group cursor-default"
       style={{
         transform: `rotate(${rotation})`,
         borderColor: hobby.color,
@@ -43,9 +43,10 @@ export default function HobbyCard({ hobby, index }: HobbyCardProps) {
           {hobby.tags.map((tag) => (
             <span
               key={tag}
-              className="border-[2px] border-border px-2 py-0.5 text-[0.65rem] font-bold tracking-wider text-black uppercase"
+              className="glass-badge text-[0.65rem]"
               style={{
                 backgroundColor: hobby.color,
+                color: "#fff",
               }}
             >
               {tag}

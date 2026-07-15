@@ -137,12 +137,12 @@ export default function AdminDashboardClient({ projects, blogs }: Props) {
           {projects.map((project) => (
             <div
               key={project.id}
-              className="p-3 sm:p-4 border-2 border-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] bg-surface overflow-hidden"
+              className="overflow-hidden rounded-xl border border-border/50 bg-surface p-3 shadow-md backdrop-blur-md sm:p-4"
             >
               {/* Top row: thumbnail + info */}
               <div className="flex items-center gap-3 mb-3">
                 {project.thumbnail && (
-                  <div className="relative w-10 h-10 sm:w-12 sm:h-12 shrink-0 border-2 border-black/20 overflow-hidden">
+                  <div className="relative h-10 w-10 shrink-0 overflow-hidden rounded-lg border border-border/50 sm:h-12 sm:w-12">
                     <Image
                       src={project.thumbnail}
                       alt={project.title}
@@ -153,14 +153,14 @@ export default function AdminDashboardClient({ projects, blogs }: Props) {
                   </div>
                 )}
                 <div className="min-w-0 flex-1">
-                  <h3 className="font-bold text-sm sm:text-base truncate">{project.title}</h3>
+                  <h3 className="truncate text-sm font-bold sm:text-base">{project.title}</h3>
                   <p className="text-xs text-muted-foreground truncate">
                     /{project.slug} · {project.category}
                     {project.featured && " · ⭐"}
                   </p>
                 </div>
                 <span
-                  className={`shrink-0 px-2 py-0.5 text-[10px] sm:text-xs font-bold border-2 border-black ${
+                  className={`shrink-0 rounded-md border border-border/50 px-2 py-0.5 text-[10px] font-bold sm:text-xs ${
                     project.hide
                       ? "bg-red-500/20 text-red-500"
                       : "bg-green-500/20 text-green-500"
@@ -223,18 +223,18 @@ export default function AdminDashboardClient({ projects, blogs }: Props) {
           {blogs.map((blog) => (
             <div
               key={blog.id}
-              className="p-3 sm:p-4 border-2 border-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] bg-surface overflow-hidden"
+              className="overflow-hidden rounded-xl border border-border/50 bg-surface p-3 shadow-md backdrop-blur-md sm:p-4"
             >
               {/* Top row: info */}
               <div className="flex items-center gap-3 mb-3">
                 <div className="min-w-0 flex-1">
-                  <h3 className="font-bold text-sm sm:text-base truncate">{blog.title}</h3>
+                  <h3 className="truncate text-sm font-bold sm:text-base">{blog.title}</h3>
                   <p className="text-xs text-muted-foreground truncate">
                     {blog.platform} · {blog.date}
                   </p>
                 </div>
                 <span
-                  className={`shrink-0 px-2 py-0.5 text-[10px] sm:text-xs font-bold border-2 border-black ${
+                  className={`shrink-0 rounded-md border border-border/50 px-2 py-0.5 text-[10px] font-bold sm:text-xs ${
                     blog.hide
                       ? "bg-red-500/20 text-red-500"
                       : "bg-green-500/20 text-green-500"

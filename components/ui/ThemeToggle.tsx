@@ -25,7 +25,7 @@ export default function ThemeToggle() {
         setTheme(newTheme);
         trackUserAction(AnalyticsEvents.THEME_TOGGLE, { new_theme: newTheme });
       }}
-      className="neo-btn neo-btn-secondary flex h-11 w-11 items-center justify-center rounded-none p-2 md:h-10 md:w-10"
+      className="glass-btn glass-btn-secondary flex h-11 w-11 items-center justify-center rounded-none p-2 md:h-10 md:w-10"
       aria-label="Toggle Theme"
       id="theme-toggle"
     >

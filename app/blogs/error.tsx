@@ -31,12 +31,12 @@ export default function BlogsError({
           transition={{ duration: 0.3 }}
           className="mb-6"
         >
-          <span className="inline-block border-[4px] border-text bg-surface px-6 py-3 text-5xl font-black text-text shadow-[6px_6px_0px_var(--color-secondary)] md:text-7xl">
+          <span className="inline-block glass-card px-6 py-3 text-5xl font-black md:text-7xl">
             📝
           </span>
         </motion.div>
 
-        <h1 className="mb-4 text-3xl font-extrabold md:text-4xl">
+        <h1 className="mb-4 text-4xl font-extrabold md:text-5xl">
           Failed to load articles
         </h1>
 
@@ -47,11 +47,11 @@ export default function BlogsError({
         <div className="flex flex-wrap justify-center gap-4">
           <button
             onClick={() => reset()}
-            className="neo-btn neo-btn-primary"
+            className="glass-btn glass-btn-primary"
           >
             Try Again ↻
           </button>
-          <Link href="/" className="neo-btn neo-btn-secondary">
+          <Link href="/" className="glass-btn glass-btn-secondary">
             Go Home
           </Link>
         </div>

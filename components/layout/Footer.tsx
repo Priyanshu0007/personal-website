@@ -17,7 +17,7 @@ export default function Footer({ name, socials }: FooterProps) {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="border-t-[3px] border-border bg-surface">
+    <footer className="border-t border-border/20 bg-surface">
       <div className="container py-8 md:py-12">
         <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
           {/* Left: Branding */}
@@ -72,7 +72,7 @@ export default function Footer({ name, socials }: FooterProps) {
               href={socials.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex h-11 w-11 items-center justify-center border-[3px] border-border bg-surface transition-colors hover:bg-text hover:text-surface"
+              className="flex h-11 w-11 items-center justify-center rounded-full border border-border/20 bg-surface transition-colors hover:bg-text hover:text-surface"
               aria-label="Visit GitHub Profile"
               onClick={() => trackUserAction(AnalyticsEvents.SOCIAL_LINK_CLICK, { platform: "github", location: "footer" })}
               id="footer-github"
@@ -91,7 +91,7 @@ export default function Footer({ name, socials }: FooterProps) {
               href={socials.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex h-11 w-11 items-center justify-center border-[3px] border-border bg-surface transition-colors hover:bg-[#0077B5] hover:text-white"
+              className="flex h-11 w-11 items-center justify-center rounded-full border border-border/20 bg-surface transition-colors hover:bg-[#0077B5] hover:text-white"
               aria-label="Visit LinkedIn Profile"
               onClick={() => trackUserAction(AnalyticsEvents.SOCIAL_LINK_CLICK, { platform: "linkedin", location: "footer" })}
               id="footer-linkedin"
@@ -110,7 +110,7 @@ export default function Footer({ name, socials }: FooterProps) {
               href={socials.medium}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex h-11 w-11 items-center justify-center border-[3px] border-border bg-surface transition-colors hover:bg-[#00ab6c] hover:text-white"
+              className="flex h-11 w-11 items-center justify-center rounded-full border border-border/20 bg-surface transition-colors hover:bg-[#00ab6c] hover:text-white"
               aria-label="Visit Medium Profile"
               onClick={() => trackUserAction(AnalyticsEvents.SOCIAL_LINK_CLICK, { platform: "medium", location: "footer" })}
               id="footer-medium"
@@ -129,7 +129,7 @@ export default function Footer({ name, socials }: FooterProps) {
               href={socials.devto}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex h-11 w-11 items-center justify-center border-[3px] border-border bg-surface transition-colors hover:bg-[#000000] hover:text-white"
+              className="flex h-11 w-11 items-center justify-center rounded-full border border-border/20 bg-surface transition-colors hover:bg-[#000000] hover:text-white"
               aria-label="Visit Dev.to Profile"
               onClick={() => trackUserAction(AnalyticsEvents.SOCIAL_LINK_CLICK, { platform: "devto", location: "footer" })}
               id="footer-devto"
@@ -148,7 +148,7 @@ export default function Footer({ name, socials }: FooterProps) {
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-8 flex flex-col items-center justify-between gap-2 border-t-[2px] border-border pt-6 sm:flex-row">
+        <div className="mt-8 flex flex-col items-center justify-between gap-2 border-t border-border/20 pt-6 sm:flex-row">
           <p className="text-sm text-text-muted">
             © {currentYear} {name}. All rights reserved.
           </p>

@@ -62,7 +62,7 @@ export default async function Home() {
               <div className="max-w-3xl">
                 {/* Greeting */}
                 <div className="mb-6 md:mb-8">
-                  <span className="inline-block -rotate-2 transform border-[3px] border-text bg-text px-4 py-1.5 text-lg font-black text-surface shadow-[4px_4px_0px_var(--color-primary)] md:text-xl">
+                  <span className="inline-block border border-border/30 bg-surface/80 backdrop-blur-xl px-4 py-1.5 rounded-full text-lg font-black text-text shadow-md md:text-xl">
                     {landing.hero.greeting}
                   </span>
                 </div>
@@ -74,12 +74,12 @@ export default async function Home() {
                     fontFamily: "var(--font-heading), system-ui, sans-serif",
                   }}
                 >
-                  <span className="neo-highlight">{landing.hero.name}</span>
+                  <span className="glass-highlight">{landing.hero.name}</span>
                 </h1>
 
                 {/* Tagline */}
                 <p
-                  className="mb-6 text-2xl font-extrabold text-text md:text-4xl"
+                  className="mb-6 text-2xl font-extrabold text-text md:text-3xl"
                   style={{
                     fontFamily: "var(--font-heading), system-ui, sans-serif",
                   }}
@@ -104,10 +104,10 @@ export default async function Home() {
                     return (
                       <span
                         key={role}
-                        className="neo-badge text-sm"
+                        className="glass-badge text-sm"
                         style={{
                           backgroundColor: colors[i % colors.length],
-                          color: "#000000",
+                          color: "#ffffff",
                         }}
                       >
                         {role}
@@ -120,7 +120,7 @@ export default async function Home() {
                 <div className="flex flex-wrap gap-4">
                   <Link
                     href={landing.hero.ctaPrimary.href}
-                    className="neo-btn neo-btn-primary neo-btn-lg"
+                    className="glass-btn glass-btn-primary glass-btn-lg"
                     scroll={false}
                     id="hero-cta-primary"
                   >
@@ -129,7 +129,7 @@ export default async function Home() {
                   </Link>
                   <a
                     href={landing.hero.ctaSecondary.href}
-                    className="neo-btn neo-btn-secondary neo-btn-lg"
+                    className="glass-btn glass-btn-secondary glass-btn-lg"
                     id="hero-cta-secondary"
                   >
                     {landing.hero.ctaSecondary.label}
@@ -142,7 +142,7 @@ export default async function Home() {
                     Find me on
                   </span>
                   <div
-                    className="h-[2px] w-8 bg-border"
+                    className="h-px w-8 bg-border"
                     aria-hidden="true"
                   />
                   <a
@@ -170,14 +170,8 @@ export default async function Home() {
             {/* Hero Image */}
             <div className="order-1 w-full max-w-[320px] flex-shrink-0 lg:order-2 lg:max-w-[380px]">
               <div className="group relative">
-                {/* Background shadow box */}
-                <div
-                  className="absolute inset-0 translate-x-4 translate-y-4 border-[3px] border-text bg-secondary transition-transform group-hover:translate-x-2 group-hover:translate-y-2"
-                  aria-hidden="true"
-                />
-
-                {/* Image container */}
-                <div className="relative overflow-hidden border-[3px] border-text bg-surface">
+                {/* Glassmorphism image container */}
+                <div className="relative overflow-hidden rounded-3xl border border-border/20 bg-surface/60 backdrop-blur-xl shadow-xl transition-transform duration-500 group-hover:scale-[1.02]">
                   <Image
                     src={
                       envConfig.profilePicUrl ||
@@ -194,7 +188,7 @@ export default async function Home() {
                 </div>
 
                 {/* Floating badge over image */}
-                <div className="absolute -right-4 -bottom-4 rotate-3 border-[3px] border-text bg-primary px-4 py-2 text-sm font-black shadow-[4px_4px_0px_var(--color-text)]">
+                <div className="absolute -right-4 -bottom-4 border border-primary/30 bg-primary/20 backdrop-blur-xl rounded-xl px-4 py-2 text-sm font-black shadow-md">
                   HI THERE!{" "}
                   <span role="img" aria-label="Waving hand">
                     👋
@@ -208,7 +202,7 @@ export default async function Home() {
 
       {/* ===================== ABOUT SECTION ===================== */}
       <section
-        className="section border-y-[3px] border-border bg-surface"
+        className="section border-y border-border/10 bg-surface"
         id="about"
       >
         <div className="container">
@@ -251,7 +245,7 @@ export default async function Home() {
                 ].map((stat) => (
                   <div
                     key={stat.label}
-                    className="neo-card-flat p-4 text-center"
+                    className="glass-card-flat p-4 text-center"
                   >
                     <div
                       className="mb-1 text-2xl font-extrabold md:text-3xl"
@@ -260,7 +254,7 @@ export default async function Home() {
                           "var(--font-heading), system-ui, sans-serif",
                       }}
                     >
-                      <span className="neo-highlight" style={{ backgroundColor: stat.color }}>
+                      <span className="glass-highlight" style={{ backgroundColor: stat.color }}>
                         {stat.value}
                       </span>
                     </div>
@@ -280,7 +274,7 @@ export default async function Home() {
                   {landing.about.skills.map((skill) => (
                     <span
                       key={skill}
-                      className="neo-badge neo-badge-outline text-xs"
+                      className="glass-badge glass-badge-outline text-xs"
                     >
                       {skill}
                     </span>
@@ -307,7 +301,7 @@ export default async function Home() {
                 {[1, 2].map((i) => (
                   <div
                     key={i}
-                    className="h-[400px] w-full animate-pulse border-[3px] border-border bg-surface-secondary"
+                    className="h-[400px] w-full animate-pulse rounded-2xl border border-border/20 bg-surface"
                   />
                 ))}
               </div>
@@ -320,7 +314,7 @@ export default async function Home() {
           <div className="mt-10 text-center">
             <Link
               href="/projects"
-              className="neo-btn neo-btn-primary neo-btn-lg"
+              className="glass-btn glass-btn-primary glass-btn-lg"
               transitionTypes={["nav-forward"]}
               scroll={false}
               id="view-all-projects"
@@ -334,7 +328,7 @@ export default async function Home() {
 
       {/* ===================== LATEST BLOGS ===================== */}
       <section
-        className="section border-y-[3px] border-border bg-surface"
+        className="section border-y border-border/10 bg-surface"
         id="latest-blogs"
       >
         <div className="container">
@@ -353,7 +347,7 @@ export default async function Home() {
                 {[1, 2, 3].map((i) => (
                   <div
                     key={i}
-                    className="h-[300px] w-full animate-pulse border-[3px] border-border bg-surface-secondary"
+                    className="h-[300px] w-full animate-pulse rounded-2xl border border-border/20 bg-surface"
                   />
                 ))}
               </div>
@@ -366,7 +360,7 @@ export default async function Home() {
           <div className="mt-10 text-center">
             <Link
               href="/blogs"
-              className="neo-btn neo-btn-primary neo-btn-lg"
+              className="glass-btn glass-btn-primary glass-btn-lg"
               transitionTypes={["nav-forward"]}
               scroll={false}
               id="view-all-blogs"
@@ -383,7 +377,7 @@ export default async function Home() {
 
       {/* ===================== BEYOND CODE ===================== */}
       <section
-        className="section border-y-[3px] border-border bg-surface"
+        className="section border-y border-border/10 bg-surface"
         id="beyond-code"
       >
         <div className="container">
@@ -416,7 +410,7 @@ export default async function Home() {
             <div className="mb-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
               {/* <a
                 href={`mailto:${landing.contact.email}`}
-                className="neo-btn neo-btn-accent neo-btn-lg w-full sm:w-auto"
+                className="glass-btn glass-btn-accent glass-btn-lg w-full sm:w-auto"
                 id="contact-email"
               >
                 ✉️ Send Email
@@ -425,7 +419,7 @@ export default async function Home() {
                 href={personal.socials.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="neo-btn neo-btn-secondary neo-btn-lg w-full sm:w-auto"
+                className="glass-btn glass-btn-secondary glass-btn-lg w-full sm:w-auto"
                 id="contact-linkedin"
               >
                 <span role="img" aria-label="Briefcase" className="mr-1">
@@ -437,7 +431,7 @@ export default async function Home() {
                 href={personal.socials.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="neo-btn neo-btn-secondary neo-btn-lg w-full sm:w-auto"
+                className="glass-btn glass-btn-secondary glass-btn-lg w-full sm:w-auto"
                 id="contact-github"
               >
                 <span role="img" aria-label="Octocat" className="mr-1">
@@ -449,11 +443,11 @@ export default async function Home() {
 
             {/* Or divider */}
             <div className="my-8 flex items-center gap-4" aria-hidden="true">
-              <div className="h-[3px] flex-1 bg-border" />
+              <div className="h-px flex-1 bg-border" />
               <span className="text-sm font-extrabold tracking-wider text-text-muted uppercase">
                 Or drop a message
               </span>
-              <div className="h-[3px] flex-1 bg-border" />
+              <div className="h-px flex-1 bg-border" />
             </div>
 
             {/* Simple contact form */}

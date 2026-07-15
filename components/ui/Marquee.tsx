@@ -9,7 +9,7 @@ export default function Marquee({ items }: MarqueeProps) {
   const duplicated = [...items, ...items];
 
   return (
-    <div className="w-full overflow-hidden border-y-[3px] border-border bg-surface py-4">
+    <div className="w-full overflow-hidden border-y border-border/20 bg-surface py-4">
       <div className="marquee-track">
         {duplicated.map((item, i) => (
           <span
@@ -17,7 +17,7 @@ export default function Marquee({ items }: MarqueeProps) {
             className="flex items-center text-lg font-extrabold tracking-wider whitespace-nowrap text-text uppercase md:text-xl"
           >
             {item}
-            <span className="mx-4 block h-3 w-3 rotate-45 border-[2px] border-border bg-primary" />
+            <span className="mx-4 block h-2.5 w-2.5 rounded-full bg-primary opacity-70" />
           </span>
         ))}
       </div>

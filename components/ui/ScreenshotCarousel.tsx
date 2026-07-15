@@ -87,14 +87,14 @@ export default function ScreenshotCarousel({
     >
       {/* Main viewport */}
       <div
-        className={`relative overflow-hidden border-[3px] border-border ${
+        className={`relative overflow-hidden rounded-2xl border border-border/20 ${
           isMobile ? "max-w-sm mx-auto" : "w-full"
         }`}
         style={{ boxShadow: "var(--shadow-lg)" }}
       >
         {/* Slide counter badge */}
         <div
-          className="neo-badge absolute top-4 right-4 z-10 text-xs text-black"
+          className="glass-badge absolute top-4 right-4 z-10 text-xs"
           style={{ backgroundColor: accentColor }}
           aria-live="polite"
           aria-atomic="true"
@@ -159,7 +159,7 @@ export default function ScreenshotCarousel({
           <>
             <button
               onClick={goPrev}
-              className="absolute top-1/2 left-3 z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center border-[3px] border-border bg-surface text-lg font-extrabold transition-all hover:translate-x-[-2px] hover:translate-y-[calc(-50%-2px)]"
+              className="absolute top-1/2 left-3 z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-border/20 bg-surface/80 backdrop-blur-md text-lg font-extrabold transition-all hover:scale-110 hover:bg-surface"
               style={{
                 boxShadow: "var(--shadow-sm)",
               }}
@@ -170,7 +170,7 @@ export default function ScreenshotCarousel({
             </button>
             <button
               onClick={goNext}
-              className="absolute top-1/2 right-3 z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center border-[3px] border-border bg-surface text-lg font-extrabold transition-all hover:translate-x-[2px] hover:translate-y-[calc(-50%-2px)]"
+              className="absolute top-1/2 right-3 z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-border/20 bg-surface/80 backdrop-blur-md text-lg font-extrabold transition-all hover:scale-110 hover:bg-surface"
               style={{
                 boxShadow: "var(--shadow-sm)",
               }}
@@ -194,7 +194,7 @@ export default function ScreenshotCarousel({
             <button
               key={i}
               onClick={() => goTo(i)}
-              className="h-3 w-3 border-2 border-border transition-all"
+              className="h-3 w-3 rounded-full border-2 border-border/30 transition-all"
               style={{
                 backgroundColor:
                   i === current ? accentColor : "var(--color-surface)",
@@ -225,7 +225,7 @@ export default function ScreenshotCarousel({
               onClick={() => goTo(i)}
               className={`${
                 isMobile ? "aspect-[9/16] w-20 flex-none" : "aspect-[16/9] flex-1"
-              } overflow-hidden border-[3px] transition-all`}
+              } overflow-hidden border transition-all`}
               style={{
                 borderColor:
                   i === current ? accentColor : "var(--color-border)",

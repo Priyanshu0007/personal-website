@@ -104,17 +104,17 @@ export default function ProjectForm({ initialData, onClose }: Props) {
     <div className="fixed inset-0 z-50 bg-black/60 sm:flex sm:items-start sm:justify-center sm:p-4 overflow-y-auto">
       <form
         onSubmit={handleSubmit}
-        className="w-full min-h-screen sm:min-h-0 sm:max-w-3xl sm:my-8 border-0 sm:border-4 border-black sm:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] p-4 sm:p-6 space-y-5 bg-surface"
+        className="w-full space-y-5 rounded-3xl border border-border/50 bg-surface p-4 shadow-md sm:my-8 sm:min-h-0 sm:max-w-3xl sm:p-6"
       >
         {/* Header */}
-        <div className="flex items-center justify-between sticky top-0 bg-surface z-20 py-2 -mx-4 sm:-mx-6 px-4 sm:px-6 border-b-2 border-black/10">
+        <div className="flex items-center justify-between sticky top-0 bg-surface z-20 py-2 -mx-4 sm:-mx-6 px-4 sm:px-6 border-secondary/30-2 border-secondary/30lack/10">
           <h2 className="text-lg sm:text-2xl font-bold uppercase">
             {isEditing ? "Edit Project" : "New Project"}
           </h2>
           <button
             type="button"
             onClick={onClose}
-            className="w-10 h-10 flex items-center justify-center text-xl font-bold hover:text-red-500 hover:bg-red-500/10 transition-colors border-2 border-black"
+            className="flex h-10 w-10 items-center justify-center rounded-lg border border-border/50 text-xl font-bold transition-colors hover:bg-red-500/10 hover:text-red-500"
           >
             ✕
           </button>
@@ -159,7 +159,7 @@ export default function ProjectForm({ initialData, onClose }: Props) {
         <Field label="Thumbnail URL" error={errors.thumbnail}>
           <input value={form.thumbnail} onChange={(e) => set("thumbnail", e.target.value)} className="admin-input" placeholder="https://cdn.example.com/thumb.png" />
           {form.thumbnail && (
-            <div className="mt-2 border-2 border-black/20 p-1 inline-block bg-white">
+            <div className="mt-2 inline-block overflow-hidden rounded-xl border border-border/50 bg-white p-1">
               <div className="relative h-24 sm:h-32 w-40 sm:w-56">
                 <Image
                   src={form.thumbnail}
@@ -198,7 +198,7 @@ export default function ProjectForm({ initialData, onClose }: Props) {
           {form.images.length > 0 && (
             <div className="flex flex-wrap gap-2 mt-3">
               {form.images.map((img, i) => (
-                <div key={i} className="relative group border-2 border-black/20 p-1 bg-white">
+                <div key={i} className="group relative overflow-hidden rounded-lg border border-border/50 bg-white p-1">
                   <div className="relative h-16 w-24 sm:h-20 sm:w-32">
                     <Image
                       src={img}
@@ -254,7 +254,7 @@ export default function ProjectForm({ initialData, onClose }: Props) {
           </div>
           <div className="flex flex-wrap gap-2 mt-2">
             {form.techStack.map((tech, i) => (
-              <span key={i} className="px-2 py-1 border-2 border-black text-xs font-bold flex items-center gap-1 bg-surface">
+              <span key={i} className="flex items-center gap-1 rounded-lg border border-border/50 bg-surface px-2 py-1 text-xs font-bold">
                 {tech}
                 <button type="button" onClick={() => set("techStack", form.techStack.filter((_, idx) => idx !== i))} className="text-red-500 hover:text-red-700 ml-1">✕</button>
               </span>
@@ -327,7 +327,7 @@ export default function ProjectForm({ initialData, onClose }: Props) {
         </div>
 
         {/* Actions */}
-        <div className="flex flex-col sm:flex-row gap-3 pt-4 border-t-2 border-black/20 sticky bottom-0 bg-surface pb-2 z-20">
+        <div className="flex flex-col sm:flex-row gap-3 pt-4 border-t-2 border-secondary/30lack/20 sticky bottom-0 bg-surface pb-2 z-20">
           <button type="submit" disabled={saving} className="admin-btn flex-1">
             {saving ? "Saving…" : isEditing ? "Update Project" : "Create Project"}
           </button>
@@ -359,14 +359,14 @@ function ToggleField({ label, checked, onChange }: { label: string; checked: boo
     <label className="flex items-center gap-3 cursor-pointer select-none group">
       <div
         onClick={() => onChange(!checked)}
-        className={`w-6 h-6 border-2 border-black flex items-center justify-center transition-all ${checked
-            ? "bg-primary shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
-            : "bg-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
+        className={`flex h-6 w-6 items-center justify-center rounded border border-border/50 transition-all ${checked
+            ? "bg-primary shadow-md"
+            : "bg-white shadow-md"
           } group-active:shadow-none group-active:translate-x-[1px] group-active:translate-y-[1px]`}
       >
         {checked && (
           <svg
-            className="w-4 h-4 text-black"
+            className="h-4 w-4 text-text"
             fill="none"
             stroke="currentColor"
             strokeWidth="4"

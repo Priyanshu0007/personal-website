@@ -1,13 +1,13 @@
 import type { Metadata, Viewport } from "next";
 import { Bricolage_Grotesque, DM_Sans } from "next/font/google";
 import { getPersonalData } from "@/lib/data";
-import { envConfig } from "@/utils/envConfig";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import ClientEnhancements from "@/components/layout/ClientEnhancements";
 import { ThemeProvider } from "@/components/ui/ThemeProvider";
 import FirebaseAnalytics from "@/components/FirebaseAnalytics";
 import MsClarity from "@/components/MsClarity";
+import BackgroundOrbs from "@/components/ui/BackgroundOrbs";
 import "./globals.css";
 
 const bricolage = Bricolage_Grotesque({
@@ -174,7 +174,7 @@ export default function RootLayout({
       >
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:border-[3px] focus:border-border focus:bg-primary focus:px-4 focus:py-2 focus:font-bold focus:text-black focus:shadow-[4px_4px_0px_var(--color-shadow)]"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:rounded-lg focus:border focus:border-border/30 focus:bg-primary focus:px-4 focus:py-2 focus:font-bold focus:text-white focus:shadow-lg"
         >
           Skip to main content
         </a>
@@ -184,6 +184,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <BackgroundOrbs />
           <Navbar
             name={personal.name}
             shortName={personal.shortName}
