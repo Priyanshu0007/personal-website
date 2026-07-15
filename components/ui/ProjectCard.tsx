@@ -83,29 +83,9 @@ export default function ProjectCard({
 
         {/* Content */}
         <div className="flex flex-1 flex-col p-5">
-          <div className="relative mb-2 h-7 overflow-hidden">
-            <Tag className="absolute inset-0 overflow-hidden text-xl font-extrabold text-ellipsis whitespace-nowrap transition-opacity group-hover:opacity-0">
-              {project.title}
-            </Tag>
-            <div
-              className="pointer-events-none absolute inset-0 flex items-center opacity-0 transition-opacity group-hover:opacity-100"
-              aria-hidden="true"
-            >
-              <div
-                className="marquee-track [animation-play-state:paused] group-hover:[animation-play-state:running]"
-                style={{ animationDuration: "6s" }}
-              >
-                {[...Array(8)].map((_, i) => (
-                  <span
-                    key={i}
-                    className="mr-8 text-xl font-extrabold whitespace-nowrap"
-                  >
-                    {project.title}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </div>
+          <Tag className="mb-2 text-xl font-extrabold text-text transition-colors duration-300 group-hover:text-primary">
+            {project.title}
+          </Tag>
 
           <p className="mb-4 line-clamp-2 flex-1 text-sm text-text-secondary">
             {project.description}

@@ -27,12 +27,9 @@ export default function Navbar({
   const pathname = usePathname();
 
   return (
-    <header className="sticky top-0 z-50 w-full">
-      {/* Top accent bar */}
-      <div className="h-1.5 w-full bg-primary" />
-
-      <nav className="border-b border-border/20 bg-surface/60 backdrop-blur-xl">
-        <div className="container flex h-16 items-center justify-between md:h-20">
+    <header className="fixed top-4 left-1/2 z-50 w-[92%] max-w-5xl -translate-x-1/2 transition-all duration-300">
+      <nav className="rounded-full border border-border/20 bg-surface/85 px-4 shadow-lg backdrop-blur-xl md:px-6">
+        <div className="flex h-14 items-center justify-between md:h-16">
           {/* Logo */}
           <Link
             href="/"
@@ -41,12 +38,12 @@ export default function Navbar({
             aria-label={`Home - ${name}`}
           >
             <span
-              className="flex h-10 w-10 items-center justify-center rounded-xl border border-border/30 bg-primary text-white text-lg font-extrabold transition-all group-hover:scale-105 group-hover:shadow-md md:h-12 md:w-12 md:text-xl"
+              className="flex h-9 w-9 items-center justify-center rounded-full border border-border/30 bg-primary text-white text-base font-extrabold transition-all group-hover:scale-105 group-hover:shadow-md md:h-10 md:w-10 md:text-lg"
               aria-hidden="true"
             >
               {shortName}
             </span>
-            <span className="hidden text-lg font-extrabold tracking-tight sm:block md:text-xl">
+            <span className="hidden text-sm font-extrabold tracking-tight sm:block md:text-base">
               {name}
             </span>
           </Link>
@@ -64,7 +61,7 @@ export default function Navbar({
                   aria-current={isActive ? "page" : undefined}
                   onClick={() => trackUserAction(AnalyticsEvents.NAV_LINK_CLICK, { link_name: item.label, destination: item.href })}
                   prefetch={true}
-                  className={`rounded-full px-4 py-2 text-sm font-bold tracking-wider uppercase transition-all ${
+                  className={`rounded-full px-3.5 py-1.5 text-xs font-bold tracking-wider uppercase transition-all ${
                     isActive
                       ? "bg-primary text-white shadow-sm"
                       : "hover:bg-text/10"
@@ -76,28 +73,28 @@ export default function Navbar({
             })}
 
             {/* Social icons */}
-            <div className="ml-3 flex items-center gap-2">
+            <div className="ml-3 flex items-center gap-2 border-l border-border/20 pl-3">
               <a
                 href={socials.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex h-11 w-11 items-center justify-center rounded-full border border-border/20 bg-surface/50 transition-colors hover:bg-text hover:text-surface"
+                className="flex h-9 w-9 items-center justify-center rounded-full border border-border/20 bg-surface/50 transition-colors hover:bg-text hover:text-surface"
                 aria-label="Visit GitHub Profile"
                 onClick={() => trackUserAction(AnalyticsEvents.SOCIAL_LINK_CLICK, { platform: "github" })}
                 id="nav-github"
               >
-                <GitHubIcon aria-hidden="true" />
+                <GitHubIcon aria-hidden="true" className="h-4.5 w-4.5" />
               </a>
               <a
                 href={socials.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex h-11 w-11 items-center justify-center rounded-full border border-border/20 bg-surface/50 transition-colors hover:bg-[#0077B5] hover:text-white"
+                className="flex h-9 w-9 items-center justify-center rounded-full border border-border/20 bg-surface/50 transition-colors hover:bg-[#0077B5] hover:text-white"
                 aria-label="Visit LinkedIn Profile"
                 onClick={() => trackUserAction(AnalyticsEvents.SOCIAL_LINK_CLICK, { platform: "linkedin" })}
                 id="nav-linkedin"
               >
-                <LinkedInIcon aria-hidden="true" />
+                <LinkedInIcon aria-hidden="true" className="h-4.5 w-4.5" />
               </a>
               <ThemeToggle />
             </div>
@@ -106,26 +103,26 @@ export default function Navbar({
           {/* Mobile Hamburger */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="flex h-12 w-12 flex-col items-center justify-center rounded-xl border border-border/20 bg-surface transition-colors hover:bg-primary md:hidden"
+            className="flex h-10 w-10 flex-col items-center justify-center rounded-full border border-border/20 bg-surface transition-colors hover:bg-primary md:hidden"
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
             aria-expanded={mobileOpen}
             aria-controls="mobile-menu"
             id="nav-mobile-toggle"
           >
             <span
-              className={`block h-0.5 w-5 bg-text transition-transform ${
+              className={`block h-0.5 w-4 bg-text transition-transform ${
                 mobileOpen ? "translate-y-1 rotate-45" : ""
               }`}
               aria-hidden="true"
             />
             <span
-              className={`my-1 block h-0.5 w-5 bg-text transition-opacity ${
+              className={`my-1 block h-0.5 w-4 bg-text transition-opacity ${
                 mobileOpen ? "opacity-0" : ""
               }`}
               aria-hidden="true"
             />
             <span
-              className={`block h-0.5 w-5 bg-text transition-transform ${
+              className={`block h-0.5 w-4 bg-text transition-transform ${
                 mobileOpen ? "-translate-y-1 -rotate-45" : ""
               }`}
               aria-hidden="true"
@@ -137,10 +134,10 @@ export default function Navbar({
         {mobileOpen && (
           <div
             id="mobile-menu"
-            className="animate-slide-in-up border-t border-border/20 bg-surface/90 backdrop-blur-xl md:hidden"
+            className="absolute top-16 left-0 right-0 mt-2 rounded-2xl border border-border/20 bg-surface/95 p-4 shadow-lg backdrop-blur-xl md:hidden animate-slide-in-up"
             role="menu"
           >
-            <div className="container flex flex-col gap-2 py-4">
+            <div className="flex flex-col gap-2">
               {navigation.map((item) => {
                 const isActive = pathname === item.href;
                 return (
@@ -166,7 +163,7 @@ export default function Navbar({
               })}
 
               {/* Mobile social links */}
-              <div className="mt-2 flex gap-2">
+              <div className="mt-2 flex gap-2 border-t border-border/10 pt-2">
                 <a
                   href={socials.github}
                   target="_blank"
@@ -202,8 +199,8 @@ export default function Navbar({
 function GitHubIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
-      width="18"
-      height="18"
+      width="16"
+      height="16"
       viewBox="0 0 24 24"
       fill="currentColor"
       {...props}
@@ -216,8 +213,8 @@ function GitHubIcon(props: React.SVGProps<SVGSVGElement>) {
 function LinkedInIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
-      width="18"
-      height="18"
+      width="16"
+      height="16"
       viewBox="0 0 24 24"
       fill="currentColor"
       {...props}

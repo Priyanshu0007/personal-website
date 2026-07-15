@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Bricolage_Grotesque, DM_Sans } from "next/font/google";
+import { Outfit, DM_Sans } from "next/font/google";
 import { getPersonalData } from "@/lib/data";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -10,11 +10,11 @@ import MsClarity from "@/components/MsClarity";
 import BackgroundOrbs from "@/components/ui/BackgroundOrbs";
 import "./globals.css";
 
-const bricolage = Bricolage_Grotesque({
+const outfit = Outfit({
   subsets: ["latin"],
   variable: "--font-heading",
   display: "swap",
-  weight: ["400", "500", "600", "700", "800"],
+  weight: ["400", "500", "600", "700", "800", "900"],
 });
 
 const dmSans = DM_Sans({
@@ -149,7 +149,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${bricolage.variable} ${dmSans.variable} h-full`}
+      className={`${outfit.variable} ${dmSans.variable} h-full`}
       suppressHydrationWarning
     >
       <head>

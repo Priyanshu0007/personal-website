@@ -4,9 +4,6 @@ import dynamic from "next/dynamic";
 import { useEffect } from "react";
 import ScrollPreserver from "@/components/ui/ScrollPreserver";
 
-const ScrollProgress = dynamic(() => import("@/components/ui/ScrollProgress"), {
-  ssr: false,
-});
 
 // Register service worker for PWA offline support
 function ServiceWorkerRegistration() {
@@ -30,7 +27,6 @@ export default function ClientEnhancements() {
   return (
     <>
       <ServiceWorkerRegistration />
-      <ScrollProgress />
       <ScrollPreserver />
     </>
   );

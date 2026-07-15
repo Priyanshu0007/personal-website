@@ -88,22 +88,6 @@
    ======================================== */
 
 @layer base {
-  * {
-    cursor: url("/cursor-light.svg") 2 2, auto;
-  }
-
-  a, button, [role="button"], input, select, textarea, .glass-btn, .admin-btn {
-    cursor: url("/cursor-light-pointer.svg") 2 2, pointer !important;
-  }
-
-  .dark * {
-    cursor: url("/cursor-dark.svg") 2 2, auto;
-  }
-
-  .dark a, .dark button, .dark [role="button"], .dark input, .dark select, .dark textarea, .dark .glass-btn, .dark .admin-btn {
-    cursor: url("/cursor-dark-pointer.svg") 2 2, pointer !important;
-  }
-
   html {
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
