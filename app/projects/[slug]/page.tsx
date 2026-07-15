@@ -187,7 +187,9 @@ export default async function ProjectDetailPage({
             src={project.thumbnail}
             alt={`Main screenshot for ${project.title}`}
             fill
-            className="object-contain z-10"
+            className={`${
+              project.category === "react-native" ? "object-contain" : "object-cover"
+            } z-10`}
             priority
             sizes="(max-width: 1200px) 100vw, 1200px"
           />

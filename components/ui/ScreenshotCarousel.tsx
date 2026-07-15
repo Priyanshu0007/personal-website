@@ -136,7 +136,7 @@ export default function ScreenshotCarousel({
                 src={image}
                 alt={`${title} screenshot ${i + 1}`}
                 fill
-                className="object-contain"
+                className="object-cover"
                 loading={i === 0 ? "eager" : "lazy"}
                 draggable={false}
                 sizes="(max-width: 1024px) 100vw, 896px"
@@ -244,7 +244,7 @@ export default function ScreenshotCarousel({
                   src={image}
                   alt=""
                   fill
-                  className="object-contain"
+                  className="object-cover"
                   sizes="(max-width: 768px) 20vw, 10vw"
                 />
               </div>
