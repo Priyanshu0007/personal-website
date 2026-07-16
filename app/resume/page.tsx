@@ -61,7 +61,10 @@ export default function ResumePage() {
 
           <ResumeActions resumeUrl={resumeUrl} />
 
-          <div className="glass-card-flat relative mx-auto mb-16 aspect-[1/1.414] w-full max-w-4xl overflow-hidden bg-surface p-2 sm:p-4">
+          <div
+            className="glass-card glass-border-glow animate-float-delayed relative mx-auto mb-16 aspect-[1/1.414] w-full max-w-4xl overflow-hidden bg-surface p-2 sm:p-4"
+            style={{ "--glow-color": "var(--color-primary)" } as React.CSSProperties}
+          >
             <ResumeViewer resumeUrl={resumeUrl} />
           </div>
 
