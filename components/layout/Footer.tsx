@@ -17,8 +17,8 @@ export default function Footer({ name, socials }: FooterProps) {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-border/20 bg-surface">
-      <div className="container py-8 md:py-12">
+    <footer className="container mb-6 mt-12">
+      <div className="relative overflow-hidden rounded-[2rem] border border-border/30 bg-surface/60 p-8 shadow-lg backdrop-blur-xl md:p-12">
         <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
           {/* Left: Branding */}
           <div className="flex flex-col items-center gap-2 md:items-start">
@@ -40,27 +40,27 @@ export default function Footer({ name, socials }: FooterProps) {
             <Link
               href="/"
               onClick={() => trackUserAction(AnalyticsEvents.FOOTER_LINK_CLICK, { link_name: "Home", destination: "/" })}
-              className="text-sm font-bold tracking-wider uppercase transition-colors hover:text-secondary"
+              className="text-sm font-bold uppercase tracking-wider transition-colors hover:text-secondary"
             >
               Home
             </Link>
-            <span className="text-text-muted" aria-hidden="true">
+            <span className="text-border/50" aria-hidden="true">
               •
             </span>
             <Link
               href="/projects"
               onClick={() => trackUserAction(AnalyticsEvents.FOOTER_LINK_CLICK, { link_name: "Projects", destination: "/projects" })}
-              className="text-sm font-bold tracking-wider uppercase transition-colors hover:text-secondary"
+              className="text-sm font-bold uppercase tracking-wider transition-colors hover:text-secondary"
             >
               Projects
             </Link>
-            <span className="text-text-muted" aria-hidden="true">
+            <span className="text-border/50" aria-hidden="true">
               •
             </span>
             <Link
               href="/uses"
               onClick={() => trackUserAction(AnalyticsEvents.FOOTER_LINK_CLICK, { link_name: "Uses", destination: "/uses" })}
-              className="text-sm font-bold tracking-wider uppercase transition-colors hover:text-secondary"
+              className="text-sm font-bold uppercase tracking-wider transition-colors hover:text-secondary"
             >
               Uses
             </Link>
@@ -72,7 +72,8 @@ export default function Footer({ name, socials }: FooterProps) {
               href={socials.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex h-11 w-11 items-center justify-center rounded-full border border-border/20 bg-surface transition-colors hover:bg-text hover:text-surface"
+              className="glass-border-glow flex h-11 w-11 items-center justify-center rounded-full border border-border/20 bg-surface/40 backdrop-blur-md transition-all hover:bg-surface/80"
+              style={{ "--glow-color": "var(--color-text)" } as React.CSSProperties}
               aria-label="Visit GitHub Profile"
               onClick={() => trackUserAction(AnalyticsEvents.SOCIAL_LINK_CLICK, { platform: "github", location: "footer" })}
               id="footer-github"
@@ -91,7 +92,8 @@ export default function Footer({ name, socials }: FooterProps) {
               href={socials.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex h-11 w-11 items-center justify-center rounded-full border border-border/20 bg-surface transition-colors hover:bg-[#0077B5] hover:text-white"
+              className="glass-border-glow flex h-11 w-11 items-center justify-center rounded-full border border-border/20 bg-surface/40 backdrop-blur-md transition-all hover:bg-surface/80 hover:text-[#0077B5]"
+              style={{ "--glow-color": "#0077B5" } as React.CSSProperties}
               aria-label="Visit LinkedIn Profile"
               onClick={() => trackUserAction(AnalyticsEvents.SOCIAL_LINK_CLICK, { platform: "linkedin", location: "footer" })}
               id="footer-linkedin"
@@ -110,7 +112,8 @@ export default function Footer({ name, socials }: FooterProps) {
               href={socials.medium}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex h-11 w-11 items-center justify-center rounded-full border border-border/20 bg-surface transition-colors hover:bg-[#00ab6c] hover:text-white"
+              className="glass-border-glow flex h-11 w-11 items-center justify-center rounded-full border border-border/20 bg-surface/40 backdrop-blur-md transition-all hover:bg-surface/80 hover:text-[#00ab6c]"
+              style={{ "--glow-color": "#00ab6c" } as React.CSSProperties}
               aria-label="Visit Medium Profile"
               onClick={() => trackUserAction(AnalyticsEvents.SOCIAL_LINK_CLICK, { platform: "medium", location: "footer" })}
               id="footer-medium"
@@ -129,7 +132,8 @@ export default function Footer({ name, socials }: FooterProps) {
               href={socials.devto}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex h-11 w-11 items-center justify-center rounded-full border border-border/20 bg-surface transition-colors hover:bg-[#000000] hover:text-white"
+              className="glass-border-glow flex h-11 w-11 items-center justify-center rounded-full border border-border/20 bg-surface/40 backdrop-blur-md transition-all hover:bg-surface/80"
+              style={{ "--glow-color": "var(--color-text)" } as React.CSSProperties}
               aria-label="Visit Dev.to Profile"
               onClick={() => trackUserAction(AnalyticsEvents.SOCIAL_LINK_CLICK, { platform: "devto", location: "footer" })}
               id="footer-devto"
@@ -148,14 +152,14 @@ export default function Footer({ name, socials }: FooterProps) {
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-8 flex flex-col items-center justify-between gap-2 border-t border-border/20 pt-6 sm:flex-row">
+        <div className="mt-8 flex flex-col items-center justify-between gap-4 border-t border-border/20 pt-6 sm:flex-row">
           <p className="text-sm text-text-muted">
             © {currentYear} {name}. All rights reserved.
           </p>
-          <p className="text-sm text-text-muted">
+          <p className="flex items-center gap-1.5 text-sm text-text-muted">
             Built with{" "}
             <span
-              className="text-secondary"
+              className="inline-flex animate-pulse items-center text-secondary"
               role="img"
               aria-label="love"
             >
