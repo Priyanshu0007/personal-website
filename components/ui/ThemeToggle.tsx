@@ -5,7 +5,11 @@ import { useEffect, useState } from "react";
 import { Moon, Sun } from "lucide-react";
 import { trackUserAction, AnalyticsEvents } from "@/lib/analytics";
 
-export default function ThemeToggle() {
+interface ThemeToggleProps {
+  className?: string;
+}
+
+export default function ThemeToggle({ className }: ThemeToggleProps) {
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
 
@@ -14,8 +18,20 @@ export default function ThemeToggle() {
     return () => cancelAnimationFrame(frame);
   }, []);
 
+  const defaultClassName =
+    "flex h-9 w-9 items-center justify-center rounded-full border border-border/20 bg-surface/50 transition-colors hover:bg-text hover:text-surface";
+  const btnClassName = className || defaultClassName;
+
   if (!mounted) {
-    return <div className="h-[42px] w-[42px]" />; // Placeholder to avoid layout shift
+    return (
+      <button
+        className={btnClassName}
+        aria-hidden="true"
+        disabled
+      >
+        <div className="h-[18px] w-[18px] opacity-0" />
+      </button>
+    );
   }
 
   return (
@@ -25,11 +41,11 @@ export default function ThemeToggle() {
         setTheme(newTheme);
         trackUserAction(AnalyticsEvents.THEME_TOGGLE, { new_theme: newTheme });
       }}
-      className="glass-btn glass-btn-secondary flex h-11 w-11 items-center justify-center rounded-none p-2 md:h-10 md:w-10"
+      className={btnClassName}
       aria-label="Toggle Theme"
       id="theme-toggle"
     >
-      {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
+      {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
     </button>
   );
 }

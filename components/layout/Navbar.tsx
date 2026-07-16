@@ -127,9 +127,7 @@ export default function Navbar({
           </span>
         </Link>
 
-        <div className="pointer-events-auto shadow-lg rounded-full border border-white/20 bg-surface/80 backdrop-blur-xl">
-          <ThemeToggle />
-        </div>
+        <ThemeToggle className="pointer-events-auto flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-surface/80 backdrop-blur-xl shadow-lg text-text transition-all hover:scale-105" />
       </div>
 
       {/* Mobile Floating Bottom Tab Bar */}
