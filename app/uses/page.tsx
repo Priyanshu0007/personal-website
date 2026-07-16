@@ -224,7 +224,10 @@ export default function UsesPage() {
                 {section.items.map((item) => (
                   <div
                     key={item.name}
-                    className="glass-card-flat p-5 transition-colors hover:bg-bg-secondary"
+                    className="glass-card glass-border-glow glass-sweep p-5"
+                    style={{
+                      "--glow-color": section.color,
+                    } as React.CSSProperties}
                   >
                     <h3 className="mb-1 text-base font-extrabold">
                       {item.name}
