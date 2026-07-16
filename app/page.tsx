@@ -62,8 +62,8 @@ export default async function Home() {
               <div className="h-3 w-3 rounded-full bg-red-500/80 shadow-[0_0_8px_rgba(239,68,68,0.5)]"></div>
               <div className="h-3 w-3 rounded-full bg-yellow-500/80 shadow-[0_0_8px_rgba(234,179,8,0.5)]"></div>
               <div className="h-3 w-3 rounded-full bg-green-500/80 shadow-[0_0_8px_rgba(34,197,94,0.5)]"></div>
-              <div className="ml-4 text-xs font-semibold text-text-muted/70 tracking-widest uppercase">
-                developer-workspace.sh
+              <div className="ml-4 text-xs font-semibold text-text-muted/70 tracking-widest">
+                priyanshu.tsx
               </div>
             </div>
 
