@@ -10,6 +10,7 @@ import {
 } from "@/lib/data";
 import BackButton from "@/components/ui/BackButton";
 import dynamic from "next/dynamic";
+import { IMAGE_BLUR_DATA_URL } from "@/utils/constants";
 
 // Revalidate every hour (3600 seconds) - ISR for incremental updates
 export const revalidate = 3600;
@@ -183,6 +184,8 @@ export default async function ProjectDetailPage({
               fill
               className="object-cover opacity-40 blur-2xl scale-110"
               aria-hidden="true"
+              placeholder="blur"
+              blurDataURL={IMAGE_BLUR_DATA_URL}
             />
           )}
           <Image
@@ -194,6 +197,8 @@ export default async function ProjectDetailPage({
             } z-10`}
             priority
             sizes="(max-width: 1200px) 100vw, 1200px"
+            placeholder="blur"
+            blurDataURL={IMAGE_BLUR_DATA_URL}
           />
 
           {/* Gradient overlay for readability */}

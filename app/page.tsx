@@ -15,6 +15,7 @@ import Marquee from "@/components/ui/Marquee";
 import HeroShapes from "@/components/ui/HeroShapes";
 import ContactForm from "@/components/ui/ContactForm";
 import { envConfig } from "@/utils/envConfig";
+import { IMAGE_BLUR_DATA_URL } from "@/utils/constants";
 
 // Revalidate every hour (3600 seconds) - ISR for incremental updates
 export const revalidate = 3600;
@@ -158,6 +159,8 @@ export default async function Home() {
                       priority
                       fetchPriority="high"
                       sizes="(max-width: 768px) 100vw, (max-width: 1024px) 340px, 450px"
+                      placeholder="blur"
+                      blurDataURL={IMAGE_BLUR_DATA_URL}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
                   </div>

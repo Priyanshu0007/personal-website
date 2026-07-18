@@ -6,6 +6,7 @@ import ProjectForm from "@/components/admin/ProjectForm";
 import BlogForm from "@/components/admin/BlogForm";
 import { toggleProjectVisibility, toggleBlogVisibility, deleteProject, deleteBlog } from "@/actions/admin";
 import { useRouter } from "next/navigation";
+import { IMAGE_BLUR_DATA_URL } from "@/utils/constants";
 
 interface ProjectRow {
   id: number;
@@ -148,7 +149,9 @@ export default function AdminDashboardClient({ projects, blogs }: Props) {
                       alt={project.title}
                       fill
                       className="object-cover"
-                      sizes="48px"
+                      sizes="64px"
+                      placeholder="blur"
+                      blurDataURL={IMAGE_BLUR_DATA_URL}
                     />
                   </div>
                 )}

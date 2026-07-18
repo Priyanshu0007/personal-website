@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { trackUserAction, AnalyticsEvents } from "@/lib/analytics";
 import type { Project } from "@/types";
+import { IMAGE_BLUR_DATA_URL } from "@/utils/constants";
 
 interface ProjectCardProps {
   project: Project;
@@ -64,6 +65,8 @@ export default function ProjectCard({
             className="object-cover transition-transform duration-500 group-hover:scale-105"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px"
             loading="lazy"
+            placeholder="blur"
+            blurDataURL={IMAGE_BLUR_DATA_URL}
           />
 
           {/* Favorite badge */}

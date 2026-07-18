@@ -4,6 +4,7 @@ import { useState, useCallback, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ChevronLeft, ChevronRight, Maximize2, RotateCw } from "lucide-react";
+import { IMAGE_BLUR_DATA_URL } from "@/utils/constants";
 
 interface MediaGalleryProps {
   images: string[];
@@ -112,6 +113,8 @@ export default function MediaGallery({
                 fill
                 className="object-cover transition-transform duration-700 group-hover:scale-105"
                 sizes="(max-width: 768px) 50vw, 33vw"
+                placeholder="blur"
+                blurDataURL={IMAGE_BLUR_DATA_URL}
               />
               <div className="absolute inset-0 bg-black/0 transition-colors duration-300 group-hover:bg-black/20" />
 
@@ -240,6 +243,8 @@ export default function MediaGallery({
                         className={`${isMobile ? "object-contain" : "object-cover"} bg-black/40`}
                         priority
                         sizes="(max-width: 1200px) 100vw, 1200px"
+                        placeholder="blur"
+                        blurDataURL={IMAGE_BLUR_DATA_URL}
                       />
                     </motion.div>
                   </AnimatePresence>

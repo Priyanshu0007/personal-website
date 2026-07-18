@@ -32,6 +32,7 @@ export interface Blog {
   platform: string;
   date: string;
   description: string;
+  thumbnail?: string;
   hide: boolean;
 }
 

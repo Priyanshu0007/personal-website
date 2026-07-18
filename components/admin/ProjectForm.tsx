@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { createProject, updateProject } from "@/actions/admin";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
+import { IMAGE_BLUR_DATA_URL } from "@/utils/constants";
 
 type ProjectCategory = "react-js" | "react-native" | "next-js" | "other";
 
@@ -165,8 +166,10 @@ export default function ProjectForm({ initialData, onClose }: Props) {
                   src={form.thumbnail}
                   alt="Thumbnail preview"
                   fill
-                  className="object-contain"
-                  unoptimized={false}
+                  className="object-cover rounded-md"
+                  sizes="160px"
+                  placeholder="blur"
+                  blurDataURL={IMAGE_BLUR_DATA_URL}
                 />
               </div>
             </div>
@@ -202,10 +205,12 @@ export default function ProjectForm({ initialData, onClose }: Props) {
                   <div className="relative h-16 w-24 sm:h-20 sm:w-32">
                     <Image
                       src={img}
-                      alt={`Screenshot ${i + 1}`}
+                      alt={`Preview ${i + 1}`}
                       fill
-                      className="object-contain"
-                      unoptimized={false}
+                      className="object-cover rounded-md"
+                      sizes="96px"
+                      placeholder="blur"
+                      blurDataURL={IMAGE_BLUR_DATA_URL}
                     />
                   </div>
                   <button

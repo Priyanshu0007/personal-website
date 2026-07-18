@@ -1,7 +1,9 @@
 "use client";
 
+import Image from "next/image";
 import { Blog } from "@/types";
 import { trackUserAction, AnalyticsEvents } from "@/lib/analytics";
+import { IMAGE_BLUR_DATA_URL } from "@/utils/constants";
 
 interface BlogCardProps {
   blog: Blog;
@@ -46,6 +48,18 @@ export default function BlogCard({
             background: `radial-gradient(circle at top right, color-mix(in srgb, ${color} 25%, transparent) 0%, color-mix(in srgb, ${color} 5%, transparent) 100%)`,
           }}
         >
+          {blog.thumbnail && (
+            <Image
+              src={blog.thumbnail}
+              alt={`Thumbnail for ${blog.title}`}
+              fill
+              className="object-cover transition-transform duration-500 group-hover:scale-105"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px"
+              loading="lazy"
+              placeholder="blur"
+              blurDataURL={IMAGE_BLUR_DATA_URL}
+            />
+          )}
           {/* Decorative Number */}
           <div
             className="absolute inset-0 flex items-center justify-center transition-transform group-hover:scale-110"
