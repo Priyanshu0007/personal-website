@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import SectionHeading from "@/components/ui/SectionHeading";
 import ContactForm from "@/components/ui/ContactForm";
-import ResumeViewer from "./ResumeViewer";
+import ResumeViewer from "./ResumeViewerWrapper";
 import ResumeActions from "./ResumeActions";
 import { envConfig } from "@/utils/envConfig";
 import { getPersonalData } from "@/lib/data";
