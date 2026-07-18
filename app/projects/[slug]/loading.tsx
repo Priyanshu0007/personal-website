@@ -2,7 +2,7 @@
 
 export default function ProjectDetailLoading() {
   return (
-    <div className="section pt-6" id="project-detail">
+    <div className="section pt-24 md:pt-32" id="project-detail">
       <div className="container">
         {/* Back Button Skeleton */}
         <div className="mb-6 h-8 w-24 animate-pulse rounded bg-border" />
