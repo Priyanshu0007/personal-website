@@ -18,11 +18,11 @@ interface NavbarProps {
 }
 
 const iconMap: Record<string, React.ReactNode> = {
-  Home: <Home className="h-[22px] w-[22px]" strokeWidth={2.5} />,
-  Projects: <Briefcase className="h-[22px] w-[22px]" strokeWidth={2.5} />,
-  Blogs: <FileText className="h-[22px] w-[22px]" strokeWidth={2.5} />,
-  Uses: <Laptop className="h-[22px] w-[22px]" strokeWidth={2.5} />,
-  Resume: <FileBadge className="h-[22px] w-[22px]" strokeWidth={2.5} />,
+  Home: <Home className="h-5 w-5" strokeWidth={2.25} />,
+  Projects: <Briefcase className="h-5 w-5" strokeWidth={2.25} />,
+  Blogs: <FileText className="h-5 w-5" strokeWidth={2.25} />,
+  Uses: <Laptop className="h-5 w-5" strokeWidth={2.25} />,
+  Resume: <FileBadge className="h-5 w-5" strokeWidth={2.25} />,
 };
 
 export default function Navbar({
