@@ -2,7 +2,7 @@ import { db } from "@/db";
 import { projects, blogs } from "@/db/schema";
 import { redirect } from "next/navigation";
 import { getServerSession } from "next-auth/next";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { authOptions } from "@/lib/auth";
 import AdminDashboardClient from "@/components/admin/AdminDashboardClient";
 import LogoutButton from "@/components/admin/LogoutButton";
 import { cleanUrl, cleanUrls } from "@/utils/formatters";
