@@ -60,7 +60,7 @@ export default function LoginForm() {
       <div className="w-full max-w-sm sm:max-w-md">
         {/* Logo / brand */}
         <div className="mb-6 text-center">
-          <div className="mb-3 flex h-16 w-16 items-center justify-center rounded-3xl border border-border/50 bg-primary text-2xl font-black text-white shadow-md">
+          <div className="mx-auto mb-3 flex h-16 w-16 items-center justify-center rounded-2xl border border-border/50 bg-primary/80 backdrop-blur-xl text-2xl font-black text-white shadow-md">
             PG
           </div>
           <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground">Portfolio Admin</p>
@@ -68,7 +68,7 @@ export default function LoginForm() {
 
         <form
           onSubmit={handleSubmit}
-          className="flex flex-col gap-5 rounded-3xl border border-border/50 bg-surface p-5 shadow-md backdrop-blur-md sm:p-8"
+          className="glass-card flex flex-col gap-5 p-6 sm:p-8 w-full"
         >
           <div className="space-y-1">
             <h1 className="text-2xl font-black uppercase tracking-tighter sm:text-3xl">
@@ -98,13 +98,13 @@ export default function LoginForm() {
                     placeholder="admin@example.com"
                     required
                     disabled={loading}
-                    className="w-full rounded-lg border border-border/50 bg-background p-3 text-sm outline-none transition-all placeholder:text-muted-foreground/50 focus:shadow-md sm:text-base"
+                    className="glass-input"
                   />
                 </div>
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full rounded-xl border border-border/50 bg-primary p-3 font-black uppercase tracking-widest text-white shadow-md transition-all hover:-translate-y-1 hover:shadow-md active:translate-y-1 active:shadow-none disabled:cursor-not-allowed disabled:opacity-50 sm:p-4 text-sm"
+                  className="glass-btn glass-btn-primary w-full text-sm"
                 >
                   {loading ? "Sending..." : "Request OTP"}
                 </button>
@@ -122,13 +122,13 @@ export default function LoginForm() {
                     maxLength={6}
                     disabled={loading}
                     inputMode="numeric"
-                    className="w-full rounded-lg border border-border/50 bg-background p-3 text-center font-bold text-lg tracking-[0.4em] outline-none transition-all placeholder:text-xs placeholder:tracking-normal placeholder:text-muted-foreground/50 focus:shadow-md sm:text-xl sm:placeholder:text-sm"
+                    className="glass-input text-center font-bold text-lg tracking-[0.4em] placeholder:tracking-normal sm:text-xl"
                   />
                 </div>
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full rounded-xl border border-border/50 bg-accent-green p-3 font-black uppercase tracking-widest text-white shadow-md transition-all hover:-translate-y-1 hover:shadow-md active:translate-y-1 active:shadow-none disabled:cursor-not-allowed disabled:opacity-50 sm:p-4 text-sm"
+                  className="glass-btn glass-btn-accent w-full text-sm bg-accent-green"
                 >
                   {loading ? "Verifying..." : "Verify & Login"}
                 </button>

@@ -214,7 +214,7 @@ export default async function Home() {
             <div className="md:col-span-2 glass-card glass-border-glow p-6 flex flex-col justify-center items-center text-center" style={{ "--glow-color": "var(--color-accent-purple)" } as React.CSSProperties}>
               <div className="text-4xl mb-4 opacity-50">✨</div>
               <p className="text-lg font-bold text-text italic">
-                "Effective user of AI-assisted development tools to accelerate delivery and craft pixel-perfect experiences."
+                &quot;Effective user of AI-assisted development tools to accelerate delivery and craft pixel-perfect experiences.&quot;
               </p>
             </div>
 
@@ -335,8 +335,8 @@ export default async function Home() {
           />
 
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:gap-8 lg:grid-cols-3">
-            {landing.beyondCode.hobbies.map((hobby, i) => (
-              <HobbyCard key={hobby.title} hobby={hobby} index={i} />
+            {landing.beyondCode.hobbies.map((hobby) => (
+              <HobbyCard key={hobby.title} hobby={hobby} />
             ))}
           </div>
         </div>
@@ -359,9 +359,9 @@ export default async function Home() {
               <div className="p-8 lg:p-10 flex flex-col justify-between border-b md:border-b-0 md:border-r border-border/10 relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-secondary/10 rounded-full blur-2xl"></div>
                 <div>
-                  <h3 className="text-2xl font-extrabold mb-2">Let's Connect</h3>
+                  <h3 className="text-2xl font-extrabold mb-2">Let&apos;s Connect</h3>
                   <p className="text-text-secondary mb-8">
-                    My inbox is always open. Whether you have a question or just want to say hi, I'll try my best to get back to you!
+                    My inbox is always open. Whether you have a question or just want to say hi, I&apos;ll try my best to get back to you!
                   </p>
                   
                   <div className="space-y-4">

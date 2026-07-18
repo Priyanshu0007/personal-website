@@ -104,10 +104,10 @@ export default function ProjectForm({ initialData, onClose }: Props) {
     <div className="fixed inset-0 z-50 bg-black/60 sm:flex sm:items-start sm:justify-center sm:p-4 overflow-y-auto">
       <form
         onSubmit={handleSubmit}
-        className="w-full space-y-5 rounded-3xl border border-border/50 bg-surface p-4 shadow-md sm:my-8 sm:min-h-0 sm:max-w-3xl sm:p-6"
+        className="glass-card w-full space-y-5 sm:my-8 sm:min-h-0 sm:max-w-3xl sm:p-6"
       >
         {/* Header */}
-        <div className="flex items-center justify-between sticky top-0 bg-surface z-20 py-2 -mx-4 sm:-mx-6 px-4 sm:px-6 border-secondary/30-2 border-secondary/30lack/10">
+        <div className="flex items-center justify-between sticky top-0 bg-surface/80 backdrop-blur-md z-20 py-2 -mx-4 sm:-mx-6 px-4 sm:px-6 border-b border-border/50">
           <h2 className="text-lg sm:text-2xl font-bold uppercase">
             {isEditing ? "Edit Project" : "New Project"}
           </h2>
@@ -122,7 +122,7 @@ export default function ProjectForm({ initialData, onClose }: Props) {
 
         {/* Title */}
         <Field label="Title" error={errors.title}>
-          <input value={form.title} onChange={(e) => set("title", e.target.value)} className="admin-input" placeholder="My Awesome Project" />
+          <input value={form.title} onChange={(e) => set("title", e.target.value)} className="glass-input" placeholder="My Awesome Project" />
         </Field>
 
         {/* Slug */}
@@ -130,14 +130,14 @@ export default function ProjectForm({ initialData, onClose }: Props) {
           <input
             value={form.slug}
             onChange={(e) => set("slug", e.target.value.toLowerCase().replace(/[^a-z0-9-]/g, "-"))}
-            className="admin-input"
+            className="glass-input"
             placeholder="my-awesome-project"
           />
         </Field>
 
         {/* Category */}
         <Field label="Category" error={errors.category}>
-          <select value={form.category} onChange={(e) => set("category", e.target.value)} className="admin-input">
+          <select value={form.category} onChange={(e) => set("category", e.target.value)} className="glass-input">
             <option value="react-js">React.js</option>
             <option value="react-native">React Native</option>
             <option value="next-js">Next.js</option>
@@ -147,17 +147,17 @@ export default function ProjectForm({ initialData, onClose }: Props) {
 
         {/* Description */}
         <Field label="Short Description" error={errors.description}>
-          <textarea value={form.description} onChange={(e) => set("description", e.target.value)} className="admin-input min-h-[80px]" placeholder="Brief project description…" />
+          <textarea value={form.description} onChange={(e) => set("description", e.target.value)} className="glass-input min-h-[80px]" placeholder="Brief project description…" />
         </Field>
 
         {/* Long Description */}
         <Field label="Long Description" error={errors.longDescription}>
-          <textarea value={form.longDescription} onChange={(e) => set("longDescription", e.target.value)} className="admin-input min-h-[120px]" placeholder="Detailed project description…" />
+          <textarea value={form.longDescription} onChange={(e) => set("longDescription", e.target.value)} className="glass-input min-h-[120px]" placeholder="Detailed project description…" />
         </Field>
 
         {/* Thumbnail */}
         <Field label="Thumbnail URL" error={errors.thumbnail}>
-          <input value={form.thumbnail} onChange={(e) => set("thumbnail", e.target.value)} className="admin-input" placeholder="https://cdn.example.com/thumb.png" />
+          <input value={form.thumbnail} onChange={(e) => set("thumbnail", e.target.value)} className="glass-input" placeholder="https://cdn.example.com/thumb.png" />
           {form.thumbnail && (
             <div className="mt-2 inline-block overflow-hidden rounded-xl border border-border/50 bg-white p-1">
               <div className="relative h-24 sm:h-32 w-40 sm:w-56">
@@ -179,7 +179,7 @@ export default function ProjectForm({ initialData, onClose }: Props) {
             <input
               value={imageInput}
               onChange={(e) => setImageInput(e.target.value)}
-              className="admin-input flex-1 min-w-0"
+              className="glass-input flex-1 min-w-0"
               placeholder="Paste image URL…"
             />
             <button
@@ -190,7 +190,7 @@ export default function ProjectForm({ initialData, onClose }: Props) {
                   setImageInput("");
                 }
               }}
-              className="admin-btn-sm shrink-0"
+              className="glass-btn glass-btn-secondary glass-btn-sm shrink-0"
             >
               Add
             </button>
@@ -227,7 +227,7 @@ export default function ProjectForm({ initialData, onClose }: Props) {
             <input
               value={techInput}
               onChange={(e) => setTechInput(e.target.value)}
-              className="admin-input flex-1 min-w-0"
+              className="glass-input flex-1 min-w-0"
               placeholder="React, TypeScript, …"
               onKeyDown={(e) => {
                 if (e.key === "Enter") {
@@ -247,7 +247,7 @@ export default function ProjectForm({ initialData, onClose }: Props) {
                   setTechInput("");
                 }
               }}
-              className="admin-btn-sm shrink-0"
+              className="glass-btn glass-btn-secondary glass-btn-sm shrink-0"
             >
               Add
             </button>
@@ -268,7 +268,7 @@ export default function ProjectForm({ initialData, onClose }: Props) {
             <input
               value={highlightInput}
               onChange={(e) => setHighlightInput(e.target.value)}
-              className="admin-input flex-1 min-w-0"
+              className="glass-input flex-1 min-w-0"
               placeholder="Key achievement or feature…"
               onKeyDown={(e) => {
                 if (e.key === "Enter") {
@@ -288,7 +288,7 @@ export default function ProjectForm({ initialData, onClose }: Props) {
                   setHighlightInput("");
                 }
               }}
-              className="admin-btn-sm shrink-0"
+              className="glass-btn glass-btn-secondary glass-btn-sm shrink-0"
             >
               Add
             </button>
@@ -307,16 +307,16 @@ export default function ProjectForm({ initialData, onClose }: Props) {
         {/* URLs */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <Field label="Live URL (optional)" error={errors.liveUrl}>
-            <input value={form.liveUrl} onChange={(e) => set("liveUrl", e.target.value)} className="admin-input" placeholder="https://myproject.com" />
+            <input value={form.liveUrl} onChange={(e) => set("liveUrl", e.target.value)} className="glass-input" placeholder="https://myproject.com" />
           </Field>
           <Field label="GitHub URL (optional)" error={errors.githubUrl}>
-            <input value={form.githubUrl} onChange={(e) => set("githubUrl", e.target.value)} className="admin-input" placeholder="https://github.com/…" />
+            <input value={form.githubUrl} onChange={(e) => set("githubUrl", e.target.value)} className="glass-input" placeholder="https://github.com/…" />
           </Field>
         </div>
 
         {/* Date */}
         <Field label="Created At" error={errors.createdAt}>
-          <input type="date" value={form.createdAt} onChange={(e) => set("createdAt", e.target.value)} className="admin-input" />
+          <input type="date" value={form.createdAt} onChange={(e) => set("createdAt", e.target.value)} className="glass-input" />
         </Field>
 
         {/* Toggles */}
@@ -327,11 +327,11 @@ export default function ProjectForm({ initialData, onClose }: Props) {
         </div>
 
         {/* Actions */}
-        <div className="flex flex-col sm:flex-row gap-3 pt-4 border-t-2 border-secondary/30lack/20 sticky bottom-0 bg-surface pb-2 z-20">
-          <button type="submit" disabled={saving} className="admin-btn flex-1">
+        <div className="flex flex-col sm:flex-row gap-3 pt-4 border-t border-border/50 sticky bottom-0 bg-surface/80 backdrop-blur-md pb-2 z-20 -mx-4 sm:-mx-6 px-4 sm:px-6">
+          <button type="submit" disabled={saving} className="glass-btn glass-btn-primary flex-1">
             {saving ? "Saving…" : isEditing ? "Update Project" : "Create Project"}
           </button>
-          <button type="button" onClick={onClose} className="admin-btn-secondary flex-1">
+          <button type="button" onClick={onClose} className="glass-btn glass-btn-secondary flex-1">
             Cancel
           </button>
         </div>

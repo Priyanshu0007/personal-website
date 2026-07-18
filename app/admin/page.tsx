@@ -32,7 +32,7 @@ export default async function AdminDashboard() {
   return (
     <div className="min-h-screen overflow-x-hidden">
       <div className="p-3 sm:p-6 md:p-8 max-w-5xl mx-auto space-y-8 sm:space-y-12 pb-20">
-        <header className="flex flex-col gap-3 border-secondary/30-4 border-secondary/30lack pb-4">
+        <header className="flex flex-col gap-3 border-b border-border/50 pb-4">
           <div className="flex items-center justify-between gap-3">
             <h1 className="text-2xl font-black uppercase tracking-tight sm:text-3xl">
               Admin

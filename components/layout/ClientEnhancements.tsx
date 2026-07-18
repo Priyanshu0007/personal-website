@@ -1,6 +1,6 @@
 "use client";
 
-import dynamic from "next/dynamic";
+
 import { useEffect } from "react";
 import ScrollPreserver from "@/components/ui/ScrollPreserver";
 

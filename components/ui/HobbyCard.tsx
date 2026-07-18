@@ -2,10 +2,9 @@ import type { Hobby } from "@/types";
 
 interface HobbyCardProps {
   hobby: Hobby;
-  index: number;
 }
 
-export default function HobbyCard({ hobby, index }: HobbyCardProps) {
+export default function HobbyCard({ hobby }: HobbyCardProps) {
   return (
     <div
       className="glass-card glass-border-glow glass-sweep group cursor-default"
