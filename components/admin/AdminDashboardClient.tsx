@@ -127,7 +127,7 @@ export default function AdminDashboardClient({ projects, blogs }: Props) {
           </h2>
           <button
             onClick={() => setShowProjectForm(true)}
-            className="admin-btn text-xs sm:text-sm whitespace-nowrap"
+            className="glass-btn glass-btn-primary glass-btn-sm whitespace-nowrap"
           >
             + Add
           </button>
@@ -137,12 +137,12 @@ export default function AdminDashboardClient({ projects, blogs }: Props) {
           {projects.map((project) => (
             <div
               key={project.id}
-              className="p-3 sm:p-4 border-2 border-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] bg-surface overflow-hidden"
+              className="glass-card flex flex-col p-3 sm:p-4"
             >
               {/* Top row: thumbnail + info */}
               <div className="flex items-center gap-3 mb-3">
                 {project.thumbnail && (
-                  <div className="relative w-10 h-10 sm:w-12 sm:h-12 shrink-0 border-2 border-black/20 overflow-hidden">
+                  <div className="relative h-10 w-10 shrink-0 overflow-hidden rounded-lg border border-border/50 sm:h-12 sm:w-12">
                     <Image
                       src={project.thumbnail}
                       alt={project.title}
@@ -153,17 +153,17 @@ export default function AdminDashboardClient({ projects, blogs }: Props) {
                   </div>
                 )}
                 <div className="min-w-0 flex-1">
-                  <h3 className="font-bold text-sm sm:text-base truncate">{project.title}</h3>
+                  <h3 className="truncate text-sm font-bold sm:text-base">{project.title}</h3>
                   <p className="text-xs text-muted-foreground truncate">
                     /{project.slug} · {project.category}
                     {project.featured && " · ⭐"}
                   </p>
                 </div>
                 <span
-                  className={`shrink-0 px-2 py-0.5 text-[10px] sm:text-xs font-bold border-2 border-black ${
+                  className={`glass-badge shrink-0 ${
                     project.hide
-                      ? "bg-red-500/20 text-red-500"
-                      : "bg-green-500/20 text-green-500"
+                      ? "glass-badge-outline text-red-500 border-red-500/30"
+                      : "glass-badge-outline text-green-500 border-green-500/30"
                   }`}
                 >
                   {project.hide ? "HIDDEN" : "LIVE"}
@@ -174,7 +174,7 @@ export default function AdminDashboardClient({ projects, blogs }: Props) {
               <div className="flex gap-2">
                 <button
                   onClick={() => handleToggleProject(project.id, project.hide)}
-                  className="admin-btn-sm flex-1 text-[11px]"
+                  className="glass-btn glass-btn-secondary glass-btn-sm flex-1"
                 >
                   Toggle
                 </button>
@@ -183,14 +183,14 @@ export default function AdminDashboardClient({ projects, blogs }: Props) {
                     setEditingProject(project);
                     setShowProjectForm(true);
                   }}
-                  className="admin-btn-sm flex-1 text-[11px]"
+                  className="glass-btn glass-btn-secondary glass-btn-sm flex-1"
                 >
                   Edit
                 </button>
                 <button
                   onClick={() => handleDeleteProject(project.id)}
                   disabled={deletingId === project.id}
-                  className="admin-btn-sm-danger flex-1 text-[11px]"
+                  className="glass-btn glass-btn-secondary glass-btn-sm flex-1 !text-red-500 hover:!bg-red-500/10"
                 >
                   {deletingId === project.id ? "…" : "Delete"}
                 </button>
@@ -213,7 +213,7 @@ export default function AdminDashboardClient({ projects, blogs }: Props) {
           </h2>
           <button
             onClick={() => setShowBlogForm(true)}
-            className="admin-btn text-xs sm:text-sm whitespace-nowrap"
+            className="glass-btn glass-btn-primary glass-btn-sm whitespace-nowrap"
           >
             + Add
           </button>
@@ -223,21 +223,21 @@ export default function AdminDashboardClient({ projects, blogs }: Props) {
           {blogs.map((blog) => (
             <div
               key={blog.id}
-              className="p-3 sm:p-4 border-2 border-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] bg-surface overflow-hidden"
+              className="glass-card flex flex-col p-3 sm:p-4"
             >
               {/* Top row: info */}
               <div className="flex items-center gap-3 mb-3">
                 <div className="min-w-0 flex-1">
-                  <h3 className="font-bold text-sm sm:text-base truncate">{blog.title}</h3>
+                  <h3 className="truncate text-sm font-bold sm:text-base">{blog.title}</h3>
                   <p className="text-xs text-muted-foreground truncate">
                     {blog.platform} · {blog.date}
                   </p>
                 </div>
                 <span
-                  className={`shrink-0 px-2 py-0.5 text-[10px] sm:text-xs font-bold border-2 border-black ${
+                  className={`glass-badge shrink-0 ${
                     blog.hide
-                      ? "bg-red-500/20 text-red-500"
-                      : "bg-green-500/20 text-green-500"
+                      ? "glass-badge-outline text-red-500 border-red-500/30"
+                      : "glass-badge-outline text-green-500 border-green-500/30"
                   }`}
                 >
                   {blog.hide ? "HIDDEN" : "LIVE"}
@@ -248,7 +248,7 @@ export default function AdminDashboardClient({ projects, blogs }: Props) {
               <div className="flex gap-2">
                 <button
                   onClick={() => handleToggleBlog(blog.id, blog.hide)}
-                  className="admin-btn-sm flex-1 text-[11px]"
+                  className="glass-btn glass-btn-secondary glass-btn-sm flex-1"
                 >
                   Toggle
                 </button>
@@ -257,14 +257,14 @@ export default function AdminDashboardClient({ projects, blogs }: Props) {
                     setEditingBlog(blog);
                     setShowBlogForm(true);
                   }}
-                  className="admin-btn-sm flex-1 text-[11px]"
+                  className="glass-btn glass-btn-secondary glass-btn-sm flex-1"
                 >
                   Edit
                 </button>
                 <button
                   onClick={() => handleDeleteBlog(blog.id)}
                   disabled={deletingId === blog.id}
-                  className="admin-btn-sm-danger flex-1 text-[11px]"
+                  className="glass-btn glass-btn-secondary glass-btn-sm flex-1 !text-red-500 hover:!bg-red-500/10"
                 >
                   {deletingId === blog.id ? "…" : "Delete"}
                 </button>

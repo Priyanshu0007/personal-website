@@ -14,11 +14,11 @@ import dynamic from "next/dynamic";
 // Revalidate every hour (3600 seconds) - ISR for incremental updates
 export const revalidate = 3600;
 
-const ScreenshotCarousel = dynamic(
-  () => import("@/components/ui/ScreenshotCarousel"),
+const MediaGallery = dynamic(
+  () => import("@/components/ui/MediaGallery"),
   {
     loading: () => (
-      <div className="aspect-video w-full animate-pulse rounded-lg border-[3px] border-border bg-surface" />
+      <div className="aspect-video w-full animate-pulse rounded-2xl border border-white/10 bg-surface/30 backdrop-blur-md" />
     ),
     ssr: true,
   }
@@ -151,7 +151,7 @@ export default async function ProjectDetailPage({
   };
 
   return (
-    <article className="section pt-6" id="project-detail">
+    <article className="section pt-24 md:pt-32" id="project-detail">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
@@ -168,10 +168,12 @@ export default async function ProjectDetailPage({
             HERO BANNER
             ============================================ */}
         <div
-          className="relative mb-8 aspect-[16/9] w-full overflow-hidden border-[3px] border-border"
+          className="relative mb-8 aspect-[16/9] w-full overflow-hidden rounded-[2rem] border border-white/20"
           style={{
             backgroundColor: `${categoryColors[project.category]}15`,
-            boxShadow: "var(--shadow-lg)",
+            boxShadow: `0 25px 50px -12px rgba(0,0,0,0.25), 0 0 40px ${categoryColors[project.category]}30`,
+            backdropFilter: "blur(20px)",
+            WebkitBackdropFilter: "blur(20px)",
           }}
         >
           {project.category === "react-native" && (
@@ -187,7 +189,9 @@ export default async function ProjectDetailPage({
             src={project.thumbnail}
             alt={`Main screenshot for ${project.title}`}
             fill
-            className="object-contain z-10"
+            className={`${
+              project.category === "react-native" ? "object-contain" : "object-cover"
+            } z-10`}
             priority
             sizes="(max-width: 1200px) 100vw, 1200px"
           />
@@ -197,7 +201,7 @@ export default async function ProjectDetailPage({
             className="absolute inset-0 z-20"
             style={{
               background:
-                "linear-gradient(to top, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.1) 50%, transparent 100%)",
+                "linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 40%, rgba(0,0,0,0) 100%)",
             }}
             aria-hidden="true"
           />
@@ -206,7 +210,7 @@ export default async function ProjectDetailPage({
           {/* Category badge on hero */}
           <div className="absolute bottom-4 left-4 z-20 flex items-center gap-2">
             <span
-              className="neo-badge text-xs"
+              className="glass-badge text-xs"
               style={{
                 backgroundColor: rawColor,
                 color: "#000000",
@@ -218,7 +222,7 @@ export default async function ProjectDetailPage({
               {categoryLabels[project.category]}
             </span>
             {project.isFavorite && (
-              <span className="neo-badge neo-badge-secondary text-xs">
+              <span className="glass-badge glass-badge-secondary text-xs">
                 <span role="img" aria-label="Favorite" className="mr-1">
                   ★
                 </span>{" "}
@@ -240,7 +244,7 @@ export default async function ProjectDetailPage({
               })}
             </span>
             <h1
-              className="text-3xl md:text-5xl"
+              className="text-4xl md:text-5xl"
               style={{
                 fontFamily: "var(--font-heading), system-ui, sans-serif",
               }}
@@ -256,7 +260,7 @@ export default async function ProjectDetailPage({
                 href={project.liveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="neo-btn neo-btn-primary w-full sm:w-auto"
+                className="glass-btn glass-btn-primary w-full sm:w-auto"
                 id="project-live-link"
                 aria-label={`View live demo of ${project.title}`}
               >
@@ -271,7 +275,7 @@ export default async function ProjectDetailPage({
                 href={project.githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="neo-btn neo-btn-secondary w-full sm:w-auto"
+                className="glass-btn glass-btn-secondary w-full sm:w-auto"
                 id="project-github-link"
                 aria-label={`View source code of ${project.title} on GitHub`}
               >
@@ -292,7 +296,7 @@ export default async function ProjectDetailPage({
           {project.description}
         </p>
 
-        <div className="neo-divider" />
+        <div className="glass-divider" />
 
         {/* ============================================
             MAIN CONTENT: TWO COLUMN LAYOUT
@@ -345,26 +349,28 @@ export default async function ProjectDetailPage({
                   {project.highlights.map((highlight, i) => (
                     <div
                       key={highlight}
-                      className="relative border-[3px] border-border bg-surface p-5 transition-all hover:translate-x-[-3px] hover:translate-y-[-3px]"
+                      className="glass-card glass-border-glow relative p-5 transition-all"
                       style={{
-                        boxShadow: "var(--shadow-md)",
-                      }}
+                        '--glow-color': rawColor,
+                      } as React.CSSProperties}
                     >
                       {/* Feature number */}
                       <span
-                        className="mb-2 block text-3xl font-extrabold opacity-30"
+                        className="mb-2 block text-3xl font-extrabold opacity-40 mix-blend-overlay"
                         style={{ color: rawColor }}
                         aria-hidden="true"
                       >
                         {String(i + 1).padStart(2, "0")}
                       </span>
-                      <span className="text-sm leading-tight font-bold">
+                      <span className="text-sm leading-tight font-bold relative z-10">
                         {highlight}
                       </span>
                       {/* Corner accent */}
                       <div
-                        className="absolute right-0 bottom-0 h-4 w-4"
-                        style={{ backgroundColor: rawColor }}
+                        className="absolute right-0 bottom-0 h-8 w-8 rounded-tl-2xl opacity-50"
+                        style={{ 
+                          background: `linear-gradient(135deg, transparent 50%, ${rawColor} 100%)`
+                        }}
                         aria-hidden="true"
                       />
                     </div>
@@ -391,7 +397,7 @@ export default async function ProjectDetailPage({
                   />
                   Screenshots
                 </h2>
-                <ScreenshotCarousel
+                <MediaGallery
                   images={project.images}
                   title={project.title}
                   accentColor={rawColor}
@@ -406,7 +412,7 @@ export default async function ProjectDetailPage({
               ============================================ */}
           <div className="space-y-6">
             {/* Tech Stack */}
-            <div className="neo-card">
+            <div className="glass-card">
               <h3 className="mb-4 flex items-center gap-2 text-sm font-extrabold tracking-wider text-text-muted uppercase">
                 <span className="text-base" role="img" aria-label="Tools">
                   🛠
@@ -417,7 +423,7 @@ export default async function ProjectDetailPage({
                 {project.techStack.map((tech) => (
                   <span
                     key={tech}
-                    className="neo-badge neo-badge-outline text-xs"
+                    className="glass-badge glass-badge-outline text-xs"
                   >
                     {tech}
                   </span>
@@ -427,9 +433,8 @@ export default async function ProjectDetailPage({
 
             {/* Project Info Card */}
             <div
-              className="space-y-4 border-[3px] border-border p-5"
+              className="glass-card space-y-4 p-5"
               style={{
-                backgroundColor: "var(--color-surface)",
                 boxShadow: "var(--shadow-md)",
               }}
             >
@@ -447,7 +452,7 @@ export default async function ProjectDetailPage({
                     Type
                   </span>
                   <span
-                    className="neo-badge text-xs"
+                    className="glass-badge text-xs"
                     style={{
                       backgroundColor: rawColor,
                       color: "#fff",
@@ -518,10 +523,10 @@ export default async function ProjectDetailPage({
 
             {/* Quick stats decorative card */}
             <div
-              className="relative overflow-hidden border-[3px] border-border p-5"
+              className="glass-card relative overflow-hidden border border-white/30 p-6"
               style={{
-                backgroundColor: rawColor,
-                boxShadow: "var(--shadow-md)",
+                backgroundColor: `${rawColor}80`,
+                boxShadow: `0 10px 30px -10px ${rawColor}60`,
               }}
             >
               {/* Background pattern */}
@@ -548,7 +553,7 @@ export default async function ProjectDetailPage({
                 <span className="mt-2 block text-sm font-bold text-white opacity-90">
                   {categoryLabels[project.category]} Project
                 </span>
-                <span className="mt-1 block text-xs text-white opacity-70">
+                <span className="mt-1 block text-xs text-white/80">
                   Built with {project.techStack[0]}
                   {project.techStack.length > 1
                     ? ` + ${project.techStack.length - 1} more`
@@ -564,7 +569,7 @@ export default async function ProjectDetailPage({
                   href={project.liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="neo-btn neo-btn-primary w-full text-sm"
+                  className="glass-btn glass-btn-primary w-full text-sm"
                   aria-label={`View live demo of ${project.title}`}
                 >
                   <span role="img" aria-label="Globe" className="mr-1">
@@ -578,7 +583,7 @@ export default async function ProjectDetailPage({
                   href={project.githubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="neo-btn neo-btn-secondary w-full text-sm"
+                  className="glass-btn glass-btn-secondary w-full text-sm"
                   aria-label={`View source code of ${project.title} on GitHub`}
                 >
                   <span role="img" aria-label="Computer" className="mr-1">
@@ -591,7 +596,7 @@ export default async function ProjectDetailPage({
           </div>
         </div>
 
-        <div className="neo-divider" />
+        <div className="glass-divider" />
 
         {/* ============================================
             PREV / NEXT NAVIGATION
@@ -604,7 +609,7 @@ export default async function ProjectDetailPage({
               transitionTypes={["nav-back"]}
               scroll={false}
               prefetch={true}
-              className="neo-card group flex flex-col"
+              className="glass-card group flex flex-col"
               id="project-prev"
             >
               <span className="mb-1 text-xs font-bold tracking-wider text-text-muted uppercase">
@@ -623,7 +628,7 @@ export default async function ProjectDetailPage({
               transitionTypes={["nav-forward"]}
               scroll={false}
               prefetch={true}
-              className="neo-card group flex flex-col text-right"
+              className="glass-card group flex flex-col text-right"
               id="project-next"
             >
               <span className="mb-1 text-xs font-bold tracking-wider text-text-muted uppercase">

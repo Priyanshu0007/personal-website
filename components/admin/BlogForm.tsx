@@ -71,17 +71,17 @@ export default function BlogForm({ initialData, isEditing = false, onClose }: Pr
     <div className="fixed inset-0 z-50 bg-black/60 sm:flex sm:items-start sm:justify-center sm:p-4 overflow-y-auto">
       <form
         onSubmit={handleSubmit}
-        className="w-full min-h-screen sm:min-h-0 sm:max-w-2xl sm:my-8 border-0 sm:border-4 border-black sm:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] p-4 sm:p-6 space-y-5 bg-surface"
+        className="glass-card w-full space-y-5 sm:my-8 sm:min-h-0 sm:max-w-2xl sm:p-6"
       >
         {/* Header */}
-        <div className="flex items-center justify-between sticky top-0 bg-surface z-20 py-2 -mx-4 sm:-mx-6 px-4 sm:px-6 border-b-2 border-black/10">
+        <div className="flex items-center justify-between sticky top-0 bg-surface/80 backdrop-blur-md z-20 py-2 -mx-4 sm:-mx-6 px-4 sm:px-6 border-b border-border/50">
           <h2 className="text-lg sm:text-2xl font-bold uppercase">
             {isEditing ? "Edit Blog" : "New Blog"}
           </h2>
           <button
             type="button"
             onClick={onClose}
-            className="w-10 h-10 flex items-center justify-center text-xl font-bold hover:text-red-500 hover:bg-red-500/10 transition-colors border-2 border-black"
+            className="flex h-10 w-10 items-center justify-center rounded-lg border border-border/50 text-xl font-bold transition-colors hover:bg-red-500/10 hover:text-red-500"
           >
             ✕
           </button>
@@ -93,7 +93,7 @@ export default function BlogForm({ initialData, isEditing = false, onClose }: Pr
             <input
               value={form.id}
               onChange={(e) => set("id", e.target.value.toLowerCase().replace(/[^a-z0-9-]/g, "-"))}
-              className="admin-input"
+              className="glass-input"
               placeholder="my-blog-post"
             />
           </Field>
@@ -101,17 +101,17 @@ export default function BlogForm({ initialData, isEditing = false, onClose }: Pr
 
         {/* Title */}
         <Field label="Title" error={errors.title}>
-          <input value={form.title} onChange={(e) => set("title", e.target.value)} className="admin-input" placeholder="Blog Post Title" />
+          <input value={form.title} onChange={(e) => set("title", e.target.value)} className="glass-input" placeholder="Blog Post Title" />
         </Field>
 
         {/* URL */}
         <Field label="Blog URL" error={errors.url}>
-          <input value={form.url} onChange={(e) => set("url", e.target.value)} className="admin-input" placeholder="https://medium.com/@you/article" />
+          <input value={form.url} onChange={(e) => set("url", e.target.value)} className="glass-input" placeholder="https://medium.com/@you/article" />
         </Field>
 
         {/* Platform */}
         <Field label="Platform" error={errors.platform}>
-          <select value={form.platform} onChange={(e) => set("platform", e.target.value)} className="admin-input">
+          <select value={form.platform} onChange={(e) => set("platform", e.target.value)} className="glass-input">
             <option value="Medium">Medium</option>
             <option value="Dev.to">Dev.to</option>
             <option value="Hashnode">Hashnode</option>
@@ -122,26 +122,26 @@ export default function BlogForm({ initialData, isEditing = false, onClose }: Pr
 
         {/* Date */}
         <Field label="Published Date" error={errors.date}>
-          <input type="date" value={form.date} onChange={(e) => set("date", e.target.value)} className="admin-input" />
+          <input type="date" value={form.date} onChange={(e) => set("date", e.target.value)} className="glass-input" />
         </Field>
 
         {/* Description */}
         <Field label="Description" error={errors.description}>
-          <textarea value={form.description} onChange={(e) => set("description", e.target.value)} className="admin-input min-h-[100px]" placeholder="A short description of the blog post…" />
+          <textarea value={form.description} onChange={(e) => set("description", e.target.value)} className="glass-input min-h-[100px]" placeholder="A short description of the blog post…" />
         </Field>
 
         {/* Hidden toggle */}
         <label className="flex items-center gap-3 cursor-pointer select-none group">
           <div
             onClick={() => set("hide", !form.hide)}
-            className={`w-6 h-6 border-2 border-black flex items-center justify-center transition-all ${form.hide
-                ? "bg-primary shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
-                : "bg-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
+            className={`flex h-6 w-6 items-center justify-center rounded border border-border/50 transition-all ${form.hide
+                ? "bg-primary shadow-md"
+                : "bg-white shadow-md"
               } group-active:shadow-none group-active:translate-x-[1px] group-active:translate-y-[1px]`}
           >
             {form.hide && (
               <svg
-                className="w-4 h-4 text-black"
+                className="h-4 w-4 text-text"
                 fill="none"
                 stroke="currentColor"
                 strokeWidth="4"
@@ -156,11 +156,11 @@ export default function BlogForm({ initialData, isEditing = false, onClose }: Pr
         </label>
 
         {/* Actions */}
-        <div className="flex flex-col sm:flex-row gap-3 pt-4 border-t-2 border-black/20 sticky bottom-0 bg-surface pb-2 z-20">
-          <button type="submit" disabled={saving} className="admin-btn flex-1">
+        <div className="flex flex-col sm:flex-row gap-3 pt-4 border-t border-border/50 sticky bottom-0 bg-surface/80 backdrop-blur-md pb-2 z-20 -mx-4 sm:-mx-6 px-4 sm:px-6">
+          <button type="submit" disabled={saving} className="glass-btn glass-btn-primary flex-1">
             {saving ? "Saving…" : isEditing ? "Update Blog" : "Create Blog"}
           </button>
-          <button type="button" onClick={onClose} className="admin-btn-secondary flex-1">
+          <button type="button" onClick={onClose} className="glass-btn glass-btn-secondary flex-1">
             Cancel
           </button>
         </div>

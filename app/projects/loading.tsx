@@ -23,7 +23,7 @@ export default function ProjectsLoading() {
           {Array.from({ length: 5 }).map((_, i) => (
             <div
               key={i}
-              className="h-10 w-24 animate-pulse rounded-md border-[2px] border-border bg-surface"
+              className="h-10 w-24 animate-pulse rounded-md border border-border/20 bg-surface"
             />
           ))}
         </div>
@@ -33,10 +33,10 @@ export default function ProjectsLoading() {
           {Array.from({ length: 6 }).map((_, i) => (
             <div
               key={i}
-              className="neo-card flex h-full flex-col overflow-hidden p-0"
+              className="glass-card flex h-full flex-col overflow-hidden p-0"
             >
               {/* Thumbnail */}
-              <div className="relative aspect-[16/10] w-full animate-pulse border-b-[3px] border-border bg-surface" />
+              <div className="relative aspect-[16/10] w-full animate-pulse rounded-t-2xl bg-surface" />
 
               <div className="flex flex-1 flex-col p-5">
                 <div className="mb-2 h-6 w-3/4 animate-pulse rounded bg-border" />
@@ -57,7 +57,7 @@ export default function ProjectsLoading() {
                 </div>
 
                 {/* Footer */}
-                <div className="flex items-center justify-between border-t-[2px] border-border pt-3">
+                <div className="flex items-center justify-between border-t border-border/20 pt-3">
                   <div className="h-4 w-16 animate-pulse rounded bg-border" />
                   <div className="h-4 w-20 animate-pulse rounded bg-border" />
                 </div>

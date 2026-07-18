@@ -61,11 +61,14 @@ export default function ResumePage() {
 
           <ResumeActions resumeUrl={resumeUrl} />
 
-          <div className="neo-card-flat relative mx-auto mb-16 aspect-[1/1.414] w-full max-w-4xl overflow-hidden bg-surface p-2 sm:p-4">
+          <div
+            className="glass-card glass-border-glow animate-float-delayed relative mx-auto mb-16 aspect-[1/1.414] w-full max-w-4xl overflow-hidden bg-surface p-2 sm:p-4"
+            style={{ "--glow-color": "var(--color-primary)" } as React.CSSProperties}
+          >
             <ResumeViewer resumeUrl={resumeUrl} />
           </div>
 
-          <div className="mx-auto mt-12 max-w-3xl border-t-[3px] border-border pt-12 text-center">
+          <div className="mx-auto mt-12 max-w-3xl border-t border-border/20 pt-12 text-center">
             <SectionHeading
               title="Get in Touch"
               subtitle="Have a question or want to work together? Leave a message!"

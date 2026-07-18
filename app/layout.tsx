@@ -1,20 +1,20 @@
 import type { Metadata, Viewport } from "next";
-import { Bricolage_Grotesque, DM_Sans } from "next/font/google";
+import { Outfit, DM_Sans } from "next/font/google";
 import { getPersonalData } from "@/lib/data";
-import { envConfig } from "@/utils/envConfig";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import ClientEnhancements from "@/components/layout/ClientEnhancements";
 import { ThemeProvider } from "@/components/ui/ThemeProvider";
 import FirebaseAnalytics from "@/components/FirebaseAnalytics";
 import MsClarity from "@/components/MsClarity";
+import BackgroundOrbs from "@/components/ui/BackgroundOrbs";
 import "./globals.css";
 
-const bricolage = Bricolage_Grotesque({
+const outfit = Outfit({
   subsets: ["latin"],
   variable: "--font-heading",
   display: "swap",
-  weight: ["400", "500", "600", "700", "800"],
+  weight: ["400", "500", "600", "700", "800", "900"],
 });
 
 const dmSans = DM_Sans({
@@ -149,7 +149,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${bricolage.variable} ${dmSans.variable} h-full`}
+      className={`${outfit.variable} ${dmSans.variable} h-full`}
       suppressHydrationWarning
     >
       <head>
@@ -174,7 +174,7 @@ export default function RootLayout({
       >
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:border-[3px] focus:border-border focus:bg-primary focus:px-4 focus:py-2 focus:font-bold focus:text-black focus:shadow-[4px_4px_0px_var(--color-shadow)]"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:rounded-lg focus:border focus:border-border/30 focus:bg-primary focus:px-4 focus:py-2 focus:font-bold focus:text-white focus:shadow-lg"
         >
           Skip to main content
         </a>
@@ -184,13 +184,14 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <BackgroundOrbs />
           <Navbar
             name={personal.name}
             shortName={personal.shortName}
             navigation={personal.navigation}
             socials={personal.socials}
           />
-          <main className="flex-1" id="main-content">
+          <main className="flex-1 pb-[5.5rem] md:pb-0" id="main-content">
             {children}
           </main>
           <Footer name={personal.name} socials={personal.socials} />

@@ -10,7 +10,7 @@ export default function ProjectNotFound() {
           </span>
         </div>
         <h1
-          className="mb-4 text-2xl font-extrabold md:text-4xl"
+          className="mb-4 text-2xl font-extrabold md:text-3xl"
           style={{ fontFamily: "var(--font-heading), system-ui, sans-serif" }}
         >
           Project Not Found
@@ -21,7 +21,7 @@ export default function ProjectNotFound() {
         </p>
         <Link
           href="/projects"
-          className="neo-btn neo-btn-primary neo-btn-lg"
+          className="glass-btn glass-btn-primary glass-btn-lg"
           id="not-found-back"
         >
           ← Browse All Projects

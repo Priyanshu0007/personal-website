@@ -31,12 +31,19 @@ export default function BlogCard({
       className="group block h-full"
       aria-label={`Read article: ${blog.title} on ${blog.platform}`}
     >
-      <article className="neo-card flex h-full flex-col overflow-hidden p-0">
+      <article
+        className="glass-card glass-border-glow glass-sweep flex h-full flex-col overflow-hidden p-0"
+        style={
+          {
+            "--glow-color": color,
+          } as React.CSSProperties
+        }
+      >
         {/* Thumbnail Area */}
         <div
-          className="relative h-32 w-full overflow-hidden border-b-[3px] border-border"
+          className="relative h-32 w-full overflow-hidden"
           style={{
-            backgroundColor: `color-mix(in srgb, ${color} 15%, transparent)`,
+            background: `radial-gradient(circle at top right, color-mix(in srgb, ${color} 25%, transparent) 0%, color-mix(in srgb, ${color} 5%, transparent) 100%)`,
           }}
         >
           {/* Decorative Number */}
@@ -56,11 +63,13 @@ export default function BlogCard({
           />
 
           {/* Platform badge */}
-          <div
-            className="absolute top-3 left-3 border-[2px] border-border px-2 py-1 text-xs font-bold tracking-wider text-black uppercase"
-            style={{ backgroundColor: color }}
-          >
-            {blog.platform}
+          <div className="absolute top-3 left-3">
+            <span
+              className="glass-badge text-xs"
+              style={{ backgroundColor: color, color: "#fff" }}
+            >
+              {blog.platform}
+            </span>
           </div>
         </div>
 
@@ -80,7 +89,7 @@ export default function BlogCard({
           </p>
 
           {/* Footer */}
-          <div className="flex items-center justify-between border-t-[2px] border-border pt-3">
+          <div className="flex items-center justify-between border-t border-border/20 pt-3">
             <span
               className="inline-flex items-center gap-1 text-sm font-bold tracking-wider uppercase transition-transform group-hover:translate-x-1 text-text"
             >
@@ -93,9 +102,9 @@ export default function BlogCard({
                 aria-hidden="true"
               >
                 <path
-                  strokeLinecap="square"
-                  strokeLinejoin="miter"
-                  strokeWidth="3"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
                   d="M5 12h14M12 5l7 7-7 7"
                 />
               </svg>

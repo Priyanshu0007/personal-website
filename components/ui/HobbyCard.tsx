@@ -2,25 +2,21 @@ import type { Hobby } from "@/types";
 
 interface HobbyCardProps {
   hobby: Hobby;
-  index: number;
 }
 
-const rotations = ["-2deg", "1.5deg", "-1deg", "2deg", "-1.5deg"];
-
-export default function HobbyCard({ hobby, index }: HobbyCardProps) {
-  const rotation = rotations[index % rotations.length];
-
+export default function HobbyCard({ hobby }: HobbyCardProps) {
   return (
     <div
-      className="neo-card group cursor-default"
-      style={{
-        transform: `rotate(${rotation})`,
-        borderColor: hobby.color,
-      }}
+      className="glass-card glass-border-glow glass-sweep group cursor-default"
+      style={
+        {
+          "--glow-color": hobby.color,
+        } as React.CSSProperties
+      }
     >
       {/* Emoji */}
       <div
-        className="mb-3 text-4xl md:text-5xl"
+        className="mb-3 text-4xl md:text-5xl transition-transform duration-500 group-hover:-translate-y-2 group-hover:scale-110"
         role="img"
         aria-label={`${hobby.title} icon`}
       >
@@ -43,9 +39,10 @@ export default function HobbyCard({ hobby, index }: HobbyCardProps) {
           {hobby.tags.map((tag) => (
             <span
               key={tag}
-              className="border-[2px] border-border px-2 py-0.5 text-[0.65rem] font-bold tracking-wider text-black uppercase"
+              className="glass-badge text-[0.65rem]"
               style={{
                 backgroundColor: hobby.color,
+                color: "#fff",
               }}
             >
               {tag}

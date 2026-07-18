@@ -69,13 +69,13 @@ export default async function BlogsPage() {
         {/* Page Header */}
         <div className="mb-12 md:mb-16">
           <div className="mb-4 inline-block">
-            <span className="neo-badge neo-badge-primary inline-block -rotate-2 transform px-4 py-1.5 text-sm md:text-base">
+            <span className="glass-badge inline-block px-4 py-1.5 text-sm md:text-base">
               Writing & Thoughts
             </span>
           </div>
 
           <h1
-            className="mb-6 text-4xl font-black md:text-6xl lg:text-7xl"
+            className="mb-6 text-5xl font-black md:text-6xl lg:text-7xl"
             style={{ fontFamily: "var(--font-heading), system-ui, sans-serif" }}
           >
             My <span className="text-secondary">Blogs</span>
@@ -95,8 +95,8 @@ export default async function BlogsPage() {
             ))}
           </div>
         ) : (
-          <div className="neo-card bg-surface p-12 text-center">
-            <div className="mb-4 text-4xl" role="img" aria-label="Writing">
+          <div className="glass-card bg-surface p-12 text-center">
+            <div className="mb-4 text-5xl" role="img" aria-label="Writing">
               ✍️
             </div>
             <h2 className="mb-2 text-2xl font-black">No Articles Yet</h2>
@@ -114,7 +114,7 @@ export default async function BlogsPage() {
               href={personal.socials.medium}
               target="_blank"
               rel="noopener noreferrer"
-              className="neo-btn neo-btn-secondary"
+              className="glass-btn glass-btn-secondary"
               aria-label="Visit my Medium profile"
             >
               <svg
@@ -133,7 +133,7 @@ export default async function BlogsPage() {
               href={personal.socials.devto}
               target="_blank"
               rel="noopener noreferrer"
-              className="neo-btn neo-btn-secondary"
+              className="glass-btn glass-btn-secondary"
               aria-label="Visit my Dev.to profile"
             >
               <svg

@@ -33,7 +33,7 @@ export const AnalyticsEvents = {
 
 declare global {
   interface Window {
-    clarity?: (...args: any[]) => void;
+    clarity?: (...args: unknown[]) => void;
   }
 }
 

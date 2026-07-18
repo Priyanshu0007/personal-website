@@ -202,7 +202,7 @@ export default function UsesPage() {
               {/* Section header */}
               <div className="mb-6 flex items-center gap-3">
                 <span
-                  className="flex h-10 w-10 items-center justify-center border-[3px] border-border text-xl"
+                  className="flex h-10 w-10 items-center justify-center rounded-lg border border-border/20 text-xl"
                   style={{ backgroundColor: section.color }}
                   role="img"
                   aria-label={`${section.title} icon`}
@@ -224,7 +224,10 @@ export default function UsesPage() {
                 {section.items.map((item) => (
                   <div
                     key={item.name}
-                    className="neo-card-flat p-5 transition-colors hover:bg-bg-secondary"
+                    className="glass-card glass-border-glow glass-sweep p-5"
+                    style={{
+                      "--glow-color": section.color,
+                    } as React.CSSProperties}
                   >
                     <h3 className="mb-1 text-base font-extrabold">
                       {item.name}
