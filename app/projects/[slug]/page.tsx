@@ -177,7 +177,7 @@ export default async function ProjectDetailPage({
             WebkitBackdropFilter: "blur(20px)",
           }}
         >
-          {project.category === "react-native" && (
+          {project.category === "react-native" && project.thumbnail ? (
             <Image
               src={project.thumbnail}
               alt=""
@@ -187,19 +187,21 @@ export default async function ProjectDetailPage({
               placeholder="blur"
               blurDataURL={IMAGE_BLUR_DATA_URL}
             />
-          )}
-          <Image
-            src={project.thumbnail}
-            alt={`Main screenshot for ${project.title}`}
-            fill
-            className={`${
-              project.category === "react-native" ? "object-contain" : "object-cover"
-            } z-10`}
-            priority
-            sizes="(max-width: 1200px) 100vw, 1200px"
-            placeholder="blur"
-            blurDataURL={IMAGE_BLUR_DATA_URL}
-          />
+          ) : null}
+          {project.thumbnail ? (
+            <Image
+              src={project.thumbnail}
+              alt={`Main screenshot for ${project.title}`}
+              fill
+              className={`${
+                project.category === "react-native" ? "object-contain" : "object-cover"
+              } z-10`}
+              priority
+              sizes="(max-width: 1200px) 100vw, 1200px"
+              placeholder="blur"
+              blurDataURL={IMAGE_BLUR_DATA_URL}
+            />
+          ) : null}
 
           {/* Gradient overlay for readability */}
           <div

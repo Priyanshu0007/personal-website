@@ -48,7 +48,7 @@ export default function BlogCard({
             background: `radial-gradient(circle at top right, color-mix(in srgb, ${color} 25%, transparent) 0%, color-mix(in srgb, ${color} 5%, transparent) 100%)`,
           }}
         >
-          {blog.thumbnail && (
+          {blog.thumbnail ? (
             <Image
               src={blog.thumbnail}
               alt={`Thumbnail for ${blog.title}`}
@@ -59,7 +59,7 @@ export default function BlogCard({
               placeholder="blur"
               blurDataURL={IMAGE_BLUR_DATA_URL}
             />
-          )}
+          ) : null}
           {/* Decorative Number */}
           <div
             className="absolute inset-0 flex items-center justify-center transition-transform group-hover:scale-110"

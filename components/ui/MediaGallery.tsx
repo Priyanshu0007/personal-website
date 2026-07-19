@@ -107,15 +107,17 @@ export default function MediaGallery({
             <div
               className={`relative h-full w-full ${i === 0 && !isMobile && total > 2 ? "aspect-video" : aspectRatioClass} overflow-hidden rounded-xl`}
             >
-              <Image
-                src={img}
-                alt={`${title} screenshot ${i + 1}`}
-                fill
-                className="object-cover transition-transform duration-700 group-hover:scale-105"
-                sizes="(max-width: 768px) 50vw, 33vw"
-                placeholder="blur"
-                blurDataURL={IMAGE_BLUR_DATA_URL}
-              />
+              {img ? (
+                <Image
+                  src={img}
+                  alt={`${title} screenshot ${i + 1}`}
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  sizes="(max-width: 768px) 50vw, 33vw"
+                  placeholder="blur"
+                  blurDataURL={IMAGE_BLUR_DATA_URL}
+                />
+              ) : null}
               <div className="absolute inset-0 bg-black/0 transition-colors duration-300 group-hover:bg-black/20" />
 
               {/* Hover icon */}
@@ -236,16 +238,18 @@ export default function MediaGallery({
                       }}
                       className="absolute inset-0 h-full w-full"
                     >
-                      <Image
-                        src={images[selectedIndex] || ""}
-                        alt={`${title} screenshot ${selectedIndex + 1}`}
-                        fill
-                        className={`${isMobile ? "object-contain" : "object-cover"} bg-black/40`}
-                        priority
-                        sizes="(max-width: 1200px) 100vw, 1200px"
-                        placeholder="blur"
-                        blurDataURL={IMAGE_BLUR_DATA_URL}
-                      />
+                      {images[selectedIndex] ? (
+                        <Image
+                          src={images[selectedIndex]}
+                          alt={`${title} screenshot ${selectedIndex + 1}`}
+                          fill
+                          className={`${isMobile ? "object-contain" : "object-cover"} bg-black/40`}
+                          priority
+                          sizes="(max-width: 1200px) 100vw, 1200px"
+                          placeholder="blur"
+                          blurDataURL={IMAGE_BLUR_DATA_URL}
+                        />
+                      ) : null}
                     </motion.div>
                   </AnimatePresence>
 

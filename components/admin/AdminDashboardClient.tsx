@@ -142,7 +142,7 @@ export default function AdminDashboardClient({ projects, blogs }: Props) {
             >
               {/* Top row: thumbnail + info */}
               <div className="flex items-center gap-3 mb-3">
-                {project.thumbnail && (
+                {project.thumbnail ? (
                   <div className="relative h-10 w-10 shrink-0 overflow-hidden rounded-lg border border-border/50 sm:h-12 sm:w-12">
                     <Image
                       src={project.thumbnail}
@@ -154,7 +154,7 @@ export default function AdminDashboardClient({ projects, blogs }: Props) {
                       blurDataURL={IMAGE_BLUR_DATA_URL}
                     />
                   </div>
-                )}
+                ) : null}
                 <div className="min-w-0 flex-1">
                   <h3 className="truncate text-sm font-bold sm:text-base">{project.title}</h3>
                   <p className="text-xs text-muted-foreground truncate">

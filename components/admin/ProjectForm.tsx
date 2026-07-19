@@ -159,7 +159,7 @@ export default function ProjectForm({ initialData, onClose }: Props) {
         {/* Thumbnail */}
         <Field label="Thumbnail URL" error={errors.thumbnail}>
           <input value={form.thumbnail} onChange={(e) => set("thumbnail", e.target.value)} className="glass-input" placeholder="https://cdn.example.com/thumb.png" />
-          {form.thumbnail && (
+          {form.thumbnail ? (
             <div className="mt-2 inline-block overflow-hidden rounded-xl border border-border/50 bg-white p-1">
               <div className="relative h-24 sm:h-32 w-40 sm:w-56">
                 <Image
@@ -173,7 +173,7 @@ export default function ProjectForm({ initialData, onClose }: Props) {
                 />
               </div>
             </div>
-          )}
+          ) : null}
         </Field>
 
         {/* Images */}
@@ -203,15 +203,17 @@ export default function ProjectForm({ initialData, onClose }: Props) {
               {form.images.map((img, i) => (
                 <div key={i} className="group relative overflow-hidden rounded-lg border border-border/50 bg-white p-1">
                   <div className="relative h-16 w-24 sm:h-20 sm:w-32">
-                    <Image
-                      src={img}
-                      alt={`Preview ${i + 1}`}
-                      fill
-                      className="object-cover rounded-md"
-                      sizes="96px"
-                      placeholder="blur"
-                      blurDataURL={IMAGE_BLUR_DATA_URL}
-                    />
+                    {img ? (
+                      <Image
+                        src={img}
+                        alt={`Preview ${i + 1}`}
+                        fill
+                        className="object-cover rounded-md"
+                        sizes="96px"
+                        placeholder="blur"
+                        blurDataURL={IMAGE_BLUR_DATA_URL}
+                      />
+                    ) : null}
                   </div>
                   <button
                     type="button"

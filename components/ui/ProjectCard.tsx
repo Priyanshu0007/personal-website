@@ -58,16 +58,18 @@ export default function ProjectCard({
             } 15%, transparent)`,
           }}
         >
-          <Image
-            src={project.thumbnail}
-            alt={`Thumbnail for ${project.title}`}
-            fill
-            className="object-cover transition-transform duration-500 group-hover:scale-105"
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px"
-            loading="lazy"
-            placeholder="blur"
-            blurDataURL={IMAGE_BLUR_DATA_URL}
-          />
+          {project.thumbnail ? (
+            <Image
+              src={project.thumbnail}
+              alt={`Thumbnail for ${project.title}`}
+              fill
+              className="object-cover transition-transform duration-500 group-hover:scale-105"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px"
+              loading="lazy"
+              placeholder="blur"
+              blurDataURL={IMAGE_BLUR_DATA_URL}
+            />
+          ) : null}
 
           {/* Favorite badge */}
           {project.isFavorite && (
