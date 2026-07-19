@@ -356,25 +356,32 @@ export default async function ProjectDetailPage({
                   {project.highlights.map((highlight, i) => (
                     <div
                       key={highlight}
-                      className="glass-card glass-border-glow relative p-5 transition-all"
+                      className="glass-card glass-border-glow group relative p-5 transition-all overflow-hidden"
                       style={{
                         '--glow-color': rawColor,
                       } as React.CSSProperties}
                     >
                       {/* Feature number */}
-                      <span
-                        className="mb-2 block text-3xl font-extrabold opacity-40 mix-blend-overlay"
-                        style={{ color: rawColor }}
-                        aria-hidden="true"
-                      >
-                        {String(i + 1).padStart(2, "0")}
-                      </span>
-                      <span className="text-sm leading-tight font-bold relative z-10">
+                      <div className="mb-3 flex items-center">
+                        <span
+                          className="text-2xl font-black tracking-tighter opacity-80 transition-opacity duration-300 group-hover:opacity-100"
+                          style={{ color: rawColor }}
+                          aria-hidden="true"
+                        >
+                          {String(i + 1).padStart(2, "0")}
+                        </span>
+                        <div 
+                          className="ml-3 h-[2px] w-6 rounded-full opacity-40 transition-all duration-300 group-hover:w-10 group-hover:opacity-80" 
+                          style={{ backgroundColor: rawColor }}
+                          aria-hidden="true"
+                        />
+                      </div>
+                      <span className="text-sm leading-tight font-bold relative z-10 text-text">
                         {highlight}
                       </span>
                       {/* Corner accent */}
                       <div
-                        className="absolute right-0 bottom-0 h-8 w-8 rounded-tl-2xl opacity-50"
+                        className="absolute right-0 bottom-0 h-12 w-12 rounded-tl-3xl opacity-20 transition-opacity duration-300 group-hover:opacity-50"
                         style={{ 
                           background: `linear-gradient(135deg, transparent 50%, ${rawColor} 100%)`
                         }}
