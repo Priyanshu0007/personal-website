@@ -293,7 +293,7 @@
     padding: 1.5rem;
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
-    transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
+    transition: border-color var(--transition-base), box-shadow var(--transition-base);
     position: relative;
     overflow: hidden;
   }
@@ -312,9 +312,19 @@
   }
 
   .glass-card:hover {
+    border-color: rgba(255,255,255,0.12);
+  }
+
+  /* --- Interactive Cards --- */
+  .glass-card-interactive {
+    cursor: pointer;
+    transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
+  }
+
+  .glass-card-interactive:hover {
     transform: translateY(-4px);
     box-shadow: var(--shadow-lg);
-    border-color: rgba(255,255,255,0.2);
+    border-color: rgba(255, 255, 255, 0.2);
   }
 
   .glass-card-flat {
@@ -452,12 +462,18 @@
 
   /* --- Glass Border Glow --- */
   .glass-border-glow {
-    transition: box-shadow var(--transition-base), border-color var(--transition-base), transform var(--transition-base);
+    transition: box-shadow var(--transition-base), border-color var(--transition-base);
   }
   .glass-border-glow:hover {
     border-color: var(--glow-color, var(--color-primary));
     box-shadow: 0 0 24px 0 color-mix(in srgb, var(--glow-color, var(--color-primary)) 40%, transparent);
+  }
+
+  /* Combined interactive + border glow on hover */
+  .glass-card-interactive.glass-border-glow:hover {
     transform: translateY(-4px);
+    border-color: var(--glow-color, var(--color-primary));
+    box-shadow: 0 0 24px 0 color-mix(in srgb, var(--glow-color, var(--color-primary)) 40%, transparent);
   }
 
   /* ========================================

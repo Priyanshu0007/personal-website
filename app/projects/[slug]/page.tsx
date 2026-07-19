@@ -650,7 +650,7 @@ export default async function ProjectDetailPage({
               transitionTypes={["nav-back"]}
               scroll={false}
               prefetch={true}
-              className="glass-card group flex flex-col"
+              className="glass-card glass-card-interactive group flex flex-col"
               id="project-prev"
             >
               <span className="mb-1 text-xs font-bold tracking-wider text-text-muted uppercase">
@@ -669,7 +669,7 @@ export default async function ProjectDetailPage({
               transitionTypes={["nav-forward"]}
               scroll={false}
               prefetch={true}
-              className="glass-card group flex flex-col text-right"
+              className="glass-card glass-card-interactive group flex flex-col text-right"
               id="project-next"
             >
               <span className="mb-1 text-xs font-bold tracking-wider text-text-muted uppercase">

@@ -34,7 +34,7 @@ export default function BlogCard({
       aria-label={`Read article: ${blog.title} on ${blog.platform}`}
     >
       <article
-        className="glass-card glass-border-glow glass-sweep flex h-full flex-col overflow-hidden p-0"
+        className="glass-card glass-card-interactive glass-border-glow glass-sweep flex h-full flex-col overflow-hidden p-0"
         style={
           {
             "--glow-color": color,

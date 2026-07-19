@@ -42,7 +42,7 @@ export default function ProjectCard({
       aria-label={`View project: ${project.title}`}
     >
       <article
-        className="glass-card glass-border-glow glass-sweep flex h-full flex-col overflow-hidden p-0"
+        className="glass-card glass-card-interactive glass-border-glow glass-sweep flex h-full flex-col overflow-hidden p-0"
         style={
           {
             "--glow-color": categoryColors[project.category],
