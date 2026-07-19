@@ -9,6 +9,7 @@ import {
   getPersonalData,
 } from "@/lib/data";
 import BackButton from "@/components/ui/BackButton";
+import { ExternalLink, Code2, ArrowUpRight } from "lucide-react";
 import dynamic from "next/dynamic";
 import { IMAGE_BLUR_DATA_URL } from "@/utils/constants";
 
@@ -261,20 +262,26 @@ export default async function ProjectDetailPage({
           </div>
 
           {/* Action buttons */}
-          <div className="mt-2 flex w-full shrink-0 flex-col gap-3 sm:flex-row md:mt-0 md:w-auto">
+          <div className="mt-2 flex w-full shrink-0 items-center gap-3 sm:flex-row md:mt-0 md:w-auto">
             {project.liveUrl && (
               <a
                 href={project.liveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="glass-btn glass-btn-primary w-full sm:w-auto"
                 id="project-live-link"
                 aria-label={`View live demo of ${project.title}`}
+                className="group relative flex items-center gap-2.5 overflow-hidden rounded-xl px-5 py-2.5 text-sm font-bold text-white transition-all duration-300 hover:scale-[1.03] active:scale-[0.97]"
+                style={{
+                  background: `linear-gradient(135deg, ${rawColor}cc, ${rawColor}88)`,
+                  boxShadow: `0 0 0 1px ${rawColor}50, 0 8px 24px ${rawColor}40, inset 0 1px 0 rgba(255,255,255,0.2)`,
+                  backdropFilter: "blur(12px)",
+                }}
               >
-                <span role="img" aria-label="Globe" className="mr-1">
-                  🌐
-                </span>{" "}
-                Live Demo
+                <ExternalLink className="h-4 w-4 shrink-0" />
+                <span>Live Demo</span>
+                <ArrowUpRight className="h-3.5 w-3.5 shrink-0 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                {/* Shimmer overlay */}
+                <span className="absolute inset-0 -translate-x-full skew-x-[-20deg] bg-white/10 transition-transform duration-500 group-hover:translate-x-full" aria-hidden="true" />
               </a>
             )}
             {project.githubUrl && (
@@ -282,14 +289,22 @@ export default async function ProjectDetailPage({
                 href={project.githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="glass-btn glass-btn-secondary w-full sm:w-auto"
                 id="project-github-link"
                 aria-label={`View source code of ${project.title} on GitHub`}
+                className="group relative flex items-center gap-2.5 overflow-hidden rounded-xl border px-5 py-2.5 text-sm font-bold transition-all duration-300 hover:scale-[1.03] active:scale-[0.97]"
+                style={{
+                  borderColor: "rgba(255,255,255,0.12)",
+                  background: "rgba(255,255,255,0.06)",
+                  backdropFilter: "blur(12px)",
+                  boxShadow: "0 4px 16px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.08)",
+                  color: "var(--color-text)",
+                }}
               >
-                <span role="img" aria-label="Computer" className="mr-1">
-                  💻
-                </span>{" "}
-                Source Code
+                <Code2 className="h-4 w-4 shrink-0" />
+                <span>Source Code</span>
+                <ArrowUpRight className="h-3.5 w-3.5 shrink-0 opacity-50 transition-all duration-200 group-hover:opacity-100 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                {/* Shimmer overlay */}
+                <span className="absolute inset-0 -translate-x-full skew-x-[-20deg] bg-white/5 transition-transform duration-500 group-hover:translate-x-full" aria-hidden="true" />
               </a>
             )}
           </div>
@@ -583,13 +598,18 @@ export default async function ProjectDetailPage({
                   href={project.liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="glass-btn glass-btn-primary w-full text-sm"
                   aria-label={`View live demo of ${project.title}`}
+                  className="group relative flex w-full items-center justify-center gap-2 overflow-hidden rounded-xl px-4 py-3 text-sm font-bold text-white transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
+                  style={{
+                    background: `linear-gradient(135deg, ${rawColor}cc, ${rawColor}88)`,
+                    boxShadow: `0 0 0 1px ${rawColor}50, 0 8px 24px ${rawColor}40, inset 0 1px 0 rgba(255,255,255,0.2)`,
+                    backdropFilter: "blur(12px)",
+                  }}
                 >
-                  <span role="img" aria-label="Globe" className="mr-1">
-                    🌐
-                  </span>{" "}
-                  View Live Demo
+                  <ExternalLink className="h-4 w-4 shrink-0" />
+                  <span>View Live Demo</span>
+                  <ArrowUpRight className="h-3.5 w-3.5 shrink-0 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                  <span className="absolute inset-0 -translate-x-full skew-x-[-20deg] bg-white/10 transition-transform duration-500 group-hover:translate-x-full" aria-hidden="true" />
                 </a>
               )}
               {project.githubUrl && (
@@ -597,13 +617,20 @@ export default async function ProjectDetailPage({
                   href={project.githubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="glass-btn glass-btn-secondary w-full text-sm"
                   aria-label={`View source code of ${project.title} on GitHub`}
+                  className="group relative flex w-full items-center justify-center gap-2 overflow-hidden rounded-xl border px-4 py-3 text-sm font-bold transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
+                  style={{
+                    borderColor: "rgba(255,255,255,0.12)",
+                    background: "rgba(255,255,255,0.06)",
+                    backdropFilter: "blur(12px)",
+                    boxShadow: "0 4px 16px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.08)",
+                    color: "var(--color-text)",
+                  }}
                 >
-                  <span role="img" aria-label="Computer" className="mr-1">
-                    💻
-                  </span>{" "}
-                  View Source Code
+                  <Code2 className="h-4 w-4 shrink-0" />
+                  <span>Source Code</span>
+                  <ArrowUpRight className="h-3.5 w-3.5 shrink-0 opacity-50 transition-all duration-200 group-hover:opacity-100 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                  <span className="absolute inset-0 -translate-x-full skew-x-[-20deg] bg-white/5 transition-transform duration-500 group-hover:translate-x-full" aria-hidden="true" />
                 </a>
               )}
             </div>
