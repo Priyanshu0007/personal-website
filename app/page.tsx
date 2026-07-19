@@ -201,8 +201,8 @@ export default async function Home() {
               ].map((stat) => (
                 <div key={stat.label} className="text-center group">
                   <div
-                    className="text-4xl font-black mb-1 bg-clip-text text-transparent transition-transform group-hover:scale-110 inline-block"
-                    style={{ backgroundImage: `linear-gradient(135deg, ${stat.color}, #fff)` }}
+                    className="text-4xl font-black mb-1 transition-transform group-hover:scale-110 inline-block"
+                    style={{ color: stat.color }}
                   >
                     {stat.value}
                   </div>
