@@ -4,6 +4,7 @@ import { useActionState, useEffect } from "react";
 import { sendContactEmail } from "@/actions/contact";
 import { useFormStatus } from "react-dom";
 import { trackUserAction, AnalyticsEvents } from "@/lib/analytics";
+import { SendHorizontal, Loader2 } from "lucide-react";
 
 function SubmitButton() {
   const { pending } = useFormStatus();
@@ -12,17 +13,27 @@ function SubmitButton() {
     <button
       type="submit"
       disabled={pending}
-      className={`group glass-btn glass-btn-primary glass-btn-lg w-full glass-sweep ${pending ? "cursor-not-allowed opacity-70" : ""}`}
       id="contact-submit"
+      className={`group relative flex w-full items-center justify-center gap-2.5 overflow-hidden rounded-xl px-6 py-3.5 text-base font-bold text-white transition-all duration-300 ${pending ? "cursor-not-allowed opacity-70" : "hover:scale-[1.02] active:scale-[0.98]"}`}
+      style={{
+        background: "linear-gradient(135deg, #0071e3cc, #0071e388)",
+        boxShadow: "0 0 0 1px rgba(0,113,227,0.4), 0 8px 24px rgba(0,113,227,0.4), inset 0 1px 0 rgba(255,255,255,0.2)",
+        backdropFilter: "blur(12px)",
+      }}
     >
-      {pending ? "Sending..." : "Send Message"}{" "}
+      {pending ? (
+        <>
+          <Loader2 className="h-4 w-4 shrink-0 animate-spin" />
+          <span>Sending...</span>
+        </>
+      ) : (
+        <>
+          <span>Send Message</span>
+          <SendHorizontal className="h-4 w-4 shrink-0 transition-transform duration-200 group-hover:translate-x-1" />
+        </>
+      )}
       {!pending && (
-        <span
-          aria-hidden="true"
-          className="ml-1 transition-transform group-hover:translate-x-1"
-        >
-          →
-        </span>
+        <span className="absolute inset-0 -translate-x-full skew-x-[-20deg] bg-white/10 transition-transform duration-500 group-hover:translate-x-full" aria-hidden="true" />
       )}
     </button>
   );

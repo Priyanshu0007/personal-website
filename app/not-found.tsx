@@ -60,11 +60,17 @@ export default function NotFound() {
 
         <Link
           href="/"
-          className="glass-btn glass-btn-primary glass-btn-lg px-8 py-4 text-lg"
           scroll={false}
           aria-label="Return to the home page"
+          className="group relative inline-flex items-center gap-2.5 overflow-hidden rounded-xl px-8 py-4 text-lg font-bold text-white transition-all duration-300 hover:scale-[1.03] active:scale-[0.97]"
+          style={{
+            background: "linear-gradient(135deg, #0071e3cc, #0071e388)",
+            boxShadow: "0 0 0 1px rgba(0,113,227,0.4), 0 8px 24px rgba(0,113,227,0.4), inset 0 1px 0 rgba(255,255,255,0.2)",
+            backdropFilter: "blur(12px)",
+          }}
         >
-          ← Back to Reality
+          <span>← Back to Reality</span>
+          <span className="absolute inset-0 -translate-x-full skew-x-[-20deg] bg-white/10 transition-transform duration-500 group-hover:translate-x-full" aria-hidden="true" />
         </Link>
       </div>
     </div>

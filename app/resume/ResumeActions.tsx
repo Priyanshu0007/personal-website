@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { Download, Link2, Check } from "lucide-react";
 
 interface ResumeActionsProps {
   resumeUrl: string;
@@ -56,29 +57,40 @@ export default function ResumeActions({ resumeUrl }: ResumeActionsProps) {
       <a
         href={resumeUrl}
         onClick={handleDownload}
-        className="glass-btn glass-btn-primary"
+        className="group relative flex items-center gap-2.5 overflow-hidden rounded-xl px-6 py-3.5 text-base font-bold text-white transition-all duration-300 hover:scale-[1.03] active:scale-[0.97]"
+        style={{
+          background: "linear-gradient(135deg, #0071e3cc, #0071e388)",
+          boxShadow: "0 0 0 1px rgba(0,113,227,0.4), 0 8px 24px rgba(0,113,227,0.4), inset 0 1px 0 rgba(255,255,255,0.2)",
+          backdropFilter: "blur(12px)",
+        }}
       >
-        <span role="img" aria-label="Download" className="mr-1">
-          📥
-        </span>{" "}
-        Download Resume
+        <Download className="h-4 w-4 shrink-0" />
+        <span>Download Resume</span>
+        <span className="absolute inset-0 -translate-x-full skew-x-[-20deg] bg-white/10 transition-transform duration-500 group-hover:translate-x-full" aria-hidden="true" />
       </a>
-      <button onClick={handleCopyLink} className="glass-btn glass-btn-secondary">
+      <button
+        onClick={handleCopyLink}
+        className="group relative flex items-center gap-2.5 overflow-hidden rounded-xl border px-6 py-3.5 text-base font-bold transition-all duration-300 hover:scale-[1.03] active:scale-[0.97]"
+        style={{
+          borderColor: "rgba(255,255,255,0.12)",
+          background: "rgba(255,255,255,0.06)",
+          backdropFilter: "blur(12px)",
+          boxShadow: "0 4px 16px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.08)",
+          color: "var(--color-text)",
+        }}
+      >
         {copied ? (
           <>
-            <span role="img" aria-label="Check" className="mr-1">
-              ✅
-            </span>{" "}
-            Copied!
+            <Check className="h-4 w-4 shrink-0 text-green-400" />
+            <span>Copied!</span>
           </>
         ) : (
           <>
-            <span role="img" aria-label="Link" className="mr-1">
-              🔗
-            </span>{" "}
-            Copy Link
+            <Link2 className="h-4 w-4 shrink-0 opacity-70 group-hover:opacity-100 transition-opacity duration-200" />
+            <span>Copy Link</span>
           </>
         )}
+        <span className="absolute inset-0 -translate-x-full skew-x-[-20deg] bg-white/5 transition-transform duration-500 group-hover:translate-x-full" aria-hidden="true" />
       </button>
     </div>
   );
