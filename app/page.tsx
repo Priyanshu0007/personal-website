@@ -111,11 +111,16 @@ export default async function Home() {
                         "var(--color-tertiary)",
                         "var(--color-accent-purple)",
                       ];
+                      const bgColor = colors[i % colors.length];
+                      const isYellow = bgColor === "var(--color-tertiary)";
                       return (
                         <span
                           key={role}
                           className="glass-badge text-xs"
-                          style={{ backgroundColor: colors[i % colors.length], color: "#ffffff" }}
+                          style={{
+                            backgroundColor: bgColor,
+                            color: isYellow ? "#000000" : "#ffffff",
+                          }}
                         >
                           {role}
                         </span>
@@ -248,7 +253,7 @@ export default async function Home() {
                 {landing.about.skills.map((skill) => (
                   <span
                     key={skill}
-                    className="glass-badge glass-badge-outline text-[0.7rem] hover:bg-tertiary hover:text-white hover:border-tertiary cursor-default transition-colors"
+                    className="glass-badge glass-badge-outline text-[0.7rem] hover:bg-tertiary hover:text-black hover:border-tertiary cursor-default transition-colors"
                   >
                     {skill}
                   </span>
