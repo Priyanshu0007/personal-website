@@ -42,6 +42,7 @@ export default function Navbar({
 }: NavbarProps) {
   const pathname = usePathname();
   const [isScrolledDown, setIsScrolledDown] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const [windowWidth, setWindowWidth] = useState(380);
   const { scrollY } = useScroll();
   const lastScrollY = useRef(0);
@@ -57,6 +58,9 @@ export default function Navbar({
   }, []);
 
   useMotionValueEvent(scrollY, "change", (latest) => {
+    // Check if scrolled past threshold
+    setIsScrolled(latest > 20);
+
     // Always expand at the very top of the page
     if (latest < 30) {
       setIsScrolledDown(false);
@@ -76,9 +80,21 @@ export default function Navbar({
   return (
     <>
       {/* ===================== DESKTOP NAVBAR ===================== */}
-      <header className="hidden md:block fixed top-6 left-1/2 z-50 w-[92%] max-w-5xl -translate-x-1/2 transition-all duration-300">
-        <nav className="rounded-full border border-white/20 dark:border-white/10 bg-surface/60 px-6 shadow-2xl backdrop-blur-2xl backdrop-saturate-150">
-          <div className="flex h-16 items-center justify-between">
+      <header
+        className={`hidden md:block fixed left-1/2 z-50 -translate-x-1/2 transition-all duration-300 ${
+          isScrolled ? "top-3 w-[82%] max-w-4xl" : "top-6 w-[92%] max-w-5xl"
+        }`}
+      >
+        <nav
+          className={`rounded-full border border-white/20 dark:border-white/10 bg-surface/60 shadow-2xl backdrop-blur-2xl backdrop-saturate-150 transition-all duration-300 ${
+            isScrolled ? "px-4" : "px-6"
+          }`}
+        >
+          <div
+            className={`flex items-center justify-between transition-all duration-300 ${
+              isScrolled ? "h-12" : "h-16"
+            }`}
+          >
             {/* Logo */}
             <Link
               href="/"
@@ -87,12 +103,18 @@ export default function Navbar({
               aria-label={`Home - ${name}`}
             >
               <span
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-border/30 bg-primary text-white text-lg font-extrabold transition-all group-hover:scale-105 group-hover:shadow-md"
+                className={`flex items-center justify-center rounded-full border border-border/30 bg-primary text-white font-extrabold transition-all group-hover:scale-105 group-hover:shadow-md ${
+                  isScrolled ? "h-8 w-8 text-sm" : "h-10 w-10 text-lg"
+                }`}
                 aria-hidden="true"
               >
                 {shortName}
               </span>
-              <span className="text-base font-extrabold tracking-tight">
+              <span
+                className={`font-extrabold tracking-tight transition-all duration-300 ${
+                  isScrolled ? "text-sm" : "text-base"
+                }`}
+              >
                 {name}
               </span>
             </Link>
@@ -127,23 +149,41 @@ export default function Navbar({
                   href={socials.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex h-9 w-9 items-center justify-center rounded-full border border-border/20 bg-surface/50 transition-colors hover:bg-text hover:text-surface"
+                  className={`flex items-center justify-center rounded-full border border-border/20 bg-surface/50 transition-all hover:bg-text hover:text-surface ${
+                    isScrolled ? "h-8 w-8" : "h-9 w-9"
+                  }`}
                   aria-label="Visit GitHub Profile"
                   onClick={() => trackUserAction(AnalyticsEvents.SOCIAL_LINK_CLICK, { platform: "github" })}
                 >
-                  <GitHubIcon aria-hidden="true" className="h-4.5 w-4.5" />
+                  <GitHubIcon
+                    aria-hidden="true"
+                    className={`transition-all duration-300 ${
+                      isScrolled ? "h-4 w-4" : "h-4.5 w-4.5"
+                    }`}
+                  />
                 </a>
                 <a
                   href={socials.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex h-9 w-9 items-center justify-center rounded-full border border-border/20 bg-surface/50 transition-colors hover:bg-[#0077B5] hover:text-white"
+                  className={`flex items-center justify-center rounded-full border border-border/20 bg-surface/50 transition-all hover:bg-[#0077B5] hover:text-white ${
+                    isScrolled ? "h-8 w-8" : "h-9 w-9"
+                  }`}
                   aria-label="Visit LinkedIn Profile"
                   onClick={() => trackUserAction(AnalyticsEvents.SOCIAL_LINK_CLICK, { platform: "linkedin" })}
                 >
-                  <LinkedInIcon aria-hidden="true" className="h-4.5 w-4.5" />
+                  <LinkedInIcon
+                    aria-hidden="true"
+                    className={`transition-all duration-300 ${
+                      isScrolled ? "h-4 w-4" : "h-4.5 w-4.5"
+                    }`}
+                  />
                 </a>
-                <ThemeToggle />
+                <ThemeToggle
+                  className={`flex items-center justify-center rounded-full border border-border/20 bg-surface/50 transition-all hover:bg-text hover:text-surface ${
+                    isScrolled ? "h-8 w-8" : "h-9 w-9"
+                  }`}
+                />
               </div>
             </div>
           </div>
