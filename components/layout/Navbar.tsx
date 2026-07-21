@@ -2,7 +2,9 @@
 
 import Link from "next/link";
 import ThemeToggle from "@/components/ui/ThemeToggle";
+import { useState, useRef, useEffect } from "react";
 import { usePathname } from "next/navigation";
+import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion";
 import { trackUserAction, AnalyticsEvents } from "@/lib/analytics";
 import type { NavItem } from "@/types";
 import { Home, Briefcase, FileText, Laptop, FileBadge } from "lucide-react";
@@ -25,6 +27,13 @@ const iconMap: Record<string, React.ReactNode> = {
   Resume: <FileBadge className="h-5 w-5" strokeWidth={2.25} />,
 };
 
+const navTransition = {
+  type: "spring",
+  stiffness: 300,
+  damping: 25,
+  mass: 0.8,
+} as const;
+
 export default function Navbar({
   name,
   shortName,
@@ -32,6 +41,37 @@ export default function Navbar({
   socials,
 }: NavbarProps) {
   const pathname = usePathname();
+  const [isScrolledDown, setIsScrolledDown] = useState(false);
+  const [windowWidth, setWindowWidth] = useState(380);
+  const { scrollY } = useScroll();
+  const lastScrollY = useRef(0);
+
+  useEffect(() => {
+    const handleResize = () => {
+      // 32px is parent horizontal padding (px-4 = 16px * 2)
+      setWindowWidth(Math.min(380, window.innerWidth - 32));
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    // Always expand at the very top of the page
+    if (latest < 30) {
+      setIsScrolledDown(false);
+      lastScrollY.current = latest;
+      return;
+    }
+
+    const diff = latest - lastScrollY.current;
+
+    // A threshold of 10px to prevent jitter
+    if (Math.abs(diff) > 10) {
+      setIsScrolledDown(diff > 0);
+      lastScrollY.current = latest;
+    }
+  });
 
   return (
     <>
@@ -131,30 +171,95 @@ export default function Navbar({
       </div>
 
       {/* Mobile Floating Bottom Tab Bar */}
-      <nav className="fixed bottom-6 left-1/2 z-50 flex w-[96%] sm:w-[92%] max-w-md -translate-x-1/2 items-center justify-around rounded-full border border-white/20 dark:border-white/10 bg-surface/70 px-2 py-1 shadow-2xl backdrop-blur-2xl backdrop-saturate-150 md:hidden">
-        {navigation.map((item) => {
-          const isActive = pathname === item.href;
-          return (
-            <Link
-              key={item.href}
-              href={item.href}
-              id={`nav-${item.label.toLowerCase()}-mobile`}
-              onClick={() => trackUserAction(AnalyticsEvents.NAV_LINK_CLICK, { link_name: item.label, destination: item.href, is_mobile: true })}
-              prefetch={true}
-              className={`flex flex-1 flex-col items-center justify-center gap-1 py-1.5 transition-colors ${
-                isActive ? "text-primary" : "text-text-muted hover:text-text"
-              }`}
-            >
-              <div className={`transition-transform duration-300 ${isActive ? "scale-110" : "scale-100"}`}>
-                {iconMap[item.label] || <FileText className="h-5 w-5" />}
-              </div>
-              <span className="text-[10px] font-bold tracking-wide">
-                {item.label}
-              </span>
-            </Link>
-          );
-        })}
-      </nav>
+      <div className="fixed bottom-6 left-0 right-0 z-50 flex justify-center pointer-events-none md:hidden px-4">
+        <motion.nav
+          animate={{
+            width: isScrolledDown ? 230 : windowWidth,
+            height: isScrolledDown ? 54 : 64,
+            paddingLeft: isScrolledDown ? 6 : 12,
+            paddingRight: isScrolledDown ? 6 : 12,
+          }}
+          transition={navTransition}
+          className="pointer-events-auto flex items-center justify-between rounded-full border border-white/20 dark:border-white/10 bg-surface/70 shadow-2xl backdrop-blur-2xl backdrop-saturate-150 py-1"
+        >
+          {navigation.map((item) => {
+            const isActive = pathname === item.href;
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                id={`nav-${item.label.toLowerCase()}-mobile`}
+                onClick={() =>
+                  trackUserAction(AnalyticsEvents.NAV_LINK_CLICK, {
+                    link_name: item.label,
+                    destination: item.href,
+                    is_mobile: true,
+                  })
+                }
+                prefetch={true}
+                className="relative flex flex-1 min-w-0 flex-col items-center justify-center h-full z-10"
+              >
+                <AnimatePresence>
+                  {isActive && (
+                    <motion.div
+                      key={item.href}
+                      initial={{ opacity: 0, scale: 0.7 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.7 }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 400,
+                        damping: 28,
+                        mass: 0.6,
+                      }}
+                      className="absolute inset-x-1.5 inset-y-1 bg-primary/10 dark:bg-primary/20 rounded-full -z-10"
+                    />
+                  )}
+                </AnimatePresence>
+
+                <motion.div
+                  whileTap={{ scale: 0.9 }}
+                  className="flex flex-col items-center justify-center w-full h-full"
+                >
+                  <motion.div
+                    animate={{
+                      scale: isActive ? 1.15 : 1,
+                      y: isActive ? -2 : 0,
+                      color: isActive
+                        ? "var(--color-primary)"
+                        : "var(--color-text-secondary)",
+                    }}
+                    transition={{
+                      type: "spring",
+                      stiffness: 300,
+                      damping: 15,
+                    }}
+                  >
+                    {iconMap[item.label] || <FileText className="h-5 w-5" />}
+                  </motion.div>
+                  <motion.span
+                    initial={false}
+                    animate={{
+                      opacity: isScrolledDown ? 0 : 1,
+                      height: isScrolledDown ? 0 : 14,
+                      scale: isScrolledDown ? 0 : 1,
+                      y: isScrolledDown ? 4 : 0,
+                      marginTop: isScrolledDown ? 0 : 4,
+                    }}
+                    transition={{
+                      ...navTransition,
+                      delay: isScrolledDown ? 0 : 0.1,
+                    }}
+                    className="text-[10px] font-bold tracking-wide overflow-hidden whitespace-nowrap block w-full text-center px-1"
+                  >
+                    {item.label}
+                  </motion.span>
+                </motion.div>
+              </Link>
+            );
+          })}
+        </motion.nav>
+      </div>
     </>
   );
 }
