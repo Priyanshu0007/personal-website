@@ -12,7 +12,7 @@ This version has breaking changes — APIs, conventions, and file structure may 
 
 ## Project Overview
 
-A personal portfolio/developer website built with **Next.js 16** (App Router), **React 19**, **TypeScript 5**, and **Tailwind CSS 4**. The site showcases projects, blogs, a resume viewer, and includes an admin dashboard for content management. Uses a **Neobrutalism** design system throughout.
+A personal portfolio/developer website built with **Next.js 16** (App Router), **React 19**, **TypeScript 5**, and **Tailwind CSS 4**. The site showcases projects, blogs, a resume viewer, and includes an admin dashboard for content management. Uses a **Glassmorphism (Apple-esque)** design system throughout.
 
 ---
 
@@ -27,6 +27,7 @@ A personal portfolio/developer website built with **Next.js 16** (App Router), *
 | Animations       | Framer Motion 12                                   |
 | Database         | Neon PostgreSQL (serverless) via `drizzle-orm`      |
 | Auth             | NextAuth v4 (OTP-based email login)                |
+| PDF Viewer       | `@embedpdf` (core, engines, plugins)               |
 | Email            | Resend SDK                                         |
 | Validation       | Zod 4                                              |
 | Icons            | Lucide React                                       |
@@ -56,7 +57,10 @@ A personal portfolio/developer website built with **Next.js 16** (App Router), *
 │   │   └── projects/       # GET projects + GET project by slug
 │   ├── blogs/              # Blog listing page
 │   ├── projects/           # Projects listing + [slug] detail pages
-│   ├── resume/             # Resume/PDF viewer page
+│   ├── resume/             # Resume/PDF viewer page (`@embedpdf` engine & viewer)
+│   │   ├── ResumeActions.tsx
+│   │   ├── ResumeViewer.tsx
+│   │   └── ResumeViewerWrapper.tsx
 │   ├── uses/               # Uses/tools page
 │   ├── robots.ts           # Dynamic robots.txt generation
 │   ├── sitemap.ts          # Dynamic sitemap generation
@@ -65,8 +69,8 @@ A personal portfolio/developer website built with **Next.js 16** (App Router), *
 │   ├── admin.ts            # CRUD for projects & blogs (Zod-validated)
 │   └── contact.ts          # Contact form submission via Resend
 ├── components/
-│   ├── layout/             # Navbar, Footer, ClientEnhancements
-│   ├── ui/                 # Reusable UI: cards, forms, carousels, buttons
+│   ├── layout/             # Navbar (shrink on scroll, mobile tabs), Footer, ClientEnhancements
+│   ├── ui/                 # Reusable UI: glass cards, MediaGallery, BackgroundOrbs, HeroShapes, etc.
 │   ├── admin/              # Admin-specific: dashboard, forms
 │   ├── FirebaseAnalytics.tsx
 │   └── MsClarity.tsx
@@ -77,6 +81,7 @@ A personal portfolio/developer website built with **Next.js 16** (App Router), *
 │   ├── schema.ts           # Drizzle ORM schema (projects, blogs, allowedAdmins, otps)
 │   └── index.ts            # Neon DB connection singleton
 ├── lib/
+│   ├── auth.ts             # NextAuth configuration & options
 │   ├── data.ts             # Data-fetching functions (DB queries + static data)
 │   ├── analytics.ts        # Unified analytics helper (Firebase + Clarity)
 │   └── firebase.ts         # Firebase client initialization
@@ -107,22 +112,23 @@ A personal portfolio/developer website built with **Next.js 16** (App Router), *
 - Use `@/*` for all imports (maps to project root). Example: `import { db } from "@/db"`.
 - Never use relative paths like `../../`.
 
-### 3. Styling — Tailwind CSS 4 + Neobrutalism Design System
+### 3. Styling — Tailwind CSS 4 + Glassmorphism Design System
 
 - This project uses **Tailwind CSS 4** with the `@tailwindcss/postcss` plugin — NOT `tailwind.config.js`. Configuration lives in `app/globals.css` via the `@theme` directive.
-- The design language is **Neobrutalism**: thick borders (`3px solid`), hard drop-shadows (no blur), bold colors, playful aesthetics.
+- The design language is **Glassmorphism (Apple-esque)**: translucent surface layers (`var(--color-surface)`), soft backdrop blurs (`backdrop-filter: blur(24px)`), thin borders (`1px solid var(--color-border)`), soft glowing shadows, and sleek pill shapes.
 - **Design tokens** are defined as CSS custom properties in `app/globals.css` under `@theme` and `:root`.
-- **Dark mode** is class-based (`.dark` class). Dark theme tokens override the light tokens.
+- **Dark mode** is class-based (`.dark` class). Dark theme tokens override light tokens seamlessly.
 - Custom cursors are used (SVG files in `/public`).
-- Use existing design tokens (`--color-primary`, `--shadow-md`, `--border`, etc.) rather than inventing ad-hoc values.
-- Common utility classes used: `neo-btn`, `neo-card`, etc. — check `globals.css` before creating new classes.
+- Use existing design tokens (`--color-primary`, `--shadow-md`, `--color-border`, etc.) rather than inventing ad-hoc values.
+- Common utility classes: `.glass-btn`, `.glass-btn-primary`, `.glass-btn-secondary`, `.glass-card`, `.glass-card-interactive`, `.glass-panel`, `.glass-input`, `.glass-textarea` — check `globals.css` before creating new utility classes.
 
 ### 4. Component Patterns
 
 - **Server Components by default** — use `"use client"` only when necessary (event handlers, hooks, browser APIs).
 - Client components that need `"use client"` should be as small as possible, wrapping minimal interactivity.
-- Use Framer Motion for animations — the `motion` component is already established throughout.
+- Use Framer Motion for animations — key established patterns include dynamic scroll-responsive navbar shrinking (desktop & mobile) and interactive active-tab indicator physics (`motion.div`).
 - Lucide React for icons — do NOT add other icon libraries.
+- PDF rendering on `/resume` uses `@embedpdf` engine integration.
 - Use `next/image` for all images (with `remotePatterns` configured in `next.config.ts` for `cdn.jsdelivr.net`, `cdn.statically.io`, `images.unsplash.com`).
 - Use `next/link` for all internal navigation.
 
