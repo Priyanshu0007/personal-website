@@ -33,7 +33,7 @@ export default function Error({
         <motion.div
           drag
           dragConstraints={{ left: -100, right: 100, top: -100, bottom: 100 }}
-          className="hover-target pointer-events-auto absolute top-[30%] left-[15%] h-20 w-20 cursor-grab rounded-full bg-tertiary/30 backdrop-blur-md border border-tertiary/20 shadow-lg active:cursor-grabbing"
+          className="hover-target bg-tertiary/30 border-tertiary/20 pointer-events-auto absolute top-[30%] left-[15%] h-20 w-20 cursor-grab rounded-full border shadow-lg backdrop-blur-md active:cursor-grabbing"
           animate={{ scale: [1, 1.08, 1], rotate: [-10, 10, -10] }}
           transition={{ duration: 2, ease: "easeInOut", repeat: Infinity }}
           whileHover={{ scale: 1.1 }}
@@ -41,7 +41,7 @@ export default function Error({
         <motion.div
           drag
           dragConstraints={{ left: -100, right: 100, top: -100, bottom: 100 }}
-          className="hover-target pointer-events-auto absolute right-[15%] bottom-[25%] h-24 w-24 cursor-grab rounded-full bg-accent-purple/30 backdrop-blur-md border border-accent-purple/20 shadow-lg active:cursor-grabbing"
+          className="hover-target bg-accent-purple/30 border-accent-purple/20 pointer-events-auto absolute right-[15%] bottom-[25%] h-24 w-24 cursor-grab rounded-full border shadow-lg backdrop-blur-md active:cursor-grabbing"
           animate={{ scale: [1, 1.05, 1] }}
           transition={{ duration: 1.5, ease: "easeInOut", repeat: Infinity }}
           whileHover={{ scale: 1.1 }}
@@ -55,7 +55,7 @@ export default function Error({
           transition={{ duration: 0.5, ease: "easeOut" }}
           className="mb-8"
         >
-          <span className="inline-block glass-card px-8 py-4 text-6xl font-black md:text-8xl">
+          <span className="glass-card inline-block px-8 py-4 text-6xl font-black md:text-8xl">
             OOPS!
           </span>
         </motion.div>
@@ -67,7 +67,7 @@ export default function Error({
           <span className="glass-highlight">Something went wrong</span>
         </h1>
 
-        <p className="mb-10 max-w-2xl text-xl leading-relaxed text-text-secondary md:text-2xl">
+        <p className="text-text-secondary mb-10 max-w-2xl text-xl leading-relaxed md:text-2xl">
           An unexpected error occurred in the matrix. Don&apos;t panic,
           it&apos;s probably not your fault.
         </p>

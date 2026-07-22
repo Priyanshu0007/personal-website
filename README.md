@@ -12,13 +12,13 @@
 
 [![Home Page Light](https://cdn.jsdelivr.net/gh/Priyanshu0007/CDN@main/portfolio/portfolio-home.png)](https://priyanshu0007.vercel.app)
 
-*Light mode home page — neobrutalist design with bold typography and geometric accents*
+_Light mode home page — neobrutalist design with bold typography and geometric accents_
 
 ---
 
 [![Home Page Dark](https://cdn.jsdelivr.net/gh/Priyanshu0007/CDN@main/portfolio/portfolio-dark-home.png)](https://priyanshu0007.vercel.app)
 
-*Dark mode — same layout with a rich, high-contrast dark palette*
+_Dark mode — same layout with a rich, high-contrast dark palette_
 
 ---
 
@@ -45,9 +45,9 @@
 
 ## 🌐 Live URLs
 
-| Environment | URL | Purpose |
-|-------------|-----|---------|
-| 🟢 **Production** | [priyanshu0007.vercel.app](https://priyanshu0007.vercel.app) | Public-facing live site |
+| Environment        | URL                                                          | Purpose                       |
+| ------------------ | ------------------------------------------------------------ | ----------------------------- |
+| 🟢 **Production**  | [priyanshu0007.vercel.app](https://priyanshu0007.vercel.app) | Public-facing live site       |
 | 🟡 **Development** | [priyanshu0099.vercel.app](https://priyanshu0099.vercel.app) | Preview / staging deployments |
 
 ---
@@ -55,23 +55,28 @@
 ## 📸 Screenshots
 
 ### 🏠 Home Page
+
 [![Home Page](https://cdn.jsdelivr.net/gh/Priyanshu0007/CDN@main/portfolio/portfolio-home.png)](https://priyanshu0007.vercel.app)
 
 ### 🌙 Dark Mode
+
 [![Dark Mode](https://cdn.jsdelivr.net/gh/Priyanshu0007/CDN@main/portfolio/portfolio-dark-home.png)](https://priyanshu0007.vercel.app)
 
 ### 🗂️ Projects Page
+
 [![Projects](https://cdn.jsdelivr.net/gh/Priyanshu0007/CDN@main/portfolio/portfolio-projects.png)](https://priyanshu0007.vercel.app/projects)
 
 ### 📝 Blogs Page
+
 [![Blogs](https://cdn.jsdelivr.net/gh/Priyanshu0007/CDN@main/portfolio/portfolio-blogs.png)](https://priyanshu0007.vercel.app/blogs)
 
 ### 📄 Resume Page
+
 [![Resume](https://cdn.jsdelivr.net/gh/Priyanshu0007/CDN@main/portfolio/portfolio-resume.png)](https://priyanshu0007.vercel.app/resume)
 
 ### 🔐 Admin Dashboard
-[![Admin](https://cdn.jsdelivr.net/gh/Priyanshu0007/CDN@main/portfolio/portfolio-admin.png)](https://priyanshu0007.vercel.app/admin)
 
+[![Admin](https://cdn.jsdelivr.net/gh/Priyanshu0007/CDN@main/portfolio/portfolio-admin.png)](https://priyanshu0007.vercel.app/admin)
 
 ---
 
@@ -79,59 +84,59 @@
 
 ### Core Framework
 
-| Technology | Version | Role |
-|------------|---------|------|
-| [Next.js](https://nextjs.org) | `16.2.4` | Full-stack React framework (App Router) |
-| [React](https://react.dev) | `19.2.4` | UI library |
-| [TypeScript](https://typescriptlang.org) | `5` | Type-safe JavaScript |
+| Technology                               | Version  | Role                                    |
+| ---------------------------------------- | -------- | --------------------------------------- |
+| [Next.js](https://nextjs.org)            | `16.2.4` | Full-stack React framework (App Router) |
+| [React](https://react.dev)               | `19.2.4` | UI library                              |
+| [TypeScript](https://typescriptlang.org) | `5`      | Type-safe JavaScript                    |
 
 ### Styling
 
-| Technology | Version | Role |
-|------------|---------|------|
-| [Tailwind CSS](https://tailwindcss.com) | `4` | Utility-first CSS framework |
-| [Framer Motion](https://framer-motion.com) | `12.38.0` | Animations & micro-interactions |
-| [Lucide React](https://lucide.dev) | `1.14.0` | Icon system |
-| Google Fonts | — | `Bricolage Grotesque` (headings) + `DM Sans` (body) |
+| Technology                                 | Version   | Role                                                |
+| ------------------------------------------ | --------- | --------------------------------------------------- |
+| [Tailwind CSS](https://tailwindcss.com)    | `4`       | Utility-first CSS framework                         |
+| [Framer Motion](https://framer-motion.com) | `12.38.0` | Animations & micro-interactions                     |
+| [Lucide React](https://lucide.dev)         | `1.14.0`  | Icon system                                         |
+| Google Fonts                               | —         | `Bricolage Grotesque` (headings) + `DM Sans` (body) |
 
 ### Database & ORM
 
-| Technology | Version | Role |
-|------------|---------|------|
-| [Drizzle ORM](https://orm.drizzle.team) | `0.45.2` | Type-safe SQL query builder |
-| [Neon DB](https://neon.tech) | Serverless PostgreSQL | Production database |
-| [@neondatabase/serverless](https://github.com/neondatabase/serverless) | `1.1.0` | Edge-compatible Neon HTTP driver |
-| [Drizzle Kit](https://orm.drizzle.team/kit-docs/overview) | `0.31.10` | Schema migrations & Drizzle Studio |
+| Technology                                                             | Version               | Role                               |
+| ---------------------------------------------------------------------- | --------------------- | ---------------------------------- |
+| [Drizzle ORM](https://orm.drizzle.team)                                | `0.45.2`              | Type-safe SQL query builder        |
+| [Neon DB](https://neon.tech)                                           | Serverless PostgreSQL | Production database                |
+| [@neondatabase/serverless](https://github.com/neondatabase/serverless) | `1.1.0`               | Edge-compatible Neon HTTP driver   |
+| [Drizzle Kit](https://orm.drizzle.team/kit-docs/overview)              | `0.31.10`             | Schema migrations & Drizzle Studio |
 
 ### Authentication
 
-| Technology | Version | Role |
-|------------|---------|------|
-| [NextAuth.js](https://next-auth.js.org) | `^4.24.14` | Session & OTP authentication |
-| [Resend](https://resend.com) | `6.12.2` | Transactional email for OTP delivery |
-| [Zod](https://zod.dev) | `4.4.3` | Schema validation for forms & env vars |
+| Technology                              | Version    | Role                                   |
+| --------------------------------------- | ---------- | -------------------------------------- |
+| [NextAuth.js](https://next-auth.js.org) | `^4.24.14` | Session & OTP authentication           |
+| [Resend](https://resend.com)            | `6.12.2`   | Transactional email for OTP delivery   |
+| [Zod](https://zod.dev)                  | `4.4.3`    | Schema validation for forms & env vars |
 
 ### Analytics & Monitoring
 
-| Technology | Role |
-|------------|------|
+| Technology                                                           | Role                               |
+| -------------------------------------------------------------------- | ---------------------------------- |
 | [Firebase Analytics](https://firebase.google.com/products/analytics) | Event-level user behavior tracking |
-| [Microsoft Clarity](https://clarity.microsoft.com) | Session recording & heatmaps |
+| [Microsoft Clarity](https://clarity.microsoft.com)                   | Session recording & heatmaps       |
 
 ### PDF Rendering
 
-| Technology | Version | Role |
-|------------|---------|------|
-| [@embedpdf/core](https://www.npmjs.com/package/@embedpdf/core) | `2.14.2` | Headless PDF engine |
-| [@embedpdf/engines](https://www.npmjs.com/package/@embedpdf/engines) | `2.14.2` | WASM PDF rendering |
-| Various EmbedPDF plugins | `2.14.2` | Scroll, zoom, viewport, render, document manager |
+| Technology                                                           | Version  | Role                                             |
+| -------------------------------------------------------------------- | -------- | ------------------------------------------------ |
+| [@embedpdf/core](https://www.npmjs.com/package/@embedpdf/core)       | `2.14.2` | Headless PDF engine                              |
+| [@embedpdf/engines](https://www.npmjs.com/package/@embedpdf/engines) | `2.14.2` | WASM PDF rendering                               |
+| Various EmbedPDF plugins                                             | `2.14.2` | Scroll, zoom, viewport, render, document manager |
 
 ### CDN & Assets
 
-| Service | Purpose |
-|---------|---------|
+| Service                              | Purpose                                           |
+| ------------------------------------ | ------------------------------------------------- |
 | [jsDelivr](https://www.jsdelivr.com) | `cdn.jsdelivr.net` — screenshots & profile assets |
-| [Statically](https://statically.io) | `cdn.statically.io` — additional media |
+| [Statically](https://statically.io)  | `cdn.statically.io` — additional media            |
 
 ---
 
@@ -163,14 +168,14 @@ Vercel Edge Network
 
 ### Key Architectural Decisions
 
-| Decision | Rationale |
-|----------|-----------|
-| **App Router** | Enables RSCs for zero-JS data fetching + fine-grained streaming |
-| **Neon Serverless** | HTTP-based driver works at Vercel Edge with no cold-start overhead |
-| **Drizzle ORM** | Fully type-safe, zero-runtime overhead — schemas inferred directly from TS |
+| Decision               | Rationale                                                                     |
+| ---------------------- | ----------------------------------------------------------------------------- |
+| **App Router**         | Enables RSCs for zero-JS data fetching + fine-grained streaming               |
+| **Neon Serverless**    | HTTP-based driver works at Vercel Edge with no cold-start overhead            |
+| **Drizzle ORM**        | Fully type-safe, zero-runtime overhead — schemas inferred directly from TS    |
 | **OTP over passwords** | Passwordless admin login reduces attack surface; OTPs are single-use & expire |
-| **jsDelivr CDN** | GitHub-backed CDN for assets; globally cached, free, pinned by commit SHA |
-| **Server Actions** | Form submissions never hit a REST endpoint — mutations are co-located with UI |
+| **jsDelivr CDN**       | GitHub-backed CDN for assets; globally cached, free, pinned by commit SHA     |
+| **Server Actions**     | Form submissions never hit a REST endpoint — mutations are co-located with UI |
 
 ---
 
@@ -262,20 +267,20 @@ portfolio/
 
 ## 🗺️ Pages & Routes
 
-| Route | Type | Description |
-|-------|------|-------------|
-| `/` | SSR | Home — hero, tech stack marquee, featured projects, contact |
-| `/projects` | SSR | All projects with category filters |
-| `/projects/[slug]` | SSG+ISR | Project detail with screenshot carousel |
-| `/blogs` | SSR | Blog posts linking to external platforms |
-| `/resume` | Static | Headless PDF viewer |
-| `/uses` | Static | Tools, hardware, and setup |
-| `/admin` | SSR (protected) | Content management dashboard |
-| `/admin/login` | Static | OTP email login |
-| `/api/auth/[...nextauth]` | API | NextAuth session endpoints |
-| `/sitemap.xml` | Dynamic | Auto-generated XML sitemap |
-| `/robots.txt` | Dynamic | Crawl rules |
-| `/manifest.json` | Dynamic | PWA manifest |
+| Route                     | Type            | Description                                                 |
+| ------------------------- | --------------- | ----------------------------------------------------------- |
+| `/`                       | SSR             | Home — hero, tech stack marquee, featured projects, contact |
+| `/projects`               | SSR             | All projects with category filters                          |
+| `/projects/[slug]`        | SSG+ISR         | Project detail with screenshot carousel                     |
+| `/blogs`                  | SSR             | Blog posts linking to external platforms                    |
+| `/resume`                 | Static          | Headless PDF viewer                                         |
+| `/uses`                   | Static          | Tools, hardware, and setup                                  |
+| `/admin`                  | SSR (protected) | Content management dashboard                                |
+| `/admin/login`            | Static          | OTP email login                                             |
+| `/api/auth/[...nextauth]` | API             | NextAuth session endpoints                                  |
+| `/sitemap.xml`            | Dynamic         | Auto-generated XML sitemap                                  |
+| `/robots.txt`             | Dynamic         | Crawl rules                                                 |
+| `/manifest.json`          | Dynamic         | PWA manifest                                                |
 
 ---
 
@@ -283,51 +288,51 @@ portfolio/
 
 ### `projects`
 
-| Column | Type | Description |
-|--------|------|-------------|
-| `id` | `serial` PK | Auto-increment primary key |
-| `slug` | `varchar(255)` UNIQUE | URL-friendly identifier |
-| `title` | `varchar(255)` | Project name |
-| `description` | `text` | Short summary |
-| `long_description` | `text` | Full description |
-| `category` | `enum` | `react-js` \| `react-native` \| `next-js` \| `other` |
-| `tech_stack` | `jsonb` | Array of technology strings |
-| `images` | `jsonb` | Array of screenshot URLs |
-| `thumbnail` | `text` | Cover image URL |
-| `live_url` | `text` | Live demo link (nullable) |
-| `github_url` | `text` | Source code link (nullable) |
-| `is_favorite` | `boolean` | Starred/highlighted project |
-| `featured` | `boolean` | Show on home page |
-| `created_at` | `varchar(50)` | Human-readable date string |
-| `highlights` | `jsonb` | Array of key feature strings |
-| `hide` | `boolean` | Soft-delete / visibility toggle |
+| Column             | Type                  | Description                                          |
+| ------------------ | --------------------- | ---------------------------------------------------- |
+| `id`               | `serial` PK           | Auto-increment primary key                           |
+| `slug`             | `varchar(255)` UNIQUE | URL-friendly identifier                              |
+| `title`            | `varchar(255)`        | Project name                                         |
+| `description`      | `text`                | Short summary                                        |
+| `long_description` | `text`                | Full description                                     |
+| `category`         | `enum`                | `react-js` \| `react-native` \| `next-js` \| `other` |
+| `tech_stack`       | `jsonb`               | Array of technology strings                          |
+| `images`           | `jsonb`               | Array of screenshot URLs                             |
+| `thumbnail`        | `text`                | Cover image URL                                      |
+| `live_url`         | `text`                | Live demo link (nullable)                            |
+| `github_url`       | `text`                | Source code link (nullable)                          |
+| `is_favorite`      | `boolean`             | Starred/highlighted project                          |
+| `featured`         | `boolean`             | Show on home page                                    |
+| `created_at`       | `varchar(50)`         | Human-readable date string                           |
+| `highlights`       | `jsonb`               | Array of key feature strings                         |
+| `hide`             | `boolean`             | Soft-delete / visibility toggle                      |
 
 ### `blogs`
 
-| Column | Type | Description |
-|--------|------|-------------|
-| `id` | `varchar(255)` PK | Manual string ID |
-| `title` | `varchar(255)` | Blog post title |
-| `url` | `text` | External link to the post |
-| `platform` | `varchar(100)` | Publishing platform name |
-| `date` | `varchar(50)` | Publication date string |
-| `description` | `text` | Short description |
-| `hide` | `boolean` | Soft-delete / visibility toggle |
+| Column        | Type              | Description                     |
+| ------------- | ----------------- | ------------------------------- |
+| `id`          | `varchar(255)` PK | Manual string ID                |
+| `title`       | `varchar(255)`    | Blog post title                 |
+| `url`         | `text`            | External link to the post       |
+| `platform`    | `varchar(100)`    | Publishing platform name        |
+| `date`        | `varchar(50)`     | Publication date string         |
+| `description` | `text`            | Short description               |
+| `hide`        | `boolean`         | Soft-delete / visibility toggle |
 
 ### `allowed_admins`
 
-| Column | Type | Description |
-|--------|------|-------------|
+| Column  | Type              | Description            |
+| ------- | ----------------- | ---------------------- |
 | `email` | `varchar(255)` PK | Authorized admin email |
-| `name` | `varchar(255)` | Display name |
+| `name`  | `varchar(255)`    | Display name           |
 
 ### `otps`
 
-| Column | Type | Description |
-|--------|------|-------------|
-| `email` | `varchar(255)` | Target email address |
-| `code` | `varchar(6)` | One-time 6-digit code |
-| `expires_at` | `timestamp` | Expiry time (short-lived) |
+| Column       | Type           | Description               |
+| ------------ | -------------- | ------------------------- |
+| `email`      | `varchar(255)` | Target email address      |
+| `code`       | `varchar(6)`   | One-time 6-digit code     |
+| `expires_at` | `timestamp`    | Expiry time (short-lived) |
 
 ---
 
@@ -367,15 +372,15 @@ Create NextAuth session → Redirect → /admin
 
 ### Admin Capabilities
 
-| Feature | Description |
-|---------|-------------|
-| **Create Project** | Full form with slug, title, description, tech stack, images, links |
-| **Edit Project** | Pre-populated form, inline save |
-| **Delete Project** | Soft-delete via `hide` flag or hard delete |
-| **Create Blog** | Add blog title, URL, platform, date, description |
-| **Edit Blog** | Update any blog entry |
-| **Delete Blog** | Remove blog from listing |
-| **Mobile-First UI** | Full-screen forms on mobile with browser back-button support |
+| Feature             | Description                                                        |
+| ------------------- | ------------------------------------------------------------------ |
+| **Create Project**  | Full form with slug, title, description, tech stack, images, links |
+| **Edit Project**    | Pre-populated form, inline save                                    |
+| **Delete Project**  | Soft-delete via `hide` flag or hard delete                         |
+| **Create Blog**     | Add blog title, URL, platform, date, description                   |
+| **Edit Blog**       | Update any blog entry                                              |
+| **Delete Blog**     | Remove blog from listing                                           |
+| **Mobile-First UI** | Full-screen forms on mobile with browser back-button support       |
 
 ---
 
@@ -384,11 +389,13 @@ Create NextAuth session → Redirect → /admin
 The portfolio runs a **dual-analytics** setup for complete behavioral insight:
 
 ### Firebase Analytics
+
 - **What**: Google Analytics 4 event tracking via Firebase SDK
 - **Events tracked**: Page views, project views, blog views, contact form submits, resume downloads, carousel interactions, social link clicks, theme toggles, error events
 - **Config**: `lib/firebase.ts`, `lib/analytics.ts`, `components/FirebaseAnalytics.tsx`
 
 ### Microsoft Clarity
+
 - **What**: Session recordings, scroll maps, click heatmaps
 - **Events tracked**: Mirrors Firebase events as custom Clarity tags
 - **Config**: `components/MsClarity.tsx`, env var `NEXT_PUBLIC_CLARITY_PROJECT_ID`
@@ -411,21 +418,21 @@ export const AnalyticsEvents = {
 
 ## 🔍 SEO & Performance
 
-| Feature | Implementation |
-|---------|---------------|
-| **Title templates** | `%s — Priyanshu Gupta` pattern via Next.js metadata API |
-| **OpenGraph** | Full OG images, title, description per page |
-| **Twitter cards** | `summary_large_image` card type |
-| **JSON-LD** | `Person` + `WebSite` structured data in root layout |
-| **Dynamic sitemap** | `/sitemap.xml` — auto-includes all project slugs |
-| **robots.txt** | `/robots.txt` — allows all crawlers |
-| **Canonical URLs** | Set via `alternates.canonical` in metadata |
-| **Semantic HTML** | Proper `<main>`, `<nav>`, `<article>`, `<section>` usage |
-| **Skip to content** | Accessible keyboard shortcut link |
-| **PWA manifest** | `/manifest.json` — installable web app |
-| **Font optimization** | `next/font` with `display: swap` for zero layout shift |
-| **Image optimization** | `next/image` with CDN remote patterns |
-| **DNS prefetch** | `statically.io` prefetched in `<head>` |
+| Feature                | Implementation                                           |
+| ---------------------- | -------------------------------------------------------- |
+| **Title templates**    | `%s — Priyanshu Gupta` pattern via Next.js metadata API  |
+| **OpenGraph**          | Full OG images, title, description per page              |
+| **Twitter cards**      | `summary_large_image` card type                          |
+| **JSON-LD**            | `Person` + `WebSite` structured data in root layout      |
+| **Dynamic sitemap**    | `/sitemap.xml` — auto-includes all project slugs         |
+| **robots.txt**         | `/robots.txt` — allows all crawlers                      |
+| **Canonical URLs**     | Set via `alternates.canonical` in metadata               |
+| **Semantic HTML**      | Proper `<main>`, `<nav>`, `<article>`, `<section>` usage |
+| **Skip to content**    | Accessible keyboard shortcut link                        |
+| **PWA manifest**       | `/manifest.json` — installable web app                   |
+| **Font optimization**  | `next/font` with `display: swap` for zero layout shift   |
+| **Image optimization** | `next/image` with CDN remote patterns                    |
+| **DNS prefetch**       | `statically.io` prefetched in `<head>`                   |
 
 ---
 
@@ -437,23 +444,23 @@ Copy `.env.example` to `.env` and fill in your values:
 cp .env.example .env
 ```
 
-| Variable | Required | Description |
-|----------|----------|-------------|
-| `DATABASE_URL` | ✅ | Neon PostgreSQL connection string |
-| `RESEND_API_KEY` | ✅ | API key from [resend.com](https://resend.com) |
-| `RESEND_FROM_EMAIL` | ✅ | Verified sender email (or `onboarding@resend.dev`) |
-| `CONTACT_EMAIL_TO` | ✅ | Where contact form submissions are delivered |
-| `NEXTAUTH_SECRET` | ✅ | Random secret for NextAuth session signing |
-| `NEXT_PUBLIC_PROFILE_PIC_URL` | ✅ | CDN URL to your profile picture |
-| `NEXT_PUBLIC_RESUME_URL` | ✅ | CDN URL to your resume PDF |
-| `NEXT_PUBLIC_CLARITY_PROJECT_ID` | ✅ | Microsoft Clarity project ID |
-| `NEXT_PUBLIC_FIREBASE_API_KEY` | ✅ | Firebase project API key |
-| `NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN` | ✅ | Firebase auth domain |
-| `NEXT_PUBLIC_FIREBASE_PROJECT_ID` | ✅ | Firebase project ID |
-| `NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET` | ✅ | Firebase storage bucket |
-| `NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID` | ✅ | Firebase messaging sender ID |
-| `NEXT_PUBLIC_FIREBASE_APP_ID` | ✅ | Firebase app ID |
-| `NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID` | ✅ | Firebase measurement/GA ID |
+| Variable                                   | Required | Description                                        |
+| ------------------------------------------ | -------- | -------------------------------------------------- |
+| `DATABASE_URL`                             | ✅       | Neon PostgreSQL connection string                  |
+| `RESEND_API_KEY`                           | ✅       | API key from [resend.com](https://resend.com)      |
+| `RESEND_FROM_EMAIL`                        | ✅       | Verified sender email (or `onboarding@resend.dev`) |
+| `CONTACT_EMAIL_TO`                         | ✅       | Where contact form submissions are delivered       |
+| `NEXTAUTH_SECRET`                          | ✅       | Random secret for NextAuth session signing         |
+| `NEXT_PUBLIC_PROFILE_PIC_URL`              | ✅       | CDN URL to your profile picture                    |
+| `NEXT_PUBLIC_RESUME_URL`                   | ✅       | CDN URL to your resume PDF                         |
+| `NEXT_PUBLIC_CLARITY_PROJECT_ID`           | ✅       | Microsoft Clarity project ID                       |
+| `NEXT_PUBLIC_FIREBASE_API_KEY`             | ✅       | Firebase project API key                           |
+| `NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN`         | ✅       | Firebase auth domain                               |
+| `NEXT_PUBLIC_FIREBASE_PROJECT_ID`          | ✅       | Firebase project ID                                |
+| `NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET`      | ✅       | Firebase storage bucket                            |
+| `NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID` | ✅       | Firebase messaging sender ID                       |
+| `NEXT_PUBLIC_FIREBASE_APP_ID`              | ✅       | Firebase app ID                                    |
+| `NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID`      | ✅       | Firebase measurement/GA ID                         |
 
 > All environment variables are centrally accessed through `utils/envConfig.ts` — never use `process.env` directly in app code.
 
@@ -538,16 +545,16 @@ The script is **idempotent** — re-running it will update the existing entry ra
 
 ## 📜 Scripts Reference
 
-| Command | Description |
-|---------|-------------|
-| `bun dev` | Start development server at `localhost:3000` |
-| `bun run build` | Create production build |
-| `bun start` | Start production server |
-| `bun run lint` | Run ESLint |
-| `bun run format` | Run Prettier on all files |
-| `bun run db:push` | Push Drizzle schema to database |
-| `bun run db:studio` | Open Drizzle Studio (visual DB explorer) |
-| `bun run analyze` | Build with bundle analyzer (`ANALYZE=true`) |
+| Command             | Description                                  |
+| ------------------- | -------------------------------------------- |
+| `bun dev`           | Start development server at `localhost:3000` |
+| `bun run build`     | Create production build                      |
+| `bun start`         | Start production server                      |
+| `bun run lint`      | Run ESLint                                   |
+| `bun run format`    | Run Prettier on all files                    |
+| `bun run db:push`   | Push Drizzle schema to database              |
+| `bun run db:studio` | Open Drizzle Studio (visual DB explorer)     |
+| `bun run analyze`   | Build with bundle analyzer (`ANALYZE=true`)  |
 
 ---
 
@@ -557,10 +564,10 @@ The portfolio follows a **neobrutalist** aesthetic — bold borders, raw geometr
 
 ### Typography
 
-| Token | Font | Usage |
-|-------|------|-------|
+| Token            | Font                | Usage                         |
+| ---------------- | ------------------- | ----------------------------- |
 | `--font-heading` | Bricolage Grotesque | Page titles, section headings |
-| `--font-body` | DM Sans | Body text, UI elements |
+| `--font-body`    | DM Sans             | Body text, UI elements        |
 
 ### Color Philosophy
 
@@ -587,16 +594,16 @@ The portfolio follows a **neobrutalist** aesthetic — bold borders, raw geometr
 
 All portfolio assets are served from **jsDelivr** backed by the [`Priyanshu0007/CDN`](https://github.com/Priyanshu0007/CDN) GitHub repository.
 
-| Asset | CDN URL |
-|-------|---------|
-| Profile picture | `cdn.jsdelivr.net/gh/Priyanshu0007/CDN@.../profile.png` |
-| Resume PDF | `cdn.jsdelivr.net/gh/Priyanshu0007/CDN@.../priyanshugutpa.pdf` |
-| Portfolio home screenshot | `cdn.jsdelivr.net/gh/Priyanshu0007/CDN@main/portfolio/portfolio-home.png` |
-| Portfolio dark screenshot | `cdn.jsdelivr.net/gh/Priyanshu0007/CDN@main/portfolio/portfolio-dark-home.png` |
-| Projects page screenshot | `cdn.jsdelivr.net/gh/Priyanshu0007/CDN@main/portfolio/portfolio-projects.png` |
-| Blogs page screenshot | `cdn.jsdelivr.net/gh/Priyanshu0007/CDN@main/portfolio/portfolio-blogs.png` |
-| Resume page screenshot | `cdn.jsdelivr.net/gh/Priyanshu0007/CDN@main/portfolio/portfolio-resume.png` |
-| Admin dashboard screenshot | `cdn.jsdelivr.net/gh/Priyanshu0007/CDN@main/portfolio/portfolio-admin.png` |
+| Asset                      | CDN URL                                                                        |
+| -------------------------- | ------------------------------------------------------------------------------ |
+| Profile picture            | `cdn.jsdelivr.net/gh/Priyanshu0007/CDN@.../profile.png`                        |
+| Resume PDF                 | `cdn.jsdelivr.net/gh/Priyanshu0007/CDN@.../priyanshugutpa.pdf`                 |
+| Portfolio home screenshot  | `cdn.jsdelivr.net/gh/Priyanshu0007/CDN@main/portfolio/portfolio-home.png`      |
+| Portfolio dark screenshot  | `cdn.jsdelivr.net/gh/Priyanshu0007/CDN@main/portfolio/portfolio-dark-home.png` |
+| Projects page screenshot   | `cdn.jsdelivr.net/gh/Priyanshu0007/CDN@main/portfolio/portfolio-projects.png`  |
+| Blogs page screenshot      | `cdn.jsdelivr.net/gh/Priyanshu0007/CDN@main/portfolio/portfolio-blogs.png`     |
+| Resume page screenshot     | `cdn.jsdelivr.net/gh/Priyanshu0007/CDN@main/portfolio/portfolio-resume.png`    |
+| Admin dashboard screenshot | `cdn.jsdelivr.net/gh/Priyanshu0007/CDN@main/portfolio/portfolio-admin.png`     |
 
 ---
 

@@ -8,7 +8,7 @@ export default function BackButton() {
   return (
     <button
       onClick={() => router.back()}
-      className="mb-8 inline-flex cursor-pointer items-center gap-2 border-none bg-transparent p-0 text-sm font-bold tracking-wider text-text-muted uppercase transition-colors hover:text-secondary"
+      className="text-text-muted hover:text-secondary mb-8 inline-flex cursor-pointer items-center gap-2 border-none bg-transparent p-0 text-sm font-bold tracking-wider uppercase transition-colors"
       id="project-back"
       aria-label="Go back"
     >

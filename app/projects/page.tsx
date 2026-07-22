@@ -122,7 +122,7 @@ export default async function ProjectsPage({
 
         {/* Count */}
         <div className="mt-8 text-center">
-          <p className="text-sm font-bold tracking-wider text-text-muted uppercase">
+          <p className="text-text-muted text-sm font-bold tracking-wider uppercase">
             Showing {projects.length} project{projects.length !== 1 ? "s" : ""}
           </p>
         </div>

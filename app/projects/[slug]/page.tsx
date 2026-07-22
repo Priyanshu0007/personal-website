@@ -16,15 +16,12 @@ import { IMAGE_BLUR_DATA_URL } from "@/utils/constants";
 // Revalidate every hour (3600 seconds) - ISR for incremental updates
 export const revalidate = 3600;
 
-const MediaGallery = dynamic(
-  () => import("@/components/ui/MediaGallery"),
-  {
-    loading: () => (
-      <div className="aspect-video w-full animate-pulse rounded-2xl border border-white/10 bg-surface/30 backdrop-blur-md" />
-    ),
-    ssr: true,
-  }
-);
+const MediaGallery = dynamic(() => import("@/components/ui/MediaGallery"), {
+  loading: () => (
+    <div className="bg-surface/30 aspect-video w-full animate-pulse rounded-2xl border border-white/10 backdrop-blur-md" />
+  ),
+  ssr: true,
+});
 
 // Pre-generate all project pages at build time
 export async function generateStaticParams() {
@@ -183,7 +180,7 @@ export default async function ProjectDetailPage({
               src={project.thumbnail}
               alt=""
               fill
-              className="object-cover opacity-40 blur-2xl scale-110"
+              className="scale-110 object-cover opacity-40 blur-2xl"
               aria-hidden="true"
               placeholder="blur"
               blurDataURL={IMAGE_BLUR_DATA_URL}
@@ -195,7 +192,9 @@ export default async function ProjectDetailPage({
               alt={`Main screenshot for ${project.title}`}
               fill
               className={`${
-                project.category === "react-native" ? "object-contain" : "object-cover"
+                project.category === "react-native"
+                  ? "object-contain"
+                  : "object-cover"
               } z-10`}
               priority
               sizes="(max-width: 1200px) 100vw, 1200px"
@@ -213,7 +212,6 @@ export default async function ProjectDetailPage({
             }}
             aria-hidden="true"
           />
-
 
           {/* Category badge on hero */}
           <div className="absolute bottom-4 left-4 z-20 flex items-center gap-2">
@@ -245,7 +243,7 @@ export default async function ProjectDetailPage({
             ============================================ */}
         <div className="mb-6 flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
           <div>
-            <span className="mb-2 block text-sm font-bold text-text-muted">
+            <span className="text-text-muted mb-2 block text-sm font-bold">
               {new Date(project.createdAt).toLocaleDateString("en-US", {
                 month: "long",
                 year: "numeric",
@@ -279,9 +277,12 @@ export default async function ProjectDetailPage({
               >
                 <ExternalLink className="h-4 w-4 shrink-0" />
                 <span>Live Demo</span>
-                <ArrowUpRight className="h-3.5 w-3.5 shrink-0 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                <ArrowUpRight className="h-3.5 w-3.5 shrink-0 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 {/* Shimmer overlay */}
-                <span className="absolute inset-0 -translate-x-full skew-x-[-20deg] bg-white/10 transition-transform duration-500 group-hover:translate-x-full" aria-hidden="true" />
+                <span
+                  className="absolute inset-0 -translate-x-full skew-x-[-20deg] bg-white/10 transition-transform duration-500 group-hover:translate-x-full"
+                  aria-hidden="true"
+                />
               </a>
             )}
             {project.githubUrl && (
@@ -296,15 +297,19 @@ export default async function ProjectDetailPage({
                   borderColor: "rgba(255,255,255,0.12)",
                   background: "rgba(255,255,255,0.06)",
                   backdropFilter: "blur(12px)",
-                  boxShadow: "0 4px 16px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.08)",
+                  boxShadow:
+                    "0 4px 16px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.08)",
                   color: "var(--color-text)",
                 }}
               >
                 <Code2 className="h-4 w-4 shrink-0" />
                 <span>Source Code</span>
-                <ArrowUpRight className="h-3.5 w-3.5 shrink-0 opacity-50 transition-all duration-200 group-hover:opacity-100 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                <ArrowUpRight className="h-3.5 w-3.5 shrink-0 opacity-50 transition-all duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:opacity-100" />
                 {/* Shimmer overlay */}
-                <span className="absolute inset-0 -translate-x-full skew-x-[-20deg] bg-white/5 transition-transform duration-500 group-hover:translate-x-full" aria-hidden="true" />
+                <span
+                  className="absolute inset-0 -translate-x-full skew-x-[-20deg] bg-white/5 transition-transform duration-500 group-hover:translate-x-full"
+                  aria-hidden="true"
+                />
               </a>
             )}
           </div>
@@ -344,7 +349,7 @@ export default async function ProjectDetailPage({
               {project.longDescription.split("\n\n").map((paragraph, i) => (
                 <p
                   key={i}
-                  className="mb-4 text-lg leading-relaxed text-text-secondary"
+                  className="text-text-secondary mb-4 text-lg leading-relaxed"
                 >
                   {paragraph}
                 </p>
@@ -371,10 +376,12 @@ export default async function ProjectDetailPage({
                   {project.highlights.map((highlight, i) => (
                     <div
                       key={highlight}
-                      className="glass-card glass-border-glow group relative p-5 transition-all overflow-hidden"
-                      style={{
-                        '--glow-color': rawColor,
-                      } as React.CSSProperties}
+                      className="glass-card glass-border-glow group relative overflow-hidden p-5 transition-all"
+                      style={
+                        {
+                          "--glow-color": rawColor,
+                        } as React.CSSProperties
+                      }
                     >
                       {/* Feature number */}
                       <div className="mb-3 flex items-center">
@@ -385,20 +392,20 @@ export default async function ProjectDetailPage({
                         >
                           {String(i + 1).padStart(2, "0")}
                         </span>
-                        <div 
-                          className="ml-3 h-[2px] w-6 rounded-full opacity-40 transition-all duration-300 group-hover:w-10 group-hover:opacity-80" 
+                        <div
+                          className="ml-3 h-[2px] w-6 rounded-full opacity-40 transition-all duration-300 group-hover:w-10 group-hover:opacity-80"
                           style={{ backgroundColor: rawColor }}
                           aria-hidden="true"
                         />
                       </div>
-                      <span className="text-sm leading-tight font-bold relative z-10 text-text">
+                      <span className="text-text relative z-10 text-sm leading-tight font-bold">
                         {highlight}
                       </span>
                       {/* Corner accent */}
                       <div
                         className="absolute right-0 bottom-0 h-12 w-12 rounded-tl-3xl opacity-20 transition-opacity duration-300 group-hover:opacity-50"
-                        style={{ 
-                          background: `linear-gradient(135deg, transparent 50%, ${rawColor} 100%)`
+                        style={{
+                          background: `linear-gradient(135deg, transparent 50%, ${rawColor} 100%)`,
                         }}
                         aria-hidden="true"
                       />
@@ -442,7 +449,7 @@ export default async function ProjectDetailPage({
           <div className="space-y-6">
             {/* Tech Stack */}
             <div className="glass-card">
-              <h3 className="mb-4 flex items-center gap-2 text-sm font-extrabold tracking-wider text-text-muted uppercase">
+              <h3 className="text-text-muted mb-4 flex items-center gap-2 text-sm font-extrabold tracking-wider uppercase">
                 <span className="text-base" role="img" aria-label="Tools">
                   🛠
                 </span>
@@ -467,7 +474,7 @@ export default async function ProjectDetailPage({
                 boxShadow: "var(--shadow-md)",
               }}
             >
-              <h3 className="flex items-center gap-2 text-sm font-extrabold tracking-wider text-text-muted uppercase">
+              <h3 className="text-text-muted flex items-center gap-2 text-sm font-extrabold tracking-wider uppercase">
                 <span className="text-base" role="img" aria-label="Clipboard">
                   📋
                 </span>
@@ -477,7 +484,7 @@ export default async function ProjectDetailPage({
               <div className="space-y-3">
                 {/* Category */}
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-bold tracking-wider text-text-muted uppercase">
+                  <span className="text-text-muted text-xs font-bold tracking-wider uppercase">
                     Type
                   </span>
                   <span
@@ -501,7 +508,7 @@ export default async function ProjectDetailPage({
 
                 {/* Date */}
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-bold tracking-wider text-text-muted uppercase">
+                  <span className="text-text-muted text-xs font-bold tracking-wider uppercase">
                     Date
                   </span>
                   <span className="text-sm font-extrabold">
@@ -522,7 +529,7 @@ export default async function ProjectDetailPage({
 
                 {/* Stack count */}
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-bold tracking-wider text-text-muted uppercase">
+                  <span className="text-text-muted text-xs font-bold tracking-wider uppercase">
                     Technologies
                   </span>
                   <span className="text-sm font-extrabold">
@@ -540,7 +547,7 @@ export default async function ProjectDetailPage({
 
                 {/* Screenshots */}
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-bold tracking-wider text-text-muted uppercase">
+                  <span className="text-text-muted text-xs font-bold tracking-wider uppercase">
                     Screenshots
                   </span>
                   <span className="text-sm font-extrabold">
@@ -608,8 +615,11 @@ export default async function ProjectDetailPage({
                 >
                   <ExternalLink className="h-4 w-4 shrink-0" />
                   <span>View Live Demo</span>
-                  <ArrowUpRight className="h-3.5 w-3.5 shrink-0 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-                  <span className="absolute inset-0 -translate-x-full skew-x-[-20deg] bg-white/10 transition-transform duration-500 group-hover:translate-x-full" aria-hidden="true" />
+                  <ArrowUpRight className="h-3.5 w-3.5 shrink-0 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  <span
+                    className="absolute inset-0 -translate-x-full skew-x-[-20deg] bg-white/10 transition-transform duration-500 group-hover:translate-x-full"
+                    aria-hidden="true"
+                  />
                 </a>
               )}
               {project.githubUrl && (
@@ -623,14 +633,18 @@ export default async function ProjectDetailPage({
                     borderColor: "rgba(255,255,255,0.12)",
                     background: "rgba(255,255,255,0.06)",
                     backdropFilter: "blur(12px)",
-                    boxShadow: "0 4px 16px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.08)",
+                    boxShadow:
+                      "0 4px 16px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.08)",
                     color: "var(--color-text)",
                   }}
                 >
                   <Code2 className="h-4 w-4 shrink-0" />
                   <span>Source Code</span>
-                  <ArrowUpRight className="h-3.5 w-3.5 shrink-0 opacity-50 transition-all duration-200 group-hover:opacity-100 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-                  <span className="absolute inset-0 -translate-x-full skew-x-[-20deg] bg-white/5 transition-transform duration-500 group-hover:translate-x-full" aria-hidden="true" />
+                  <ArrowUpRight className="h-3.5 w-3.5 shrink-0 opacity-50 transition-all duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:opacity-100" />
+                  <span
+                    className="absolute inset-0 -translate-x-full skew-x-[-20deg] bg-white/5 transition-transform duration-500 group-hover:translate-x-full"
+                    aria-hidden="true"
+                  />
                 </a>
               )}
             </div>
@@ -653,10 +667,10 @@ export default async function ProjectDetailPage({
               className="glass-card glass-card-interactive group flex flex-col"
               id="project-prev"
             >
-              <span className="mb-1 text-xs font-bold tracking-wider text-text-muted uppercase">
+              <span className="text-text-muted mb-1 text-xs font-bold tracking-wider uppercase">
                 ← Previous Project
               </span>
-              <span className="font-extrabold transition-colors group-hover:text-secondary">
+              <span className="group-hover:text-secondary font-extrabold transition-colors">
                 {prev.title}
               </span>
             </Link>
@@ -672,10 +686,10 @@ export default async function ProjectDetailPage({
               className="glass-card glass-card-interactive group flex flex-col text-right"
               id="project-next"
             >
-              <span className="mb-1 text-xs font-bold tracking-wider text-text-muted uppercase">
+              <span className="text-text-muted mb-1 text-xs font-bold tracking-wider uppercase">
                 Next Project →
               </span>
-              <span className="font-extrabold transition-colors group-hover:text-secondary">
+              <span className="group-hover:text-secondary font-extrabold transition-colors">
                 {next.title}
               </span>
             </Link>

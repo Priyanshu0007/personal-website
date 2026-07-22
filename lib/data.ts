@@ -32,7 +32,10 @@ export function getLandingData(): LandingData {
 }
 
 export async function getAllProjects(): Promise<Project[]> {
-  const result = await db.select().from(projects).where(eq(projects.hide, false));
+  const result = await db
+    .select()
+    .from(projects)
+    .where(eq(projects.hide, false));
   return result.map(mapProject);
 }
 
@@ -40,10 +43,8 @@ export async function getFeaturedProjects(): Promise<Project[]> {
   const result = await db
     .select()
     .from(projects)
-    .where(
-      eq(projects.featured, true)
-    ); // Note: We might need 'and' from drizzle-orm to combine where clauses if featured projects can be hidden, but usually featured ones aren't hidden.
-  return result.filter(p => !p.hide).map(mapProject);
+    .where(eq(projects.featured, true)); // Note: We might need 'and' from drizzle-orm to combine where clauses if featured projects can be hidden, but usually featured ones aren't hidden.
+  return result.filter((p) => !p.hide).map(mapProject);
 }
 
 export async function getProjectBySlug(
@@ -58,8 +59,10 @@ export async function getProjectBySlug(
 }
 
 export async function getProjectSlugs(): Promise<string[]> {
-  const result = await db.select({ slug: projects.slug, hide: projects.hide }).from(projects);
-  return result.filter(p => !p.hide).map((p) => p.slug);
+  const result = await db
+    .select({ slug: projects.slug, hide: projects.hide })
+    .from(projects);
+  return result.filter((p) => !p.hide).map((p) => p.slug);
 }
 
 export async function getAdjacentProjects(
@@ -67,8 +70,9 @@ export async function getAdjacentProjects(
 ): Promise<{ prev: Project | null; next: Project | null }> {
   const allProjects = await getAllProjects();
   const index = allProjects.findIndex((p) => p.slug === slug);
-  const prevProject = index > 0 ? allProjects[index - 1] ?? null : null;
-  const nextProject = index < allProjects.length - 1 ? allProjects[index + 1] ?? null : null;
+  const prevProject = index > 0 ? (allProjects[index - 1] ?? null) : null;
+  const nextProject =
+    index < allProjects.length - 1 ? (allProjects[index + 1] ?? null) : null;
   return {
     prev: prevProject,
     next: nextProject,

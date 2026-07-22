@@ -4,7 +4,12 @@ import Link from "next/link";
 import ThemeToggle from "@/components/ui/ThemeToggle";
 import { useState, useRef, useEffect } from "react";
 import { usePathname } from "next/navigation";
-import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion";
+import {
+  motion,
+  AnimatePresence,
+  useScroll,
+  useMotionValueEvent,
+} from "framer-motion";
 import { trackUserAction, AnalyticsEvents } from "@/lib/analytics";
 import type { NavItem } from "@/types";
 import { Home, Briefcase, FileText, Laptop, FileBadge } from "lucide-react";
@@ -81,12 +86,12 @@ export default function Navbar({
     <>
       {/* ===================== DESKTOP NAVBAR ===================== */}
       <header
-        className={`hidden md:block fixed left-1/2 z-50 -translate-x-1/2 transition-all duration-300 ${
+        className={`fixed left-1/2 z-50 hidden -translate-x-1/2 transition-all duration-300 md:block ${
           isScrolled ? "top-3 w-[82%] max-w-4xl" : "top-6 w-[92%] max-w-5xl"
         }`}
       >
         <nav
-          className={`rounded-full border border-white/20 dark:border-white/10 bg-surface/60 shadow-2xl backdrop-blur-2xl backdrop-saturate-150 transition-all duration-300 ${
+          className={`bg-surface/60 rounded-full border border-white/20 shadow-2xl backdrop-blur-2xl backdrop-saturate-150 transition-all duration-300 dark:border-white/10 ${
             isScrolled ? "px-4" : "px-6"
           }`}
         >
@@ -103,7 +108,7 @@ export default function Navbar({
               aria-label={`Home - ${name}`}
             >
               <span
-                className={`flex items-center justify-center rounded-full border border-border/30 bg-primary text-white font-extrabold transition-all group-hover:scale-105 group-hover:shadow-md ${
+                className={`border-border/30 bg-primary flex items-center justify-center rounded-full border font-extrabold text-white transition-all group-hover:scale-105 group-hover:shadow-md ${
                   isScrolled ? "h-8 w-8 text-sm" : "h-10 w-10 text-lg"
                 }`}
                 aria-hidden="true"
@@ -130,7 +135,12 @@ export default function Navbar({
                     id={`nav-${item.label.toLowerCase()}-desktop`}
                     role="menuitem"
                     aria-current={isActive ? "page" : undefined}
-                    onClick={() => trackUserAction(AnalyticsEvents.NAV_LINK_CLICK, { link_name: item.label, destination: item.href })}
+                    onClick={() =>
+                      trackUserAction(AnalyticsEvents.NAV_LINK_CLICK, {
+                        link_name: item.label,
+                        destination: item.href,
+                      })
+                    }
                     prefetch={true}
                     className={`rounded-full px-3.5 py-1.5 text-xs font-bold tracking-wider uppercase transition-all ${
                       isActive
@@ -144,16 +154,20 @@ export default function Navbar({
               })}
 
               {/* Social icons */}
-              <div className="ml-3 flex items-center gap-2 border-l border-border/20 pl-3">
+              <div className="border-border/20 ml-3 flex items-center gap-2 border-l pl-3">
                 <a
                   href={socials.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`flex items-center justify-center rounded-full border border-border/20 bg-surface/50 transition-all hover:bg-text hover:text-surface ${
+                  className={`border-border/20 bg-surface/50 hover:bg-text hover:text-surface flex items-center justify-center rounded-full border transition-all ${
                     isScrolled ? "h-8 w-8" : "h-9 w-9"
                   }`}
                   aria-label="Visit GitHub Profile"
-                  onClick={() => trackUserAction(AnalyticsEvents.SOCIAL_LINK_CLICK, { platform: "github" })}
+                  onClick={() =>
+                    trackUserAction(AnalyticsEvents.SOCIAL_LINK_CLICK, {
+                      platform: "github",
+                    })
+                  }
                 >
                   <GitHubIcon
                     aria-hidden="true"
@@ -166,11 +180,15 @@ export default function Navbar({
                   href={socials.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`flex items-center justify-center rounded-full border border-border/20 bg-surface/50 transition-all hover:bg-[#0077B5] hover:text-white ${
+                  className={`border-border/20 bg-surface/50 flex items-center justify-center rounded-full border transition-all hover:bg-[#0077B5] hover:text-white ${
                     isScrolled ? "h-8 w-8" : "h-9 w-9"
                   }`}
                   aria-label="Visit LinkedIn Profile"
-                  onClick={() => trackUserAction(AnalyticsEvents.SOCIAL_LINK_CLICK, { platform: "linkedin" })}
+                  onClick={() =>
+                    trackUserAction(AnalyticsEvents.SOCIAL_LINK_CLICK, {
+                      platform: "linkedin",
+                    })
+                  }
                 >
                   <LinkedInIcon
                     aria-hidden="true"
@@ -180,7 +198,7 @@ export default function Navbar({
                   />
                 </a>
                 <ThemeToggle
-                  className={`flex items-center justify-center rounded-full border border-border/20 bg-surface/50 transition-all hover:bg-text hover:text-surface ${
+                  className={`border-border/20 bg-surface/50 hover:bg-text hover:text-surface flex items-center justify-center rounded-full border transition-all ${
                     isScrolled ? "h-8 w-8" : "h-9 w-9"
                   }`}
                 />
@@ -192,26 +210,26 @@ export default function Navbar({
 
       {/* ===================== MOBILE NAVBAR ===================== */}
       {/* Mobile Top Header (Floating Logo & Theme Toggle) */}
-      <div className="fixed top-4 left-4 right-4 z-50 flex items-center justify-between md:hidden pointer-events-none">
+      <div className="pointer-events-none fixed top-4 right-4 left-4 z-50 flex items-center justify-between md:hidden">
         <Link
           href="/"
-          className="group flex items-center gap-2 pointer-events-auto"
+          className="group pointer-events-auto flex items-center gap-2"
           id="nav-logo-mobile"
           aria-label={`Home - ${name}`}
         >
           <span
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-surface/80 backdrop-blur-xl shadow-lg text-primary text-sm font-extrabold transition-all group-hover:scale-105"
+            className="bg-surface/80 text-primary flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-sm font-extrabold shadow-lg backdrop-blur-xl transition-all group-hover:scale-105"
             aria-hidden="true"
           >
             {shortName}
           </span>
         </Link>
 
-        <ThemeToggle className="pointer-events-auto flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-surface/80 backdrop-blur-xl shadow-lg text-text transition-all hover:scale-105" />
+        <ThemeToggle className="bg-surface/80 text-text pointer-events-auto flex h-10 w-10 items-center justify-center rounded-full border border-white/20 shadow-lg backdrop-blur-xl transition-all hover:scale-105" />
       </div>
 
       {/* Mobile Floating Bottom Tab Bar */}
-      <div className="fixed bottom-6 left-0 right-0 z-50 flex justify-center pointer-events-none md:hidden px-4">
+      <div className="pointer-events-none fixed right-0 bottom-6 left-0 z-50 flex justify-center px-4 md:hidden">
         <motion.nav
           animate={{
             width: isScrolledDown ? 230 : windowWidth,
@@ -220,7 +238,7 @@ export default function Navbar({
             paddingRight: isScrolledDown ? 6 : 12,
           }}
           transition={navTransition}
-          className="pointer-events-auto flex items-center justify-between rounded-full border border-white/20 dark:border-white/10 bg-surface/70 shadow-2xl backdrop-blur-2xl backdrop-saturate-150 py-1"
+          className="bg-surface/70 pointer-events-auto flex items-center justify-between rounded-full border border-white/20 py-1 shadow-2xl backdrop-blur-2xl backdrop-saturate-150 dark:border-white/10"
         >
           {navigation.map((item) => {
             const isActive = pathname === item.href;
@@ -237,7 +255,7 @@ export default function Navbar({
                   })
                 }
                 prefetch={true}
-                className="relative flex flex-1 min-w-0 flex-col items-center justify-center h-full z-10"
+                className="relative z-10 flex h-full min-w-0 flex-1 flex-col items-center justify-center"
               >
                 <AnimatePresence>
                   {isActive && (
@@ -252,14 +270,14 @@ export default function Navbar({
                         damping: 28,
                         mass: 0.6,
                       }}
-                      className="absolute inset-x-1.5 inset-y-1 bg-primary/10 dark:bg-primary/20 rounded-full -z-10"
+                      className="bg-primary/10 dark:bg-primary/20 absolute inset-x-1.5 inset-y-1 -z-10 rounded-full"
                     />
                   )}
                 </AnimatePresence>
 
                 <motion.div
                   whileTap={{ scale: 0.9 }}
-                  className="flex flex-col items-center justify-center w-full h-full"
+                  className="flex h-full w-full flex-col items-center justify-center"
                 >
                   <motion.div
                     animate={{
@@ -290,7 +308,7 @@ export default function Navbar({
                       ...navTransition,
                       delay: isScrolledDown ? 0 : 0.1,
                     }}
-                    className="text-[10px] font-bold tracking-wide overflow-hidden whitespace-nowrap block w-full text-center px-1"
+                    className="block w-full overflow-hidden px-1 text-center text-[10px] font-bold tracking-wide whitespace-nowrap"
                   >
                     {item.label}
                   </motion.span>
@@ -306,7 +324,13 @@ export default function Navbar({
 
 function GitHubIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" {...props}>
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      {...props}
+    >
       <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
     </svg>
   );
@@ -314,7 +338,13 @@ function GitHubIcon(props: React.SVGProps<SVGSVGElement>) {
 
 function LinkedInIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" {...props}>
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      {...props}
+    >
       <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
     </svg>
   );

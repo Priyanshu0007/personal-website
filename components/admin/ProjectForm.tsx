@@ -52,7 +52,9 @@ interface Props {
 
 export default function ProjectForm({ initialData, onClose }: Props) {
   const isEditing = !!initialData?.id;
-  const [form, setForm] = useState<ProjectFormData>(initialData ?? emptyProject);
+  const [form, setForm] = useState<ProjectFormData>(
+    initialData ?? emptyProject
+  );
   const [errors, setErrors] = useState<Record<string, string[]>>({});
   const [saving, setSaving] = useState(false);
   const router = useRouter();
@@ -102,20 +104,20 @@ export default function ProjectForm({ initialData, onClose }: Props) {
   };
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/60 sm:flex sm:items-start sm:justify-center sm:p-4 overflow-y-auto">
+    <div className="fixed inset-0 z-50 overflow-y-auto bg-black/60 sm:flex sm:items-start sm:justify-center sm:p-4">
       <form
         onSubmit={handleSubmit}
         className="glass-card w-full space-y-5 sm:my-8 sm:min-h-0 sm:max-w-3xl sm:p-6"
       >
         {/* Header */}
-        <div className="flex items-center justify-between sticky top-0 bg-surface/80 backdrop-blur-md z-20 py-2 -mx-4 sm:-mx-6 px-4 sm:px-6 border-b border-border/50">
-          <h2 className="text-lg sm:text-2xl font-bold uppercase">
+        <div className="bg-surface/80 border-border/50 sticky top-0 z-20 -mx-4 flex items-center justify-between border-b px-4 py-2 backdrop-blur-md sm:-mx-6 sm:px-6">
+          <h2 className="text-lg font-bold uppercase sm:text-2xl">
             {isEditing ? "Edit Project" : "New Project"}
           </h2>
           <button
             type="button"
             onClick={onClose}
-            className="flex h-10 w-10 items-center justify-center rounded-lg border border-border/50 text-xl font-bold transition-colors hover:bg-red-500/10 hover:text-red-500"
+            className="border-border/50 flex h-10 w-10 items-center justify-center rounded-lg border text-xl font-bold transition-colors hover:bg-red-500/10 hover:text-red-500"
           >
             ✕
           </button>
@@ -123,14 +125,24 @@ export default function ProjectForm({ initialData, onClose }: Props) {
 
         {/* Title */}
         <Field label="Title" error={errors.title}>
-          <input value={form.title} onChange={(e) => set("title", e.target.value)} className="glass-input" placeholder="My Awesome Project" />
+          <input
+            value={form.title}
+            onChange={(e) => set("title", e.target.value)}
+            className="glass-input"
+            placeholder="My Awesome Project"
+          />
         </Field>
 
         {/* Slug */}
         <Field label="Slug" error={errors.slug}>
           <input
             value={form.slug}
-            onChange={(e) => set("slug", e.target.value.toLowerCase().replace(/[^a-z0-9-]/g, "-"))}
+            onChange={(e) =>
+              set(
+                "slug",
+                e.target.value.toLowerCase().replace(/[^a-z0-9-]/g, "-")
+              )
+            }
             className="glass-input"
             placeholder="my-awesome-project"
           />
@@ -138,7 +150,11 @@ export default function ProjectForm({ initialData, onClose }: Props) {
 
         {/* Category */}
         <Field label="Category" error={errors.category}>
-          <select value={form.category} onChange={(e) => set("category", e.target.value)} className="glass-input">
+          <select
+            value={form.category}
+            onChange={(e) => set("category", e.target.value)}
+            className="glass-input"
+          >
             <option value="react-js">React.js</option>
             <option value="react-native">React Native</option>
             <option value="next-js">Next.js</option>
@@ -148,25 +164,40 @@ export default function ProjectForm({ initialData, onClose }: Props) {
 
         {/* Description */}
         <Field label="Short Description" error={errors.description}>
-          <textarea value={form.description} onChange={(e) => set("description", e.target.value)} className="glass-input min-h-[80px]" placeholder="Brief project description…" />
+          <textarea
+            value={form.description}
+            onChange={(e) => set("description", e.target.value)}
+            className="glass-input min-h-[80px]"
+            placeholder="Brief project description…"
+          />
         </Field>
 
         {/* Long Description */}
         <Field label="Long Description" error={errors.longDescription}>
-          <textarea value={form.longDescription} onChange={(e) => set("longDescription", e.target.value)} className="glass-input min-h-[120px]" placeholder="Detailed project description…" />
+          <textarea
+            value={form.longDescription}
+            onChange={(e) => set("longDescription", e.target.value)}
+            className="glass-input min-h-[120px]"
+            placeholder="Detailed project description…"
+          />
         </Field>
 
         {/* Thumbnail */}
         <Field label="Thumbnail URL" error={errors.thumbnail}>
-          <input value={form.thumbnail} onChange={(e) => set("thumbnail", e.target.value)} className="glass-input" placeholder="https://cdn.example.com/thumb.png" />
+          <input
+            value={form.thumbnail}
+            onChange={(e) => set("thumbnail", e.target.value)}
+            className="glass-input"
+            placeholder="https://cdn.example.com/thumb.png"
+          />
           {form.thumbnail ? (
-            <div className="mt-2 inline-block overflow-hidden rounded-xl border border-border/50 bg-white p-1">
-              <div className="relative h-24 sm:h-32 w-40 sm:w-56">
+            <div className="border-border/50 mt-2 inline-block overflow-hidden rounded-xl border bg-white p-1">
+              <div className="relative h-24 w-40 sm:h-32 sm:w-56">
                 <Image
                   src={form.thumbnail}
                   alt="Thumbnail preview"
                   fill
-                  className="object-cover rounded-md"
+                  className="rounded-md object-cover"
                   sizes="160px"
                   placeholder="blur"
                   blurDataURL={IMAGE_BLUR_DATA_URL}
@@ -182,7 +213,7 @@ export default function ProjectForm({ initialData, onClose }: Props) {
             <input
               value={imageInput}
               onChange={(e) => setImageInput(e.target.value)}
-              className="glass-input flex-1 min-w-0"
+              className="glass-input min-w-0 flex-1"
               placeholder="Paste image URL…"
             />
             <button
@@ -199,16 +230,19 @@ export default function ProjectForm({ initialData, onClose }: Props) {
             </button>
           </div>
           {form.images.length > 0 && (
-            <div className="flex flex-wrap gap-2 mt-3">
+            <div className="mt-3 flex flex-wrap gap-2">
               {form.images.map((img, i) => (
-                <div key={i} className="group relative overflow-hidden rounded-lg border border-border/50 bg-white p-1">
+                <div
+                  key={i}
+                  className="group border-border/50 relative overflow-hidden rounded-lg border bg-white p-1"
+                >
                   <div className="relative h-16 w-24 sm:h-20 sm:w-32">
                     {img ? (
                       <Image
                         src={img}
                         alt={`Preview ${i + 1}`}
                         fill
-                        className="object-cover rounded-md"
+                        className="rounded-md object-cover"
                         sizes="96px"
                         placeholder="blur"
                         blurDataURL={IMAGE_BLUR_DATA_URL}
@@ -217,8 +251,13 @@ export default function ProjectForm({ initialData, onClose }: Props) {
                   </div>
                   <button
                     type="button"
-                    onClick={() => set("images", form.images.filter((_, idx) => idx !== i))}
-                    className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-5 h-5 text-xs flex items-center justify-center sm:opacity-0 sm:group-hover:opacity-100 transition-opacity z-10"
+                    onClick={() =>
+                      set(
+                        "images",
+                        form.images.filter((_, idx) => idx !== i)
+                      )
+                    }
+                    className="absolute -top-2 -right-2 z-10 flex h-5 w-5 items-center justify-center rounded-full bg-red-500 text-xs text-white transition-opacity sm:opacity-0 sm:group-hover:opacity-100"
                   >
                     ✕
                   </button>
@@ -234,7 +273,7 @@ export default function ProjectForm({ initialData, onClose }: Props) {
             <input
               value={techInput}
               onChange={(e) => setTechInput(e.target.value)}
-              className="glass-input flex-1 min-w-0"
+              className="glass-input min-w-0 flex-1"
               placeholder="React, TypeScript, …"
               onKeyDown={(e) => {
                 if (e.key === "Enter") {
@@ -259,11 +298,25 @@ export default function ProjectForm({ initialData, onClose }: Props) {
               Add
             </button>
           </div>
-          <div className="flex flex-wrap gap-2 mt-2">
+          <div className="mt-2 flex flex-wrap gap-2">
             {form.techStack.map((tech, i) => (
-              <span key={i} className="flex items-center gap-1 rounded-lg border border-border/50 bg-surface px-2 py-1 text-xs font-bold">
+              <span
+                key={i}
+                className="border-border/50 bg-surface flex items-center gap-1 rounded-lg border px-2 py-1 text-xs font-bold"
+              >
                 {tech}
-                <button type="button" onClick={() => set("techStack", form.techStack.filter((_, idx) => idx !== i))} className="text-red-500 hover:text-red-700 ml-1">✕</button>
+                <button
+                  type="button"
+                  onClick={() =>
+                    set(
+                      "techStack",
+                      form.techStack.filter((_, idx) => idx !== i)
+                    )
+                  }
+                  className="ml-1 text-red-500 hover:text-red-700"
+                >
+                  ✕
+                </button>
               </span>
             ))}
           </div>
@@ -275,13 +328,16 @@ export default function ProjectForm({ initialData, onClose }: Props) {
             <input
               value={highlightInput}
               onChange={(e) => setHighlightInput(e.target.value)}
-              className="glass-input flex-1 min-w-0"
+              className="glass-input min-w-0 flex-1"
               placeholder="Key achievement or feature…"
               onKeyDown={(e) => {
                 if (e.key === "Enter") {
                   e.preventDefault();
                   if (highlightInput.trim()) {
-                    set("highlights", [...form.highlights, highlightInput.trim()]);
+                    set("highlights", [
+                      ...form.highlights,
+                      highlightInput.trim(),
+                    ]);
                     setHighlightInput("");
                   }
                 }
@@ -291,7 +347,10 @@ export default function ProjectForm({ initialData, onClose }: Props) {
               type="button"
               onClick={() => {
                 if (highlightInput.trim()) {
-                  set("highlights", [...form.highlights, highlightInput.trim()]);
+                  set("highlights", [
+                    ...form.highlights,
+                    highlightInput.trim(),
+                  ]);
                   setHighlightInput("");
                 }
               }}
@@ -305,40 +364,90 @@ export default function ProjectForm({ initialData, onClose }: Props) {
               <li key={i} className="flex items-start gap-2 text-sm">
                 <span className="text-primary mt-0.5">•</span>
                 <span className="flex-1 break-words">{h}</span>
-                <button type="button" onClick={() => set("highlights", form.highlights.filter((_, idx) => idx !== i))} className="text-red-500 hover:text-red-700 text-xs shrink-0">✕</button>
+                <button
+                  type="button"
+                  onClick={() =>
+                    set(
+                      "highlights",
+                      form.highlights.filter((_, idx) => idx !== i)
+                    )
+                  }
+                  className="shrink-0 text-xs text-red-500 hover:text-red-700"
+                >
+                  ✕
+                </button>
               </li>
             ))}
           </ul>
         </Field>
 
         {/* URLs */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           <Field label="Live URL (optional)" error={errors.liveUrl}>
-            <input value={form.liveUrl} onChange={(e) => set("liveUrl", e.target.value)} className="glass-input" placeholder="https://myproject.com" />
+            <input
+              value={form.liveUrl}
+              onChange={(e) => set("liveUrl", e.target.value)}
+              className="glass-input"
+              placeholder="https://myproject.com"
+            />
           </Field>
           <Field label="GitHub URL (optional)" error={errors.githubUrl}>
-            <input value={form.githubUrl} onChange={(e) => set("githubUrl", e.target.value)} className="glass-input" placeholder="https://github.com/…" />
+            <input
+              value={form.githubUrl}
+              onChange={(e) => set("githubUrl", e.target.value)}
+              className="glass-input"
+              placeholder="https://github.com/…"
+            />
           </Field>
         </div>
 
         {/* Date */}
         <Field label="Created At" error={errors.createdAt}>
-          <input type="date" value={form.createdAt} onChange={(e) => set("createdAt", e.target.value)} className="glass-input" />
+          <input
+            type="date"
+            value={form.createdAt}
+            onChange={(e) => set("createdAt", e.target.value)}
+            className="glass-input"
+          />
         </Field>
 
         {/* Toggles */}
         <div className="flex flex-wrap gap-4 sm:gap-6">
-          <ToggleField label="Featured" checked={form.featured} onChange={(v) => set("featured", v)} />
-          <ToggleField label="Favorite" checked={form.isFavorite} onChange={(v) => set("isFavorite", v)} />
-          <ToggleField label="Hidden" checked={form.hide} onChange={(v) => set("hide", v)} />
+          <ToggleField
+            label="Featured"
+            checked={form.featured}
+            onChange={(v) => set("featured", v)}
+          />
+          <ToggleField
+            label="Favorite"
+            checked={form.isFavorite}
+            onChange={(v) => set("isFavorite", v)}
+          />
+          <ToggleField
+            label="Hidden"
+            checked={form.hide}
+            onChange={(v) => set("hide", v)}
+          />
         </div>
 
         {/* Actions */}
-        <div className="flex flex-col sm:flex-row gap-3 pt-4 border-t border-border/50 sticky bottom-0 bg-surface/80 backdrop-blur-md pb-2 z-20 -mx-4 sm:-mx-6 px-4 sm:px-6">
-          <button type="submit" disabled={saving} className="glass-btn glass-btn-primary flex-1">
-            {saving ? "Saving…" : isEditing ? "Update Project" : "Create Project"}
+        <div className="border-border/50 bg-surface/80 sticky bottom-0 z-20 -mx-4 flex flex-col gap-3 border-t px-4 pt-4 pb-2 backdrop-blur-md sm:-mx-6 sm:flex-row sm:px-6">
+          <button
+            type="submit"
+            disabled={saving}
+            className="glass-btn glass-btn-primary flex-1"
+          >
+            {saving
+              ? "Saving…"
+              : isEditing
+                ? "Update Project"
+                : "Create Project"}
           </button>
-          <button type="button" onClick={onClose} className="glass-btn glass-btn-secondary flex-1">
+          <button
+            type="button"
+            onClick={onClose}
+            className="glass-btn glass-btn-secondary flex-1"
+          >
             Cancel
           </button>
         </div>
@@ -349,42 +458,68 @@ export default function ProjectForm({ initialData, onClose }: Props) {
 
 // ── Helpers ──────────────────────────────────────────────────────
 
-function Field({ label, error, children }: { label: string; error?: string[]; children: React.ReactNode }) {
+function Field({
+  label,
+  error,
+  children,
+}: {
+  label: string;
+  error?: string[];
+  children: React.ReactNode;
+}) {
   return (
     <div>
-      <label className="block text-xs sm:text-sm font-bold uppercase tracking-wide mb-1">{label}</label>
+      <label className="mb-1 block text-xs font-bold tracking-wide uppercase sm:text-sm">
+        {label}
+      </label>
       {children}
-      {error && error.map((e, i) => (
-        <p key={i} className="text-red-500 text-xs mt-1">{e}</p>
-      ))}
+      {error &&
+        error.map((e, i) => (
+          <p key={i} className="mt-1 text-xs text-red-500">
+            {e}
+          </p>
+        ))}
     </div>
   );
 }
 
-function ToggleField({ label, checked, onChange }: { label: string; checked: boolean; onChange: (v: boolean) => void }) {
+function ToggleField({
+  label,
+  checked,
+  onChange,
+}: {
+  label: string;
+  checked: boolean;
+  onChange: (v: boolean) => void;
+}) {
   return (
-    <label className="flex items-center gap-3 cursor-pointer select-none group">
+    <label className="group flex cursor-pointer items-center gap-3 select-none">
       <div
         onClick={() => onChange(!checked)}
-        className={`flex h-6 w-6 items-center justify-center rounded border border-border/50 transition-all ${checked
-            ? "bg-primary shadow-md"
-            : "bg-white shadow-md"
-          } group-active:shadow-none group-active:translate-x-[1px] group-active:translate-y-[1px]`}
+        className={`border-border/50 flex h-6 w-6 items-center justify-center rounded border transition-all ${
+          checked ? "bg-primary shadow-md" : "bg-white shadow-md"
+        } group-active:translate-x-[1px] group-active:translate-y-[1px] group-active:shadow-none`}
       >
         {checked && (
           <svg
-            className="h-4 w-4 text-text"
+            className="text-text h-4 w-4"
             fill="none"
             stroke="currentColor"
             strokeWidth="4"
             viewBox="0 0 24 24"
             xmlns="http://www.w3.org/2000/svg"
           >
-            <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"></path>
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M5 13l4 4L19 7"
+            ></path>
           </svg>
         )}
       </div>
-      <span className="text-xs font-black uppercase tracking-widest">{label}</span>
+      <span className="text-xs font-black tracking-widest uppercase">
+        {label}
+      </span>
     </label>
   );
 }

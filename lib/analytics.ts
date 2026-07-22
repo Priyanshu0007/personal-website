@@ -39,7 +39,7 @@ declare global {
 
 // Helper function with strict typing for the event name
 export const trackUserAction = (
-  eventName: typeof AnalyticsEvents[keyof typeof AnalyticsEvents],
+  eventName: (typeof AnalyticsEvents)[keyof typeof AnalyticsEvents],
   params?: Record<string, string | number | boolean>
 ) => {
   // Track with Firebase

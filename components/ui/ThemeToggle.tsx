@@ -24,11 +24,7 @@ export default function ThemeToggle({ className }: ThemeToggleProps) {
 
   if (!mounted) {
     return (
-      <button
-        className={btnClassName}
-        aria-hidden="true"
-        disabled
-      >
+      <button className={btnClassName} aria-hidden="true" disabled>
         <div className="h-[18px] w-[18px] opacity-0" />
       </button>
     );

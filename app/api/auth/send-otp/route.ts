@@ -11,9 +11,15 @@ export async function POST(req: Request) {
   const { email } = await req.json();
 
   // 1️⃣ Verify email is whitelisted
-  const admin = await db.select().from(allowedAdmins).where(eq(allowedAdmins.email, email));
+  const admin = await db
+    .select()
+    .from(allowedAdmins)
+    .where(eq(allowedAdmins.email, email));
   if (!admin.length) {
-    return NextResponse.json({ error: "Email not authorized" }, { status: 403 });
+    return NextResponse.json(
+      { error: "Email not authorized" },
+      { status: 403 }
+    );
   }
 
   try {
@@ -42,7 +48,10 @@ export async function POST(req: Request) {
     return NextResponse.json({ ok: true });
   } catch (error) {
     console.error("send-otp error:", error);
-    const message = (error as { code?: string })?.code === "42P01" ? "Database not initialized – allowed_admins table missing" : "Failed to send OTP";
+    const message =
+      (error as { code?: string })?.code === "42P01"
+        ? "Database not initialized – allowed_admins table missing"
+        : "Failed to send OTP";
     return NextResponse.json({ error: message }, { status: 500 });
   }
 }

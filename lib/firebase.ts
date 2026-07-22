@@ -13,17 +13,24 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-export const app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApps()[0];
+export const app =
+  getApps().length === 0 ? initializeApp(firebaseConfig) : getApps()[0];
 
 // Initialize Analytics (only on client side)
-export const analytics = typeof window !== "undefined" ? isSupported().then(yes => yes ? getAnalytics(app) : null) : null;
+export const analytics =
+  typeof window !== "undefined"
+    ? isSupported().then((yes) => (yes ? getAnalytics(app) : null))
+    : null;
 
 /**
  * Tracks a custom event in Firebase Analytics
  * @param eventName The name of the event (e.g., 'button_click', 'form_submit')
  * @param eventParams Optional parameters to send with the event (e.g., { page: '/about', item: 'resume' })
  */
-export const trackEvent = async (eventName: string, eventParams?: Record<string, unknown>) => {
+export const trackEvent = async (
+  eventName: string,
+  eventParams?: Record<string, unknown>
+) => {
   // Helpful log for local testing
   // if (process.env.NODE_ENV !== "production") {
   //   console.log(`📊 [Analytics Event]: ${eventName}`, eventParams || {});
@@ -35,4 +42,3 @@ export const trackEvent = async (eventName: string, eventParams?: Record<string,
     }
   }
 };
-

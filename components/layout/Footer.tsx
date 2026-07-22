@@ -17,8 +17,8 @@ export default function Footer({ name, socials }: FooterProps) {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="container mb-6 mt-12">
-      <div className="relative overflow-hidden rounded-[2rem] border border-border/30 bg-surface/60 p-8 shadow-lg backdrop-blur-xl md:p-12">
+    <footer className="container mt-12 mb-6">
+      <div className="border-border/30 bg-surface/60 relative overflow-hidden rounded-[2rem] border p-8 shadow-lg backdrop-blur-xl md:p-12">
         <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
           {/* Left: Branding */}
           <div className="flex flex-col items-center gap-2 md:items-start">
@@ -30,7 +30,7 @@ export default function Footer({ name, socials }: FooterProps) {
             >
               {name}
             </Link>
-            <p className="text-sm text-text-muted">
+            <p className="text-text-muted text-sm">
               Building bold digital experiences.
             </p>
           </div>
@@ -39,8 +39,13 @@ export default function Footer({ name, socials }: FooterProps) {
           <div className="flex items-center gap-4">
             <Link
               href="/"
-              onClick={() => trackUserAction(AnalyticsEvents.FOOTER_LINK_CLICK, { link_name: "Home", destination: "/" })}
-              className="text-sm font-bold uppercase tracking-wider transition-colors hover:text-secondary"
+              onClick={() =>
+                trackUserAction(AnalyticsEvents.FOOTER_LINK_CLICK, {
+                  link_name: "Home",
+                  destination: "/",
+                })
+              }
+              className="hover:text-secondary text-sm font-bold tracking-wider uppercase transition-colors"
             >
               Home
             </Link>
@@ -49,8 +54,13 @@ export default function Footer({ name, socials }: FooterProps) {
             </span>
             <Link
               href="/projects"
-              onClick={() => trackUserAction(AnalyticsEvents.FOOTER_LINK_CLICK, { link_name: "Projects", destination: "/projects" })}
-              className="text-sm font-bold uppercase tracking-wider transition-colors hover:text-secondary"
+              onClick={() =>
+                trackUserAction(AnalyticsEvents.FOOTER_LINK_CLICK, {
+                  link_name: "Projects",
+                  destination: "/projects",
+                })
+              }
+              className="hover:text-secondary text-sm font-bold tracking-wider uppercase transition-colors"
             >
               Projects
             </Link>
@@ -59,8 +69,13 @@ export default function Footer({ name, socials }: FooterProps) {
             </span>
             <Link
               href="/uses"
-              onClick={() => trackUserAction(AnalyticsEvents.FOOTER_LINK_CLICK, { link_name: "Uses", destination: "/uses" })}
-              className="text-sm font-bold uppercase tracking-wider transition-colors hover:text-secondary"
+              onClick={() =>
+                trackUserAction(AnalyticsEvents.FOOTER_LINK_CLICK, {
+                  link_name: "Uses",
+                  destination: "/uses",
+                })
+              }
+              className="hover:text-secondary text-sm font-bold tracking-wider uppercase transition-colors"
             >
               Uses
             </Link>
@@ -72,10 +87,17 @@ export default function Footer({ name, socials }: FooterProps) {
               href={socials.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="glass-border-glow flex h-11 w-11 items-center justify-center rounded-full border border-border/20 bg-surface/40 backdrop-blur-md transition-all hover:bg-surface/80"
-              style={{ "--glow-color": "var(--color-text)" } as React.CSSProperties}
+              className="glass-border-glow border-border/20 bg-surface/40 hover:bg-surface/80 flex h-11 w-11 items-center justify-center rounded-full border backdrop-blur-md transition-all"
+              style={
+                { "--glow-color": "var(--color-text)" } as React.CSSProperties
+              }
               aria-label="Visit GitHub Profile"
-              onClick={() => trackUserAction(AnalyticsEvents.SOCIAL_LINK_CLICK, { platform: "github", location: "footer" })}
+              onClick={() =>
+                trackUserAction(AnalyticsEvents.SOCIAL_LINK_CLICK, {
+                  platform: "github",
+                  location: "footer",
+                })
+              }
               id="footer-github"
             >
               <svg
@@ -92,10 +114,15 @@ export default function Footer({ name, socials }: FooterProps) {
               href={socials.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="glass-border-glow flex h-11 w-11 items-center justify-center rounded-full border border-border/20 bg-surface/40 backdrop-blur-md transition-all hover:bg-surface/80 hover:text-[#0077B5]"
+              className="glass-border-glow border-border/20 bg-surface/40 hover:bg-surface/80 flex h-11 w-11 items-center justify-center rounded-full border backdrop-blur-md transition-all hover:text-[#0077B5]"
               style={{ "--glow-color": "#0077B5" } as React.CSSProperties}
               aria-label="Visit LinkedIn Profile"
-              onClick={() => trackUserAction(AnalyticsEvents.SOCIAL_LINK_CLICK, { platform: "linkedin", location: "footer" })}
+              onClick={() =>
+                trackUserAction(AnalyticsEvents.SOCIAL_LINK_CLICK, {
+                  platform: "linkedin",
+                  location: "footer",
+                })
+              }
               id="footer-linkedin"
             >
               <svg
@@ -112,10 +139,15 @@ export default function Footer({ name, socials }: FooterProps) {
               href={socials.medium}
               target="_blank"
               rel="noopener noreferrer"
-              className="glass-border-glow flex h-11 w-11 items-center justify-center rounded-full border border-border/20 bg-surface/40 backdrop-blur-md transition-all hover:bg-surface/80 hover:text-[#00ab6c]"
+              className="glass-border-glow border-border/20 bg-surface/40 hover:bg-surface/80 flex h-11 w-11 items-center justify-center rounded-full border backdrop-blur-md transition-all hover:text-[#00ab6c]"
               style={{ "--glow-color": "#00ab6c" } as React.CSSProperties}
               aria-label="Visit Medium Profile"
-              onClick={() => trackUserAction(AnalyticsEvents.SOCIAL_LINK_CLICK, { platform: "medium", location: "footer" })}
+              onClick={() =>
+                trackUserAction(AnalyticsEvents.SOCIAL_LINK_CLICK, {
+                  platform: "medium",
+                  location: "footer",
+                })
+              }
               id="footer-medium"
             >
               <svg
@@ -132,10 +164,17 @@ export default function Footer({ name, socials }: FooterProps) {
               href={socials.devto}
               target="_blank"
               rel="noopener noreferrer"
-              className="glass-border-glow flex h-11 w-11 items-center justify-center rounded-full border border-border/20 bg-surface/40 backdrop-blur-md transition-all hover:bg-surface/80"
-              style={{ "--glow-color": "var(--color-text)" } as React.CSSProperties}
+              className="glass-border-glow border-border/20 bg-surface/40 hover:bg-surface/80 flex h-11 w-11 items-center justify-center rounded-full border backdrop-blur-md transition-all"
+              style={
+                { "--glow-color": "var(--color-text)" } as React.CSSProperties
+              }
               aria-label="Visit Dev.to Profile"
-              onClick={() => trackUserAction(AnalyticsEvents.SOCIAL_LINK_CLICK, { platform: "devto", location: "footer" })}
+              onClick={() =>
+                trackUserAction(AnalyticsEvents.SOCIAL_LINK_CLICK, {
+                  platform: "devto",
+                  location: "footer",
+                })
+              }
               id="footer-devto"
             >
               <svg
@@ -152,14 +191,14 @@ export default function Footer({ name, socials }: FooterProps) {
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-8 flex flex-col items-center justify-between gap-4 border-t border-border/20 pt-6 sm:flex-row">
-          <p className="text-sm text-text-muted">
+        <div className="border-border/20 mt-8 flex flex-col items-center justify-between gap-4 border-t pt-6 sm:flex-row">
+          <p className="text-text-muted text-sm">
             © {currentYear} {name}. All rights reserved.
           </p>
-          <p className="flex items-center gap-1.5 text-sm text-text-muted">
+          <p className="text-text-muted flex items-center gap-1.5 text-sm">
             Built with{" "}
             <span
-              className="inline-flex animate-pulse items-center text-secondary"
+              className="text-secondary inline-flex animate-pulse items-center"
               role="img"
               aria-label="love"
             >

@@ -1,9 +1,7 @@
 "use client";
 
-
 import { useEffect } from "react";
 import ScrollPreserver from "@/components/ui/ScrollPreserver";
-
 
 // Register service worker for PWA offline support
 function ServiceWorkerRegistration() {

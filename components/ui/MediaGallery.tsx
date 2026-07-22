@@ -3,7 +3,13 @@
 import { useState, useCallback, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, ChevronLeft, ChevronRight, Maximize2, RotateCw } from "lucide-react";
+import {
+  X,
+  ChevronLeft,
+  ChevronRight,
+  Maximize2,
+  RotateCw,
+} from "lucide-react";
 import { IMAGE_BLUR_DATA_URL } from "@/utils/constants";
 
 interface MediaGalleryProps {
@@ -143,23 +149,24 @@ export default function MediaGallery({
             onClick={closeLightbox}
           >
             <div
-              className="absolute left-1/2 top-1/2 flex pointer-events-none items-center justify-center"
+              className="pointer-events-none absolute top-1/2 left-1/2 flex items-center justify-center"
               style={{
                 width: isRotated ? "100vh" : "100vw",
                 height: isRotated ? "100vw" : "100vh",
                 transform: `translate(-50%, -50%) rotate(${isRotated ? 90 : 0}deg)`,
-                transition: "width 0.3s ease, height 0.3s ease, transform 0.3s ease",
+                transition:
+                  "width 0.3s ease, height 0.3s ease, transform 0.3s ease",
               }}
             >
               <div
-                className="relative flex h-full w-full pointer-events-auto items-center justify-center p-4 md:p-8"
+                className="pointer-events-auto relative flex h-full w-full items-center justify-center p-4 md:p-8"
                 onClick={closeLightbox}
               >
                 {/* Controls Container */}
-                <div className="absolute inset-0 z-50 pointer-events-none p-4 md:p-8">
+                <div className="pointer-events-none absolute inset-0 z-50 p-4 md:p-8">
                   {/* Close Button */}
                   <button
-                    className="absolute top-4 right-4 pointer-events-auto rounded-full border border-white/20 bg-white/10 p-3 text-white backdrop-blur-md transition-colors hover:bg-white/20 md:top-8 md:right-8"
+                    className="pointer-events-auto absolute top-4 right-4 rounded-full border border-white/20 bg-white/10 p-3 text-white backdrop-blur-md transition-colors hover:bg-white/20 md:top-8 md:right-8"
                     onClick={(e) => {
                       e.stopPropagation();
                       closeLightbox();
@@ -171,7 +178,7 @@ export default function MediaGallery({
 
                   {/* Rotate Button */}
                   <button
-                    className="absolute top-4 right-20 pointer-events-auto rounded-full border border-white/20 bg-white/10 p-3 text-white backdrop-blur-md transition-colors hover:bg-white/20 md:hidden"
+                    className="pointer-events-auto absolute top-4 right-20 rounded-full border border-white/20 bg-white/10 p-3 text-white backdrop-blur-md transition-colors hover:bg-white/20 md:hidden"
                     onClick={toggleRotation}
                     aria-label="Rotate image"
                   >
@@ -182,14 +189,14 @@ export default function MediaGallery({
                   {total > 1 && (
                     <>
                       <button
-                        className="absolute left-4 top-1/2 -translate-y-1/2 pointer-events-auto rounded-full border border-white/20 bg-white/10 p-3 text-white backdrop-blur-md transition-colors hover:bg-white/20 md:left-8"
+                        className="pointer-events-auto absolute top-1/2 left-4 -translate-y-1/2 rounded-full border border-white/20 bg-white/10 p-3 text-white backdrop-blur-md transition-colors hover:bg-white/20 md:left-8"
                         onClick={goPrev}
                         aria-label="Previous screenshot"
                       >
                         <ChevronLeft className="h-6 w-6" />
                       </button>
                       <button
-                        className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-auto rounded-full border border-white/20 bg-white/10 p-3 text-white backdrop-blur-md transition-colors hover:bg-white/20 md:right-8"
+                        className="pointer-events-auto absolute top-1/2 right-4 -translate-y-1/2 rounded-full border border-white/20 bg-white/10 p-3 text-white backdrop-blur-md transition-colors hover:bg-white/20 md:right-8"
                         onClick={goNext}
                         aria-label="Next screenshot"
                       >

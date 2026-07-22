@@ -1,13 +1,9 @@
 // Service Worker for PWA - Caches static assets for offline support
-const CACHE_NAME = 'portfolio-v2';
-const STATIC_ASSETS = [
-  '/',
-  '/icon.svg',
-  '/manifest.webmanifest',
-];
+const CACHE_NAME = "portfolio-v2";
+const STATIC_ASSETS = ["/", "/icon.svg", "/manifest.webmanifest"];
 
 // Install event - cache static assets
-self.addEventListener('install', (event) => {
+self.addEventListener("install", (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
       return cache.addAll(STATIC_ASSETS);
@@ -17,7 +13,7 @@ self.addEventListener('install', (event) => {
 });
 
 // Activate event - clean up old caches
-self.addEventListener('activate', (event) => {
+self.addEventListener("activate", (event) => {
   event.waitUntil(
     caches.keys().then((cacheNames) => {
       return Promise.all(
@@ -31,12 +27,12 @@ self.addEventListener('activate', (event) => {
 });
 
 // Fetch event - serve from cache, fallback to network
-self.addEventListener('fetch', (event) => {
+self.addEventListener("fetch", (event) => {
   // Skip non-GET requests
-  if (event.request.method !== 'GET') return;
+  if (event.request.method !== "GET") return;
 
   // Skip API routes
-  if (event.request.url.includes('/api/')) return;
+  if (event.request.url.includes("/api/")) return;
 
   event.respondWith(
     caches.match(event.request).then((cachedResponse) => {
@@ -64,8 +60,8 @@ self.addEventListener('fetch', (event) => {
 });
 
 // Handle messages from the client
-self.addEventListener('message', (event) => {
-  if (event.data && event.data.type === 'SKIP_WAITING') {
+self.addEventListener("message", (event) => {
+  if (event.data && event.data.type === "SKIP_WAITING") {
     self.skipWaiting();
   }
 });

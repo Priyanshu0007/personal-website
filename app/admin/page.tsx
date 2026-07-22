@@ -18,29 +18,32 @@ export default async function AdminDashboard() {
   const rawBlogs = await db.select().from(blogs);
 
   // Clean data for the admin components
-  const allProjects = rawProjects.map(p => ({
+  const allProjects = rawProjects.map((p) => ({
     ...p,
     thumbnail: cleanUrl(p.thumbnail),
     images: cleanUrls(p.images),
   }));
 
-  const allBlogs = rawBlogs.map(b => ({
+  const allBlogs = rawBlogs.map((b) => ({
     ...b,
     url: cleanUrl(b.url),
   }));
 
   return (
     <div className="min-h-screen overflow-x-hidden">
-      <div className="p-3 sm:p-6 md:p-8 max-w-5xl mx-auto space-y-8 sm:space-y-12 pb-20">
-        <header className="flex flex-col gap-3 border-b border-border/50 pb-4">
+      <div className="mx-auto max-w-5xl space-y-8 p-3 pb-20 sm:space-y-12 sm:p-6 md:p-8">
+        <header className="border-border/50 flex flex-col gap-3 border-b pb-4">
           <div className="flex items-center justify-between gap-3">
-            <h1 className="text-2xl font-black uppercase tracking-tight sm:text-3xl">
+            <h1 className="text-2xl font-black tracking-tight uppercase sm:text-3xl">
               Admin
             </h1>
             <LogoutButton />
           </div>
-          <p className="text-xs sm:text-sm text-muted-foreground font-bold uppercase tracking-wide">
-            Logged in as <span className="text-foreground">{session.user?.name ?? session.user?.email}</span>
+          <p className="text-muted-foreground text-xs font-bold tracking-wide uppercase sm:text-sm">
+            Logged in as{" "}
+            <span className="text-foreground">
+              {session.user?.name ?? session.user?.email}
+            </span>
           </p>
         </header>
 

@@ -202,7 +202,7 @@ export default function UsesPage() {
               {/* Section header */}
               <div className="mb-6 flex items-center gap-3">
                 <span
-                  className="flex h-10 w-10 items-center justify-center rounded-lg border border-border/20 text-xl"
+                  className="border-border/20 flex h-10 w-10 items-center justify-center rounded-lg border text-xl"
                   style={{ backgroundColor: section.color }}
                   role="img"
                   aria-label={`${section.title} icon`}
@@ -225,14 +225,16 @@ export default function UsesPage() {
                   <div
                     key={item.name}
                     className="glass-card glass-border-glow glass-sweep p-5"
-                    style={{
-                      "--glow-color": section.color,
-                    } as React.CSSProperties}
+                    style={
+                      {
+                        "--glow-color": section.color,
+                      } as React.CSSProperties
+                    }
                   >
                     <h3 className="mb-1 text-base font-extrabold">
                       {item.name}
                     </h3>
-                    <p className="text-sm text-text-secondary">
+                    <p className="text-text-secondary text-sm">
                       {item.description}
                     </p>
                   </div>

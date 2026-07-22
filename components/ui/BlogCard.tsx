@@ -29,7 +29,12 @@ export default function BlogCard({
       href={blog.url}
       target="_blank"
       rel="noopener noreferrer"
-      onClick={() => trackUserAction(AnalyticsEvents.BLOG_VIEW, { blog_title: blog.title, platform: blog.platform })}
+      onClick={() =>
+        trackUserAction(AnalyticsEvents.BLOG_VIEW, {
+          blog_title: blog.title,
+          platform: blog.platform,
+        })
+      }
       className="group block h-full"
       aria-label={`Read article: ${blog.title} on ${blog.platform}`}
     >
@@ -65,7 +70,7 @@ export default function BlogCard({
             className="absolute inset-0 flex items-center justify-center transition-transform group-hover:scale-110"
             aria-hidden="true"
           >
-            <div className="text-6xl font-black text-text-muted opacity-80">
+            <div className="text-text-muted text-6xl font-black opacity-80">
               {String(index + 1).padStart(2, "0")}
             </div>
           </div>
@@ -89,7 +94,7 @@ export default function BlogCard({
 
         <div className="flex flex-1 flex-col p-5">
           <div className="mb-2">
-            <span className="text-xs font-bold text-text-muted">
+            <span className="text-text-muted text-xs font-bold">
               {blog.date}
             </span>
           </div>
@@ -98,15 +103,13 @@ export default function BlogCard({
             {blog.title}
           </Tag>
 
-          <p className="mb-6 line-clamp-3 flex-1 text-sm text-text-secondary">
+          <p className="text-text-secondary mb-6 line-clamp-3 flex-1 text-sm">
             {blog.description}
           </p>
 
           {/* Footer */}
-          <div className="flex items-center justify-between border-t border-border/20 pt-3">
-            <span
-              className="inline-flex items-center gap-1 text-sm font-bold tracking-wider uppercase transition-transform group-hover:translate-x-1 text-text"
-            >
+          <div className="border-border/20 flex items-center justify-between border-t pt-3">
+            <span className="text-text inline-flex items-center gap-1 text-sm font-bold tracking-wider uppercase transition-transform group-hover:translate-x-1">
               Read Article
               <svg
                 className="h-4 w-4"

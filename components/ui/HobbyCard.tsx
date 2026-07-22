@@ -16,7 +16,7 @@ export default function HobbyCard({ hobby }: HobbyCardProps) {
     >
       {/* Emoji */}
       <div
-        className="mb-3 text-4xl md:text-5xl transition-transform duration-500 group-hover:-translate-y-2 group-hover:scale-110"
+        className="mb-3 text-4xl transition-transform duration-500 group-hover:-translate-y-2 group-hover:scale-110 md:text-5xl"
         role="img"
         aria-label={`${hobby.title} icon`}
       >
@@ -24,14 +24,10 @@ export default function HobbyCard({ hobby }: HobbyCardProps) {
       </div>
 
       {/* Title */}
-      <h3 className="mb-2 text-lg font-extrabold text-text">
-        {hobby.title}
-      </h3>
+      <h3 className="text-text mb-2 text-lg font-extrabold">{hobby.title}</h3>
 
       {/* Description */}
-      <p className="mb-3 text-sm text-text-secondary">
-        {hobby.description}
-      </p>
+      <p className="text-text-secondary mb-3 text-sm">{hobby.description}</p>
 
       {/* Tags */}
       {hobby.tags && hobby.tags.length > 0 && (

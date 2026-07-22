@@ -45,8 +45,6 @@ export const blogs = pgTable("blogs", {
   hide: boolean("hide").default(false).notNull(),
 });
 
-
-
 // Table of emails that are allowed to log into the admin panel
 export const allowedAdmins = pgTable("allowed_admins", {
   email: varchar("email", { length: 255 }).primaryKey(),
@@ -59,4 +57,3 @@ export const otps = pgTable("otps", {
   code: varchar("code", { length: 6 }).notNull(),
   expiresAt: timestamp("expires_at").notNull(),
 });
-

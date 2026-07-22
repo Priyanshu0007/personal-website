@@ -5,7 +5,7 @@ export default function ProjectNotFound() {
     <section className="section" id="project-not-found">
       <div className="container py-20 text-center">
         <div className="mb-6 inline-block">
-          <span className="text-8xl font-extrabold text-primary md:text-9xl">
+          <span className="text-primary text-8xl font-extrabold md:text-9xl">
             404
           </span>
         </div>
@@ -15,7 +15,7 @@ export default function ProjectNotFound() {
         >
           Project Not Found
         </h1>
-        <p className="mx-auto mb-8 max-w-md text-lg text-text-secondary">
+        <p className="text-text-secondary mx-auto mb-8 max-w-md text-lg">
           The project you&apos;re looking for doesn&apos;t exist or has been
           removed.
         </p>

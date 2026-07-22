@@ -51,7 +51,7 @@ export default function ProjectFilters() {
             aria-pressed={activeCategory === cat.value}
             className={`glass-btn glass-btn-sm text-xs font-bold tracking-wider uppercase ${
               activeCategory === cat.value
-                ? "bg-primary text-white border-primary/30 shadow-md"
+                ? "bg-primary border-primary/30 text-white shadow-md"
                 : "bg-surface border-border/20 hover:bg-bg-secondary"
             }`}
             id={`filter-${cat.value}`}
@@ -75,7 +75,7 @@ export default function ProjectFilters() {
           aria-pressed={showFavorites}
           className={`glass-btn glass-btn-sm text-xs font-bold ${
             showFavorites
-              ? "bg-primary text-white border-primary/30 shadow-md"
+              ? "bg-primary border-primary/30 text-white shadow-md"
               : "bg-surface border-border/20 hover:bg-bg-secondary"
           }`}
           id="filter-favorites"

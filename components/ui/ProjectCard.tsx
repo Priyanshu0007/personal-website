@@ -36,7 +36,12 @@ export default function ProjectCard({
       transitionTypes={["nav-forward"]}
       scroll={false}
       prefetch={true}
-      onClick={() => trackUserAction(AnalyticsEvents.PROJECT_VIEW, { project_slug: project.slug, project_name: project.title })}
+      onClick={() =>
+        trackUserAction(AnalyticsEvents.PROJECT_VIEW, {
+          project_slug: project.slug,
+          project_name: project.title,
+        })
+      }
       className="group block"
       id={`project-card-${project.slug}`}
       aria-label={`View project: ${project.title}`}
@@ -74,7 +79,7 @@ export default function ProjectCard({
           {/* Favorite badge */}
           {project.isFavorite && (
             <div
-              className="absolute top-3 right-3 flex h-8 w-8 items-center justify-center rounded-full bg-primary text-sm text-white shadow-md"
+              className="bg-primary absolute top-3 right-3 flex h-8 w-8 items-center justify-center rounded-full text-sm text-white shadow-md"
               role="img"
               aria-label="Favorite project"
             >
@@ -86,7 +91,10 @@ export default function ProjectCard({
           <div className="absolute top-3 left-3">
             <span
               className="glass-badge text-xs"
-              style={{ backgroundColor: categoryColors[project.category], color: "#000" }}
+              style={{
+                backgroundColor: categoryColors[project.category],
+                color: "#000",
+              }}
             >
               {categoryLabels[project.category]}
             </span>
@@ -95,11 +103,11 @@ export default function ProjectCard({
 
         {/* Content */}
         <div className="flex flex-1 flex-col p-5">
-          <Tag className="mb-2 text-xl font-extrabold text-text transition-colors duration-300 group-hover:text-primary">
+          <Tag className="text-text group-hover:text-primary mb-2 text-xl font-extrabold transition-colors duration-300">
             {project.title}
           </Tag>
 
-          <p className="mb-4 line-clamp-2 flex-1 text-sm text-text-secondary">
+          <p className="text-text-secondary mb-4 line-clamp-2 flex-1 text-sm">
             {project.description}
           </p>
 
@@ -121,14 +129,14 @@ export default function ProjectCard({
           </div>
 
           {/* Footer */}
-          <div className="flex items-center justify-between border-t border-border/20 pt-3">
-            <span className="text-xs font-bold text-text-muted">
+          <div className="border-border/20 flex items-center justify-between border-t pt-3">
+            <span className="text-text-muted text-xs font-bold">
               {new Date(project.createdAt).toLocaleDateString("en-US", {
                 month: "short",
                 year: "numeric",
               })}
             </span>
-            <span className="inline-flex items-center gap-1 text-sm font-bold text-text transition-transform group-hover:translate-x-1">
+            <span className="text-text inline-flex items-center gap-1 text-sm font-bold transition-transform group-hover:translate-x-1">
               View Details →
             </span>
           </div>

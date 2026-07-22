@@ -6,7 +6,7 @@ export default function LogoutButton() {
   return (
     <button
       onClick={() => signOut({ callbackUrl: "/admin/login" })}
-      className="glass-btn glass-btn-primary !bg-red-500 !shadow-[0_4px_12px_rgba(239,68,68,0.3)] hover:!bg-red-600 glass-btn-sm shrink-0"
+      className="glass-btn glass-btn-primary glass-btn-sm shrink-0 !bg-red-500 !shadow-[0_4px_12px_rgba(239,68,68,0.3)] hover:!bg-red-600"
     >
       Logout
     </button>

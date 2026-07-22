@@ -18,25 +18,25 @@ A personal portfolio/developer website built with **Next.js 16** (App Router), *
 
 ## Technology Stack
 
-| Layer            | Technology                                         |
-| ---------------- | -------------------------------------------------- |
-| Framework        | Next.js 16 (App Router)                            |
-| UI Library       | React 19                                           |
-| Language         | TypeScript 5 (strict mode)                         |
-| Styling          | Tailwind CSS 4 via `@tailwindcss/postcss`          |
-| Animations       | Framer Motion 12                                   |
-| Database         | Neon PostgreSQL (serverless) via `drizzle-orm`      |
-| Auth             | NextAuth v4 (OTP-based email login)                |
-| PDF Viewer       | `@embedpdf` (core, engines, plugins)               |
-| Email            | Resend SDK                                         |
-| Validation       | Zod 4                                              |
-| Icons            | Lucide React                                       |
-| Analytics        | Firebase Analytics + Microsoft Clarity             |
-| Theme            | `next-themes` (light/dark, class-based)            |
-| Fonts            | Bricolage Grotesque (headings), DM Sans (body)     |
-| Package Manager  | npm (with bun.lock also present)                   |
-| Linting          | ESLint 9 (flat config) + `eslint-config-next`      |
-| Formatting       | Prettier 3 + `prettier-plugin-tailwindcss`         |
+| Layer           | Technology                                     |
+| --------------- | ---------------------------------------------- |
+| Framework       | Next.js 16 (App Router)                        |
+| UI Library      | React 19                                       |
+| Language        | TypeScript 5 (strict mode)                     |
+| Styling         | Tailwind CSS 4 via `@tailwindcss/postcss`      |
+| Animations      | Framer Motion 12                               |
+| Database        | Neon PostgreSQL (serverless) via `drizzle-orm` |
+| Auth            | NextAuth v4 (OTP-based email login)            |
+| PDF Viewer      | `@embedpdf` (core, engines, plugins)           |
+| Email           | Resend SDK                                     |
+| Validation      | Zod 4                                          |
+| Icons           | Lucide React                                   |
+| Analytics       | Firebase Analytics + Microsoft Clarity         |
+| Theme           | `next-themes` (light/dark, class-based)        |
+| Fonts           | Bricolage Grotesque (headings), DM Sans (body) |
+| Package Manager | npm (with bun.lock also present)               |
+| Linting         | ESLint 9 (flat config) + `eslint-config-next`  |
+| Formatting      | Prettier 3 + `prettier-plugin-tailwindcss`     |
 
 ---
 
@@ -220,16 +220,16 @@ A personal portfolio/developer website built with **Next.js 16** (App Router), *
 
 ## Commands Reference
 
-| Command            | Purpose                              |
-| ------------------ | ------------------------------------ |
-| `npm run dev`      | Start development server             |
-| `npm run build`    | Production build                     |
-| `npm run start`    | Start production server              |
-| `npm run lint`     | Run ESLint                           |
-| `npm run format`   | Run Prettier on all files            |
-| `npm run db:push`  | Push Drizzle schema to Neon DB       |
-| `npm run db:studio`| Open Drizzle Studio (DB GUI)         |
-| `npm run analyze`  | Build with bundle analyzer           |
+| Command             | Purpose                        |
+| ------------------- | ------------------------------ |
+| `npm run dev`       | Start development server       |
+| `npm run build`     | Production build               |
+| `npm run start`     | Start production server        |
+| `npm run lint`      | Run ESLint                     |
+| `npm run format`    | Run Prettier on all files      |
+| `npm run db:push`   | Push Drizzle schema to Neon DB |
+| `npm run db:studio` | Open Drizzle Studio (DB GUI)   |
+| `npm run analyze`   | Build with bundle analyzer     |
 
 ---
 

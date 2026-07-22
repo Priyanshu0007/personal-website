@@ -31,7 +31,7 @@ export default function BlogsError({
           transition={{ duration: 0.3 }}
           className="mb-6"
         >
-          <span className="inline-block glass-card px-6 py-3 text-5xl font-black md:text-7xl">
+          <span className="glass-card inline-block px-6 py-3 text-5xl font-black md:text-7xl">
             📝
           </span>
         </motion.div>
@@ -40,7 +40,7 @@ export default function BlogsError({
           Failed to load articles
         </h1>
 
-        <p className="mb-8 max-w-lg text-lg text-text-secondary">
+        <p className="text-text-secondary mb-8 max-w-lg text-lg">
           Unable to fetch blog articles at the moment. Please try again.
         </p>
 

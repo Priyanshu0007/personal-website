@@ -10,7 +10,10 @@ import { cleanUrl, cleanUrls } from "@/utils/formatters";
 // ── Validation schemas ──────────────────────────────────────────
 
 const projectSchema = z.object({
-  slug: z.string().min(1, "Slug is required").regex(/^[a-z0-9-]+$/, "Slug must be lowercase with hyphens only"),
+  slug: z
+    .string()
+    .min(1, "Slug is required")
+    .regex(/^[a-z0-9-]+$/, "Slug must be lowercase with hyphens only"),
   title: z.string().min(1, "Title is required"),
   description: z.string().min(1, "Description is required"),
   longDescription: z.string().min(1, "Long description is required"),
@@ -39,7 +42,10 @@ const blogSchema = z.object({
 
 // ── Toggle visibility ───────────────────────────────────────────
 
-export async function toggleProjectVisibility(id: number, currentHideStatus: boolean) {
+export async function toggleProjectVisibility(
+  id: number,
+  currentHideStatus: boolean
+) {
   await db
     .update(projects)
     .set({ hide: !currentHideStatus })
@@ -50,7 +56,10 @@ export async function toggleProjectVisibility(id: number, currentHideStatus: boo
   revalidatePath("/");
 }
 
-export async function toggleBlogVisibility(id: string, currentHideStatus: boolean) {
+export async function toggleBlogVisibility(
+  id: string,
+  currentHideStatus: boolean
+) {
   await db
     .update(blogs)
     .set({ hide: !currentHideStatus })

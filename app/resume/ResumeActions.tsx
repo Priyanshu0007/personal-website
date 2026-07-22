@@ -60,13 +60,17 @@ export default function ResumeActions({ resumeUrl }: ResumeActionsProps) {
         className="group relative flex items-center gap-2.5 overflow-hidden rounded-xl px-6 py-3.5 text-base font-bold text-white transition-all duration-300 hover:scale-[1.03] active:scale-[0.97]"
         style={{
           background: "linear-gradient(135deg, #0071e3cc, #0071e388)",
-          boxShadow: "0 0 0 1px rgba(0,113,227,0.4), 0 8px 24px rgba(0,113,227,0.4), inset 0 1px 0 rgba(255,255,255,0.2)",
+          boxShadow:
+            "0 0 0 1px rgba(0,113,227,0.4), 0 8px 24px rgba(0,113,227,0.4), inset 0 1px 0 rgba(255,255,255,0.2)",
           backdropFilter: "blur(12px)",
         }}
       >
         <Download className="h-4 w-4 shrink-0" />
         <span>Download Resume</span>
-        <span className="absolute inset-0 -translate-x-full skew-x-[-20deg] bg-white/10 transition-transform duration-500 group-hover:translate-x-full" aria-hidden="true" />
+        <span
+          className="absolute inset-0 -translate-x-full skew-x-[-20deg] bg-white/10 transition-transform duration-500 group-hover:translate-x-full"
+          aria-hidden="true"
+        />
       </a>
       <button
         onClick={handleCopyLink}
@@ -75,7 +79,8 @@ export default function ResumeActions({ resumeUrl }: ResumeActionsProps) {
           borderColor: "rgba(255,255,255,0.12)",
           background: "rgba(255,255,255,0.06)",
           backdropFilter: "blur(12px)",
-          boxShadow: "0 4px 16px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.08)",
+          boxShadow:
+            "0 4px 16px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.08)",
           color: "var(--color-text)",
         }}
       >
@@ -86,11 +91,14 @@ export default function ResumeActions({ resumeUrl }: ResumeActionsProps) {
           </>
         ) : (
           <>
-            <Link2 className="h-4 w-4 shrink-0 opacity-70 group-hover:opacity-100 transition-opacity duration-200" />
+            <Link2 className="h-4 w-4 shrink-0 opacity-70 transition-opacity duration-200 group-hover:opacity-100" />
             <span>Copy Link</span>
           </>
         )}
-        <span className="absolute inset-0 -translate-x-full skew-x-[-20deg] bg-white/5 transition-transform duration-500 group-hover:translate-x-full" aria-hidden="true" />
+        <span
+          className="absolute inset-0 -translate-x-full skew-x-[-20deg] bg-white/5 transition-transform duration-500 group-hover:translate-x-full"
+          aria-hidden="true"
+        />
       </button>
     </div>
   );

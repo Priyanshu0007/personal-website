@@ -26,19 +26,19 @@ export default function SectionHeading({
         aria-hidden="true"
       >
         <span
-          className="block h-2.5 w-2.5 rounded-full animate-pulse shadow-md"
+          className="block h-2.5 w-2.5 animate-pulse rounded-full shadow-md"
           style={{ backgroundColor: accent, boxShadow: `0 0 12px ${accent}` }}
         />
         <span
           className="block h-[2px] w-12 rounded-full"
-          style={{ background: `linear-gradient(90deg, ${accent}, transparent)` }}
+          style={{
+            background: `linear-gradient(90deg, ${accent}, transparent)`,
+          }}
         />
       </div>
       <Tag className="font-extrabold">{title}</Tag>
       {subtitle && (
-        <p className="mt-3 max-w-2xl text-lg text-text-secondary">
-          {subtitle}
-        </p>
+        <p className="text-text-secondary mt-3 max-w-2xl text-lg">{subtitle}</p>
       )}
     </div>
   );

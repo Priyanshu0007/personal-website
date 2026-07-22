@@ -4,9 +4,12 @@
  */
 export function cleanUrl(url: string | null | undefined): string {
   if (!url) return "";
-  
+
   // Remove spaces and literal double/single quotes from start and end
-  return url.trim().replace(/^["']|["']$/g, "").trim();
+  return url
+    .trim()
+    .replace(/^["']|["']$/g, "")
+    .trim();
 }
 
 /**

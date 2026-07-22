@@ -53,53 +53,65 @@ export default async function Home() {
   return (
     <>
       {/* ===================== HERO SECTION ===================== */}
-      <section className="section relative overflow-hidden pt-8 md:pt-32" id="hero">
+      <section
+        className="section relative overflow-hidden pt-8 md:pt-32"
+        id="hero"
+      >
         <HeroShapes />
 
         <div className="relative z-10 container">
           {/* Glass Workspace Panel */}
-          <div className="glass-card glass-border-glow p-1 flex flex-col mx-auto max-w-5xl rounded-3xl" style={{ "--glow-color": "var(--color-primary)" } as React.CSSProperties}>
+          <div
+            className="glass-card glass-border-glow mx-auto flex max-w-5xl flex-col rounded-3xl p-1"
+            style={
+              { "--glow-color": "var(--color-primary)" } as React.CSSProperties
+            }
+          >
             {/* Fake Window Header */}
-            <div className="flex items-center gap-2 px-4 py-3 border-b border-border/10 bg-surface/30 rounded-t-[1.4rem] backdrop-blur-md">
+            <div className="border-border/10 bg-surface/30 flex items-center gap-2 rounded-t-[1.4rem] border-b px-4 py-3 backdrop-blur-md">
               <div className="h-3 w-3 rounded-full bg-red-500/80 shadow-[0_0_8px_rgba(239,68,68,0.5)]"></div>
               <div className="h-3 w-3 rounded-full bg-yellow-500/80 shadow-[0_0_8px_rgba(234,179,8,0.5)]"></div>
               <div className="h-3 w-3 rounded-full bg-green-500/80 shadow-[0_0_8px_rgba(34,197,94,0.5)]"></div>
-              <div className="ml-4 text-xs font-semibold text-text-muted/70 tracking-widest">
+              <div className="text-text-muted/70 ml-4 text-xs font-semibold tracking-widest">
                 priyanshu.tsx
               </div>
             </div>
 
             {/* Panel Body */}
-            <div className="p-6 md:p-10 lg:p-12 flex flex-col items-center gap-12 lg:flex-row lg:gap-16">
+            <div className="flex flex-col items-center gap-12 p-6 md:p-10 lg:flex-row lg:gap-16 lg:p-12">
               <div className="order-2 flex-1 lg:order-1">
                 <div className="max-w-3xl">
                   <div className="mb-6">
-                    <span className="inline-flex items-center gap-2 border border-accent-green/30 bg-accent-green/10 backdrop-blur-xl px-3 py-1.5 rounded-full text-xs font-bold text-text shadow-sm uppercase tracking-wider">
+                    <span className="border-accent-green/30 bg-accent-green/10 text-text inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-xs font-bold tracking-wider uppercase shadow-sm backdrop-blur-xl">
                       <span className="relative flex h-2 w-2">
-                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent-green opacity-75"></span>
-                        <span className="relative inline-flex rounded-full h-2 w-2 bg-accent-green"></span>
+                        <span className="bg-accent-green absolute inline-flex h-full w-full animate-ping rounded-full opacity-75"></span>
+                        <span className="bg-accent-green relative inline-flex h-2 w-2 rounded-full"></span>
                       </span>
                       Available for collaborations
                     </span>
                   </div>
 
                   <h1
-                    className="mb-4 text-5xl md:text-7xl font-extrabold"
-                    style={{ fontFamily: "var(--font-heading), system-ui, sans-serif" }}
+                    className="mb-4 text-5xl font-extrabold md:text-7xl"
+                    style={{
+                      fontFamily: "var(--font-heading), system-ui, sans-serif",
+                    }}
                   >
-                    <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent-purple">
+                    <span className="from-primary to-accent-purple bg-gradient-to-r bg-clip-text text-transparent">
                       {landing.hero.name}
                     </span>
                   </h1>
 
                   <p
-                    className="mb-6 text-xl font-extrabold text-text md:text-2xl"
-                    style={{ fontFamily: "var(--font-heading), system-ui, sans-serif" }}
+                    className="text-text mb-6 text-xl font-extrabold md:text-2xl"
+                    style={{
+                      fontFamily: "var(--font-heading), system-ui, sans-serif",
+                    }}
                   >
                     {landing.hero.tagline}
                   </p>
 
-                  <p className="mb-8 max-w-2xl text-lg leading-relaxed text-text-secondary">
+                  <p className="text-text-secondary mb-8 max-w-2xl text-lg leading-relaxed">
                     {landing.hero.description}
                   </p>
 
@@ -135,14 +147,19 @@ export default async function Home() {
                       id="hero-cta-primary"
                       className="group relative flex items-center gap-2.5 overflow-hidden rounded-xl px-6 py-3.5 text-base font-bold text-white transition-all duration-300 hover:scale-[1.03] active:scale-[0.97]"
                       style={{
-                        background: "linear-gradient(135deg, #0071e3cc, #0071e388)",
-                        boxShadow: "0 0 0 1px rgba(0,113,227,0.4), 0 8px 24px rgba(0,113,227,0.4), inset 0 1px 0 rgba(255,255,255,0.2)",
+                        background:
+                          "linear-gradient(135deg, #0071e3cc, #0071e388)",
+                        boxShadow:
+                          "0 0 0 1px rgba(0,113,227,0.4), 0 8px 24px rgba(0,113,227,0.4), inset 0 1px 0 rgba(255,255,255,0.2)",
                         backdropFilter: "blur(12px)",
                       }}
                     >
                       <span>{landing.hero.ctaPrimary.label}</span>
                       <ArrowRight className="h-4 w-4 shrink-0 transition-transform duration-200 group-hover:translate-x-1" />
-                      <span className="absolute inset-0 -translate-x-full skew-x-[-20deg] bg-white/10 transition-transform duration-500 group-hover:translate-x-full" aria-hidden="true" />
+                      <span
+                        className="absolute inset-0 -translate-x-full skew-x-[-20deg] bg-white/10 transition-transform duration-500 group-hover:translate-x-full"
+                        aria-hidden="true"
+                      />
                     </Link>
                     <a
                       href={landing.hero.ctaSecondary.href}
@@ -152,13 +169,17 @@ export default async function Home() {
                         borderColor: "rgba(255,255,255,0.12)",
                         background: "rgba(255,255,255,0.06)",
                         backdropFilter: "blur(12px)",
-                        boxShadow: "0 4px 16px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.08)",
+                        boxShadow:
+                          "0 4px 16px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.08)",
                         color: "var(--color-text)",
                       }}
                     >
-                      <Mail className="h-4 w-4 shrink-0 opacity-70 group-hover:opacity-100 transition-opacity duration-200" />
+                      <Mail className="h-4 w-4 shrink-0 opacity-70 transition-opacity duration-200 group-hover:opacity-100" />
                       <span>{landing.hero.ctaSecondary.label}</span>
-                      <span className="absolute inset-0 -translate-x-full skew-x-[-20deg] bg-white/5 transition-transform duration-500 group-hover:translate-x-full" aria-hidden="true" />
+                      <span
+                        className="absolute inset-0 -translate-x-full skew-x-[-20deg] bg-white/5 transition-transform duration-500 group-hover:translate-x-full"
+                        aria-hidden="true"
+                      />
                     </a>
                   </div>
                 </div>
@@ -166,9 +187,9 @@ export default async function Home() {
 
               {/* Profile Image Column */}
               <div className="order-1 w-full max-w-[280px] flex-shrink-0 lg:order-2 lg:max-w-[340px]">
-                <div className="relative group">
-                  <div className="absolute inset-0 bg-gradient-to-tr from-primary to-accent-purple rounded-[2rem] blur-xl opacity-40 group-hover:opacity-60 transition-opacity duration-500"></div>
-                  <div className="relative overflow-hidden rounded-[2rem] border-2 border-white/20 bg-surface backdrop-blur-2xl shadow-2xl transition-transform duration-500 group-hover:scale-105">
+                <div className="group relative">
+                  <div className="from-primary to-accent-purple absolute inset-0 rounded-[2rem] bg-gradient-to-tr opacity-40 blur-xl transition-opacity duration-500 group-hover:opacity-60"></div>
+                  <div className="bg-surface relative overflow-hidden rounded-[2rem] border-2 border-white/20 shadow-2xl backdrop-blur-2xl transition-transform duration-500 group-hover:scale-105">
                     <Image
                       src={
                         envConfig.profilePicUrl ||
@@ -184,7 +205,7 @@ export default async function Home() {
                       placeholder="blur"
                       blurDataURL={IMAGE_BLUR_DATA_URL}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"></div>
                   </div>
                 </div>
               </div>
@@ -201,34 +222,60 @@ export default async function Home() {
             subtitle="A quick intro to who I am and what I do."
           />
 
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 lg:gap-6">
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-4 lg:gap-6">
             {/* Bento Card 1: Bio (Spans 3 cols on large) */}
-            <div className="md:col-span-3 glass-card glass-border-glow p-6 md:p-8 flex flex-col justify-center relative overflow-hidden" style={{ "--glow-color": "var(--color-primary)" } as React.CSSProperties}>
-              <div className="absolute top-[-50%] left-[-10%] w-64 h-64 bg-primary/10 rounded-full blur-3xl pointer-events-none"></div>
-              <h3 className="text-xl font-extrabold mb-4">Hello World.</h3>
-              <p className="mb-4 text-lg leading-relaxed text-text">
+            <div
+              className="glass-card glass-border-glow relative flex flex-col justify-center overflow-hidden p-6 md:col-span-3 md:p-8"
+              style={
+                {
+                  "--glow-color": "var(--color-primary)",
+                } as React.CSSProperties
+              }
+            >
+              <div className="bg-primary/10 pointer-events-none absolute top-[-50%] left-[-10%] h-64 w-64 rounded-full blur-3xl"></div>
+              <h3 className="mb-4 text-xl font-extrabold">Hello World.</h3>
+              <p className="text-text mb-4 text-lg leading-relaxed">
                 {landing.about.bio}
               </p>
-              <p className="text-lg leading-relaxed text-text-secondary">
+              <p className="text-text-secondary text-lg leading-relaxed">
                 {landing.about.bioExtended}
               </p>
             </div>
 
             {/* Bento Card 2: Metrics (Spans 1 col on large) */}
-            <div className="md:col-span-1 glass-card glass-border-glow p-6 flex flex-col justify-between gap-6" style={{ "--glow-color": "var(--color-secondary)" } as React.CSSProperties}>
+            <div
+              className="glass-card glass-border-glow flex flex-col justify-between gap-6 p-6 md:col-span-1"
+              style={
+                {
+                  "--glow-color": "var(--color-secondary)",
+                } as React.CSSProperties
+              }
+            >
               {[
-                { label: "Years Exp.", value: landing.about.experience.years, color: "var(--color-primary)" },
-                { label: "Projects", value: landing.about.experience.projects, color: "var(--color-secondary)" },
-                { label: "Technologies", value: landing.about.experience.technologies, color: "var(--color-tertiary)" },
+                {
+                  label: "Years Exp.",
+                  value: landing.about.experience.years,
+                  color: "var(--color-primary)",
+                },
+                {
+                  label: "Projects",
+                  value: landing.about.experience.projects,
+                  color: "var(--color-secondary)",
+                },
+                {
+                  label: "Technologies",
+                  value: landing.about.experience.technologies,
+                  color: "var(--color-tertiary)",
+                },
               ].map((stat) => (
-                <div key={stat.label} className="text-center group">
+                <div key={stat.label} className="group text-center">
                   <div
-                    className="text-4xl font-black mb-1 transition-transform group-hover:scale-110 inline-block"
+                    className="mb-1 inline-block text-4xl font-black transition-transform group-hover:scale-110"
                     style={{ color: stat.color }}
                   >
                     {stat.value}
                   </div>
-                  <div className="text-xs font-bold tracking-wider text-text-muted uppercase">
+                  <div className="text-text-muted text-xs font-bold tracking-wider uppercase">
                     {stat.label}
                   </div>
                 </div>
@@ -236,24 +283,39 @@ export default async function Home() {
             </div>
 
             {/* Bento Card 3: Philosophy (Spans 2 cols) */}
-            <div className="md:col-span-2 glass-card glass-border-glow p-6 flex flex-col justify-center items-center text-center" style={{ "--glow-color": "var(--color-accent-purple)" } as React.CSSProperties}>
-              <div className="text-4xl mb-4 opacity-50">✨</div>
-              <p className="text-lg font-bold text-text italic">
-                &quot;Effective user of AI-assisted development tools to accelerate delivery and craft pixel-perfect experiences.&quot;
+            <div
+              className="glass-card glass-border-glow flex flex-col items-center justify-center p-6 text-center md:col-span-2"
+              style={
+                {
+                  "--glow-color": "var(--color-accent-purple)",
+                } as React.CSSProperties
+              }
+            >
+              <div className="mb-4 text-4xl opacity-50">✨</div>
+              <p className="text-text text-lg font-bold italic">
+                &quot;Effective user of AI-assisted development tools to
+                accelerate delivery and craft pixel-perfect experiences.&quot;
               </p>
             </div>
 
             {/* Bento Card 4: Tech Stack (Spans 2 cols) */}
-            <div className="md:col-span-2 glass-card glass-border-glow p-6" style={{ "--glow-color": "var(--color-tertiary)" } as React.CSSProperties}>
-              <h3 className="mb-4 text-sm font-extrabold tracking-wider text-text-muted uppercase flex items-center gap-2">
-                <span className="h-2 w-2 rounded-full bg-tertiary animate-pulse"></span>
+            <div
+              className="glass-card glass-border-glow p-6 md:col-span-2"
+              style={
+                {
+                  "--glow-color": "var(--color-tertiary)",
+                } as React.CSSProperties
+              }
+            >
+              <h3 className="text-text-muted mb-4 flex items-center gap-2 text-sm font-extrabold tracking-wider uppercase">
+                <span className="bg-tertiary h-2 w-2 animate-pulse rounded-full"></span>
                 Skills & Technologies
               </h3>
               <div className="flex flex-wrap gap-2">
                 {landing.about.skills.map((skill) => (
                   <span
                     key={skill}
-                    className="glass-badge glass-badge-outline text-[0.7rem] hover:bg-tertiary hover:text-black hover:border-tertiary cursor-default transition-colors"
+                    className="glass-badge glass-badge-outline hover:bg-tertiary hover:border-tertiary cursor-default text-[0.7rem] transition-colors hover:text-black"
                   >
                     {skill}
                   </span>
@@ -279,7 +341,7 @@ export default async function Home() {
                 {[1, 2].map((i) => (
                   <div
                     key={i}
-                    className="h-[400px] w-full animate-pulse rounded-2xl border border-border/20 bg-surface"
+                    className="border-border/20 bg-surface h-[400px] w-full animate-pulse rounded-2xl border"
                   />
                 ))}
               </div>
@@ -299,13 +361,17 @@ export default async function Home() {
               className="group relative inline-flex items-center gap-2.5 overflow-hidden rounded-xl px-6 py-3.5 text-base font-bold text-white transition-all duration-300 hover:scale-[1.03] active:scale-[0.97]"
               style={{
                 background: "linear-gradient(135deg, #0071e3cc, #0071e388)",
-                boxShadow: "0 0 0 1px rgba(0,113,227,0.4), 0 8px 24px rgba(0,113,227,0.4), inset 0 1px 0 rgba(255,255,255,0.2)",
+                boxShadow:
+                  "0 0 0 1px rgba(0,113,227,0.4), 0 8px 24px rgba(0,113,227,0.4), inset 0 1px 0 rgba(255,255,255,0.2)",
                 backdropFilter: "blur(12px)",
               }}
             >
               <span>View All Projects</span>
               <ArrowRight className="h-4 w-4 shrink-0 transition-transform duration-200 group-hover:translate-x-1" />
-              <span className="absolute inset-0 -translate-x-full skew-x-[-20deg] bg-white/10 transition-transform duration-500 group-hover:translate-x-full" aria-hidden="true" />
+              <span
+                className="absolute inset-0 -translate-x-full skew-x-[-20deg] bg-white/10 transition-transform duration-500 group-hover:translate-x-full"
+                aria-hidden="true"
+              />
             </Link>
           </div>
         </div>
@@ -329,7 +395,7 @@ export default async function Home() {
                 {[1, 2, 3].map((i) => (
                   <div
                     key={i}
-                    className="h-[300px] w-full animate-pulse rounded-2xl border border-border/20 bg-surface"
+                    className="border-border/20 bg-surface h-[300px] w-full animate-pulse rounded-2xl border"
                   />
                 ))}
               </div>
@@ -349,13 +415,17 @@ export default async function Home() {
               className="group relative inline-flex items-center gap-2.5 overflow-hidden rounded-xl px-6 py-3.5 text-base font-bold text-white transition-all duration-300 hover:scale-[1.03] active:scale-[0.97]"
               style={{
                 background: "linear-gradient(135deg, #0071e3cc, #0071e388)",
-                boxShadow: "0 0 0 1px rgba(0,113,227,0.4), 0 8px 24px rgba(0,113,227,0.4), inset 0 1px 0 rgba(255,255,255,0.2)",
+                boxShadow:
+                  "0 0 0 1px rgba(0,113,227,0.4), 0 8px 24px rgba(0,113,227,0.4), inset 0 1px 0 rgba(255,255,255,0.2)",
                 backdropFilter: "blur(12px)",
               }}
             >
               <span>View All Articles</span>
               <ArrowRight className="h-4 w-4 shrink-0 transition-transform duration-200 group-hover:translate-x-1" />
-              <span className="absolute inset-0 -translate-x-full skew-x-[-20deg] bg-white/10 transition-transform duration-500 group-hover:translate-x-full" aria-hidden="true" />
+              <span
+                className="absolute inset-0 -translate-x-full skew-x-[-20deg] bg-white/10 transition-transform duration-500 group-hover:translate-x-full"
+                aria-hidden="true"
+              />
             </Link>
           </div>
         </div>
@@ -383,8 +453,8 @@ export default async function Home() {
 
       {/* ===================== CONTACT SECTION ===================== */}
       <section className="section relative" id="contact">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-3xl h-[60%] bg-primary/20 blur-[120px] rounded-full pointer-events-none z-0"></div>
-        <div className="container relative z-10 max-w-5xl">
+        <div className="bg-primary/20 pointer-events-none absolute top-1/2 left-1/2 z-0 h-[60%] w-full max-w-3xl -translate-x-1/2 -translate-y-1/2 rounded-full blur-[120px]"></div>
+        <div className="relative z-10 container max-w-5xl">
           <SectionHeading
             title={landing.contact.heading}
             subtitle={landing.contact.subheading}
@@ -392,24 +462,48 @@ export default async function Home() {
             align="center"
           />
 
-          <div className="glass-card glass-border-glow p-2 mt-8" style={{ "--glow-color": "var(--color-secondary)" } as React.CSSProperties}>
-            <div className="grid grid-cols-1 md:grid-cols-2 rounded-2xl overflow-hidden bg-surface/50">
+          <div
+            className="glass-card glass-border-glow mt-8 p-2"
+            style={
+              {
+                "--glow-color": "var(--color-secondary)",
+              } as React.CSSProperties
+            }
+          >
+            <div className="bg-surface/50 grid grid-cols-1 overflow-hidden rounded-2xl md:grid-cols-2">
               {/* Contact Info (Left) */}
-              <div className="p-8 lg:p-10 flex flex-col justify-between border-b md:border-b-0 md:border-r border-border/10 relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-secondary/10 rounded-full blur-2xl"></div>
+              <div className="border-border/10 relative flex flex-col justify-between overflow-hidden border-b p-8 md:border-r md:border-b-0 lg:p-10">
+                <div className="bg-secondary/10 absolute top-0 right-0 h-32 w-32 rounded-full blur-2xl"></div>
                 <div>
-                  <h3 className="text-2xl font-extrabold mb-2">Let&apos;s Connect</h3>
+                  <h3 className="mb-2 text-2xl font-extrabold">
+                    Let&apos;s Connect
+                  </h3>
                   <p className="text-text-secondary mb-8">
-                    My inbox is always open. Whether you have a question or just want to say hi, I&apos;ll try my best to get back to you!
+                    My inbox is always open. Whether you have a question or just
+                    want to say hi, I&apos;ll try my best to get back to you!
                   </p>
-                  
+
                   <div className="space-y-4">
-                    <a href={personal.socials.linkedin} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 p-3 rounded-xl hover:bg-surface transition-colors">
-                      <span className="flex h-10 w-10 items-center justify-center rounded-full bg-secondary/10 text-secondary">💼</span>
+                    <a
+                      href={personal.socials.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:bg-surface flex items-center gap-3 rounded-xl p-3 transition-colors"
+                    >
+                      <span className="bg-secondary/10 text-secondary flex h-10 w-10 items-center justify-center rounded-full">
+                        💼
+                      </span>
                       <span className="font-bold">Connect on LinkedIn</span>
                     </a>
-                    <a href={personal.socials.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 p-3 rounded-xl hover:bg-surface transition-colors">
-                      <span className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary">🐙</span>
+                    <a
+                      href={personal.socials.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:bg-surface flex items-center gap-3 rounded-xl p-3 transition-colors"
+                    >
+                      <span className="bg-primary/10 text-primary flex h-10 w-10 items-center justify-center rounded-full">
+                        🐙
+                      </span>
                       <span className="font-bold">Follow on GitHub</span>
                     </a>
                   </div>
@@ -417,7 +511,7 @@ export default async function Home() {
               </div>
 
               {/* Form (Right) */}
-              <div className="p-8 lg:p-10 bg-surface/30 backdrop-blur-sm">
+              <div className="bg-surface/30 p-8 backdrop-blur-sm lg:p-10">
                 <ContactForm />
               </div>
             </div>

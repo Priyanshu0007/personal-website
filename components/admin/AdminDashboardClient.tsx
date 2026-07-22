@@ -4,7 +4,12 @@ import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import ProjectForm from "@/components/admin/ProjectForm";
 import BlogForm from "@/components/admin/BlogForm";
-import { toggleProjectVisibility, toggleBlogVisibility, deleteProject, deleteBlog } from "@/actions/admin";
+import {
+  toggleProjectVisibility,
+  toggleBlogVisibility,
+  deleteProject,
+  deleteBlog,
+} from "@/actions/admin";
 import { useRouter } from "next/navigation";
 import { IMAGE_BLUR_DATA_URL } from "@/utils/constants";
 
@@ -123,7 +128,7 @@ export default function AdminDashboardClient({ projects, blogs }: Props) {
       {/* ── Projects ───────────────────────────────────────────── */}
       <section className="space-y-4">
         <div className="flex items-center justify-between gap-2">
-          <h2 className="text-xl sm:text-2xl font-bold uppercase border-l-4 border-primary pl-3">
+          <h2 className="border-primary border-l-4 pl-3 text-xl font-bold uppercase sm:text-2xl">
             Projects ({projects.length})
           </h2>
           <button
@@ -141,9 +146,9 @@ export default function AdminDashboardClient({ projects, blogs }: Props) {
               className="glass-card flex flex-col p-3 sm:p-4"
             >
               {/* Top row: thumbnail + info */}
-              <div className="flex items-center gap-3 mb-3">
+              <div className="mb-3 flex items-center gap-3">
                 {project.thumbnail ? (
-                  <div className="relative h-10 w-10 shrink-0 overflow-hidden rounded-lg border border-border/50 sm:h-12 sm:w-12">
+                  <div className="border-border/50 relative h-10 w-10 shrink-0 overflow-hidden rounded-lg border sm:h-12 sm:w-12">
                     <Image
                       src={project.thumbnail}
                       alt={project.title}
@@ -156,8 +161,10 @@ export default function AdminDashboardClient({ projects, blogs }: Props) {
                   </div>
                 ) : null}
                 <div className="min-w-0 flex-1">
-                  <h3 className="truncate text-sm font-bold sm:text-base">{project.title}</h3>
-                  <p className="text-xs text-muted-foreground truncate">
+                  <h3 className="truncate text-sm font-bold sm:text-base">
+                    {project.title}
+                  </h3>
+                  <p className="text-muted-foreground truncate text-xs">
                     /{project.slug} · {project.category}
                     {project.featured && " · ⭐"}
                   </p>
@@ -165,8 +172,8 @@ export default function AdminDashboardClient({ projects, blogs }: Props) {
                 <span
                   className={`glass-badge shrink-0 ${
                     project.hide
-                      ? "glass-badge-outline text-red-500 border-red-500/30"
-                      : "glass-badge-outline text-green-500 border-green-500/30"
+                      ? "glass-badge-outline border-red-500/30 text-red-500"
+                      : "glass-badge-outline border-green-500/30 text-green-500"
                   }`}
                 >
                   {project.hide ? "HIDDEN" : "LIVE"}
@@ -201,7 +208,7 @@ export default function AdminDashboardClient({ projects, blogs }: Props) {
             </div>
           ))}
           {projects.length === 0 && (
-            <p className="text-muted-foreground text-center py-8 border-2 border-dashed border-foreground/20 text-sm">
+            <p className="text-muted-foreground border-foreground/20 border-2 border-dashed py-8 text-center text-sm">
               No projects yet. Add one above!
             </p>
           )}
@@ -211,7 +218,7 @@ export default function AdminDashboardClient({ projects, blogs }: Props) {
       {/* ── Blogs ──────────────────────────────────────────────── */}
       <section className="space-y-4">
         <div className="flex items-center justify-between gap-2">
-          <h2 className="text-xl sm:text-2xl font-bold uppercase border-l-4 border-primary pl-3">
+          <h2 className="border-primary border-l-4 pl-3 text-xl font-bold uppercase sm:text-2xl">
             Blogs ({blogs.length})
           </h2>
           <button
@@ -224,23 +231,22 @@ export default function AdminDashboardClient({ projects, blogs }: Props) {
 
         <div className="grid gap-3">
           {blogs.map((blog) => (
-            <div
-              key={blog.id}
-              className="glass-card flex flex-col p-3 sm:p-4"
-            >
+            <div key={blog.id} className="glass-card flex flex-col p-3 sm:p-4">
               {/* Top row: info */}
-              <div className="flex items-center gap-3 mb-3">
+              <div className="mb-3 flex items-center gap-3">
                 <div className="min-w-0 flex-1">
-                  <h3 className="truncate text-sm font-bold sm:text-base">{blog.title}</h3>
-                  <p className="text-xs text-muted-foreground truncate">
+                  <h3 className="truncate text-sm font-bold sm:text-base">
+                    {blog.title}
+                  </h3>
+                  <p className="text-muted-foreground truncate text-xs">
                     {blog.platform} · {blog.date}
                   </p>
                 </div>
                 <span
                   className={`glass-badge shrink-0 ${
                     blog.hide
-                      ? "glass-badge-outline text-red-500 border-red-500/30"
-                      : "glass-badge-outline text-green-500 border-green-500/30"
+                      ? "glass-badge-outline border-red-500/30 text-red-500"
+                      : "glass-badge-outline border-green-500/30 text-green-500"
                   }`}
                 >
                   {blog.hide ? "HIDDEN" : "LIVE"}
@@ -275,7 +281,7 @@ export default function AdminDashboardClient({ projects, blogs }: Props) {
             </div>
           ))}
           {blogs.length === 0 && (
-            <p className="text-muted-foreground text-center py-8 border-2 border-dashed border-foreground/20 text-sm">
+            <p className="text-muted-foreground border-foreground/20 border-2 border-dashed py-8 text-center text-sm">
               No blogs yet. Add one above!
             </p>
           )}

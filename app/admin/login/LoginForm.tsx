@@ -56,33 +56,37 @@ export default function LoginForm() {
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background text-foreground p-4">
+    <div className="bg-background text-foreground flex min-h-screen items-center justify-center p-4">
       <div className="w-full max-w-sm sm:max-w-md">
         {/* Logo / brand */}
         <div className="mb-6 text-center">
-          <div className="mx-auto mb-3 flex h-16 w-16 items-center justify-center rounded-2xl border border-border/50 bg-primary/80 backdrop-blur-xl text-2xl font-black text-white shadow-md">
+          <div className="border-border/50 bg-primary/80 mx-auto mb-3 flex h-16 w-16 items-center justify-center rounded-2xl border text-2xl font-black text-white shadow-md backdrop-blur-xl">
             PG
           </div>
-          <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground">Portfolio Admin</p>
+          <p className="text-muted-foreground text-xs font-bold tracking-widest uppercase">
+            Portfolio Admin
+          </p>
         </div>
 
         <form
           onSubmit={handleSubmit}
-          className="glass-card flex flex-col gap-5 p-6 sm:p-8 w-full"
+          className="glass-card flex w-full flex-col gap-5 p-6 sm:p-8"
         >
           <div className="space-y-1">
-            <h1 className="text-2xl font-black uppercase tracking-tighter sm:text-3xl">
+            <h1 className="text-2xl font-black tracking-tighter uppercase sm:text-3xl">
               {step === "email" ? "Sign In" : "Verify"}
             </h1>
-            <p className="text-xs sm:text-sm text-muted-foreground font-bold uppercase tracking-wide">
-              {step === "email" ? "Enter your email to receive an OTP" : "Enter the code sent to your email"}
+            <p className="text-muted-foreground text-xs font-bold tracking-wide uppercase sm:text-sm">
+              {step === "email"
+                ? "Enter your email to receive an OTP"
+                : "Enter the code sent to your email"}
             </p>
           </div>
 
           {error && (
-            <div className="flex items-center gap-2 rounded-lg border border-border/50 bg-red-500/20 p-3 text-xs font-bold text-red-600 dark:text-red-400 sm:text-sm">
+            <div className="border-border/50 flex items-center gap-2 rounded-lg border bg-red-500/20 p-3 text-xs font-bold text-red-600 sm:text-sm dark:text-red-400">
               <span className="text-base">⚠️</span>
-              <span className="break-words min-w-0">{error}</span>
+              <span className="min-w-0 break-words">{error}</span>
             </div>
           )}
 
@@ -90,7 +94,9 @@ export default function LoginForm() {
             {step === "email" ? (
               <>
                 <div className="space-y-1">
-                  <label className="text-xs font-black uppercase tracking-widest">Email Address</label>
+                  <label className="text-xs font-black tracking-widest uppercase">
+                    Email Address
+                  </label>
                   <input
                     type="email"
                     value={email}
@@ -112,7 +118,9 @@ export default function LoginForm() {
             ) : (
               <>
                 <div className="space-y-1">
-                  <label className="text-xs font-black uppercase tracking-widest">Verification Code</label>
+                  <label className="text-xs font-black tracking-widest uppercase">
+                    Verification Code
+                  </label>
                   <input
                     type="text"
                     value={otp}
@@ -122,20 +130,23 @@ export default function LoginForm() {
                     maxLength={6}
                     disabled={loading}
                     inputMode="numeric"
-                    className="glass-input text-center font-bold text-lg tracking-[0.4em] placeholder:tracking-normal sm:text-xl"
+                    className="glass-input text-center text-lg font-bold tracking-[0.4em] placeholder:tracking-normal sm:text-xl"
                   />
                 </div>
                 <button
                   type="submit"
                   disabled={loading}
-                  className="glass-btn glass-btn-accent w-full text-sm bg-accent-green"
+                  className="glass-btn glass-btn-accent bg-accent-green w-full text-sm"
                 >
                   {loading ? "Verifying..." : "Verify & Login"}
                 </button>
                 <button
                   type="button"
-                  onClick={() => { setStep("email"); setError(null); }}
-                  className="w-full text-xs font-black uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors py-2"
+                  onClick={() => {
+                    setStep("email");
+                    setError(null);
+                  }}
+                  className="text-muted-foreground hover:text-foreground w-full py-2 text-xs font-black tracking-widest uppercase transition-colors"
                 >
                   ← Change Email
                 </button>
