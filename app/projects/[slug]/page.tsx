@@ -180,6 +180,7 @@ export default async function ProjectDetailPage({
               src={project.thumbnail}
               alt=""
               fill
+              sizes="100vw"
               className="scale-110 object-cover opacity-40 blur-2xl"
               aria-hidden="true"
               placeholder="blur"

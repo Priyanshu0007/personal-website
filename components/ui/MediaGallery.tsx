@@ -119,7 +119,7 @@ export default function MediaGallery({
                   alt={`${title} screenshot ${i + 1}`}
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
-                  sizes="(max-width: 768px) 50vw, 33vw"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 800px"
                   placeholder="blur"
                   blurDataURL={IMAGE_BLUR_DATA_URL}
                 />
