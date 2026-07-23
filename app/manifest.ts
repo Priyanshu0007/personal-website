@@ -8,8 +8,8 @@ export default function manifest(): MetadataRoute.Manifest {
       "Portfolio of Priyanshu Gupta — Full-stack developer specializing in React, Next.js, and React Native. Building beautiful projects and sharing thoughts through articles and blogs.",
     start_url: "/",
     display: "standalone",
-    background_color: "#E0E7FF",
-    theme_color: "#3B82F6",
+    background_color: "#f5f5f7",
+    theme_color: "#f5f5f7",
     icons: [
       {
         src: "/icon.svg",

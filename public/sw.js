@@ -1,5 +1,5 @@
 // Service Worker for PWA - Caches static assets for offline support
-const CACHE_NAME = "portfolio-v2";
+const CACHE_NAME = "portfolio-v3";
 const STATIC_ASSETS = ["/", "/icon.svg", "/manifest.webmanifest"];
 
 // Install event - cache static assets

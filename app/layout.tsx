@@ -28,8 +28,8 @@ const personal = getPersonalData();
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#3B82F6" },
-    { media: "(prefers-color-scheme: dark)", color: "#06B6D4" },
+    { media: "(prefers-color-scheme: light)", color: "#f5f5f7" },
+    { media: "(prefers-color-scheme: dark)", color: "#000000" },
   ],
   width: "device-width",
   initialScale: 1,
@@ -49,6 +49,11 @@ export const metadata: Metadata = {
   metadataBase: new URL(personal.seo.siteUrl),
   alternates: {
     canonical: "/",
+  },
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: personal.name,
   },
   icons: {
     icon: [
