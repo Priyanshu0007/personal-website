@@ -1,13 +1,19 @@
 import { z } from "zod";
 
+const isServer = typeof window === "undefined";
+
 const envSchema = z.object({
-  // Required server-side environment variables
-  DATABASE_URL: z
-    .string({ message: "DATABASE_URL environment variable is missing" })
-    .min(1, "DATABASE_URL cannot be empty"),
-  RESEND_API_KEY: z
-    .string({ message: "RESEND_API_KEY environment variable is missing" })
-    .min(1, "RESEND_API_KEY cannot be empty"),
+  // Required server-side environment variables (only enforced on server)
+  DATABASE_URL: isServer
+    ? z
+        .string({ message: "DATABASE_URL environment variable is missing" })
+        .min(1, "DATABASE_URL cannot be empty")
+    : z.string().default(""),
+  RESEND_API_KEY: isServer
+    ? z
+        .string({ message: "RESEND_API_KEY environment variable is missing" })
+        .min(1, "RESEND_API_KEY cannot be empty")
+    : z.string().default(""),
 
   // Resend optional configuration
   RESEND_FROM_EMAIL: z.string().default("onboarding@resend.dev"),
@@ -31,7 +37,30 @@ const envSchema = z.object({
   NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID: z.string().default(""),
 });
 
-const parsedEnv = envSchema.safeParse(process.env);
+// Explicit process.env property access is required for Next.js to replace NEXT_PUBLIC_* variables in client bundles
+const rawEnv = {
+  DATABASE_URL: process.env.DATABASE_URL,
+  RESEND_API_KEY: process.env.RESEND_API_KEY,
+  RESEND_FROM_EMAIL: process.env.RESEND_FROM_EMAIL,
+  CONTACT_EMAIL_TO: process.env.CONTACT_EMAIL_TO,
+  NEXT_PUBLIC_RESUME_URL: process.env.NEXT_PUBLIC_RESUME_URL,
+  NEXT_PUBLIC_PROFILE_PIC_URL: process.env.NEXT_PUBLIC_PROFILE_PIC_URL,
+  NEXT_PUBLIC_CLARITY_PROJECT_ID: process.env.NEXT_PUBLIC_CLARITY_PROJECT_ID,
+  NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET,
+  NEXT_PUBLIC_FIREBASE_API_KEY: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+  NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN:
+    process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+  NEXT_PUBLIC_FIREBASE_PROJECT_ID: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+  NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET:
+    process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+  NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID:
+    process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+  NEXT_PUBLIC_FIREBASE_APP_ID: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+  NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID:
+    process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
+};
+
+const parsedEnv = envSchema.safeParse(rawEnv);
 
 if (!parsedEnv.success) {
   const formattedErrors = parsedEnv.error.issues

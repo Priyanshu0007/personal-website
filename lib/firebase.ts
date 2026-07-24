@@ -16,9 +16,13 @@ const firebaseConfig = {
 export const app =
   getApps().length === 0 ? initializeApp(firebaseConfig) : getApps()[0];
 
-// Initialize Analytics (only on client side)
+const hasFirebaseConfig = Boolean(
+  firebaseConfig.apiKey && firebaseConfig.projectId
+);
+
+// Initialize Analytics (only on client side if valid Firebase app config exists)
 export const analytics =
-  typeof window !== "undefined"
+  typeof window !== "undefined" && hasFirebaseConfig
     ? isSupported().then((yes) => (yes ? getAnalytics(app) : null))
     : null;
 
