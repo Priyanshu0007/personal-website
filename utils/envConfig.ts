@@ -1,29 +1,77 @@
-export const envConfig = {
+import { z } from "zod";
+
+const envSchema = z.object({
+  // Required server-side environment variables
+  DATABASE_URL: z
+    .string({ message: "DATABASE_URL environment variable is missing" })
+    .min(1, "DATABASE_URL cannot be empty"),
+  RESEND_API_KEY: z
+    .string({ message: "RESEND_API_KEY environment variable is missing" })
+    .min(1, "RESEND_API_KEY cannot be empty"),
+
+  // Resend optional configuration
+  RESEND_FROM_EMAIL: z.string().default("onboarding@resend.dev"),
+  CONTACT_EMAIL_TO: z.string().default(""),
+
   // Public URLs
-  resumeUrl: process.env.NEXT_PUBLIC_RESUME_URL || "",
-  profilePicUrl: process.env.NEXT_PUBLIC_PROFILE_PIC_URL || "",
-  clarityProjectId: process.env.NEXT_PUBLIC_CLARITY_PROJECT_ID || "",
-
-  // Resend
-  resendApiKey: process.env.RESEND_API_KEY || "",
-  resendFromEmail: process.env.RESEND_FROM_EMAIL || "onboarding@resend.dev",
-  contactEmailTo: process.env.CONTACT_EMAIL_TO || "",
-
-  // Database
-  databaseUrl: process.env.DATABASE_URL || "",
+  NEXT_PUBLIC_RESUME_URL: z.string().default(""),
+  NEXT_PUBLIC_PROFILE_PIC_URL: z.string().default(""),
+  NEXT_PUBLIC_CLARITY_PROJECT_ID: z.string().default(""),
 
   // NextAuth
-  nextAuthSecret: process.env.NEXTAUTH_SECRET || "",
+  NEXTAUTH_SECRET: z.string().default(""),
+
+  // Firebase Configuration
+  NEXT_PUBLIC_FIREBASE_API_KEY: z.string().default(""),
+  NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN: z.string().default(""),
+  NEXT_PUBLIC_FIREBASE_PROJECT_ID: z.string().default(""),
+  NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET: z.string().default(""),
+  NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID: z.string().default(""),
+  NEXT_PUBLIC_FIREBASE_APP_ID: z.string().default(""),
+  NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID: z.string().default(""),
+});
+
+const parsedEnv = envSchema.safeParse(process.env);
+
+if (!parsedEnv.success) {
+  const formattedErrors = parsedEnv.error.issues
+    .map((issue) => `  - ${issue.path.join(".")}: ${issue.message}`)
+    .join("\n");
+  console.error(
+    "❌ Environment variable validation error(s):\n" + formattedErrors
+  );
+  throw new Error(
+    `Invalid or missing environment variables:\n${formattedErrors}`
+  );
+}
+
+const env = parsedEnv.data;
+
+export const envConfig = {
+  // Public URLs
+  resumeUrl: env.NEXT_PUBLIC_RESUME_URL,
+  profilePicUrl: env.NEXT_PUBLIC_PROFILE_PIC_URL,
+  clarityProjectId: env.NEXT_PUBLIC_CLARITY_PROJECT_ID,
+
+  // Resend
+  resendApiKey: env.RESEND_API_KEY,
+  resendFromEmail: env.RESEND_FROM_EMAIL,
+  contactEmailTo: env.CONTACT_EMAIL_TO,
+
+  // Database
+  databaseUrl: env.DATABASE_URL,
+
+  // NextAuth
+  nextAuthSecret: env.NEXTAUTH_SECRET,
 
   // Firebase
   firebase: {
-    apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY || "",
-    authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN || "",
-    projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID || "",
-    storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET || "",
-    messagingSenderId:
-      process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID || "",
-    appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID || "",
-    measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID || "",
+    apiKey: env.NEXT_PUBLIC_FIREBASE_API_KEY,
+    authDomain: env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+    projectId: env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+    storageBucket: env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+    appId: env.NEXT_PUBLIC_FIREBASE_APP_ID,
+    measurementId: env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
   },
 };

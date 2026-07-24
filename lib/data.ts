@@ -87,16 +87,9 @@ export async function getAllBlogs(): Promise<Blog[]> {
   })) as Blog[];
 }
 
-export async function getBlogById(
-  id: string
-): Promise<Blog | undefined> {
-  const result = await db
-    .select()
-    .from(blogs)
-    .where(eq(blogs.id, id))
-    .limit(1);
+export async function getBlogById(id: string): Promise<Blog | undefined> {
+  const result = await db.select().from(blogs).where(eq(blogs.id, id)).limit(1);
   return result[0] && !result[0].hide
     ? ({ ...result[0], url: cleanUrl(result[0].url) } as Blog)
     : undefined;
 }
-
