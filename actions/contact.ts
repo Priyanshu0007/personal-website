@@ -2,15 +2,10 @@
 
 import { Resend } from "resend";
 import { envConfig } from "@/utils/envConfig";
-import { z } from "zod";
+import { contactSchema } from "@/lib/validations";
 
 const resend = new Resend(envConfig.resendApiKey);
 
-const contactSchema = z.object({
-  name: z.string().min(2, "Name must be at least 2 characters."),
-  email: z.string().email("Invalid email address."),
-  message: z.string().min(10, "Message must be at least 10 characters."),
-});
 
 export async function sendContactEmail(
   prevState: { success: boolean; error: string | null },

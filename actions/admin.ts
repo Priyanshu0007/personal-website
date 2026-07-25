@@ -4,41 +4,8 @@ import { db } from "@/db";
 import { projects, blogs } from "@/db/schema";
 import { eq } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
-import { z } from "zod";
 import { cleanUrl, cleanUrls } from "@/utils/formatters";
-
-// ── Validation schemas ──────────────────────────────────────────
-
-const projectSchema = z.object({
-  slug: z
-    .string()
-    .min(1, "Slug is required")
-    .regex(/^[a-z0-9-]+$/, "Slug must be lowercase with hyphens only"),
-  title: z.string().min(1, "Title is required"),
-  description: z.string().min(1, "Description is required"),
-  longDescription: z.string().min(1, "Long description is required"),
-  category: z.enum(["react-js", "react-native", "next-js", "other"]),
-  techStack: z.array(z.string()).min(1, "At least one tech is required"),
-  images: z.array(z.string().url("Must be a valid URL")),
-  thumbnail: z.string().url("Must be a valid URL"),
-  liveUrl: z.string().url("Must be a valid URL").nullable().or(z.literal("")),
-  githubUrl: z.string().url("Must be a valid URL").nullable().or(z.literal("")),
-  isFavorite: z.boolean(),
-  featured: z.boolean(),
-  createdAt: z.string().min(1, "Date is required"),
-  highlights: z.array(z.string()),
-  hide: z.boolean(),
-});
-
-const blogSchema = z.object({
-  id: z.string().min(1, "ID is required"),
-  title: z.string().min(1, "Title is required"),
-  url: z.string().url("Must be a valid URL"),
-  platform: z.string().min(1, "Platform is required"),
-  date: z.string().min(1, "Date is required"),
-  description: z.string().min(1, "Description is required"),
-  hide: z.boolean(),
-});
+import { projectSchema, blogSchema } from "@/lib/validations";
 
 // ── Toggle visibility ───────────────────────────────────────────
 

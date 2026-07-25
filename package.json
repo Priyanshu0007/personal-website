@@ -8,6 +8,9 @@
     "start": "next start",
     "lint": "eslint",
     "format": "prettier --write .",
+    "test": "vitest run",
+    "test:unit": "vitest run",
+    "test:e2e": "playwright test",
     "db:push": "drizzle-kit push",
     "db:studio": "drizzle-kit studio",
     "analyze": "ANALYZE=true npm run build"
@@ -36,6 +39,7 @@
   },
   "devDependencies": {
     "@next/bundle-analyzer": "^16.2.10",
+    "@playwright/test": "^1.62.0",
     "@tailwindcss/postcss": "4",
     "@types/dotenv": "8.2.3",
     "@types/node": "20",
@@ -48,7 +52,8 @@
     "prettier": "3.8.3",
     "prettier-plugin-tailwindcss": "0.8.0",
     "tailwindcss": "4",
-    "typescript": "5"
+    "typescript": "5",
+    "vitest": "^4.1.10"
   },
   "ignoreScripts": [
     "sharp",
