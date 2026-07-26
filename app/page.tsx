@@ -201,7 +201,7 @@ export default async function Home() {
                       className="h-auto w-full object-cover transition-transform duration-700 group-hover:scale-110"
                       priority
                       fetchPriority="high"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 340px, 450px"
+                      sizes="(max-width: 768px) 280px, (max-width: 1024px) 340px, 340px"
                       placeholder="blur"
                       blurDataURL={IMAGE_BLUR_DATA_URL}
                     />

@@ -14,7 +14,7 @@ const outfit = Outfit({
   subsets: ["latin"],
   variable: "--font-heading",
   display: "swap",
-  weight: ["400", "500", "600", "700", "800", "900"],
+  weight: ["500", "700", "800"],
 });
 
 const dmSans = DM_Sans({
@@ -160,6 +160,10 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://cdn.statically.io" />
         <link rel="dns-prefetch" href="https://cdn.statically.io" />
+        <link rel="preconnect" href="https://images.unsplash.com" />
+        <link rel="dns-prefetch" href="https://images.unsplash.com" />
+        <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+        <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
         <link
           rel="alternate"
           type="application/rss+xml"
