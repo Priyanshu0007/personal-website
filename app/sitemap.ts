@@ -5,7 +5,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const personal = getPersonalData();
   const baseUrl = personal.seo.siteUrl;
   const projectSlugs = await getProjectSlugs();
-  await getAllBlogs();
+  const allBlogs = await getAllBlogs();
 
   const staticPages: MetadataRoute.Sitemap = [
     {
@@ -38,6 +38,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "monthly",
       priority: 0.8,
     },
+    {
+      url: `${baseUrl}/rss.xml`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.5,
+    },
   ];
 
   const projectPages: MetadataRoute.Sitemap = projectSlugs.map((slug) => ({
@@ -47,9 +53,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.8,
   }));
 
-  // Note: Blogs currently link to external URLs, but we include them if they have a local page
-  // If blogs had local pages like /blogs/[id], we would add them here.
-  // For now, we only have the /blogs list page.
+  const blogPages: MetadataRoute.Sitemap = allBlogs.map((blog) => ({
+    url: `${baseUrl}/blogs/${blog.id}`,
+    lastModified: blog.date ? new Date(blog.date) : new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
 
-  return [...staticPages, ...projectPages];
+  return [...staticPages, ...projectPages, ...blogPages];
 }

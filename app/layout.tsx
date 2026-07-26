@@ -160,6 +160,12 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://cdn.statically.io" />
         <link rel="dns-prefetch" href="https://cdn.statically.io" />
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          title={`${personal.name}'s Blog RSS Feed`}
+          href="/rss.xml"
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

@@ -134,19 +134,45 @@ export default async function ProjectDetailPage({
     ],
   };
 
+  const isSoftwareApp =
+    project.category === "react-native" ||
+    project.category === "react-js" ||
+    project.category === "next-js";
+
   const projectJsonLd = {
     "@context": "https://schema.org",
-    "@type": "CreativeWork",
+    "@type": isSoftwareApp ? ["SoftwareApplication", "CreativeWork"] : "CreativeWork",
     name: project.title,
     description: project.description,
+    applicationCategory:
+      project.category === "react-native"
+        ? "MobileApplication"
+        : "WebApplication",
+    operatingSystem:
+      project.category === "react-native" ? "iOS, Android" : "Web, Cross-platform",
     author: {
       "@type": "Person",
       name: personal.name,
+      url: personal.seo.siteUrl,
+    },
+    creator: {
+      "@type": "Person",
+      name: personal.name,
+      url: personal.seo.siteUrl,
     },
     datePublished: project.createdAt,
-    image: project.thumbnail,
+    image: project.thumbnail ? [project.thumbnail, ...project.images] : project.images,
     url: `${personal.seo.siteUrl}/projects/${slug}`,
+    sameAs: [project.liveUrl, project.githubUrl].filter(Boolean) as string[],
+    codeRepository: project.githubUrl || undefined,
+    installUrl: project.liveUrl || undefined,
     keywords: project.techStack.join(", "),
+    offers: {
+      "@type": "Offer",
+      price: "0",
+      priceCurrency: "USD",
+    },
+    featureList: project.highlights.join(", "),
   };
 
   return (
