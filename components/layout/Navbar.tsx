@@ -247,7 +247,7 @@ export default function Navbar({
         </Link>
 
         <div className="flex items-center gap-2">
-          <button
+          {/* <button
             type="button"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label={isMobileMenuOpen ? "Close mobile menu" : "Open mobile menu"}
@@ -259,7 +259,7 @@ export default function Navbar({
             ) : (
               <Menu className="h-5 w-5" />
             )}
-          </button>
+          </button> */}
           <ThemeToggle className="bg-surface/80 text-text pointer-events-auto flex h-10 w-10 items-center justify-center rounded-full border border-white/20 shadow-lg backdrop-blur-xl transition-all hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary" />
         </div>
       </div>
