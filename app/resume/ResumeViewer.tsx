@@ -52,8 +52,11 @@ export default function ResumeViewer({ resumeUrl }: ResumeViewerProps) {
 
   if (isLoading || !engine) {
     return (
-      <div className="text-text-muted flex h-full items-center justify-center font-bold tracking-wider uppercase">
-        Loading PDF Engine...
+      <div className="flex h-full w-full flex-col items-center justify-center gap-3 bg-surface/30 p-8 text-center animate-pulse">
+        <div className="h-8 w-8 border-3 border-primary border-t-transparent rounded-full animate-spin" />
+        <p className="text-text-muted text-sm font-semibold tracking-wide uppercase">
+          Initializing PDF Engine...
+        </p>
       </div>
     );
   }

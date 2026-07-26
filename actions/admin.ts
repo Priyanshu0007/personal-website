@@ -3,7 +3,7 @@
 import { db } from "@/db";
 import { projects, blogs } from "@/db/schema";
 import { eq } from "drizzle-orm";
-import { revalidatePath } from "next/cache";
+import { revalidatePath, revalidateTag } from "next/cache";
 import { cleanUrl, cleanUrls } from "@/utils/formatters";
 import { projectSchema, blogSchema } from "@/lib/validations";
 
@@ -18,6 +18,7 @@ export async function toggleProjectVisibility(
     .set({ hide: !currentHideStatus })
     .where(eq(projects.id, id));
 
+  revalidateTag("projects", "default");
   revalidatePath("/admin");
   revalidatePath("/projects");
   revalidatePath("/");
@@ -32,6 +33,7 @@ export async function toggleBlogVisibility(
     .set({ hide: !currentHideStatus })
     .where(eq(blogs.id, id));
 
+  revalidateTag("blogs", "default");
   revalidatePath("/admin");
   revalidatePath("/blogs");
   revalidatePath("/");
@@ -65,6 +67,7 @@ export async function createProject(formData: unknown) {
     hide: data.hide,
   });
 
+  revalidateTag("projects", "default");
   revalidatePath("/admin");
   revalidatePath("/projects");
   revalidatePath("/");
@@ -102,6 +105,7 @@ export async function updateProject(id: number, formData: unknown) {
     })
     .where(eq(projects.id, id));
 
+  revalidateTag("projects", "default");
   revalidatePath("/admin");
   revalidatePath("/projects");
   revalidatePath(`/projects/${data.slug}`);
@@ -113,6 +117,7 @@ export async function updateProject(id: number, formData: unknown) {
 
 export async function deleteProject(id: number) {
   await db.delete(projects).where(eq(projects.id, id));
+  revalidateTag("projects", "default");
   revalidatePath("/admin");
   revalidatePath("/projects");
   revalidatePath("/");
@@ -139,6 +144,7 @@ export async function createBlog(formData: unknown) {
     hide: data.hide,
   });
 
+  revalidateTag("blogs", "default");
   revalidatePath("/admin");
   revalidatePath("/blogs");
   revalidatePath("/");
@@ -167,6 +173,7 @@ export async function updateBlog(originalId: string, formData: unknown) {
     })
     .where(eq(blogs.id, originalId));
 
+  revalidateTag("blogs", "default");
   revalidatePath("/admin");
   revalidatePath("/blogs");
   revalidatePath("/");
@@ -177,6 +184,7 @@ export async function updateBlog(originalId: string, formData: unknown) {
 
 export async function deleteBlog(id: string) {
   await db.delete(blogs).where(eq(blogs.id, id));
+  revalidateTag("blogs", "default");
   revalidatePath("/admin");
   revalidatePath("/blogs");
   revalidatePath("/");
