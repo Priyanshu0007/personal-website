@@ -107,10 +107,10 @@
     color: #ffffff;
   }
 
-  /* Accessibility Focus */
+  /* Accessibility Focus - Custom Focus Rings */
   :focus-visible {
-    outline: 2px solid var(--color-primary);
-    outline-offset: 4px;
+    outline: none;
+    box-shadow: 0 0 0 2px var(--color-primary);
   }
 
   .glass-btn:focus-visible,
@@ -121,8 +121,8 @@
   .admin-btn:focus-visible,
   a:focus-visible,
   button:focus-visible {
-    outline: 3px solid var(--color-primary);
-    outline-offset: 2px;
+    outline: none;
+    box-shadow: 0 0 0 2px var(--color-primary), 0 0 0 4px color-mix(in srgb, var(--color-primary) 30%, transparent);
   }
 
   /* ========================================

@@ -12,7 +12,7 @@ import {
 } from "framer-motion";
 import { trackUserAction, AnalyticsEvents } from "@/lib/analytics";
 import type { NavItem } from "@/types";
-import { Home, Briefcase, FileText, Laptop, FileBadge } from "lucide-react";
+import { Home, Briefcase, FileText, Laptop, FileBadge, Menu, X } from "lucide-react";
 
 interface NavbarProps {
   name: string;
@@ -49,8 +49,29 @@ export default function Navbar({
   const [isScrolledDown, setIsScrolledDown] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [windowWidth, setWindowWidth] = useState(380);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   const { scrollY } = useScroll();
   const lastScrollY = useRef(0);
+
+  // Prevent background scrolling when mobile navigation drawer is toggled open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isMobileMenuOpen]);
+
+  // Close mobile drawer on route change
+  const [prevPathname, setPrevPathname] = useState(pathname);
+  if (prevPathname !== pathname) {
+    setPrevPathname(pathname);
+    setIsMobileMenuOpen(false);
+  }
 
   useEffect(() => {
     const handleResize = () => {
@@ -103,7 +124,7 @@ export default function Navbar({
             {/* Logo */}
             <Link
               href="/"
-              className="group flex items-center gap-2"
+              className="group flex items-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-full p-1"
               id="nav-logo-desktop"
               aria-label={`Home - ${name}`}
             >
@@ -142,7 +163,7 @@ export default function Navbar({
                       })
                     }
                     prefetch={true}
-                    className={`rounded-full px-3.5 py-1.5 text-xs font-bold tracking-wider uppercase transition-all ${
+                    className={`rounded-full px-3.5 py-1.5 text-xs font-bold tracking-wider uppercase transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary ${
                       isActive
                         ? "bg-primary text-white shadow-sm"
                         : "hover:bg-text/10"
@@ -159,7 +180,7 @@ export default function Navbar({
                   href={socials.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`border-border/20 bg-surface/50 hover:bg-text hover:text-surface flex items-center justify-center rounded-full border transition-all ${
+                  className={`border-border/20 bg-surface/50 hover:bg-text hover:text-surface flex items-center justify-center rounded-full border transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary ${
                     isScrolled ? "h-8 w-8" : "h-9 w-9"
                   }`}
                   aria-label="Visit GitHub Profile"
@@ -180,7 +201,7 @@ export default function Navbar({
                   href={socials.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`border-border/20 bg-surface/50 flex items-center justify-center rounded-full border transition-all hover:bg-[#0077B5] hover:text-white ${
+                  className={`border-border/20 bg-surface/50 flex items-center justify-center rounded-full border transition-all hover:bg-[#0077B5] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary ${
                     isScrolled ? "h-8 w-8" : "h-9 w-9"
                   }`}
                   aria-label="Visit LinkedIn Profile"
@@ -198,7 +219,7 @@ export default function Navbar({
                   />
                 </a>
                 <ThemeToggle
-                  className={`border-border/20 bg-surface/50 hover:bg-text hover:text-surface flex items-center justify-center rounded-full border transition-all ${
+                  className={`border-border/20 bg-surface/50 hover:bg-text hover:text-surface flex items-center justify-center rounded-full border transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary ${
                     isScrolled ? "h-8 w-8" : "h-9 w-9"
                   }`}
                 />
@@ -209,11 +230,11 @@ export default function Navbar({
       </header>
 
       {/* ===================== MOBILE NAVBAR ===================== */}
-      {/* Mobile Top Header (Floating Logo & Theme Toggle) */}
+      {/* Mobile Top Header (Floating Logo, Menu Toggle & Theme Toggle) */}
       <div className="pointer-events-none fixed top-4 right-4 left-4 z-50 flex items-center justify-between md:hidden">
         <Link
           href="/"
-          className="group pointer-events-auto flex items-center gap-2"
+          className="group pointer-events-auto flex items-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-full"
           id="nav-logo-mobile"
           aria-label={`Home - ${name}`}
         >
@@ -225,8 +246,103 @@ export default function Navbar({
           </span>
         </Link>
 
-        <ThemeToggle className="bg-surface/80 text-text pointer-events-auto flex h-10 w-10 items-center justify-center rounded-full border border-white/20 shadow-lg backdrop-blur-xl transition-all hover:scale-105" />
+        <div className="flex items-center gap-2">
+          <button
+            type="button"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label={isMobileMenuOpen ? "Close mobile menu" : "Open mobile menu"}
+            aria-expanded={isMobileMenuOpen}
+            className="bg-surface/80 text-text pointer-events-auto flex h-10 w-10 items-center justify-center rounded-full border border-white/20 shadow-lg backdrop-blur-xl transition-all hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+          >
+            {isMobileMenuOpen ? (
+              <X className="h-5 w-5" />
+            ) : (
+              <Menu className="h-5 w-5" />
+            )}
+          </button>
+          <ThemeToggle className="bg-surface/80 text-text pointer-events-auto flex h-10 w-10 items-center justify-center rounded-full border border-white/20 shadow-lg backdrop-blur-xl transition-all hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary" />
+        </div>
       </div>
+
+      {/* Mobile Navigation Drawer Overlay */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 z-40 flex flex-col justify-between bg-black/60 p-6 pt-24 backdrop-blur-2xl md:hidden"
+          >
+            <nav className="flex flex-col gap-3">
+              <span className="text-text-muted text-xs font-bold uppercase tracking-wider px-2">
+                Navigation
+              </span>
+              {navigation.map((item) => {
+                const isActive = pathname === item.href;
+                return (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    onClick={() => {
+                      setIsMobileMenuOpen(false);
+                      trackUserAction(AnalyticsEvents.NAV_LINK_CLICK, {
+                        link_name: item.label,
+                        destination: item.href,
+                        is_mobile_drawer: true,
+                      });
+                    }}
+                    className={`flex items-center gap-3 rounded-2xl p-3.5 text-base font-bold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary ${
+                      isActive
+                        ? "bg-primary text-white shadow-md"
+                        : "bg-surface/40 text-text hover:bg-surface/70"
+                    }`}
+                  >
+                    {iconMap[item.label] || <FileText className="h-5 w-5" />}
+                    <span>{item.label}</span>
+                  </Link>
+                );
+              })}
+            </nav>
+
+            <div className="flex flex-col gap-4 pb-20">
+              <span className="text-text-muted text-xs font-bold uppercase tracking-wider px-2">
+                Social Profiles
+              </span>
+              <div className="flex items-center gap-3">
+                <a
+                  href={socials.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-surface/50 border border-white/20 hover:bg-text hover:text-surface flex flex-1 items-center justify-center gap-2 rounded-2xl p-3 text-sm font-bold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                  onClick={() =>
+                    trackUserAction(AnalyticsEvents.SOCIAL_LINK_CLICK, {
+                      platform: "github",
+                    })
+                  }
+                >
+                  <GitHubIcon className="h-5 w-5" />
+                  <span>GitHub</span>
+                </a>
+                <a
+                  href={socials.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-surface/50 border border-white/20 hover:bg-[#0077B5] hover:text-white flex flex-1 items-center justify-center gap-2 rounded-2xl p-3 text-sm font-bold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                  onClick={() =>
+                    trackUserAction(AnalyticsEvents.SOCIAL_LINK_CLICK, {
+                      platform: "linkedin",
+                    })
+                  }
+                >
+                  <LinkedInIcon className="h-5 w-5" />
+                  <span>LinkedIn</span>
+                </a>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Mobile Floating Bottom Tab Bar */}
       <div className="pointer-events-none fixed right-0 bottom-6 left-0 z-50 flex justify-center px-4 md:hidden">
@@ -255,7 +371,7 @@ export default function Navbar({
                   })
                 }
                 prefetch={true}
-                className="relative z-10 flex h-full min-w-0 flex-1 flex-col items-center justify-center"
+                className="relative z-10 flex h-full min-w-0 flex-1 flex-col items-center justify-center rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
               >
                 <AnimatePresence>
                   {isActive && (
