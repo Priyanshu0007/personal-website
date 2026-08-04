@@ -13,7 +13,7 @@ export async function GET() {
       const blogUrl = blog.url.startsWith("http")
         ? blog.url
         : `${baseUrl}/blogs/${blog.id}`;
-      
+
       const parsedDate = blog.date ? new Date(blog.date) : new Date();
       const pubDate = isNaN(parsedDate.getTime())
         ? new Date().toUTCString()

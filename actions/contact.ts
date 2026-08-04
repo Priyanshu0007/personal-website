@@ -6,7 +6,6 @@ import { contactSchema } from "@/lib/validations";
 
 const resend = new Resend(envConfig.resendApiKey);
 
-
 export async function sendContactEmail(
   prevState: { success: boolean; error: string | null },
   formData: FormData

@@ -1,10 +1,10 @@
 # ✦ Priyanshu Gupta — Personal Portfolio
 
-**A modern, neobrutalist developer portfolio built with Next.js 16, featuring a headless CMS, full analytics stack, and OTP-gated admin panel.**
+**A modern, neobrutalist developer portfolio built with Next.js 16.3, featuring a headless CMS, full analytics stack, and OTP-gated admin panel.**
 
 [![Production](https://img.shields.io/badge/🚀_Production-priyanshu0007.vercel.app-22c55e?style=for-the-badge&logo=vercel&logoColor=white)](https://priyanshu0007.vercel.app)
 [![Development](https://img.shields.io/badge/🔧_Development-priyanshu0099.vercel.app-f59e0b?style=for-the-badge&logo=vercel&logoColor=white)](https://priyanshu0099.vercel.app)
-[![Next.js](https://img.shields.io/badge/Next.js-16.2.4-black?style=for-the-badge&logo=next.js)](https://nextjs.org)
+[![Next.js](https://img.shields.io/badge/Next.js-16.3.0-black?style=for-the-badge&logo=next.js)](https://nextjs.org)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5-3178c6?style=for-the-badge&logo=typescript&logoColor=white)](https://typescriptlang.org)
 [![License](https://img.shields.io/badge/License-MIT-a855f7?style=for-the-badge)](LICENSE)
 
@@ -86,7 +86,7 @@ _Dark mode — same layout with a rich, high-contrast dark palette_
 
 | Technology                               | Version  | Role                                    |
 | ---------------------------------------- | -------- | --------------------------------------- |
-| [Next.js](https://nextjs.org)            | `16.2.4` | Full-stack React framework (App Router) |
+| [Next.js](https://nextjs.org)            | `16.3.0` | Full-stack React framework (App Router) |
 | [React](https://react.dev)               | `19.2.4` | UI library                              |
 | [TypeScript](https://typescriptlang.org) | `5`      | Type-safe JavaScript                    |
 
@@ -110,11 +110,11 @@ _Dark mode — same layout with a rich, high-contrast dark palette_
 
 ### Authentication
 
-| Technology                              | Version    | Role                                   |
-| --------------------------------------- | ---------- | -------------------------------------- |
-| [NextAuth.js](https://next-auth.js.org) | `^4.24.14` | Session & OTP authentication           |
-| [Resend](https://resend.com)            | `6.12.2`   | Transactional email for OTP delivery   |
-| [Zod](https://zod.dev)                  | `4.4.3`    | Schema validation for forms & env vars |
+| Technology                              | Version   | Role                                   |
+| --------------------------------------- | --------- | -------------------------------------- |
+| [NextAuth.js](https://next-auth.js.org) | `4.24.14` | Session & OTP authentication           |
+| [Resend](https://resend.com)            | `6.12.2`  | Transactional email for OTP delivery   |
+| [Zod](https://zod.dev)                  | `4.4.3`   | Schema validation for forms & env vars |
 
 ### Analytics & Monitoring
 
@@ -256,7 +256,7 @@ portfolio/
 │   ├── envConfig.ts              # Centralized env variable access
 │   └── formatters.ts            # URL sanitizers and formatters
 │
-├── middleware.ts                 # NextAuth route protection for /admin
+├── proxy.ts                      # NextAuth route protection for /admin
 ├── drizzle.config.ts             # Drizzle Kit configuration
 ├── next.config.ts                # Next.js config (image domains)
 ├── seed-portfolio.ts             # DB seed script
@@ -346,7 +346,7 @@ The admin panel is a **protected content management system** accessible only at 
 User visits /admin
      │
      ▼
-NextAuth middleware checks session
+NextAuth proxy checks session
      │
   No session?
      │

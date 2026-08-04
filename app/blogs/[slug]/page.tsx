@@ -70,9 +70,7 @@ export default async function BlogDetailPage({
 
   const personal = getPersonalData();
   const allBlogs = await getAllBlogs();
-  const relatedBlogs = allBlogs
-    .filter((b) => b.id !== blog.id)
-    .slice(0, 3);
+  const relatedBlogs = allBlogs.filter((b) => b.id !== blog.id).slice(0, 3);
 
   const breadcrumbJsonLd = {
     "@context": "https://schema.org",
@@ -141,7 +139,7 @@ export default async function BlogDetailPage({
           {/* Header */}
           <header className="mb-10">
             <div className="mb-4 flex flex-wrap items-center gap-3">
-              <span className="glass-badge bg-primary/20 text-primary text-xs font-semibold px-3 py-1">
+              <span className="glass-badge bg-primary/20 text-primary px-3 py-1 text-xs font-semibold">
                 {blog.platform}
               </span>
               <time className="text-text-muted text-sm font-medium">
@@ -150,20 +148,22 @@ export default async function BlogDetailPage({
             </div>
 
             <h1
-              className="text-3xl font-black md:text-5xl lg:text-6xl tracking-tight leading-tight mb-6"
-              style={{ fontFamily: "var(--font-heading), system-ui, sans-serif" }}
+              className="mb-6 text-3xl leading-tight font-black tracking-tight md:text-5xl lg:text-6xl"
+              style={{
+                fontFamily: "var(--font-heading), system-ui, sans-serif",
+              }}
             >
               {blog.title}
             </h1>
 
-            <p className="text-text-secondary text-lg md:text-xl leading-relaxed border-l-4 border-secondary pl-4">
+            <p className="text-text-secondary border-secondary border-l-4 pl-4 text-lg leading-relaxed md:text-xl">
               {blog.description}
             </p>
           </header>
 
           {/* Thumbnail Preview Banner */}
           {blog.thumbnail && (
-            <div className="glass-card mb-10 overflow-hidden p-0 relative aspect-video w-full rounded-2xl border border-white/10 shadow-2xl">
+            <div className="glass-card relative mb-10 aspect-video w-full overflow-hidden rounded-2xl border border-white/10 p-0 shadow-2xl">
               <Image
                 src={blog.thumbnail}
                 alt={`Hero image for article: ${blog.title}`}
@@ -178,22 +178,25 @@ export default async function BlogDetailPage({
           )}
 
           {/* Action CTA Box */}
-          <div className="glass-card bg-surface/60 mb-16 p-8 rounded-2xl border border-white/10 text-center">
+          <div className="glass-card bg-surface/60 mb-16 rounded-2xl border border-white/10 p-8 text-center">
             <h2
-              className="text-2xl font-bold mb-3"
-              style={{ fontFamily: "var(--font-heading), system-ui, sans-serif" }}
+              className="mb-3 text-2xl font-bold"
+              style={{
+                fontFamily: "var(--font-heading), system-ui, sans-serif",
+              }}
             >
               Read Full Article on {blog.platform}
             </h2>
-            <p className="text-text-secondary max-w-lg mx-auto mb-6 text-sm md:text-base">
-              This article was published on {blog.platform}. Click below to view the full interactive publication, comment, and engage.
+            <p className="text-text-secondary mx-auto mb-6 max-w-lg text-sm md:text-base">
+              This article was published on {blog.platform}. Click below to view
+              the full interactive publication, comment, and engage.
             </p>
 
             <a
               href={blog.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="glass-btn-primary inline-flex items-center gap-2 px-6 py-3 font-semibold text-base"
+              className="glass-btn-primary inline-flex items-center gap-2 px-6 py-3 text-base font-semibold"
               id="read-external-blog-btn"
             >
               <span>Read on {blog.platform}</span>
@@ -205,13 +208,15 @@ export default async function BlogDetailPage({
           {relatedBlogs.length > 0 && (
             <section className="border-t border-white/10 pt-12">
               <h2
-                className="text-2xl font-bold mb-8"
-                style={{ fontFamily: "var(--font-heading), system-ui, sans-serif" }}
+                className="mb-8 text-2xl font-bold"
+                style={{
+                  fontFamily: "var(--font-heading), system-ui, sans-serif",
+                }}
               >
                 More <span className="text-secondary">Articles</span>
               </h2>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
                 {relatedBlogs.map((b, idx) => (
                   <BlogCard key={b.id} blog={b} index={idx} />
                 ))}

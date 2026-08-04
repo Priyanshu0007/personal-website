@@ -141,7 +141,9 @@ export default async function ProjectDetailPage({
 
   const projectJsonLd = {
     "@context": "https://schema.org",
-    "@type": isSoftwareApp ? ["SoftwareApplication", "CreativeWork"] : "CreativeWork",
+    "@type": isSoftwareApp
+      ? ["SoftwareApplication", "CreativeWork"]
+      : "CreativeWork",
     name: project.title,
     description: project.description,
     applicationCategory:
@@ -149,7 +151,9 @@ export default async function ProjectDetailPage({
         ? "MobileApplication"
         : "WebApplication",
     operatingSystem:
-      project.category === "react-native" ? "iOS, Android" : "Web, Cross-platform",
+      project.category === "react-native"
+        ? "iOS, Android"
+        : "Web, Cross-platform",
     author: {
       "@type": "Person",
       name: personal.name,
@@ -161,7 +165,9 @@ export default async function ProjectDetailPage({
       url: personal.seo.siteUrl,
     },
     datePublished: project.createdAt,
-    image: project.thumbnail ? [project.thumbnail, ...project.images] : project.images,
+    image: project.thumbnail
+      ? [project.thumbnail, ...project.images]
+      : project.images,
     url: `${personal.seo.siteUrl}/projects/${slug}`,
     sameAs: [project.liveUrl, project.githubUrl].filter(Boolean) as string[],
     codeRepository: project.githubUrl || undefined,

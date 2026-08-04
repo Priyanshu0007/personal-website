@@ -4,8 +4,8 @@ import dynamic from "next/dynamic";
 
 function ResumeViewerSkeleton() {
   return (
-    <div className="flex h-full w-full flex-col items-center justify-center gap-4 bg-surface/50 rounded-xl p-8 animate-pulse">
-      <div className="h-10 w-10 border-4 border-primary border-t-transparent rounded-full animate-spin" />
+    <div className="bg-surface/50 flex h-full w-full animate-pulse flex-col items-center justify-center gap-4 rounded-xl p-8">
+      <div className="border-primary h-10 w-10 animate-spin rounded-full border-4 border-t-transparent" />
       <p className="text-text-muted text-sm font-semibold tracking-wide uppercase">
         Loading PDF Engine & Plugins...
       </p>
@@ -25,4 +25,3 @@ export default function ResumeViewerWrapper({
 }) {
   return <ResumeViewer resumeUrl={resumeUrl} />;
 }
-

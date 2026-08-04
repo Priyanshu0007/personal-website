@@ -12,7 +12,7 @@ This version has breaking changes — APIs, conventions, and file structure may 
 
 ## Project Overview
 
-A personal portfolio/developer website built with **Next.js 16** (App Router), **React 19**, **TypeScript 5**, and **Tailwind CSS 4**. The site showcases projects, blogs, a resume viewer, and includes an admin dashboard for content management. Uses a **Glassmorphism (Apple-esque)** design system throughout.
+A personal portfolio/developer website built with **Next.js 16.3** (App Router), **React 19**, **TypeScript 5**, and **Tailwind CSS 4**. The site showcases projects, blogs, a resume viewer, and includes an admin dashboard for content management. Uses a **Glassmorphism (Apple-esque)** design system throughout.
 
 ---
 
@@ -20,7 +20,7 @@ A personal portfolio/developer website built with **Next.js 16** (App Router), *
 
 | Layer           | Technology                                     |
 | --------------- | ---------------------------------------------- |
-| Framework       | Next.js 16 (App Router)                        |
+| Framework       | Next.js 16.3 (App Router)                      |
 | UI Library      | React 19                                       |
 | Language        | TypeScript 5 (strict mode)                     |
 | Styling         | Tailwind CSS 4 via `@tailwindcss/postcss`      |
@@ -47,7 +47,7 @@ A personal portfolio/developer website built with **Next.js 16** (App Router), *
 │   ├── layout.tsx          # Root layout (fonts, SEO, JSON-LD, providers)
 │   ├── page.tsx            # Landing page (hero, about, projects, blogs, contact)
 │   ├── globals.css         # Design system tokens + all global styles
-│   ├── admin/              # Protected admin dashboard (NextAuth middleware)
+│   ├── admin/              # Protected admin dashboard (NextAuth proxy)
 │   │   ├── login/          # OTP-based login page
 │   │   └── page.tsx        # Admin dashboard (CRUD for projects & blogs)
 │   ├── api/                # API Route Handlers
@@ -92,7 +92,7 @@ A personal portfolio/developer website built with **Next.js 16** (App Router), *
 │   └── formatters.ts       # URL cleaning utilities
 ├── public/                 # Static assets (SVGs, custom cursors, service worker)
 ├── drizzle.config.ts       # Drizzle Kit configuration
-├── middleware.ts            # NextAuth route protection for /admin
+├── proxy.ts                # NextAuth route protection for /admin
 └── next.config.ts          # Next.js config (image remote patterns)
 ```
 
@@ -161,7 +161,7 @@ A personal portfolio/developer website built with **Next.js 16** (App Router), *
 ### 8. Authentication
 
 - NextAuth v4 with a custom OTP (One-Time Password) email flow.
-- `middleware.ts` protects `/admin` routes via `withAuth`.
+- `proxy.ts` protects `/admin` routes via `withAuth`.
 - Admin access is restricted to emails in the `allowedAdmins` database table.
 - OTPs are stored in the `otps` table with expiration timestamps.
 

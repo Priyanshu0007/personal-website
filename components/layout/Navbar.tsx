@@ -12,7 +12,15 @@ import {
 } from "framer-motion";
 import { trackUserAction, AnalyticsEvents } from "@/lib/analytics";
 import type { NavItem } from "@/types";
-import { Home, Briefcase, FileText, Laptop, FileBadge, Menu, X } from "lucide-react";
+import {
+  Home,
+  Briefcase,
+  FileText,
+  Laptop,
+  FileBadge,
+  Menu,
+  X,
+} from "lucide-react";
 
 interface NavbarProps {
   name: string;
@@ -124,7 +132,7 @@ export default function Navbar({
             {/* Logo */}
             <Link
               href="/"
-              className="group flex items-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-full p-1"
+              className="group focus-visible:ring-primary flex items-center gap-2 rounded-full p-1 focus-visible:ring-2 focus-visible:outline-none"
               id="nav-logo-desktop"
               aria-label={`Home - ${name}`}
             >
@@ -163,7 +171,7 @@ export default function Navbar({
                       })
                     }
                     prefetch={true}
-                    className={`rounded-full px-3.5 py-1.5 text-xs font-bold tracking-wider uppercase transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary ${
+                    className={`focus-visible:ring-primary rounded-full px-3.5 py-1.5 text-xs font-bold tracking-wider uppercase transition-all focus-visible:ring-2 focus-visible:outline-none ${
                       isActive
                         ? "bg-primary text-white shadow-sm"
                         : "hover:bg-text/10"
@@ -180,7 +188,7 @@ export default function Navbar({
                   href={socials.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`border-border/20 bg-surface/50 hover:bg-text hover:text-surface flex items-center justify-center rounded-full border transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary ${
+                  className={`border-border/20 bg-surface/50 hover:bg-text hover:text-surface focus-visible:ring-primary flex items-center justify-center rounded-full border transition-all focus-visible:ring-2 focus-visible:outline-none ${
                     isScrolled ? "h-8 w-8" : "h-9 w-9"
                   }`}
                   aria-label="Visit GitHub Profile"
@@ -201,7 +209,7 @@ export default function Navbar({
                   href={socials.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`border-border/20 bg-surface/50 flex items-center justify-center rounded-full border transition-all hover:bg-[#0077B5] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary ${
+                  className={`border-border/20 bg-surface/50 focus-visible:ring-primary flex items-center justify-center rounded-full border transition-all hover:bg-[#0077B5] hover:text-white focus-visible:ring-2 focus-visible:outline-none ${
                     isScrolled ? "h-8 w-8" : "h-9 w-9"
                   }`}
                   aria-label="Visit LinkedIn Profile"
@@ -219,7 +227,7 @@ export default function Navbar({
                   />
                 </a>
                 <ThemeToggle
-                  className={`border-border/20 bg-surface/50 hover:bg-text hover:text-surface flex items-center justify-center rounded-full border transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary ${
+                  className={`border-border/20 bg-surface/50 hover:bg-text hover:text-surface focus-visible:ring-primary flex items-center justify-center rounded-full border transition-all focus-visible:ring-2 focus-visible:outline-none ${
                     isScrolled ? "h-8 w-8" : "h-9 w-9"
                   }`}
                 />
@@ -234,7 +242,7 @@ export default function Navbar({
       <div className="pointer-events-none fixed top-4 right-4 left-4 z-50 flex items-center justify-between md:hidden">
         <Link
           href="/"
-          className="group pointer-events-auto flex items-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-full"
+          className="group focus-visible:ring-primary pointer-events-auto flex items-center gap-2 rounded-full focus-visible:ring-2 focus-visible:outline-none"
           id="nav-logo-mobile"
           aria-label={`Home - ${name}`}
         >
@@ -260,7 +268,7 @@ export default function Navbar({
               <Menu className="h-5 w-5" />
             )}
           </button> */}
-          <ThemeToggle className="bg-surface/80 text-text pointer-events-auto flex h-10 w-10 items-center justify-center rounded-full border border-white/20 shadow-lg backdrop-blur-xl transition-all hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary" />
+          <ThemeToggle className="bg-surface/80 text-text focus-visible:ring-primary pointer-events-auto flex h-10 w-10 items-center justify-center rounded-full border border-white/20 shadow-lg backdrop-blur-xl transition-all hover:scale-105 focus-visible:ring-2 focus-visible:outline-none" />
         </div>
       </div>
 
@@ -275,7 +283,7 @@ export default function Navbar({
             className="fixed inset-0 z-40 flex flex-col justify-between bg-black/60 p-6 pt-24 backdrop-blur-2xl md:hidden"
           >
             <nav className="flex flex-col gap-3">
-              <span className="text-text-muted text-xs font-bold uppercase tracking-wider px-2">
+              <span className="text-text-muted px-2 text-xs font-bold tracking-wider uppercase">
                 Navigation
               </span>
               {navigation.map((item) => {
@@ -292,7 +300,7 @@ export default function Navbar({
                         is_mobile_drawer: true,
                       });
                     }}
-                    className={`flex items-center gap-3 rounded-2xl p-3.5 text-base font-bold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary ${
+                    className={`focus-visible:ring-primary flex items-center gap-3 rounded-2xl p-3.5 text-base font-bold transition-all focus-visible:ring-2 focus-visible:outline-none ${
                       isActive
                         ? "bg-primary text-white shadow-md"
                         : "bg-surface/40 text-text hover:bg-surface/70"
@@ -306,7 +314,7 @@ export default function Navbar({
             </nav>
 
             <div className="flex flex-col gap-4 pb-20">
-              <span className="text-text-muted text-xs font-bold uppercase tracking-wider px-2">
+              <span className="text-text-muted px-2 text-xs font-bold tracking-wider uppercase">
                 Social Profiles
               </span>
               <div className="flex items-center gap-3">
@@ -314,7 +322,7 @@ export default function Navbar({
                   href={socials.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-surface/50 border border-white/20 hover:bg-text hover:text-surface flex flex-1 items-center justify-center gap-2 rounded-2xl p-3 text-sm font-bold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                  className="bg-surface/50 hover:bg-text hover:text-surface focus-visible:ring-primary flex flex-1 items-center justify-center gap-2 rounded-2xl border border-white/20 p-3 text-sm font-bold transition-all focus-visible:ring-2 focus-visible:outline-none"
                   onClick={() =>
                     trackUserAction(AnalyticsEvents.SOCIAL_LINK_CLICK, {
                       platform: "github",
@@ -328,7 +336,7 @@ export default function Navbar({
                   href={socials.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-surface/50 border border-white/20 hover:bg-[#0077B5] hover:text-white flex flex-1 items-center justify-center gap-2 rounded-2xl p-3 text-sm font-bold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                  className="bg-surface/50 focus-visible:ring-primary flex flex-1 items-center justify-center gap-2 rounded-2xl border border-white/20 p-3 text-sm font-bold transition-all hover:bg-[#0077B5] hover:text-white focus-visible:ring-2 focus-visible:outline-none"
                   onClick={() =>
                     trackUserAction(AnalyticsEvents.SOCIAL_LINK_CLICK, {
                       platform: "linkedin",
@@ -371,7 +379,7 @@ export default function Navbar({
                   })
                 }
                 prefetch={true}
-                className="relative z-10 flex h-full min-w-0 flex-1 flex-col items-center justify-center rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                className="focus-visible:ring-primary relative z-10 flex h-full min-w-0 flex-1 flex-col items-center justify-center rounded-full focus-visible:ring-2 focus-visible:outline-none"
               >
                 <AnimatePresence>
                   {isActive && (

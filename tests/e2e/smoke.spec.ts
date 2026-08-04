@@ -14,11 +14,15 @@ test.describe("Portfolio E2E Smoke Tests", () => {
     await expect(heroName).toBeVisible();
 
     // Verify navigation links exist
-    const navProjectsLink = page.getByRole("link", { name: /Projects/i }).first();
+    const navProjectsLink = page
+      .getByRole("link", { name: /Projects/i })
+      .first();
     await expect(navProjectsLink).toBeVisible();
   });
 
-  test("2. Projects page loads and displays project items", async ({ page }) => {
+  test("2. Projects page loads and displays project items", async ({
+    page,
+  }) => {
     await page.goto("/projects");
 
     // Verify header or content
@@ -55,8 +59,8 @@ test.describe("Portfolio E2E Smoke Tests", () => {
     await messageInput.fill("Hello test message");
 
     // HTML5 email validation check
-    const isEmailValid = await emailInput.evaluate(
-      (node: HTMLInputElement) => node.checkValidity()
+    const isEmailValid = await emailInput.evaluate((node: HTMLInputElement) =>
+      node.checkValidity()
     );
     expect(isEmailValid).toBe(false);
   });
